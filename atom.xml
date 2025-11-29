@@ -6,7 +6,7 @@
   <link href="https://waiyiyuyan.github.io/atom.xml" rel="self"/>
   
   <link href="https://waiyiyuyan.github.io/"/>
-  <updated>2025-11-28T01:49:33.325Z</updated>
+  <updated>2025-11-28T02:00:08.901Z</updated>
   <id>https://waiyiyuyan.github.io/</id>
   
   <author>
@@ -18,12 +18,12 @@
   
   <entry>
     <title>蓝色的传说，独家体验：Lansecs 机场“试用套餐”测评</title>
-    <link href="https://waiyiyuyan.github.io/2025/11/28/%E8%93%9D%E8%89%B2%E4%BC%A0%E8%AF%B4/"/>
-    <id>https://waiyiyuyan.github.io/2025/11/28/%E8%93%9D%E8%89%B2%E4%BC%A0%E8%AF%B4/</id>
+    <link href="https://waiyiyuyan.github.io/2025/11/28/bluelegend/"/>
+    <id>https://waiyiyuyan.github.io/2025/11/28/bluelegend/</id>
     <published>2025-11-28T01:42:27.000Z</published>
-    <updated>2025-11-28T01:49:33.325Z</updated>
+    <updated>2025-11-28T02:00:08.901Z</updated>
     
-    <content type="html"><![CDATA[<p>今天，我在网上发现了一个名为“<strong>蓝色传说</strong>”（Lansecs）的机场服务商，并利用一个特别的优惠码体验了他们的“试用套餐”。这个试用机会提供了一个了解其服务质量的窗口。下面是基于我的试用体验，对这款机场服务的全面测评。</p><span id="more"></span><h3 id="🏷️-核心信息速览"><a href="#🏷️-核心信息速览" class="headerlink" title="🏷️ 核心信息速览"></a>🏷️ 核心信息速览</h3><ul><li><strong>机场名称：</strong> 蓝色传说 (Lansecs)</li><li><strong>注册地址：</strong> <code>lansecs.top</code></li><li><strong>试用优惠：</strong> 优惠券 <code>lansecs</code> 兑换 0 元购买“试用套餐”</li><li><strong>试用配置：</strong> 100GB 流量 &#x2F; 30 天</li><li><strong>协议类型：</strong> Hysteria</li><li><strong>标称节点：</strong> 美国、香港、德国、印度、英国、韩国（共 7 个订阅节点）</li></ul><h3 id="⚡️-速度与延迟：意料之外的惊喜"><a href="#⚡️-速度与延迟：意料之外的惊喜" class="headerlink" title="⚡️ 速度与延迟：意料之外的惊喜"></a>⚡️ 速度与延迟：意料之外的惊喜</h3><p>在实际使用中，Lansecs 给我的第一印象是<strong>流畅</strong>。</p><p>尽管是免费的试用套餐，其连接性能表现得相当不错。我监测到的延迟普遍在 <strong>200 毫秒以内</strong>，这对于日常浏览、高清视频缓冲（在可用节点上）来说，是完全够用的，甚至可以说是体验优秀。这种低延迟的表现，可能得益于其采用了较新的 <strong>Hysteria 协议</strong>，该协议通常在网络条件不佳或需要大流量传输时表现出较好的性能和抗干扰能力。</p><h3 id="🌍-节点连接性：美中不足的遗憾"><a href="#🌍-节点连接性：美中不足的遗憾" class="headerlink" title="🌍 节点连接性：美中不足的遗憾"></a>🌍 节点连接性：美中不足的遗憾</h3><p>不过，在节点连接性方面，这次试用遇到了一些小问题，这也正是试用期的价值所在。</p><p>订阅链接中一共包含了 7 个节点，覆盖了美国、香港、德国等多个地区。但遗憾的是，在我尝试连接时，<strong>只有德国节点能够成功并稳定地使用</strong>。其他节点的连接均未能成功。</p><ul><li><strong>实际可用节点：</strong> 仅德国节点</li><li><strong>节点纯净度：</strong> 纯净度还不错，尽管是广播 IP。</li></ul><p><img src="/images/blue_legend.png" alt="IP纯净度检测结果"></p><p>虽然节点数量受限，但好在唯一可用的<strong>德国节点表现优秀且 IP 纯净度良好</strong>。对于有轻度使用需求的用户来说，如果只需要一个稳定、高速的节点，这个德国节点足以满足基本要求。但对于需要多地区节点或特定地区节点的用户而言，这无疑是目前试用阶段的一个大大的减分项。</p>]]></content>
+    <content type="html"><![CDATA[<p>今天，我在网上发现了一个名为“<strong>蓝色传说</strong>”（Lansecs）的机场服务商，并利用一个特别的优惠码体验了他们的“试用套餐”。这个试用机会提供了一个了解其服务质量的窗口。下面是基于我的试用体验，对这款机场服务的全面测评。</p><span id="more"></span><h3 id="🏷️-核心信息速览"><a href="#🏷️-核心信息速览" class="headerlink" title="🏷️ 核心信息速览"></a>🏷️ 核心信息速览</h3><ul><li><strong>机场名称：</strong> 蓝色传说 (Lansecs)</li><li><strong>注册地址：</strong> <a href="https://lansecs.top/">lansecs.top</a></li><li><strong>试用优惠：</strong> 优惠券 <code>lansecs</code> 兑换 0 元购买“试用套餐”</li><li><strong>试用配置：</strong> 100GB 流量 &#x2F; 30 天</li><li><strong>协议类型：</strong> Hysteria</li><li><strong>标称节点：</strong> 美国、香港、德国、印度、英国、韩国（共 7 个订阅节点）</li></ul><h3 id="⚡️-速度与延迟：意料之外的惊喜"><a href="#⚡️-速度与延迟：意料之外的惊喜" class="headerlink" title="⚡️ 速度与延迟：意料之外的惊喜"></a>⚡️ 速度与延迟：意料之外的惊喜</h3><p>在实际使用中，Lansecs 给我的第一印象是<strong>流畅</strong>。</p><p>尽管是免费的试用套餐，其连接性能表现得相当不错。我监测到的延迟普遍在 <strong>200 毫秒以内</strong>，这对于日常浏览、高清视频缓冲（在可用节点上）来说，是完全够用的，甚至可以说是体验优秀。这种低延迟的表现，可能得益于其采用了较新的 <strong>Hysteria 协议</strong>，该协议通常在网络条件不佳或需要大流量传输时表现出较好的性能和抗干扰能力。</p><h3 id="🌍-节点连接性：美中不足的遗憾"><a href="#🌍-节点连接性：美中不足的遗憾" class="headerlink" title="🌍 节点连接性：美中不足的遗憾"></a>🌍 节点连接性：美中不足的遗憾</h3><p>不过，在节点连接性方面，这次试用遇到了一些小问题，这也正是试用期的价值所在。</p><p>订阅链接中一共包含了 7 个节点，覆盖了美国、香港、德国等多个地区。但遗憾的是，在我尝试连接时，<strong>只有德国节点能够成功并稳定地使用</strong>。其他节点的连接均未能成功。</p><ul><li><strong>实际可用节点：</strong> 仅德国节点</li><li><strong>节点纯净度：</strong> 纯净度还不错，尽管是广播 IP。</li></ul><p><img src="/images/blue_legend.png" alt="IP纯净度检测结果"></p><p>虽然节点数量受限，但好在唯一可用的<strong>德国节点表现优秀且 IP 纯净度良好</strong>。对于有轻度使用需求的用户来说，如果只需要一个稳定、高速的节点，这个德国节点足以满足基本要求。但对于需要多地区节点或特定地区节点的用户而言，这无疑是目前试用阶段的一个大大的减分项。</p>]]></content>
     
     
     <summary type="html">&lt;p&gt;今天，我在网上发现了一个名为“&lt;strong&gt;蓝色传说&lt;/strong&gt;”（Lansecs）的机场服务商，并利用一个特别的优惠码体验了他们的“试用套餐”。这个试用机会提供了一个了解其服务质量的窗口。下面是基于我的试用体验，对这款机场服务的全面测评。&lt;/p&gt;</summary>
@@ -37,8 +37,8 @@
   
   <entry>
     <title>新动力机场体验</title>
-    <link href="https://waiyiyuyan.github.io/2025/11/25/%E6%96%B0%E5%8A%A8%E5%8A%9B%E6%9C%BA%E5%9C%BA%E4%BD%93%E9%AA%8C/"/>
-    <id>https://waiyiyuyan.github.io/2025/11/25/%E6%96%B0%E5%8A%A8%E5%8A%9B%E6%9C%BA%E5%9C%BA%E4%BD%93%E9%AA%8C/</id>
+    <link href="https://waiyiyuyan.github.io/2025/11/25/xindongli/"/>
+    <id>https://waiyiyuyan.github.io/2025/11/25/xindongli/</id>
     <published>2025-11-25T09:33:22.000Z</published>
     <updated>2025-11-25T09:54:36.145Z</updated>
     
@@ -57,8 +57,8 @@
   
   <entry>
     <title>1G流量注册送，IP纯净度超高，应急备用首选！</title>
-    <link href="https://waiyiyuyan.github.io/2025/11/24/%E5%86%B2%E4%B8%8A%E4%BA%91%E9%9C%84/"/>
-    <id>https://waiyiyuyan.github.io/2025/11/24/%E5%86%B2%E4%B8%8A%E4%BA%91%E9%9C%84/</id>
+    <link href="https://waiyiyuyan.github.io/2025/11/24/chongshangxunxiao/"/>
+    <id>https://waiyiyuyan.github.io/2025/11/24/chongshangxunxiao/</id>
     <published>2025-11-24T15:03:56.000Z</published>
     <updated>2025-11-25T06:15:51.076Z</updated>
     
@@ -76,8 +76,8 @@
   
   <entry>
     <title>瑶瑶领先——可能是目前最「人性化」计费的科学上网服务</title>
-    <link href="https://waiyiyuyan.github.io/2025/11/19/%E7%91%B6%E7%91%B6%E9%A2%86%E5%85%88%E6%9C%BA%E5%9C%BA/"/>
-    <id>https://waiyiyuyan.github.io/2025/11/19/%E7%91%B6%E7%91%B6%E9%A2%86%E5%85%88%E6%9C%BA%E5%9C%BA/</id>
+    <link href="https://waiyiyuyan.github.io/2025/11/19/yylx/"/>
+    <id>https://waiyiyuyan.github.io/2025/11/19/yylx/</id>
     <published>2025-11-19T05:09:59.000Z</published>
     <updated>2025-11-25T06:15:49.461Z</updated>
     
@@ -95,8 +95,8 @@
   
   <entry>
     <title>探索一个朋友：出海人眼中的一站式工具导航站</title>
-    <link href="https://waiyiyuyan.github.io/2025/11/19/%E6%8E%A2%E7%B4%A2%E4%B8%80%E4%B8%AA%E6%9C%8B%E5%8F%8B-ygpy-net/"/>
-    <id>https://waiyiyuyan.github.io/2025/11/19/%E6%8E%A2%E7%B4%A2%E4%B8%80%E4%B8%AA%E6%9C%8B%E5%8F%8B-ygpy-net/</id>
+    <link href="https://waiyiyuyan.github.io/2025/11/19/ygpy/"/>
+    <id>https://waiyiyuyan.github.io/2025/11/19/ygpy/</id>
     <published>2025-11-19T01:27:41.000Z</published>
     <updated>2025-11-28T01:21:13.732Z</updated>
     
@@ -114,8 +114,8 @@
   
   <entry>
     <title>互联网的指南针：FMHY.net 一站式数字资源索引</title>
-    <link href="https://waiyiyuyan.github.io/2025/11/19/%E6%95%B0%E5%AD%97%E5%AE%9D%E8%97%8F%E7%8C%8E%E4%BA%BA%E6%8C%87%E5%8D%97%EF%BC%9A%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2-FMHY-net-%E8%B5%84%E6%BA%90%E7%AB%99/"/>
-    <id>https://waiyiyuyan.github.io/2025/11/19/%E6%95%B0%E5%AD%97%E5%AE%9D%E8%97%8F%E7%8C%8E%E4%BA%BA%E6%8C%87%E5%8D%97%EF%BC%9A%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2-FMHY-net-%E8%B5%84%E6%BA%90%E7%AB%99/</id>
+    <link href="https://waiyiyuyan.github.io/2025/11/19/fmhy/"/>
+    <id>https://waiyiyuyan.github.io/2025/11/19/fmhy/</id>
     <published>2025-11-19T01:21:16.000Z</published>
     <updated>2025-11-25T06:23:08.253Z</updated>
     
@@ -134,8 +134,8 @@
   
   <entry>
     <title>游戏玩家的另类选择：深入了解 Repack-ByRutor.org 及其“重打包”文化</title>
-    <link href="https://waiyiyuyan.github.io/2025/11/19/%E4%BF%84%E7%BD%97%E6%96%AF%E7%A0%B4%E8%A7%A3%E6%B8%B8%E6%88%8F%E7%BD%91%E7%AB%99/"/>
-    <id>https://waiyiyuyan.github.io/2025/11/19/%E4%BF%84%E7%BD%97%E6%96%AF%E7%A0%B4%E8%A7%A3%E6%B8%B8%E6%88%8F%E7%BD%91%E7%AB%99/</id>
+    <link href="https://waiyiyuyan.github.io/2025/11/19/russiangame/"/>
+    <id>https://waiyiyuyan.github.io/2025/11/19/russiangame/</id>
     <published>2025-11-19T01:13:14.000Z</published>
     <updated>2025-11-25T06:19:53.573Z</updated>
     
@@ -153,8 +153,8 @@
   
   <entry>
     <title>探索 Telegram 社群：三大国外电报群组导航站推荐</title>
-    <link href="https://waiyiyuyan.github.io/2025/11/19/%E7%94%B5%E6%8A%A5%E5%9B%BD%E5%A4%96%E7%BE%A4%E7%BB%84%E9%A2%91%E9%81%93%E5%AF%BC%E8%88%AA%E7%BD%91%E7%AB%99/"/>
-    <id>https://waiyiyuyan.github.io/2025/11/19/%E7%94%B5%E6%8A%A5%E5%9B%BD%E5%A4%96%E7%BE%A4%E7%BB%84%E9%A2%91%E9%81%93%E5%AF%BC%E8%88%AA%E7%BD%91%E7%AB%99/</id>
+    <link href="https://waiyiyuyan.github.io/2025/11/19/telegramgroup/"/>
+    <id>https://waiyiyuyan.github.io/2025/11/19/telegramgroup/</id>
     <published>2025-11-19T00:53:22.000Z</published>
     <updated>2025-11-25T06:16:46.347Z</updated>
     
@@ -173,8 +173,8 @@
   
   <entry>
     <title>如何更改 Apple ID 国家或地区</title>
-    <link href="https://waiyiyuyan.github.io/2024/12/18/2024-12-18/"/>
-    <id>https://waiyiyuyan.github.io/2024/12/18/2024-12-18/</id>
+    <link href="https://waiyiyuyan.github.io/2024/12/18/appleid/"/>
+    <id>https://waiyiyuyan.github.io/2024/12/18/appleid/</id>
     <published>2024-12-18T09:38:47.000Z</published>
     <updated>2025-11-19T14:10:50.698Z</updated>
     
