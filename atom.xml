@@ -6,7 +6,7 @@
   <link href="https://waiyiyuyan.github.io/atom.xml" rel="self"/>
   
   <link href="https://waiyiyuyan.github.io/"/>
-  <updated>2025-11-29T02:46:59.119Z</updated>
+  <updated>2025-11-30T05:22:11.425Z</updated>
   <id>https://waiyiyuyan.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>备用“秘密通道”：网鱼VPN</title>
+    <link href="https://waiyiyuyan.github.io/2025/11/30/wangyuvpn/"/>
+    <id>https://waiyiyuyan.github.io/2025/11/30/wangyuvpn/</id>
+    <published>2025-11-30T04:56:13.000Z</published>
+    <updated>2025-11-30T05:22:11.425Z</updated>
+    
+    <content type="html"><![CDATA[<p>兄弟们姐妹们，今天找到一个新工具叫 <strong>“<a href="https://www.wangyuvpn.com/download/android?shareCode=e4110f58">网鱼VPN</a>”</strong>，用下来感觉挺不错，操作贼简单，特别适合那些不想折腾、只想点两下就能上网冲浪的人。</p><span id="more"></span><h4 id="1-跨平台支持"><a href="#1-跨平台支持" class="headerlink" title="1. 跨平台支持"></a>1. 跨平台支持</h4><p>无论是你的 <strong>Windows 电脑</strong>、<strong>苹果笔记本（macOS）</strong>，还是你的 <strong>安卓手机</strong> 和 <strong>iPhone</strong>，它都有对应的客户端，所有设备都能照顾到。</p><h4 id="2-注册简单"><a href="#2-注册简单" class="headerlink" title="2. 注册简单"></a>2. 注册简单</h4><ul><li><strong>注册方式：</strong> 邮箱或者账户密码都可以。</li><li><strong>不用验证！</strong> 你可以随便填一个邮箱或用户名，随便输一个密码，它就让你通过了。简直是为懒人量身定做，秒速完成注册。</li></ul><h4 id="3-免费资源：先用起来再说"><a href="#3-免费资源：先用起来再说" class="headerlink" title="3. 免费资源：先用起来再说"></a>3. 免费资源：先用起来再说</h4><p>提供 <strong>两个免费的香港节点</strong> 给你用。让你先体验一下，这点挺厚道。</p><p><img src="/images/wangyuvpn.jpg" alt="免费节点"></p><h3 id="💻-实际体验：够用"><a href="#💻-实际体验：够用" class="headerlink" title="💻 实际体验：够用"></a>💻 实际体验：够用</h3><h4 id="1-网速咋样？"><a href="#1-网速咋样？" class="headerlink" title="1. 网速咋样？"></a>1. 网速咋样？</h4><p>实话实说，测速一般，不过<strong>够用</strong>。用来<strong>刷刷视频</strong>，或者<strong>浏览各种网页</strong>，都不会卡顿，日常冲浪没问题。</p><h4 id="2-能不能用-AI？"><a href="#2-能不能用-AI？" class="headerlink" title="2. 能不能用 AI？"></a>2. 能不能用 AI？</h4><p>能！我试过了，用它来访问和使用 <strong>ChatGPT</strong> 是完全没有问题的。对于需要用 AI 学习工作的朋友，这一点非常重要！</p><h4 id="3-有点小“迷”的地方"><a href="#3-有点小“迷”的地方" class="headerlink" title="3. 有点小“迷”的地方"></a>3. 有点小“迷”的地方</h4><p>虽然我连接的是香港节点，但用工具一测，它显示的实际地址好像是在<strong>日本</strong>🇯🇵。不过，IP地址还挺“干净”的，而且反正能上外网，到底是香港还是日本，对咱们普通用户来说影响不大啦！</p><p><img src="/images/wangyuvpn_ping.jpg" alt="IP纯净度检测"></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;兄弟们姐妹们，今天找到一个新工具叫 &lt;strong&gt;“&lt;a href=&quot;https://www.wangyuvpn.com/download/android?shareCode=e4110f58&quot;&gt;网鱼VPN&lt;/a&gt;”&lt;/strong&gt;，用下来感觉挺不错，操作贼简单，特别适合那些不想折腾、只想点两下就能上网冲浪的人。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/categories/vpn/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>免费试用「必加速」机场：初探其速度与IP质量！</title>
