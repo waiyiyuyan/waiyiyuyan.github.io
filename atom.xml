@@ -6,7 +6,7 @@
   <link href="https://waiyiyuyan.github.io/atom.xml" rel="self"/>
   
   <link href="https://waiyiyuyan.github.io/"/>
-  <updated>2026-01-04T04:02:48.227Z</updated>
+  <updated>2026-01-08T02:15:07.447Z</updated>
   <id>https://waiyiyuyan.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【技术宅拯救世界】家人们谁懂啊！红警2居然能在浏览器里直接玩了，再也不用折腾win10兼容了！</title>
+    <link href="https://waiyiyuyan.github.io/2026/01/08/redalert/"/>
+    <id>https://waiyiyuyan.github.io/2026/01/08/redalert/</id>
+    <published>2026-01-08T02:04:50.000Z</published>
+    <updated>2026-01-08T02:15:07.447Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天必须跟兄弟们安利一个神站，咱们这些红警老ASS的终极福音！</p><span id="more"></span><h2 id="01-老炮的痛，谁玩谁懂"><a href="#01-老炮的痛，谁玩谁懂" class="headerlink" title="01 老炮的痛，谁玩谁懂"></a>01 老炮的痛，谁玩谁懂</h2><p><strong>“CNMD，这破游戏怎么又闪退了！”</strong></p><p>兄弟们，是不是都经历过这种绝望？Win10&#x2F;Win11系统想重温一把红警2，比TM造十个间谍卫星还难！</p><p><strong>先来个灵魂三问：</strong></p><ol><li>你是不是下过各种“<strong>免安装绿色版</strong>”，结果不是黑屏就是花屏？</li><li>你是不是搜遍贴吧，照着大神教程<strong>打了一堆兼容性补丁、显卡补丁</strong>，最后游戏是能进了，鼠标却飘得跟开飞机似的？</li><li>你是不是为了联机，还得折腾什么<strong>虚拟局域网软件</strong>，结果半天连不上，还被对面当成菜鸡嘲讽？</li></ol><p>说实话，我电脑里“红警2兼容工具包”的体积，都快比游戏本体大了！每次想玩，都得先<strong>开虚拟机、调分辨率、设XP兼容模式</strong>，一套流程下来，打仗的瘾都没了。</p><p>最气人的是，<strong>辛辛苦苦折腾半天，最后可能因为系统一次更新，全TM白给！</strong> 咱们想安安静静当个怀旧指挥官，怎么就这么难？</p><h2 id="02-天降猛站，打开新世界"><a href="#02-天降猛站，打开新世界" class="headerlink" title="02 天降猛站，打开新世界"></a>02 天降猛站，打开新世界</h2><p>直到前几天，我在<a href="https://www.youtube.com/">Youtube</a>浏览时，<strong>直接瞳孔地震！</strong></p><p>看到一个叫 <strong>“红色井界”</strong> 的视频，标题就写着 <strong>“全平台即时战略爽游”</strong> 。我本来以为是那种辣眼睛的盗版页游，结果点进去一看——<strong>好家伙，我直接好家伙！</strong></p><p>这特么不是红警2吗？！<strong>尤里、光棱塔、天启坦克……</strong> 原汁原味的地图和单位，直接在Chrome浏览器里跑起来了！</p><p>我抱着试试看的心态点开一局，<strong>不用下载！不用安装！不用打任何补丁！</strong> 网页读完条就直接进游戏了，流畅得一批。楼主我当场泪目，感觉过去那些年为了兼容性掉的头发，全都白掉了。</p><p>这网站其实是个叫 <a href="https://chronodivide.com/">Chrono Divide</a> 的大神项目的镜像站。那帮外国技术宅，<strong>直接用HTML5和WebGL把红警2的引擎给重写了</strong>，做成了一个能在浏览器里跑的游戏核心。</p><p><strong>什么叫降维打击？这就是！</strong> 他们直接把“兼容性”这个老游戏的天敌，从根上给扬了。</p><h2 id="03-真香体验，狗都不用虚拟机"><a href="#03-真香体验，狗都不用虚拟机" class="headerlink" title="03 真香体验，狗都不用虚拟机"></a>03 真香体验，狗都不用虚拟机</h2><p><img src="/images/redalert.png" alt="网站首页截图"></p><p>用了几天，楼主来给兄弟们汇报一下真实体验：</p><p><strong>1. 设备？是台设备就行！</strong><br>这玩意儿是B&#x2F;S架构，意思就是所有东西都在服务器和浏览器里算。所以，<strong>你的Win&#x2F;Mac电脑、iPad、安卓手机，甚至你家的智能电视……</strong> 只要有个现代点的浏览器，就能玩。官网还玩梗说“电冰箱或者小天才电话手表也行”，太草了。</p><p><strong>2. 操作？自动适配！</strong><br>在电脑上，就是<strong>原版键鼠</strong>那味，快捷键都保留着。切换到手机或平板上，它自动变成<strong>触摸操控+虚拟摇杆</strong>，还能自定义快捷按钮，搓玻璃也能微操，属实牛逼。</p><p><strong>3. 联机？秒连全球！</strong><br>再也不用搞什么IPX协议、虚拟局域网了。现在直接<strong>网页匹配，跟全球玩家在线对线</strong>，延迟还很低。这才是真正的“全球同服”啊！</p><p><strong>4. 画质？居然还能看！</strong><br>虽然还是经典像素风，但因为用了现代技术，在高分屏上也不会糊成一团，看着还挺舒服。而且<strong>未来据说官方支持MOD</strong>，共和国之辉啥的，是不是有盼头了？</p><h2 id="04-技术情怀，为爱发电"><a href="#04-技术情怀，为爱发电" class="headerlink" title="04 技术情怀，为爱发电"></a>04 技术情怀，为爱发电</h2><p>我去看了原项目Chrono Divide的官网，人家目标很明确：<strong>用网页技术完全复刻原版红警2的所有功能</strong>。</p><p>现在已经是可玩的Beta版了，所有原版地图和多人对战都支持。他们还有个很活跃的Discord社区，一堆技术宅和玩家在里面天天测试、反馈、讨论。</p><p>“红色井界”这边，是国内大佬搞的优化镜像，<strong>做了全中文翻译和更适合国人的移动端优化</strong>，属于是给咱们开了一条VIP直达通道。</p><p>看着这些大神用最前沿的技术，去复活我们这代人的童年回忆，说实话，有点感动。这比那些只知道换皮氪金的垃圾页游，不知道高到哪里去了。</p><h2 id="05-总结陈词"><a href="#05-总结陈词" class="headerlink" title="05 总结陈词"></a>05 总结陈词</h2><p><strong>一句话总结：如果你还在被红警2的兼容性问题折磨，别犹豫了，赶紧扔掉你的虚拟机和老古董安装包，浏览器打开 <a href="https://ra2web.com/">ra2web.com</a>，当场开一把！</strong></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;今天必须跟兄弟们安利一个神站，咱们这些红警老ASS的终极福音！&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="游戏" scheme="https://waiyiyuyan.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>白嫖机场 freedog 0 元购买“免费”10GB/30 天套餐</title>
@@ -285,16 +304,17 @@
   </entry>
   
   <entry>
-    <title>最新白嫖机场，注册即用、30 天 200GB</title>
+    <title>白嫖免费机场，注册即送 30 天 200GB</title>
     <link href="https://waiyiyuyan.github.io/2025/12/04/freeairport/"/>
     <id>https://waiyiyuyan.github.io/2025/12/04/freeairport/</id>
     <published>2025-12-04T01:16:28.000Z</published>
-    <updated>2025-12-07T23:58:27.700Z</updated>
+    <updated>2026-01-07T11:00:34.695Z</updated>
     
     <content type="html"><![CDATA[<p>今天又发现一个<strong>完全免费的 VPN 机场</strong>，注册后即可获得 <strong>30 天 &#x2F; 200GB 的试用套餐</strong>，完全够一般用户日常使用。</p><p>这里把机场信息整理出来，给需要的人参考。</p><span id="more"></span><h2 id="✨-机场信息概览"><a href="#✨-机场信息概览" class="headerlink" title="✨ 机场信息概览"></a>✨ 机场信息概览</h2><ul><li><p><strong>免费试用：30 天</strong></p></li><li><p><strong>流量：每月 200GB</strong></p></li><li><p><strong>注册即用，无需付费</strong></p></li><li><p><strong>协议：AnyTLS、Hysteria</strong></p></li><li><p><strong>节点地区丰富</strong>：</p><ul><li>香港</li><li>日本</li><li>马来西亚</li><li>泰国</li><li>越南</li><li>美国</li><li>新加坡</li><li>英国</li></ul></li></ul><p>注册地址：<a href="https://免费机场.cc/#/register?code=HiKwPp0S">免费机场.cc</a></p><hr><p><img src="/images/freeAirport.png" alt="IP纯净度检测：原生IP 共享人数较多"><br><img src="/images/freeAirport2.png" alt="速度还可以"></p>]]></content>
     
     
-    <summary type="html">完全免费的 VPN 机场，注册即送30天/200GB的试用套餐。</summary>
+    <summary type="html">&lt;p&gt;今天又发现一个&lt;strong&gt;完全免费的 VPN 机场&lt;/strong&gt;，注册后即可获得 &lt;strong&gt;30 天 &amp;#x2F; 200GB 的试用套餐&lt;/strong&gt;，完全够一般用户日常使用。&lt;/p&gt;
+&lt;p&gt;这里把机场信息整理出来，给需要的人参考。&lt;/p&gt;</summary>
     
     
     
@@ -371,25 +391,6 @@
     
     
     <summary type="html">免费白嫖机场之必加速</summary>
-    
-    
-    
-    <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>白嫖机场——蓝色传说：Lansecs</title>
-    <link href="https://waiyiyuyan.github.io/2025/11/28/bluelegend/"/>
-    <id>https://waiyiyuyan.github.io/2025/11/28/bluelegend/</id>
-    <published>2025-11-28T01:42:27.000Z</published>
-    <updated>2025-12-04T03:24:34.580Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天，我在网上发现了一个名为“<strong>蓝色传说</strong>”（Lansecs）的机场服务商，并利用一个特别的优惠码体验了他们的“试用套餐”。</p><span id="more"></span><ul><li><strong>机场名称：</strong> 蓝色传说 (Lansecs)</li><li><strong>注册地址：</strong> <a href="https://lansecs.top/">lansecs.top</a></li><li><strong>试用优惠：</strong> 优惠券 <code>lansecs</code> 兑换 0 元购买“试用套餐”</li><li><strong>试用配置：</strong> 100GB 流量 &#x2F; 30 天</li><li><strong>协议类型：</strong> Hysteria</li><li><strong>标称节点：</strong> 美国、香港、德国、印度、英国、韩国（共 7 个订阅节点）</li></ul><h3 id="⚡️-速度与延迟：意料之外的惊喜"><a href="#⚡️-速度与延迟：意料之外的惊喜" class="headerlink" title="⚡️ 速度与延迟：意料之外的惊喜"></a>⚡️ 速度与延迟：意料之外的惊喜</h3><p>在实际使用中，Lansecs 给我的第一印象是<strong>流畅</strong>。</p><p>尽管是免费的试用套餐，其连接性能表现得相当不错。我监测到的延迟普遍在 <strong>200 毫秒以内</strong>，这对于日常浏览、高清视频缓冲（在可用节点上）来说，是完全够用的，甚至可以说是体验优秀。</p><h3 id="🌍-节点连接性：美中不足的遗憾"><a href="#🌍-节点连接性：美中不足的遗憾" class="headerlink" title="🌍 节点连接性：美中不足的遗憾"></a>🌍 节点连接性：美中不足的遗憾</h3><p>不过，在节点连接性方面，这次试用遇到了一些小问题。</p><p>订阅链接中一共包含了 7 个节点，覆盖了美国、香港、德国等多个地区。但遗憾的是，在我尝试连接时，<strong>只有德国节点能够成功并稳定地使用</strong>。其他节点的连接均未能成功。</p><ul><li><strong>实际可用节点：</strong> 仅德国节点</li><li><strong>节点纯净度：</strong> 纯净度还不错，尽管是广播 IP。</li></ul><p><img src="/images/blue_legend.png" alt="IP纯净度检测结果"></p><p>虽然节点数量受限，但好在唯一可用的<strong>德国节点表现优秀且 IP 纯净度良好</strong>。对于有轻度使用需求的用户来说，如果只需要一个稳定、高速的节点，这个德国节点足以满足基本要求。但对于需要多地区节点或特定地区节点的用户而言，这无疑是目前试用阶段的一个大大的减分项。</p>]]></content>
-    
-    
-    <summary type="html">免费白嫖机场之Lansecs</summary>
     
     
     
