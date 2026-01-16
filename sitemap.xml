@@ -2,6 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://waiyiyuyan.github.io/2026/01/16/magicschool/</loc>
+    
+    <lastmod>2026-01-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2025/12/06/ezyun/</loc>
+    
+    <lastmod>2026-01-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2025/12/14/jizhiyun/</loc>
+    
+    <lastmod>2026-01-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2025/12/01/langlangyun/</loc>
+    
+    <lastmod>2026-01-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2025/12/10/shifenjichang/</loc>
+    
+    <lastmod>2026-01-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2026/01/04/trumpyun/</loc>
+    
+    <lastmod>2026-01-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2025/12/26/tuitui/</loc>
+    
+    <lastmod>2026-01-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2025/11/25/xindongli/</loc>
+    
+    <lastmod>2026-01-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://waiyiyuyan.github.io/2026/01/13/warp/</loc>
     
     <lastmod>2026-01-13</lastmod>
@@ -74,15 +146,6 @@
   </url>
   
   <url>
-    <loc>https://waiyiyuyan.github.io/2026/01/04/trumpyun/</loc>
-    
-    <lastmod>2026-01-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://waiyiyuyan.github.io/2025/12/28/baokemeng/</loc>
     
     <lastmod>2026-01-01</lastmod>
@@ -101,27 +164,9 @@
   </url>
   
   <url>
-    <loc>https://waiyiyuyan.github.io/2025/12/10/shifenjichang/</loc>
-    
-    <lastmod>2025-12-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://waiyiyuyan.github.io/2025/12/31/lrt/</loc>
     
     <lastmod>2025-12-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/2025/12/26/tuitui/</loc>
-    
-    <lastmod>2025-12-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -140,15 +185,6 @@
     <loc>https://waiyiyuyan.github.io/2025/12/19/dabache/</loc>
     
     <lastmod>2025-12-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/2025/12/14/jizhiyun/</loc>
-    
-    <lastmod>2025-12-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -191,15 +227,6 @@
   </url>
   
   <url>
-    <loc>https://waiyiyuyan.github.io/2025/12/06/ezyun/</loc>
-    
-    <lastmod>2025-12-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://waiyiyuyan.github.io/2025/11/28/bluelegend/</loc>
     
     <lastmod>2025-12-04</lastmod>
@@ -212,24 +239,6 @@
     <loc>https://waiyiyuyan.github.io/2025/11/24/chongshangxunxiao/</loc>
     
     <lastmod>2025-12-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/2025/11/25/xindongli/</loc>
-    
-    <lastmod>2025-12-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/2025/12/01/langlangyun/</loc>
-    
-    <lastmod>2025-12-02</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -310,7 +319,7 @@
 
   <url>
     <loc>https://waiyiyuyan.github.io/</loc>
-    <lastmod>2026-01-13</lastmod>
+    <lastmod>2026-01-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -318,14 +327,21 @@
   
   <url>
     <loc>https://waiyiyuyan.github.io/tags/Apple-ID/</loc>
-    <lastmod>2026-01-13</lastmod>
+    <lastmod>2026-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://waiyiyuyan.github.io/tags/%E6%B8%B8%E6%88%8F%E4%B8%8B%E8%BD%BD/</loc>
-    <lastmod>2026-01-13</lastmod>
+    <lastmod>2026-01-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/tags/vpn/</loc>
+    <lastmod>2026-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -334,28 +350,28 @@
   
   <url>
     <loc>https://waiyiyuyan.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2026-01-13</lastmod>
+    <lastmod>2026-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/</loc>
-    <lastmod>2026-01-13</lastmod>
+    <lastmod>2026-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://waiyiyuyan.github.io/categories/%E8%B5%84%E6%BA%90%E5%AF%BC%E8%88%AA/</loc>
-    <lastmod>2026-01-13</lastmod>
+    <lastmod>2026-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://waiyiyuyan.github.io/categories/%E6%B8%B8%E6%88%8F/</loc>
-    <lastmod>2026-01-13</lastmod>
+    <lastmod>2026-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

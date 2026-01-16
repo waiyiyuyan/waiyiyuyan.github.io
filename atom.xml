@@ -6,7 +6,7 @@
   <link href="https://waiyiyuyan.github.io/atom.xml" rel="self"/>
   
   <link href="https://waiyiyuyan.github.io/"/>
-  <updated>2026-01-13T11:17:58.805Z</updated>
+  <updated>2026-01-16T12:09:12.105Z</updated>
   <id>https://waiyiyuyan.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>白嫖机场——魔法学院，公益免费套餐 100GB / 30 天使用体验</title>
+    <link href="https://waiyiyuyan.github.io/2026/01/16/magicschool/"/>
+    <id>https://waiyiyuyan.github.io/2026/01/16/magicschool/</id>
+    <published>2026-01-16T12:03:20.000Z</published>
+    <updated>2026-01-16T12:09:12.105Z</updated>
+    
+    <content type="html"><![CDATA[<p>前几天看到一个 <strong>公益免费套餐</strong>，可以通过 <code>free</code> 优惠券 <strong>0 元购买 100GB &#x2F; 30 天</strong>，抱着试试看的心态测试了一下，这里简单记录一下体验。</p><span id="more"></span><h2 id="节点与线路分布"><a href="#节点与线路分布" class="headerlink" title="节点与线路分布"></a>节点与线路分布</h2><p>该免费机场提供的节点国家包括：</p><ul><li>美国</li><li>韩国</li><li>日本</li><li>新加坡</li><li>印度</li><li>香港</li><li>荷兰</li><li>德国</li><li>英国</li><li>法国</li></ul><p>对于一个白嫖机场来说，节点覆盖算是比较全面的，不是只给一个地区应付了事。</p><hr><h2 id="支持的协议类型"><a href="#支持的协议类型" class="headerlink" title="支持的协议类型"></a>支持的协议类型</h2><p>目前支持的协议主要有两种：</p><ul><li><strong>Hysteria</strong></li><li><strong>Shadowsocks</strong></li></ul><hr><h2 id="实测体验（美国节点）"><a href="#实测体验（美国节点）" class="headerlink" title="实测体验（美国节点）"></a>实测体验（美国节点）</h2><p>我重点测试了<strong>美国节点</strong>，主要关注以下几个方面：</p><ul><li>IP 是否原生</li><li>IP 纯净度</li><li>实际测速表现</li></ul><p>测试结果：</p><ul><li>美国节点为 <strong>原生 IP</strong></li><li>IP 纯净度较高</li><li>实际测速基本可以跑满本地宽带</li></ul><p><img src="/images/magic/ip_test.png" alt="IP与测速"></p><p>以免费套餐的标准来看，这个表现已经超出预期，作为免费 VPN 或备用机场是完全可用的。</p><hr><h2 id="注册地址记录"><a href="#注册地址记录" class="headerlink" title="注册地址记录"></a>注册地址记录</h2><p>注册入口记录如下（需要使用优惠券）：</p><p><a href="https://魔法学院.shop/#/register?code=qO3kG38K">https://xn--48sp91b1l4avee.shop/#/register?code=qO3kG38K</a></p><p>注册完成后，选择「公益免费套餐」，输入优惠券 <code>free</code> 即可 0 元购买。</p><p><img src="/images/magic/purchase.png" alt="选择这个套餐使用优惠卷 0 元购买"></p>]]></content>
+    
+    
+    <summary type="html">使用 free 优惠券 0 元购买公益免费套餐，100GB 流量 / 30 天，实测美国节点原生 IP，适合当备用的免费机场记录。</summary>
+    
+    
+    
+    <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
+    
+    
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
+  </entry>
   
   <entry>
     <title>有没有能长期用的免费 VPN？可以试试 WARP</title>
@@ -148,11 +169,11 @@
   </entry>
   
   <entry>
-    <title>Trumpyun VPN 免费试用推荐 — 200GB / 417 天套餐</title>
+    <title>白嫖机场——Trumpyun VPN 免费试用推荐 — 200GB / 417 天套餐</title>
     <link href="https://waiyiyuyan.github.io/2026/01/04/trumpyun/"/>
     <id>https://waiyiyuyan.github.io/2026/01/04/trumpyun/</id>
     <published>2026-01-04T02:24:50.000Z</published>
-    <updated>2026-01-04T02:28:17.448Z</updated>
+    <updated>2026-01-16T10:42:33.994Z</updated>
     
     <content type="html"><![CDATA[<p>如果你正在寻找一个高质量的VPN服务来保障上网隐私，并且希望获得高速稳定的网络体验，那么Trumpyun VPN绝对值得你一试。现在，注册Trumpyun VPN即可获得“免费试用”200GB &#x2F; 417天的套餐，完美满足大部分用户的日常需求。</p><span id="more"></span><h4 id="服务特点"><a href="#服务特点" class="headerlink" title="服务特点"></a>服务特点</h4><ol><li><p><strong>节点覆盖广泛</strong><br>Trumpyun VPN提供多个节点位置，包括香港、台湾、日本和韩国，用户可以根据需求选择最适合的服务器节点。尤其是对于需要解锁特定区域内容的用户，选用这些节点能够确保更稳定的连接与更低的延迟。</p></li><li><p><strong>协议类型：VLESS</strong><br>使用VLESS协议的Trumpyun VPN，在保证安全性和隐私的同时，提供了更高效、更低延迟的网络连接。VLESS协议是目前非常流行的轻量级VPN协议，特别适合需要突破网络封锁或加速国际互联网的用户。</p></li><li><p><strong>IP纯净度高</strong><br>Trumpyun VPN的IP地址纯净度极高，所有IP都为原生IP，确保不会因为使用VPN而导致IP泄漏或被第三方追踪。</p></li><li><p><strong>解锁ChatGPT</strong><br>该VPN服务能够成功解锁ChatGPT，让你能够在全球范围内访问ChatGPT，尤其适合那些受限地区的用户。</p></li></ol><h4 id="性能表现"><a href="#性能表现" class="headerlink" title="性能表现"></a>性能表现</h4><p>关于速度表现，虽然我这边测速一般，但台湾和新加坡节点的连接情况非常好，能够提供稳定、快速的上网体验。对于有更高带宽需求的用户，选用这些节点能获得更优质的网络服务。<br><img src="/images/trump/1.png" alt="IP测速与纯净度"></p><h4 id="注册与体验"><a href="#注册与体验" class="headerlink" title="注册与体验"></a>注册与体验</h4><p>通过以下链接注册Trumpyun VPN，你将获得免费试用套餐：<br><a href="https://trumpyun.com/index.php/#/register?code=vewAh7oB">注册Trumpyun VPN</a></p>]]></content>
     
@@ -226,11 +247,11 @@
   </entry>
   
   <entry>
-    <title>薅羊毛！注册即送 20GB 高速流量，解锁 ChatGPT/Gemini</title>
+    <title>白嫖机场——推推，注册即送 20GB 高速流量，解锁 ChatGPT/Gemini</title>
     <link href="https://waiyiyuyan.github.io/2025/12/26/tuitui/"/>
     <id>https://waiyiyuyan.github.io/2025/12/26/tuitui/</id>
     <published>2025-12-26T00:09:39.000Z</published>
-    <updated>2025-12-26T00:25:23.221Z</updated>
+    <updated>2026-01-16T10:42:16.267Z</updated>
     
     <content type="html"><![CDATA[<p>今天在挖掘好用的科学上网工具时，发现了一个诚意满满的“福利款”。如果你正在寻找一个稳定、快速，且能完美解锁 AI 工具的节点，这个机场你一定不能错过。</p><span id="more"></span><h2 id="🎁-核心福利：新用户注册礼包"><a href="#🎁-核心福利：新用户注册礼包" class="headerlink" title="🎁 核心福利：新用户注册礼包"></a>🎁 核心福利：新用户注册礼包</h2><p>目前该平台正在进行推广活动，只要完成注册，账户内会直接到账：</p><ul><li><strong>流量：</strong> 20GB 免费流量</li><li><strong>有效期：</strong> 10 天</li><li><strong>门槛：</strong> 零门槛，注册即送</li></ul><hr><h2 id="🚀-深度测评：它凭什么脱颖而出？"><a href="#🚀-深度测评：它凭什么脱颖而出？" class="headerlink" title="🚀 深度测评：它凭什么脱颖而出？"></a>🚀 深度测评：它凭什么脱颖而出？</h2><h3 id="1-极致的速度表现"><a href="#1-极致的速度表现" class="headerlink" title="1. 极致的速度表现"></a>1. 极致的速度表现</h3><p>我亲自在 <strong>100M 带宽</strong> 的环境下进行了测试。</p><ul><li><strong>实测数据：</strong> 几乎跑满了百兆带宽。</li><li><strong>使用体验：</strong> 4K 视频秒开，拖动进度条几乎无感加载。</li></ul><h3 id="2-纯净的-IP-与超低负载"><a href="#2-纯净的-IP-与超低负载" class="headerlink" title="2. 纯净的 IP 与超低负载"></a>2. 纯净的 IP 与超低负载</h3><p>这是该平台最让我惊喜的地方。不同于那些动辄成百上千人挤在一个服务器的线路，这里的节点：</p><ul><li><strong>共享人数：</strong> 仅为 1-10 人，稳定性极佳。</li><li><strong>协议支持：</strong> 采用主流的 <strong>VLESS 协议</strong>，兼顾隐蔽性与传输效率。</li><li><strong>节点位置：</strong> 提供优质的 <strong>美国</strong> 和 <strong>香港</strong> 节点，满足不同场景需求。</li></ul><p><img src="/images/tuitui/2.png" alt="IP测速与纯净度检查"></p><p>作为一个“免费套餐”，20GB 的流量足够大家进行深度的测速和日常办公使用。尤其是那几乎跑满百兆的速度和极高的 IP 纯净度，在免费节点中确实非常罕见。</p><p>建议大家趁着活动还在，先注册领个 20GB 备用！ <a href="https://user.tuitui.me/#/register?code=xqTmGZve">注册链接</a></p>]]></content>
     
@@ -283,11 +304,11 @@
   </entry>
   
   <entry>
-    <title>白嫖 100GB/30 天美国节点</title>
+    <title>白嫖机场——极致云，100GB/30 天美国节点</title>
     <link href="https://waiyiyuyan.github.io/2025/12/14/jizhiyun/"/>
     <id>https://waiyiyuyan.github.io/2025/12/14/jizhiyun/</id>
     <published>2025-12-14T01:44:18.000Z</published>
-    <updated>2025-12-14T01:57:22.684Z</updated>
+    <updated>2026-01-16T10:43:53.506Z</updated>
     
     <content type="html"><![CDATA[<p>我刚注册 极致云 账户，系统就慷慨地赠送了 <strong>188GB</strong> 流量。</p><span id="more"></span><p>更棒的是，我通过使用专属优惠券，成功兑换了他们的“<strong>试用节点·Trial Plan</strong>”：</p><ul><li><strong>流量：</strong> 100GB</li><li><strong>时长：</strong> 30 天</li><li><strong>价格：</strong> 0 元 (使用优惠券 <strong><code>852VY8u0</code></strong>)</li><li><strong>🔗 注册地址：</strong></li><li><a href="https://v2.jzcloud.xyz/#/register?code=baMhxzoj">https://v2.jzcloud.xyz/#/register?code=baMhxzoj</a></li><li><strong>🎟️ 零元试用优惠券：</strong></li><li><strong><code>852VY8u0</code></strong> (请在购买“试用节点·Trial Plan”时使用)</li></ul><h3 id="⚡️-速度实测：宽带几乎跑满！"><a href="#⚡️-速度实测：宽带几乎跑满！" class="headerlink" title="⚡️ 速度实测：宽带几乎跑满！"></a>⚡️ 速度实测：宽带几乎跑满！</h3><p>作为一名用户，我最关心的自然是速度。我立刻进行了一次“跑分”测试。结果令人非常满意——在我的宽带环境下，下载速度几乎达到了<strong>宽带的上限</strong>！这表明 JZ Cloud 的美国节点线路质量极高，带宽资源充裕，无论是看 4K 视频、下载大文件还是进行日常浏览，都能保证流畅无卡顿。</p><h3 id="🛡️-IP-质量检测：原生-IP，纯净度极高！"><a href="#🛡️-IP-质量检测：原生-IP，纯净度极高！" class="headerlink" title="🛡️ IP 质量检测：原生 IP，纯净度极高！"></a>🛡️ IP 质量检测：原生 IP，纯净度极高！</h3><p>除了速度，IP 地址的质量对于很多应用场景（比如观看特定的流媒体服务）至关重要。我随即进行了 IP 纯净度检测，结果再次让我感到惊喜：</p><ul><li><strong>IP 类型：</strong> 原生 IP</li><li><strong>共享人数：</strong> 非常少！</li></ul><p>原生 IP 意味着它可以解锁更多对 IP 归属地有严格要求的服务。而极少的共享人数则意味着你几乎独享了这台服务器的连接资源，连接稳定性和安全性都大大提升。</p><h3 id="🌎-节点信息一览"><a href="#🌎-节点信息一览" class="headerlink" title="🌎 节点信息一览"></a>🌎 节点信息一览</h3><ul><li><strong>节点位置：</strong> 仅限美国 (US)</li><li><strong>协议类型：</strong> Hysteria (这是一种新型的、抗审查能力和速度表现都非常优秀的代理协议)</li></ul><p>从我的个人体验来看，JZ Cloud 是一个<strong>速度快、IP 纯净度高</strong>且<strong>资源分配充足</strong>的优质机场。100GB&#x2F;30 天的零元试用套餐是目前市场上难得的良心福利，强烈推荐大家去体验一下！</p>]]></content>
     
@@ -302,11 +323,11 @@
   </entry>
   
   <entry>
-    <title>十分机场——注册即送 100GB / 30天高速流量！</title>
+    <title>白嫖机场——十分机场—，注册即送 100GB / 30天高速流量！</title>
     <link href="https://waiyiyuyan.github.io/2025/12/10/shifenjichang/"/>
     <id>https://waiyiyuyan.github.io/2025/12/10/shifenjichang/</id>
     <published>2025-12-10T02:59:37.000Z</published>
-    <updated>2025-12-31T09:58:03.363Z</updated>
+    <updated>2026-01-16T10:42:56.100Z</updated>
     
     <content type="html"><![CDATA[<p>现在注册即可获得 <strong>100GB 免费流量（30天有效）</strong>，无需复杂操作，几秒钟即可开启你的全新网络体验！</p><span id="more"></span><h2 id="🚀-节点分布"><a href="#🚀-节点分布" class="headerlink" title="🚀 节点分布"></a>🚀 节点分布</h2><p>提供多个节点覆盖，轻松畅连全球网络：</p><ul><li>🇭🇰 香港节点  </li><li>🇯🇵 日本节点  </li><li>🇸🇬 新加坡节点  </li><li>🇺🇸 美国节点  </li><li>🇦🇺 澳大利亚节点  </li><li>🇷🇺 俄罗斯节点</li></ul><p>多地线路智能切换，低延迟、高带宽，保证你的浏览、下载与流媒体体验顺畅无比！</p><hr><h2 id="⚙️-协议类型"><a href="#⚙️-协议类型" class="headerlink" title="⚙️ 协议类型"></a>⚙️ 协议类型</h2><p>采用行业领先的 <strong>VLESS 协议</strong>，安全、高效、灵活，保障你的网络隐私与连接稳定性。</p><hr><h2 id="📝-注册方式"><a href="#📝-注册方式" class="headerlink" title="📝 注册方式"></a>📝 注册方式</h2><p>👉 点击注册链接，立刻领取你的 <strong>100GB &#x2F; 30天免费套餐</strong>：<a href="zd">立即注册领取福利</a></p>]]></content>
     
@@ -359,36 +380,16 @@
   </entry>
   
   <entry>
-    <title>Ezyun EZ 云机场：限时福利！0 元抢 100GB 免费直连套餐！</title>
+    <title>白嫖机场——Ezyun EZ 云机场：限时福利！0 元抢 100GB 免费直连套餐！</title>
     <link href="https://waiyiyuyan.github.io/2025/12/06/ezyun/"/>
     <id>https://waiyiyuyan.github.io/2025/12/06/ezyun/</id>
     <published>2025-12-06T00:55:17.000Z</published>
-    <updated>2025-12-06T01:10:55.511Z</updated>
+    <updated>2026-01-16T10:44:20.626Z</updated>
     
     <content type="html"><![CDATA[<p>ezyun EZ 云机场目前推出了一个超值的活动，你只需要使用我的专属优惠券，就能<strong>0 元</strong>购得一个非常实用的<strong>“直连白嫖套餐”</strong>！</p><span id="more"></span><ul><li><strong>套餐内容：</strong> 100GB 流量 &#x2F; 30 天</li><li><strong>购买价格：</strong> 0 元！</li><li><strong>优惠券码：</strong> <code>1ADK3QLS3</code></li></ul><p>🚨 <strong>注意！</strong> 这个优惠券<strong>只能使用 1000 次</strong>，数量有限，先到先得！手慢无！</p><p><strong>👉 注册地址：</strong> <a href="https://eyun.org/#/register?code=F1VPS7dh">https://eyun.org/#/register?code=F1VPS7dh</a></p><hr><p>选择这个套餐进行购买<br><img src="/images/ezyun/ezyun3.png" alt="直连白嫖套餐"></p><ul><li><strong>节点位置：</strong> 涵盖了<strong>日本</strong>、<strong>香港</strong>、<strong>美国</strong>等热门地区。</li><li><strong>协议类型：</strong> 支持 <strong>Hysteria</strong> 和 <strong>VLESS</strong> 两种主流、高效的协议，保证连接的稳定性和穿透力。</li></ul><p>我只测试了日本节点，在所有节点中，<strong>日本节点</strong>的体验尤为出色：</p><ul><li><strong>延迟表现：</strong> <strong>延迟最低</strong>，这意味着你在浏览网页、观看视频或者进行轻量级网络游戏时，响应速度会非常快。</li><li><strong>速度测试：</strong> 表现稳定，上传和下载速度都能达到 <strong>50Mbps 左右</strong>，对于观看 1080P 甚至 4K 视频都毫无压力。</li></ul><p><img src="/images/ezyun/ezyun2.png" alt="节点测速"><br><img src="/images/ezyun/ezyun.png" alt="IP纯净度检测"></p>]]></content>
     
     
     <summary type="html">免费白嫖ezyun机场，限时福利！0 元抢 100GB 免费使用30天</summary>
-    
-    
-    
-    <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>白嫖免费机场，注册即送 30 天 200GB</title>
-    <link href="https://waiyiyuyan.github.io/2025/12/04/freeairport/"/>
-    <id>https://waiyiyuyan.github.io/2025/12/04/freeairport/</id>
-    <published>2025-12-04T01:16:28.000Z</published>
-    <updated>2026-01-07T11:00:34.695Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天又发现一个<strong>完全免费的 VPN 机场</strong>，注册后即可获得 <strong>30 天 &#x2F; 200GB 的试用套餐</strong>，完全够一般用户日常使用。</p><p>这里把机场信息整理出来，给需要的人参考。</p><span id="more"></span><h2 id="✨-机场信息概览"><a href="#✨-机场信息概览" class="headerlink" title="✨ 机场信息概览"></a>✨ 机场信息概览</h2><ul><li><p><strong>免费试用：30 天</strong></p></li><li><p><strong>流量：每月 200GB</strong></p></li><li><p><strong>注册即用，无需付费</strong></p></li><li><p><strong>协议：AnyTLS、Hysteria</strong></p></li><li><p><strong>节点地区丰富</strong>：</p><ul><li>香港</li><li>日本</li><li>马来西亚</li><li>泰国</li><li>越南</li><li>美国</li><li>新加坡</li><li>英国</li></ul></li></ul><p>注册地址：<a href="https://免费机场.cc/#/register?code=HiKwPp0S">免费机场.cc</a></p><hr><p><img src="/images/freeAirport.png" alt="IP纯净度检测：原生IP 共享人数较多"><br><img src="/images/freeAirport2.png" alt="速度还可以"></p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;今天又发现一个&lt;strong&gt;完全免费的 VPN 机场&lt;/strong&gt;，注册后即可获得 &lt;strong&gt;30 天 &amp;#x2F; 200GB 的试用套餐&lt;/strong&gt;，完全够一般用户日常使用。&lt;/p&gt;
-&lt;p&gt;这里把机场信息整理出来，给需要的人参考。&lt;/p&gt;</summary>
     
     
     
