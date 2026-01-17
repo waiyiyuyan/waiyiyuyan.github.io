@@ -6,7 +6,7 @@
   <link href="https://waiyiyuyan.github.io/atom.xml" rel="self"/>
   
   <link href="https://waiyiyuyan.github.io/"/>
-  <updated>2026-01-16T12:09:12.105Z</updated>
+  <updated>2026-01-17T01:57:06.337Z</updated>
   <id>https://waiyiyuyan.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MahsaNG VPN 是什么？一款 VPN 名字背后，与伊朗女性 Mahsa Amini 有关的真实历史</title>
+    <link href="https://waiyiyuyan.github.io/2026/01/17/mahsa/"/>
+    <id>https://waiyiyuyan.github.io/2026/01/17/mahsa/</id>
+    <published>2026-01-17T01:24:28.000Z</published>
+    <updated>2026-01-17T01:57:06.337Z</updated>
+    
+    <content type="html"><![CDATA[<p>在众多 VPN、代理工具中，<strong>MahsaNG VPN</strong> 是一个很容易被忽略、却又无法真正忽视的名字。</p><span id="more"></span><p><strong>MahsaNG 不只是一个 VPN 工具，它的名字本身，就来自一段真实而沉重的历史。</strong></p><h2 id="一、MahsaNG-VPN-简介：它到底是什么？"><a href="#一、MahsaNG-VPN-简介：它到底是什么？" class="headerlink" title="一、MahsaNG VPN 简介：它到底是什么？"></a>一、MahsaNG VPN 简介：它到底是什么？</h2><p><strong>MahsaNG</strong> 是一款 <strong>Android 平台上的 VPN &#x2F; 科学上网客户端</strong>，技术上基于 <strong>V2RayNG 分支开发</strong>，主要用于在网络审查严格的环境中访问被封锁的网站和服务。</p><p>从功能层面来看，MahsaNG VPN 具备以下特点：</p><ul><li>基于 <strong>V2Ray &#x2F; VLESS &#x2F; VMess</strong> 等协议</li><li>支持 TLS 分片、混淆等抗封锁手段</li><li>可通过社区提供的配置直接使用</li><li>主打 <strong>免费、去中心化、低门槛</strong></li></ul><p>它并不是传统意义上的“商业 VPN 服务”，而更像是一个 <strong>工具型客户端 + 社区节点生态</strong> 的结合体。</p><hr><h2 id="二、MahsaNG-这个名字，从何而来？"><a href="#二、MahsaNG-这个名字，从何而来？" class="headerlink" title="二、MahsaNG 这个名字，从何而来？"></a>二、MahsaNG 这个名字，从何而来？</h2><p>要真正理解 MahsaNG，就必须提到一个名字：<br><strong>Mahsa Amini（玛莎·阿米尼）</strong></p><p><img src="/images/mahsa/Mahsa_Amini.jpeg" alt="来自维基百科"></p><h3 id="1️⃣-Mahsa-Amini-是谁？"><a href="#1️⃣-Mahsa-Amini-是谁？" class="headerlink" title="1️⃣ Mahsa Amini 是谁？"></a>1️⃣ Mahsa Amini 是谁？</h3><p>Mahsa Amini 是一名 <strong>22 岁的伊朗女性</strong>。<br>2022 年 9 月，她因被认为“头巾佩戴不符合规定”，被伊朗“道德警察”拘捕。<br>在被拘押后不久，她陷入昏迷，随后在医院去世。<br>她的死亡迅速引发了伊朗全国范围内的抗议浪潮，并扩散至全球。<br>抗议的核心口号是：<strong>Woman, Life, Freedom（女性，生命，自由）</strong><br>这起事件，被普遍视为当代伊朗社会的重要转折点之一。</p><hr><h2 id="三、MahsaNG-VPN-的诞生背景"><a href="#三、MahsaNG-VPN-的诞生背景" class="headerlink" title="三、MahsaNG VPN 的诞生背景"></a>三、MahsaNG VPN 的诞生背景</h2><p>从公开资料和社区讨论来看，<strong>MahsaNG VPN 的命名，正是为了纪念 Mahsa Amini</strong>，并象征对信息自由和反审查的支持。</p><p>技术上，它选择了成熟的 <strong>V2RayNG 架构</strong>，原因也很现实：</p><ul><li>V2Ray 协议灵活</li><li>可快速适配新的封锁环境</li><li>易于社区分发配置</li></ul><p>MahsaNG 的目标并不是“成为最好用的 VPN”，而是：<strong>在极端环境下，尽可能让更多普通人还能连上外面的世界。</strong></p><hr><h2 id="四、免费节点与社区模式：MahsaNG-的核心理念"><a href="#四、免费节点与社区模式：MahsaNG-的核心理念" class="headerlink" title="四、免费节点与社区模式：MahsaNG 的核心理念"></a>四、免费节点与社区模式：MahsaNG 的核心理念</h2><p>与主流商业 VPN 不同，MahsaNG 并不强调订阅制。</p><p>它依托 <strong>MahsaNet &#x2F; Mahsa Server</strong> 等社区项目，提供：</p><ul><li>免费节点配置</li><li>社区维护与更新</li><li>不强制绑定身份信息</li></ul><p>这种模式的优点很明显：</p><ul><li><strong>门槛低</strong>：对新手极其友好</li><li><strong>风险分散</strong>：不依赖单一服务器</li><li><strong>传播快</strong>：配置可以快速共享</li></ul><p>相比很多需要手动导入订阅、复制链接的代理工具，<strong>MahsaNG 在使用上对新手相当友好</strong>。</p><h3 id="1️⃣-一键获取代理节点（核心功能）"><a href="#1️⃣-一键获取代理节点（核心功能）" class="headerlink" title="1️⃣ 一键获取代理节点（核心功能）"></a>1️⃣ 一键获取代理节点（核心功能）</h3><p>MahsaNG 最大的特点之一，是<strong>内置了配置获取机制</strong>。</p><p>在正常情况下，用户只需要：</p><ol><li>打开 MahsaNG 应用</li><li>进入配置 &#x2F; 服务器页面</li><li>点击类似「获取配置」「更新节点」的选项</li></ol><p>应用就会 <strong>自动拉取社区维护的代理配置</strong>，无需注册账号，也不需要手动复制订阅链接。</p><p>这对于新手来说非常重要，因为它：</p><ul><li>避免了复杂的订阅操作</li><li>降低了“第一步就卡住”的概率</li><li>即开即用，学习成本极低</li></ul><p><a href="https://play.google.com/">google play 下载</a> 或 <a href="https://github.com/GFW-knocker/MahsaNG">github 下载</a></p><p><img src="/images/mahsa/vpn.png" alt="认准这个APP"></p>]]></content>
+    
+    
+    <summary type="html">MahsaNG VPN 是一款基于 V2RayNG 的免费 Android 科学上网工具，支持一键获取代理节点，速度快、门槛低，其名字源自伊朗女性 Mahsa Amini，兼具实用性与象征意义。</summary>
+    
+    
+    
+    <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
+    
+    
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
+  </entry>
   
   <entry>
     <title>白嫖机场——魔法学院，公益免费套餐 100GB / 30 天使用体验</title>
@@ -59,7 +80,7 @@
     <link href="https://waiyiyuyan.github.io/2026/01/12/yongjiuyun/"/>
     <id>https://waiyiyuyan.github.io/2026/01/12/yongjiuyun/</id>
     <published>2026-01-12T01:24:14.000Z</published>
-    <updated>2026-01-12T01:30:25.685Z</updated>
+    <updated>2026-01-16T12:12:21.223Z</updated>
     
     <content type="html"><![CDATA[<p>今天分享一个超级划算的白嫖福利——<a href="https://freegangkou.top/#/register?code=hyWRjLUy">永久云机场</a></p><span id="more"></span><p>选择 “永久免费套餐 2元 800G &#x2F; 30 天” 使用白嫖优惠码 muKnJjwV 进行购买</p><p><img src="/images/yongjiuyun/node.png" alt="节点信息"><br><img src="/images/yongjiuyun/ip.png" alt="IP测速与纯净度检测"></p>]]></content>
     
@@ -71,6 +92,8 @@
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
     
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
   </entry>
   
   <entry>
@@ -78,7 +101,7 @@
     <link href="https://waiyiyuyan.github.io/2026/01/11/kukeyun/"/>
     <id>https://waiyiyuyan.github.io/2026/01/11/kukeyun/</id>
     <published>2026-01-11T12:14:00.000Z</published>
-    <updated>2026-01-11T12:28:25.721Z</updated>
+    <updated>2026-01-16T12:13:15.448Z</updated>
     
     <content type="html"><![CDATA[<p>最近总有人问有没有免费好用的梯子，刚才注册了一个酷可云，进去一看直接送了 100GB&#x2F;30天 的套餐，这力度可以啊。</p><span id="more"></span><p>简单评测下：</p><ul><li><p>协议： VLESS</p></li><li><p>位置： 日本和新加坡，我这实测延迟很低。</p></li><li><p>测速： 专门跑了一下，上传下载都能跑满 50 多兆，这速度在免费试用里算天花板了吧？</p></li><li><p>共享： 1-10 人，人不多，不怎么卡。</p></li></ul><p><img src="/images/kukeyun.png" alt="IP纯净度检测与测速"></p><p>传送门： <a href="https://kukeyun.cc/#/register?code=CRmuUOs4">https://kukeyun.cc/#/register?code=CRmuUOs4</a></p>]]></content>
     
@@ -90,6 +113,8 @@
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
     
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
   </entry>
   
   <entry>
@@ -97,7 +122,7 @@
     <link href="https://waiyiyuyan.github.io/2026/01/10/juanwang/"/>
     <id>https://waiyiyuyan.github.io/2026/01/10/juanwang/</id>
     <published>2026-01-10T13:13:31.000Z</published>
-    <updated>2026-01-10T13:36:51.711Z</updated>
+    <updated>2026-01-16T12:13:19.695Z</updated>
     
     <content type="html"><![CDATA[<p>今天看到一个名字挺离谱的机场，叫卷王机场。名字太狂了，我就点进去看了一眼。</p><span id="more"></span><p>结果发现注册就送流量，而且流量特别夸张，1000000000 GB 无限流量。着实吓我一跳。</p><p>反正不要钱，我就顺手注册了一个账号。</p><p>登陆进去一看，还真是1000000000.00 GB，确实挺卷的，用的还是美国节点。</p><p>我先查了一下 IP，毕竟这种公益节点，IP 一般都不太能看。<br>结果用 <a href="https://ping0.cc/">ping0.cc</a> 查了一下，发现是原生 IP，而且共享人数写的是 1–10 人。这节点质量还可以。</p><p>随手连上试了一下，速度嘛，说实话不快。我这边测下来，上传大概 10M 左右，下载 4M 左右。<br>这个速度你要说爽用，那肯定谈不上，但也不至于卡成 PPT。看视频也不卡顿。</p><p><img src="/images/juanwang.png" alt="IP纯净度检测与测速"></p><p>我又试着上了一下 ChatGPT，也能用，没有报地区错误。回消息也挺快，没有那种打一半断线的情况。</p><p>链接我就顺手放这了：<br><a href="https://1.juanwang1.top/#/register">https://1.juanwang1.top/#/register</a></p>]]></content>
     
@@ -108,6 +133,8 @@
     
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
+    
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
     
   </entry>
   
@@ -135,7 +162,7 @@
     <link href="https://waiyiyuyan.github.io/2026/01/04/freedog/"/>
     <id>https://waiyiyuyan.github.io/2026/01/04/freedog/</id>
     <published>2026-01-04T03:55:23.000Z</published>
-    <updated>2026-01-04T04:02:48.227Z</updated>
+    <updated>2026-01-16T12:13:29.848Z</updated>
     
     <content type="html"><![CDATA[<p>今天来分享一个超实用的免费VPN套餐，帮助你在不花钱的情况下获取 10GB 流量，这对于追求免费资源的朋友来说，无疑是个不错的选择。</p><span id="more"></span><h4 id="套餐基本信息"><a href="#套餐基本信息" class="headerlink" title="套餐基本信息"></a>套餐基本信息</h4><ul><li><strong>流量</strong>: 10GB</li><li><strong>有效期</strong>: 30 天</li><li><strong>节点位置</strong>: 美国</li><li><strong>协议类型</strong>: VMess</li><li><strong>注册地址</strong>: <a href="https://www.freedogdog.com/">www.freedogdog.com</a></li></ul><h4 id="流量监控与效果"><a href="#流量监控与效果" class="headerlink" title="流量监控与效果"></a>流量监控与效果</h4><p>我通过 <a href="https://ping0.cc/">Ping0.cc</a> 进行 IP 纯净度检测，结果显示这是一个原生IP，且纯净度非常高。并且，这个套餐能够有效解锁很多常见的限制，包括<strong>ChatGPT</strong>，使用体验良好，速度稳定。</p><p><img src="/images/freedog.png" alt="IP测速与购买"></p><h4 id="套餐可重复购买"><a href="#套餐可重复购买" class="headerlink" title="套餐可重复购买"></a>套餐可重复购买</h4><p>当套餐的 10GB 流量用完后，你可以再次注册并领取新的 10GB 流量，套餐可以重复购买，确保你在 30 天内一直有免费流量使用，非常适合需要长期使用免费VPN服务的用户。</p>]]></content>
     
@@ -147,6 +174,8 @@
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
     
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
   </entry>
   
   <entry>
@@ -154,7 +183,7 @@
     <link href="https://waiyiyuyan.github.io/2026/01/04/nokecloud/"/>
     <id>https://waiyiyuyan.github.io/2026/01/04/nokecloud/</id>
     <published>2026-01-04T02:53:35.000Z</published>
-    <updated>2026-01-04T02:57:01.301Z</updated>
+    <updated>2026-01-16T12:13:00.305Z</updated>
     
     <content type="html"><![CDATA[<p>如果你在寻找一个稳定、速度快且适合白嫖的机场服务，<strong>NokeCloud</strong> 是一个不错的选择。这个服务提供了多种套餐，其中最吸引人的是通过使用优惠券可以<strong>0元获得 1T &#x2F; 28天</strong>的套餐</p><span id="more"></span><h3 id="优惠码与免费试用"><a href="#优惠码与免费试用" class="headerlink" title="优惠码与免费试用"></a>优惠码与免费试用</h3><p>通过使用优惠码 <strong>NokeCloud888</strong>， 选择 ¥5.00 &#x2F; 月付 这个套餐，你可以轻松享受<strong>0元购买 1T 流量</strong>的优惠。若优惠码无效，加入它们的电报群获取一个新的优惠码也是一种解决方式。</p><h3 id="节点位置与协议类型"><a href="#节点位置与协议类型" class="headerlink" title="节点位置与协议类型"></a>节点位置与协议类型</h3><p>NokeCloud 提供的节点位置包括：</p><ul><li>新加坡</li><li>日本</li><li>韩国</li><li>美国</li></ul><p>使用的协议类型是 <strong>VLESS</strong>，这意味着连接更加安全且稳定。</p><h3 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h3><p>在我的实际测试中，<strong>日本节点</strong>是唯一能顺利 ping 通的，延迟表现优秀，<strong>IP 纯净度</strong>非常高，适合要求较高的用户。特别是对于 <strong>YouTube 视频播放（1080p）</strong>，没有任何卡顿或延迟，体验非常流畅。同时，<strong>ChatGPT</strong> 也能顺利访问，没有受到任何限制。</p><p><img src="/images/Nokecloud/1.png" alt="IP纯净度测试"></p><p><strong>注册链接</strong>：<a href="https://blog.nokecloud.top/#/register?code=wgwblSEC">NokeCloud 注册页面</a></p>]]></content>
     
@@ -166,6 +195,8 @@
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
     
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
   </entry>
   
   <entry>
@@ -173,7 +204,7 @@
     <link href="https://waiyiyuyan.github.io/2026/01/04/trumpyun/"/>
     <id>https://waiyiyuyan.github.io/2026/01/04/trumpyun/</id>
     <published>2026-01-04T02:24:50.000Z</published>
-    <updated>2026-01-16T10:42:33.994Z</updated>
+    <updated>2026-01-16T12:12:46.961Z</updated>
     
     <content type="html"><![CDATA[<p>如果你正在寻找一个高质量的VPN服务来保障上网隐私，并且希望获得高速稳定的网络体验，那么Trumpyun VPN绝对值得你一试。现在，注册Trumpyun VPN即可获得“免费试用”200GB &#x2F; 417天的套餐，完美满足大部分用户的日常需求。</p><span id="more"></span><h4 id="服务特点"><a href="#服务特点" class="headerlink" title="服务特点"></a>服务特点</h4><ol><li><p><strong>节点覆盖广泛</strong><br>Trumpyun VPN提供多个节点位置，包括香港、台湾、日本和韩国，用户可以根据需求选择最适合的服务器节点。尤其是对于需要解锁特定区域内容的用户，选用这些节点能够确保更稳定的连接与更低的延迟。</p></li><li><p><strong>协议类型：VLESS</strong><br>使用VLESS协议的Trumpyun VPN，在保证安全性和隐私的同时，提供了更高效、更低延迟的网络连接。VLESS协议是目前非常流行的轻量级VPN协议，特别适合需要突破网络封锁或加速国际互联网的用户。</p></li><li><p><strong>IP纯净度高</strong><br>Trumpyun VPN的IP地址纯净度极高，所有IP都为原生IP，确保不会因为使用VPN而导致IP泄漏或被第三方追踪。</p></li><li><p><strong>解锁ChatGPT</strong><br>该VPN服务能够成功解锁ChatGPT，让你能够在全球范围内访问ChatGPT，尤其适合那些受限地区的用户。</p></li></ol><h4 id="性能表现"><a href="#性能表现" class="headerlink" title="性能表现"></a>性能表现</h4><p>关于速度表现，虽然我这边测速一般，但台湾和新加坡节点的连接情况非常好，能够提供稳定、快速的上网体验。对于有更高带宽需求的用户，选用这些节点能获得更优质的网络服务。<br><img src="/images/trump/1.png" alt="IP测速与纯净度"></p><h4 id="注册与体验"><a href="#注册与体验" class="headerlink" title="注册与体验"></a>注册与体验</h4><p>通过以下链接注册Trumpyun VPN，你将获得免费试用套餐：<br><a href="https://trumpyun.com/index.php/#/register?code=vewAh7oB">注册Trumpyun VPN</a></p>]]></content>
     
@@ -184,6 +215,8 @@
     
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
+    
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
     
   </entry>
   
@@ -213,7 +246,7 @@
     <link href="https://waiyiyuyan.github.io/2025/12/31/lrt/"/>
     <id>https://waiyiyuyan.github.io/2025/12/31/lrt/</id>
     <published>2025-12-31T01:02:23.000Z</published>
-    <updated>2025-12-31T01:21:04.270Z</updated>
+    <updated>2026-01-16T12:13:05.920Z</updated>
     
     <content type="html"><![CDATA[<p>今天在网上闲逛的时候，偶然发现了一个挺有意思的 VPN 平台。试了一下他们的促销活动，结果发现有个“羊毛”可以薅。</p><span id="more"></span><p>简单来说，他们有个 <strong>1元 100GB</strong> 的月付套餐，但配合那个 <strong>100% 优惠券</strong>，结账时直接就变成了 <strong>0元</strong>。虽然不知道这个优惠券什么时候会失效，但目前确实是可以直接白嫖到流量的，这种机会错过了确实有点可惜。</p><h3 id="关于技术和节点"><a href="#关于技术和节点" class="headerlink" title="关于技术和节点"></a>关于技术和节点</h3><p>我平时比较在意连接协议，这个平台用的是 <strong>VLESS 协议</strong>，这也是我目前比较推荐的。它的特点就是效率高、稳定，在实际使用中感觉比老旧的协议要顺滑不少。</p><p>节点分布也很广，涵盖了香港、日本、新加坡、美国、加拿大、德国、澳大利亚和印度。我只测试了几个地区：</p><ul><li><strong>日本节点：</strong> 表现很均衡，延迟控制得不错，日常刷视频完全没压力。</li><li><strong>印度节点：</strong> 速度还可以，延迟都不高，适合对实时性要求不高的场景。</li><li><strong>加拿大节点（强烈推荐）：</strong> 这是我今天最大的惊喜。它的速度是测试里最快的，而且最重要的一点是 <strong>IP 非常纯净</strong>。很多公用节点因为人多，IP 早就被各种网站拉黑了，但这个加拿大节点给人的感觉就像是私人专线，访问非常丝滑。</li></ul><p><img src="/images/lrt/1.png" alt="IP纯净度检测与测速"></p><h3 id="注册方式"><a href="#注册方式" class="headerlink" title="注册方式"></a>注册方式</h3><p>如果你也想试试，流程非常简单。点击下方的链接去注册，然后记得用我的邀请码，这样不仅能领到优惠，也能顺便支持一下我的分享。</p><p>👉 <a href="https://lrtjc.xyz/#/register?code=6rGe8MeV"><strong>点击这里跳转注册页面</strong></a></p><p>希望这个分享对大家有用，祝大家在 2025 年的最后一天都有好心情！😎</p>]]></content>
     
@@ -225,6 +258,8 @@
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
     
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
   </entry>
   
   <entry>
@@ -232,7 +267,7 @@
     <link href="https://waiyiyuyan.github.io/2025/12/28/baokemeng/"/>
     <id>https://waiyiyuyan.github.io/2025/12/28/baokemeng/</id>
     <published>2025-12-28T00:58:18.000Z</published>
-    <updated>2026-01-01T23:36:45.635Z</updated>
+    <updated>2026-01-16T12:10:13.827Z</updated>
     
     <content type="html"><![CDATA[<p>今天发现了一个超级福利，忍不住赶紧分享给大家——<strong>宝可梦 (Pokemon) 机场</strong>正在搞限时白嫖活动！<br>只需输入一个优惠码，就能直接 <strong>0 元开启 30 天 60G 流量</strong>。话不多说，直接上教程。</p><span id="more"></span><h2 id="🎁-白嫖详细步骤"><a href="#🎁-白嫖详细步骤" class="headerlink" title="🎁 白嫖详细步骤"></a>🎁 白嫖详细步骤</h2><ol><li><strong>注册账号：</strong> 点击专用邀请链接：<a href="https://love.p6m6.com/#/register?code=XUVM9IQy">宝可梦机场注册地址</a></li><li><strong>选择套餐：</strong> 进入“购买订阅”页面，找到售价为 <strong>￥7.9&#x2F;月</strong> 的 <strong>“入门精灵球”</strong> 套餐。</li><li><strong>输入优惠码：</strong> 在结算页面找到优惠码输入框，输入：<strong>超梦</strong> 1月最新白嫖优惠码 <strong>宝可梦yyds</strong></li><li><strong>零元下单：</strong> 应用优惠码后，价格会直接变为 <strong>0 元</strong>。点击下单即可成功激活！</li></ol><hr><h2 id="🚀-节点质量与实测"><a href="#🚀-节点质量与实测" class="headerlink" title="🚀 节点质量与实测"></a>🚀 节点质量与实测</h2><p>虽然是白嫖性质的福利，但宝可梦机场的素质出乎意料地高：</p><ul><li><strong>节点分布：</strong> 涵盖了主流的 <strong>香港、日本、韩国、新加坡、美国</strong> 等地区。</li><li><strong>连接速度：</strong> 实测表现非常亮眼，在普通宽带环境下，<strong>轻松跑满 100Mbps 宽带</strong>，刷 4K 视频毫无压力。</li><li><strong>IP 纯净度：</strong> 节点质量不错。不过由于不同地区的分配策略不同，IP 纯净度会有所差异，建议根据自己的业务需求（如流媒体解锁、学术搜索等）自行切换尝试。<br><img src="/images/baokemeng/4.png" alt="IP纯净度与测速"></li></ul><blockquote><p><strong>温馨提示：</strong> 白嫖活动通常有时效性，如果优惠码失效，建议关注官方最新公告。</p></blockquote><p>我的电报群 <a href="https://t.me/+PlaVu5k_Y0s5OTg9">https://t.me/+PlaVu5k_Y0s5OTg9</a></p>]]></content>
     
@@ -244,6 +279,8 @@
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
     
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
   </entry>
   
   <entry>
@@ -251,7 +288,7 @@
     <link href="https://waiyiyuyan.github.io/2025/12/26/tuitui/"/>
     <id>https://waiyiyuyan.github.io/2025/12/26/tuitui/</id>
     <published>2025-12-26T00:09:39.000Z</published>
-    <updated>2026-01-16T10:42:16.267Z</updated>
+    <updated>2026-01-16T12:12:42.496Z</updated>
     
     <content type="html"><![CDATA[<p>今天在挖掘好用的科学上网工具时，发现了一个诚意满满的“福利款”。如果你正在寻找一个稳定、快速，且能完美解锁 AI 工具的节点，这个机场你一定不能错过。</p><span id="more"></span><h2 id="🎁-核心福利：新用户注册礼包"><a href="#🎁-核心福利：新用户注册礼包" class="headerlink" title="🎁 核心福利：新用户注册礼包"></a>🎁 核心福利：新用户注册礼包</h2><p>目前该平台正在进行推广活动，只要完成注册，账户内会直接到账：</p><ul><li><strong>流量：</strong> 20GB 免费流量</li><li><strong>有效期：</strong> 10 天</li><li><strong>门槛：</strong> 零门槛，注册即送</li></ul><hr><h2 id="🚀-深度测评：它凭什么脱颖而出？"><a href="#🚀-深度测评：它凭什么脱颖而出？" class="headerlink" title="🚀 深度测评：它凭什么脱颖而出？"></a>🚀 深度测评：它凭什么脱颖而出？</h2><h3 id="1-极致的速度表现"><a href="#1-极致的速度表现" class="headerlink" title="1. 极致的速度表现"></a>1. 极致的速度表现</h3><p>我亲自在 <strong>100M 带宽</strong> 的环境下进行了测试。</p><ul><li><strong>实测数据：</strong> 几乎跑满了百兆带宽。</li><li><strong>使用体验：</strong> 4K 视频秒开，拖动进度条几乎无感加载。</li></ul><h3 id="2-纯净的-IP-与超低负载"><a href="#2-纯净的-IP-与超低负载" class="headerlink" title="2. 纯净的 IP 与超低负载"></a>2. 纯净的 IP 与超低负载</h3><p>这是该平台最让我惊喜的地方。不同于那些动辄成百上千人挤在一个服务器的线路，这里的节点：</p><ul><li><strong>共享人数：</strong> 仅为 1-10 人，稳定性极佳。</li><li><strong>协议支持：</strong> 采用主流的 <strong>VLESS 协议</strong>，兼顾隐蔽性与传输效率。</li><li><strong>节点位置：</strong> 提供优质的 <strong>美国</strong> 和 <strong>香港</strong> 节点，满足不同场景需求。</li></ul><p><img src="/images/tuitui/2.png" alt="IP测速与纯净度检查"></p><p>作为一个“免费套餐”，20GB 的流量足够大家进行深度的测速和日常办公使用。尤其是那几乎跑满百兆的速度和极高的 IP 纯净度，在免费节点中确实非常罕见。</p><p>建议大家趁着活动还在，先注册领个 20GB 备用！ <a href="https://user.tuitui.me/#/register?code=xqTmGZve">注册链接</a></p>]]></content>
     
@@ -263,6 +300,8 @@
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
     
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
   </entry>
   
   <entry>
@@ -270,7 +309,7 @@
     <link href="https://waiyiyuyan.github.io/2025/12/23/ftclash/"/>
     <id>https://waiyiyuyan.github.io/2025/12/23/ftclash/</id>
     <published>2025-12-23T00:34:53.000Z</published>
-    <updated>2025-12-23T00:45:37.687Z</updated>
+    <updated>2026-01-16T12:13:26.480Z</updated>
     
     <content type="html"><![CDATA[<p>今天我注册了一个提供免费流量的VPN服务，注册即送 <strong>100GB 免费流量</strong>，有效期为 <strong>30天</strong>。这个套餐无需优惠码，注册完成后直接获得。对于需要临时加速或解锁访问的用户来说，这无疑是一个很好的选择。</p><span id="more"></span><h3 id="节点位置"><a href="#节点位置" class="headerlink" title="节点位置"></a>节点位置</h3><ul><li>美国</li><li>香港</li><li>日本</li><li>台湾</li></ul><p>还有一些其他国家，在我这个地区是 ping 不通，所以就不写了。用户可以根据自己的需求选择最佳节点进行连接。</p><h3 id="注册地址-FTClash"><a href="#注册地址-FTClash" class="headerlink" title="注册地址 : FTClash"></a>注册地址 : <a href="https://dash.f9vip.net/#/register?code=B6azQ9cJ">FTClash</a></h3><h3 id="协议类型"><a href="#协议类型" class="headerlink" title="协议类型"></a>协议类型</h3><ul><li><strong>Hysteria</strong></li><li><strong>VMess</strong></li></ul><p>这两种协议都能为用户提供稳定且高效的连接，适合不同使用需求的用户。</p><h3 id="测试体验"><a href="#测试体验" class="headerlink" title="测试体验"></a>测试体验</h3><p>我发现 <strong>日本节点</strong> 的速度最快，IP最纯净，表现非常出色。</p><p><img src="/images/ftclash/1.png" alt="IP测速与纯净度"></p><p>此外，使用这个VPN还能成功解锁 <strong>ChatGPT</strong> 和 <strong>Gemini</strong>，对于需要访问这些服务的用户来说，简直是一个福利。</p>]]></content>
     
@@ -282,6 +321,8 @@
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
     
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
   </entry>
   
   <entry>
@@ -289,7 +330,7 @@
     <link href="https://waiyiyuyan.github.io/2025/12/19/dabache/"/>
     <id>https://waiyiyuyan.github.io/2025/12/19/dabache/</id>
     <published>2025-12-19T14:29:23.000Z</published>
-    <updated>2025-12-19T14:36:16.572Z</updated>
+    <updated>2026-01-16T12:11:20.376Z</updated>
     
     <content type="html"><![CDATA[<p>今天分享一个超给力的福利！<strong>大巴车 (dabache)</strong> 使用专属优惠码可以 <strong>0 元</strong> 开启包月基础套餐。</p><span id="more"></span><hr><h3 id="🌟-套餐亮点"><a href="#🌟-套餐亮点" class="headerlink" title="🌟 套餐亮点"></a>🌟 套餐亮点</h3><ul><li><strong>价格：</strong> 0 元（需使用优惠码）</li><li><strong>流量：</strong> 80GB &#x2F; 30 天</li><li><strong>连接数：</strong> 支持 <strong>2 台设备</strong>同时在线</li><li><strong>注册门槛：</strong> 极低！<strong>无需邮箱验证</strong>，保护隐私且快速。</li></ul><h3 id="🚀-节点信息"><a href="#🚀-节点信息" class="headerlink" title="🚀 节点信息"></a>🚀 节点信息</h3><p>该机场节点覆盖广泛，且采用了高性能的 <strong>Hysteria</strong> 协议，在各种网络环境下表现都很出色：</p><ul><li><strong>节点位置：</strong> 英国、俄罗斯、加拿大、美国、德国、荷兰</li><li><strong>协议类型：</strong> Hysteria（UDP 加速，低延迟）</li></ul><h3 id="🛠️-领取流程"><a href="#🛠️-领取流程" class="headerlink" title="🛠️ 领取流程"></a>🛠️ 领取流程</h3><ol><li><strong>注册账号：</strong> <a href="https://dabache.top/#/register?code=N546uxiP">点击进入大白车注册地址</a></li><li><strong>选择套餐：</strong> 进入商店&#x2F;购买订阅，选择 <strong>“包月基础套餐”</strong>。</li><li><strong>使用优惠码：</strong> 在支付结账页面输入优惠码 <code>dabache</code>。</li><li><strong>0 元激活：</strong> 确认金额变为 0 后点击购买，即可获得 80GB 订阅地址。</li></ol><blockquote><p><strong>温馨提示：</strong> &gt; 机场优惠活动通常有截止时间或名额限制。因为注册不需要验证邮箱，建议先动手注册一个备用。</p></blockquote>]]></content>
     
@@ -301,6 +342,8 @@
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
     
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
   </entry>
   
   <entry>
@@ -308,7 +351,7 @@
     <link href="https://waiyiyuyan.github.io/2025/12/14/jizhiyun/"/>
     <id>https://waiyiyuyan.github.io/2025/12/14/jizhiyun/</id>
     <published>2025-12-14T01:44:18.000Z</published>
-    <updated>2026-01-16T10:43:53.506Z</updated>
+    <updated>2026-01-16T12:13:23.055Z</updated>
     
     <content type="html"><![CDATA[<p>我刚注册 极致云 账户，系统就慷慨地赠送了 <strong>188GB</strong> 流量。</p><span id="more"></span><p>更棒的是，我通过使用专属优惠券，成功兑换了他们的“<strong>试用节点·Trial Plan</strong>”：</p><ul><li><strong>流量：</strong> 100GB</li><li><strong>时长：</strong> 30 天</li><li><strong>价格：</strong> 0 元 (使用优惠券 <strong><code>852VY8u0</code></strong>)</li><li><strong>🔗 注册地址：</strong></li><li><a href="https://v2.jzcloud.xyz/#/register?code=baMhxzoj">https://v2.jzcloud.xyz/#/register?code=baMhxzoj</a></li><li><strong>🎟️ 零元试用优惠券：</strong></li><li><strong><code>852VY8u0</code></strong> (请在购买“试用节点·Trial Plan”时使用)</li></ul><h3 id="⚡️-速度实测：宽带几乎跑满！"><a href="#⚡️-速度实测：宽带几乎跑满！" class="headerlink" title="⚡️ 速度实测：宽带几乎跑满！"></a>⚡️ 速度实测：宽带几乎跑满！</h3><p>作为一名用户，我最关心的自然是速度。我立刻进行了一次“跑分”测试。结果令人非常满意——在我的宽带环境下，下载速度几乎达到了<strong>宽带的上限</strong>！这表明 JZ Cloud 的美国节点线路质量极高，带宽资源充裕，无论是看 4K 视频、下载大文件还是进行日常浏览，都能保证流畅无卡顿。</p><h3 id="🛡️-IP-质量检测：原生-IP，纯净度极高！"><a href="#🛡️-IP-质量检测：原生-IP，纯净度极高！" class="headerlink" title="🛡️ IP 质量检测：原生 IP，纯净度极高！"></a>🛡️ IP 质量检测：原生 IP，纯净度极高！</h3><p>除了速度，IP 地址的质量对于很多应用场景（比如观看特定的流媒体服务）至关重要。我随即进行了 IP 纯净度检测，结果再次让我感到惊喜：</p><ul><li><strong>IP 类型：</strong> 原生 IP</li><li><strong>共享人数：</strong> 非常少！</li></ul><p>原生 IP 意味着它可以解锁更多对 IP 归属地有严格要求的服务。而极少的共享人数则意味着你几乎独享了这台服务器的连接资源，连接稳定性和安全性都大大提升。</p><h3 id="🌎-节点信息一览"><a href="#🌎-节点信息一览" class="headerlink" title="🌎 节点信息一览"></a>🌎 节点信息一览</h3><ul><li><strong>节点位置：</strong> 仅限美国 (US)</li><li><strong>协议类型：</strong> Hysteria (这是一种新型的、抗审查能力和速度表现都非常优秀的代理协议)</li></ul><p>从我的个人体验来看，JZ Cloud 是一个<strong>速度快、IP 纯净度高</strong>且<strong>资源分配充足</strong>的优质机场。100GB&#x2F;30 天的零元试用套餐是目前市场上难得的良心福利，强烈推荐大家去体验一下！</p>]]></content>
     
@@ -320,6 +363,8 @@
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
     
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
   </entry>
   
   <entry>
@@ -327,7 +372,7 @@
     <link href="https://waiyiyuyan.github.io/2025/12/10/shifenjichang/"/>
     <id>https://waiyiyuyan.github.io/2025/12/10/shifenjichang/</id>
     <published>2025-12-10T02:59:37.000Z</published>
-    <updated>2026-01-16T10:42:56.100Z</updated>
+    <updated>2026-01-16T12:12:53.689Z</updated>
     
     <content type="html"><![CDATA[<p>现在注册即可获得 <strong>100GB 免费流量（30天有效）</strong>，无需复杂操作，几秒钟即可开启你的全新网络体验！</p><span id="more"></span><h2 id="🚀-节点分布"><a href="#🚀-节点分布" class="headerlink" title="🚀 节点分布"></a>🚀 节点分布</h2><p>提供多个节点覆盖，轻松畅连全球网络：</p><ul><li>🇭🇰 香港节点  </li><li>🇯🇵 日本节点  </li><li>🇸🇬 新加坡节点  </li><li>🇺🇸 美国节点  </li><li>🇦🇺 澳大利亚节点  </li><li>🇷🇺 俄罗斯节点</li></ul><p>多地线路智能切换，低延迟、高带宽，保证你的浏览、下载与流媒体体验顺畅无比！</p><hr><h2 id="⚙️-协议类型"><a href="#⚙️-协议类型" class="headerlink" title="⚙️ 协议类型"></a>⚙️ 协议类型</h2><p>采用行业领先的 <strong>VLESS 协议</strong>，安全、高效、灵活，保障你的网络隐私与连接稳定性。</p><hr><h2 id="📝-注册方式"><a href="#📝-注册方式" class="headerlink" title="📝 注册方式"></a>📝 注册方式</h2><p>👉 点击注册链接，立刻领取你的 <strong>100GB &#x2F; 30天免费套餐</strong>：<a href="zd">立即注册领取福利</a></p>]]></content>
     
@@ -339,6 +384,8 @@
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
     
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
   </entry>
   
   <entry>
@@ -346,7 +393,7 @@
     <link href="https://waiyiyuyan.github.io/2025/12/09/befriend/"/>
     <id>https://waiyiyuyan.github.io/2025/12/09/befriend/</id>
     <published>2025-12-09T00:34:04.000Z</published>
-    <updated>2025-12-10T03:05:12.970Z</updated>
+    <updated>2026-01-16T12:10:19.273Z</updated>
     
     <content type="html"><![CDATA[<p>今天发现了一个隐藏的高质量免费机场——<strong>“交个朋友”</strong>。注册即用，无邮箱验证，速度和IP质量上远远超越了同类竞争者！</p><span id="more"></span><ul><li><strong>注册地址：</strong> <a href="https://jgpyjc.top/#/register?code=37fWNeEM">https://jgpyjc.top/#/register?code=37fWNeEM</a></li></ul><p><img src="/images/befriend/3.png" alt="虽然只能白嫖一天，但是卡住邮箱不用验证这个bug，用临时邮箱注册，也能实现长期白嫖"> </p><h4 id="1-🥇-IP纯净度：机房原生-IP-助你解锁流媒体！"><a href="#1-🥇-IP纯净度：机房原生-IP-助你解锁流媒体！" class="headerlink" title="1. 🥇 IP纯净度：机房原生 IP 助你解锁流媒体！"></a>1. 🥇 IP纯净度：机房原生 IP 助你解锁流媒体！</h4><ul><li><strong>原生 IP 认证：</strong> 它的节点提供了<strong>机房原生 IP</strong>！这意味着它具备了<strong>解锁特定地区流媒体</strong>（如 Netflix, Disney+ 等）的潜力，这是绝大多数免费甚至低价付费机场都做不到的配置。</li><li><strong>共享人数极少：</strong> 监测数据显示，节点上的<strong>共享用户数量非常少</strong>，这有力地保障了网速的稳定性和延迟的优秀表现。用这种高纯净度的IP上网，体验简直是付费级别！</li></ul><p><img src="/images/befriend/4.png" alt="IP纯净度检测结果"></p><h4 id="2-⚡-极限测速：差点跑满百兆宽带！"><a href="#2-⚡-极限测速：差点跑满百兆宽带！" class="headerlink" title="2. ⚡ 极限测速：差点跑满百兆宽带！"></a>2. ⚡ 极限测速：差点跑满百兆宽带！</h4><p><img src="/images/befriend/5.png" alt="IP测速结果"></p><p>“交个朋友”无疑是 2025 年最值得收藏和尝试的免费机场。它通过一个简单的注册漏洞，结合其超高的硬件配置（原生IP、低共享、高速率），完美地平衡了<strong>“免费”与“高品质”</strong>。</p><table><thead><tr><th align="left">特色亮点</th><th align="left">价值评估</th></tr></thead><tbody><tr><td align="left"><strong>邮箱免验证</strong></td><td align="left">实现无限期、长期白嫖的核心手段</td></tr><tr><td align="left"><strong>原生 IP</strong></td><td align="left">极高纯净度，媲美付费服务</td></tr><tr><td align="left"><strong>共享人数少</strong></td><td align="left">保障低延迟和网络稳定性</td></tr><tr><td align="left"><strong>速度跑满百兆</strong></td><td align="left">满足所有高清视频和下载需求</td></tr></tbody></table>]]></content>
     
@@ -357,6 +404,8 @@
     
     <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
+    
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
     
   </entry>
   
@@ -375,25 +424,6 @@
     
     
     <category term="技术" scheme="https://waiyiyuyan.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>白嫖机场——Ezyun EZ 云机场：限时福利！0 元抢 100GB 免费直连套餐！</title>
-    <link href="https://waiyiyuyan.github.io/2025/12/06/ezyun/"/>
-    <id>https://waiyiyuyan.github.io/2025/12/06/ezyun/</id>
-    <published>2025-12-06T00:55:17.000Z</published>
-    <updated>2026-01-16T10:44:20.626Z</updated>
-    
-    <content type="html"><![CDATA[<p>ezyun EZ 云机场目前推出了一个超值的活动，你只需要使用我的专属优惠券，就能<strong>0 元</strong>购得一个非常实用的<strong>“直连白嫖套餐”</strong>！</p><span id="more"></span><ul><li><strong>套餐内容：</strong> 100GB 流量 &#x2F; 30 天</li><li><strong>购买价格：</strong> 0 元！</li><li><strong>优惠券码：</strong> <code>1ADK3QLS3</code></li></ul><p>🚨 <strong>注意！</strong> 这个优惠券<strong>只能使用 1000 次</strong>，数量有限，先到先得！手慢无！</p><p><strong>👉 注册地址：</strong> <a href="https://eyun.org/#/register?code=F1VPS7dh">https://eyun.org/#/register?code=F1VPS7dh</a></p><hr><p>选择这个套餐进行购买<br><img src="/images/ezyun/ezyun3.png" alt="直连白嫖套餐"></p><ul><li><strong>节点位置：</strong> 涵盖了<strong>日本</strong>、<strong>香港</strong>、<strong>美国</strong>等热门地区。</li><li><strong>协议类型：</strong> 支持 <strong>Hysteria</strong> 和 <strong>VLESS</strong> 两种主流、高效的协议，保证连接的稳定性和穿透力。</li></ul><p>我只测试了日本节点，在所有节点中，<strong>日本节点</strong>的体验尤为出色：</p><ul><li><strong>延迟表现：</strong> <strong>延迟最低</strong>，这意味着你在浏览网页、观看视频或者进行轻量级网络游戏时，响应速度会非常快。</li><li><strong>速度测试：</strong> 表现稳定，上传和下载速度都能达到 <strong>50Mbps 左右</strong>，对于观看 1080P 甚至 4K 视频都毫无压力。</li></ul><p><img src="/images/ezyun/ezyun2.png" alt="节点测速"><br><img src="/images/ezyun/ezyun.png" alt="IP纯净度检测"></p>]]></content>
-    
-    
-    <summary type="html">免费白嫖ezyun机场，限时福利！0 元抢 100GB 免费使用30天</summary>
-    
-    
-    
-    <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
     
     
   </entry>
