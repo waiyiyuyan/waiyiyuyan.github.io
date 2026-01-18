@@ -5,20 +5,20 @@
   <meta charset="utf-8">
   
   
-  <title>用 Cloudflare Workers 和 Durable Objects 搭建一个极简文本聊天室 | 我爱白嫖——提供最新、安全、免费的VPN和机场推荐</title>
+  <title>用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室 | 我爱白嫖——提供最新、安全、免费的VPN和机场推荐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="google-adsense-account" content="ca-pub-5400876400049616">
-  <meta name="description" content="用 Cloudflare Workers 和 Durable Objects 搭建一个极简文本聊天室。">
+  <meta name="description" content="本文介绍如何使用 Cloudflare Workers 与 Durable Objects 搭建一个极简 Web 文本聊天室，基于 WebSocket 实现低延迟通信，无需传统服务器运维，适合小团队、私密交流或技术实验项目。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用 Cloudflare Workers 和 Durable Objects 搭建一个极简文本聊天室">
+<meta property="og:title" content="用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室">
 <meta property="og:url" content="https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/index.html">
 <meta property="og:site_name" content="我爱白嫖——提供最新、安全、免费的VPN和机场推荐">
-<meta property="og:description" content="用 Cloudflare Workers 和 Durable Objects 搭建一个极简文本聊天室。">
+<meta property="og:description" content="本文介绍如何使用 Cloudflare Workers 与 Durable Objects 搭建一个极简 Web 文本聊天室，基于 WebSocket 实现低延迟通信，无需传统服务器运维，适合小团队、私密交流或技术实验项目。">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-12-08T13:18:59.000Z">
-<meta property="article:modified_time" content="2026-01-17T02:00:26.235Z">
+<meta property="article:modified_time" content="2026-01-18T10:45:14.877Z">
 <meta property="article:author" content="waiyiyuyan">
-<meta property="article:tag" content="vpn,免费vpn,科学上网,网络代理,隐私保护,梯子">
+<meta property="article:tag" content="cloudflare">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="我爱白嫖——提供最新、安全、免费的VPN和机场推荐" type="application/atom+xml">
@@ -116,7 +116,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      用 Cloudflare Workers 和 Durable Objects 搭建一个极简文本聊天室
+      用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室
     </h1>
   
 
@@ -124,10 +124,10 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>想快速拥有一个搭建一个极简文本聊天室吗？<br>传统服务器运维复杂，而 Cloudflare Workers 提供的无服务架构，是搭建这种<strong>轻量级、安全、低延迟</strong>文本聊天室的完美选择。</p>
+        <p>想快速搭建一个无需服务器运维、低延迟的极简文本聊天室吗？<br>相比传统自建服务器方案，Cloudflare Workers 提供了一种真正的无服务（Serverless）架构，非常适合用来实现这种轻量级、稳定且私密的文本即时通信应用。</p>
 <span id="more"></span>
 <p><strong>我们的定位：这是一个为团队或小圈子设计的“极简电报机”——它专注文本即时通讯，舍弃了多媒体和复杂通话功能，以追求极致的简单、稳定和私密性。</strong></p>
-<h2 id="🎯-聊天程序定位：极简与高效"><a href="#🎯-聊天程序定位：极简与高效" class="headerlink" title="🎯 聊天程序定位：极简与高效"></a>🎯 聊天程序定位：极简与高效</h2><table>
+<h2 id="🎯-项目设计目标与技术取舍"><a href="#🎯-项目设计目标与技术取舍" class="headerlink" title="🎯 项目设计目标与技术取舍"></a>🎯 项目设计目标与技术取舍</h2><table>
 <thead>
 <tr>
 <th align="left">特性</th>
@@ -165,6 +165,9 @@
 </ol>
 <hr>
 <h2 id="🏗️-搭建步骤：部署你的专属电报机"><a href="#🏗️-搭建步骤：部署你的专属电报机" class="headerlink" title="🏗️ 搭建步骤：部署你的专属电报机"></a>🏗️ 搭建步骤：部署你的专属电报机</h2><p>搭建过程比你想象的要简单，我们利用官方提供的工具和模板，事半功倍。</p>
+<blockquote>
+<p>本项目基于 Cloudflare 官方 Workers Chat Demo，适合用于学习 Durable Objects 与 WebSocket 的实际用法。</p>
+</blockquote>
 <h3 id="步骤-1-准备环境和工具-💻"><a href="#步骤-1-准备环境和工具-💻" class="headerlink" title="步骤 1: 准备环境和工具 💻"></a>步骤 1: 准备环境和工具 💻</h3><p>在开始之前，你需要准备好以下三个核心工具：<strong>Git</strong>（代码管理）、<strong>Node.js</strong>（运行环境）和 <strong>Wrangler CLI</strong>（部署工具）。</p>
 <h4 id="A-安装-Git（版本控制系统）"><a href="#A-安装-Git（版本控制系统）" class="headerlink" title="A. 安装 Git（版本控制系统）"></a>A. 安装 Git（版本控制系统）</h4><p>Git 是我们用来<strong>克隆</strong>官方 Demo 项目仓库的必备工具。</p>
 <ul>
@@ -187,9 +190,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx wrangler login</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h3 id="步骤-2-获取并配置项目代码"><a href="#步骤-2-获取并配置项目代码" class="headerlink" title="步骤 2: 获取并配置项目代码"></a>步骤 2: 获取并配置项目代码</h3><p>使用 Git 克隆 Cloudflare 官方的 Demo 项目，并进入项目目录安装依赖：</p>
+<h3 id="步骤-2-获取并配置项目代码"><a href="#步骤-2-获取并配置项目代码" class="headerlink" title="步骤 2: 获取并配置项目代码"></a>步骤 2: 获取并配置项目代码</h3><p>使用 Git 克隆 Cloudflare 官方的 Demo 项目，并进入项目目录安装依赖：<br>其实我自己魔改了一个 demo 支持发图片 <a target="_blank" rel="noopener" href="https://github.com/waiyiyuyan/my-workers-chat-demo">项目地址</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/cloudflare/workers-chat-demo.git</span><br><span class="line"><span class="built_in">cd</span> workers-chat-demo</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<p>如果克隆失败 运行这行命令 ，开启代理，我的端口是 10808 所以我写 10808 ，你根据自己的的 vpn 代理端口填写</p>
+<p>如果在国内环境下克隆仓库失败，可以临时为 Git 配置 HTTP 代理，例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy http://127.0.0.1:10808</span><br></pre></td></tr></table></figure>
 <h4 id="配置示例：wrangler-toml-🔑"><a href="#配置示例：wrangler-toml-🔑" class="headerlink" title="配置示例：wrangler.toml 🔑"></a>配置示例：<code>wrangler.toml</code> 🔑</h4><p>这是项目的默认配置文件，它<strong>确保 Durable Object 绑定正确</strong>，是我们实现聊天室功能的基础。</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name</span> = <span class="string">&quot;edge-chat-demo&quot;</span></span><br><span class="line"><span class="attr">compatibility_date</span> = <span class="string">&quot;2024-01-01&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">main</span> = <span class="string">&quot;src/chat.mjs&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[durable_objects]</span></span><br><span class="line"><span class="attr">bindings</span> = [</span><br><span class="line">  &#123; name = <span class="string">&quot;rooms&quot;</span>, class_name = <span class="string">&quot;ChatRoom&quot;</span> &#125;,</span><br><span class="line">  &#123; name = <span class="string">&quot;limiters&quot;</span>, class_name = <span class="string">&quot;RateLimiter&quot;</span> &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="section">[[rules]]</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;Data&quot;</span></span><br><span class="line"><span class="attr">globs</span> = [<span class="string">&quot;**/*.html&quot;</span>]</span><br><span class="line"><span class="attr">fallthrough</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Indicate that you want the ChatRoom and RateLimiter classes to be callable as Durable Objects.</span></span><br><span class="line"><span class="section">[[migrations]]</span></span><br><span class="line"><span class="attr">tag</span> = <span class="string">&quot;v1&quot;</span>                                          <span class="comment"># Should be unique for each entry</span></span><br><span class="line"><span class="attr">new_sqlite_classes</span> = [<span class="string">&quot;ChatRoom&quot;</span>, <span class="string">&quot;RateLimiter&quot;</span>]</span><br></pre></td></tr></table></figure>
@@ -234,10 +237,12 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/" data-id="cmkiarv6000007stq0ighh3ya" data-title="用 Cloudflare Workers 和 Durable Objects 搭建一个极简文本聊天室" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/" data-id="cmkiarv6000007stq0ighh3ya" data-title="用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li></ul>
+
     </footer>
   </div>
   
@@ -256,7 +261,7 @@
   
     <a href="/2025/12/06/ezyun/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">白嫖机场——Ezyun EZ 云机场：限时福利！0 元抢 100GB 免费直连套餐！</div>
+      <div class="article-nav-title">白嫖机场推荐：Ezyun EZ 云机场｜0 元领 100GB 直连套餐</div>
     </a>
   
 </nav>
@@ -283,7 +288,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apple-ID/" rel="tag">Apple ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/" rel="tag">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="tag">文件传输</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E4%B8%8B%E8%BD%BD/" rel="tag">游戏下载</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apple-ID/" rel="tag">Apple ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/" rel="tag">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="tag">文件传输</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E4%B8%8B%E8%BD%BD/" rel="tag">游戏下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%A2%E8%AD%A6/" rel="tag">红警</a></li></ul>
     </div>
   </div>
 
@@ -293,7 +298,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Apple-ID/" style="font-size: 10px;">Apple ID</a> <a href="/tags/vpn/" style="font-size: 20px;">vpn</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" style="font-size: 10px;">文件传输</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E4%B8%8B%E8%BD%BD/" style="font-size: 10px;">游戏下载</a>
+      <a href="/tags/Apple-ID/" style="font-size: 10px;">Apple ID</a> <a href="/tags/cloudflare/" style="font-size: 10px;">cloudflare</a> <a href="/tags/vpn/" style="font-size: 20px;">vpn</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" style="font-size: 10px;">文件传输</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E4%B8%8B%E8%BD%BD/" style="font-size: 10px;">游戏下载</a> <a href="/tags/%E7%BA%A2%E8%AD%A6/" style="font-size: 10px;">红警</a>
     </div>
   </div>
 
