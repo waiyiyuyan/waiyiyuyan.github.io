@@ -20,6 +20,15 @@
   </url>
   
   <url>
+    <loc>https://waiyiyuyan.github.io/2026/01/22/zangzangyun/</loc>
+    
+    <lastmod>2026-01-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://waiyiyuyan.github.io/2025/12/01/langlangyun/</loc>
     
     <lastmod>2026-01-22</lastmod>
@@ -351,6 +360,27 @@
   
   <url>
     <loc>https://waiyiyuyan.github.io/tags/RuTracker/</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/tags/%E6%9C%BA%E5%9C%BA%E7%99%BD%E5%AB%96/</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/tags/%E5%8E%9F%E7%94%9FIP/</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/tags/VLESS/</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
