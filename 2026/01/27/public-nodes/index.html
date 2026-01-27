@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  
+  
+  <title>告别付费：利用 AutoMergePublicNodes 开启免费科学上网之旅 | 我爱白嫖——提供最新、安全、免费的VPN和机场推荐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="google-adsense-account" content="ca-pub-5400876400049616">
+
+  <!-- 【新增这几行】手动设置OG标题，覆盖默认的旧标题 -->
+  <meta property="og:title" content="我爱白嫖——提供最新、安全、免费的VPN和机场推荐">
+  <meta property="twitter:title" content="我爱白嫖——提供最新、安全、免费的VPN和机场推荐">
+  <meta name="title" content="我爱白嫖——提供最新、安全、免费的VPN和机场推荐">
+
+  <meta name="description" content="想要免费、高速的科学上网节点？本文深度解析 GitHub 开源项目 AutoMergePublicNodes，手把手教你如何通过 Clash 和 V2Ray 自动抓取并合并全球免费机场节点。告别付费，实现订阅链接实时更新，打造专属你的免费流量池。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="告别付费：利用 AutoMergePublicNodes 开启免费科学上网之旅">
+<meta property="og:url" content="https://waiyiyuyan.github.io/2026/01/27/public-nodes/index.html">
+<meta property="og:site_name" content="我爱白嫖——提供最新、安全、免费的VPN和机场推荐">
+<meta property="og:description" content="想要免费、高速的科学上网节点？本文深度解析 GitHub 开源项目 AutoMergePublicNodes，手把手教你如何通过 Clash 和 V2Ray 自动抓取并合并全球免费机场节点。告别付费，实现订阅链接实时更新，打造专属你的免费流量池。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-27T13:11:56.000Z">
+<meta property="article:modified_time" content="2026-01-27T13:17:29.165Z">
+<meta property="article:author" content="waiyiyuyan">
+<meta property="article:tag" content="科学上网">
+<meta property="article:tag" content="免费机场">
+<meta property="article:tag" content="自动合并节点">
+<meta property="article:tag" content="AutoMergePublicNodes">
+<meta property="article:tag" content="Clash订阅">
+<meta property="article:tag" content="免费V2Ray">
+<meta property="article:tag" content="白嫖机场">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="我爱白嫖——提供最新、安全、免费的VPN和机场推荐" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+
+  <meta name="google-site-verification" content="aH851F92gNj2VQSV3o4uDaXBVIwNG1q5aHBKeBlBceQ" />
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5400876400049616"
+     crossorigin="anonymous"></script>
+     
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+<!-- 展示广告 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5400876400049616"
+     data-ad-slot="4680496511"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">我爱白嫖——提供最新、安全、免费的VPN和机场推荐</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">vpn</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://waiyiyuyan.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-public-nodes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/01/27/public-nodes/" class="article-date">
+  <time class="dt-published" datetime="2026-01-27T13:11:56.000Z" itemprop="datePublished">2026-01-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%9C%BA/">机场</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      告别付费：利用 AutoMergePublicNodes 开启免费科学上网之旅
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在如今的互联网环境下，一个稳定且高速的科学上网环境几乎是刚需。虽然市面上有很多付费机场，但对于只是偶尔查询资料、学生党或者追求“白嫖”乐趣的同学来说，寻找免费且优质的节点也是一种不错的选择。</p>
+<p>今天我要介绍的是 GitHub 上一个开源项目：<strong>AutoMergePublicNodes</strong>。</p>
+<span id="more"></span>
+
+<h2 id="什么是-AutoMergePublicNodes？"><a href="#什么是-AutoMergePublicNodes？" class="headerlink" title="什么是 AutoMergePublicNodes？"></a>什么是 AutoMergePublicNodes？</h2><p><strong>AutoMergePublicNodes</strong> 是一个自动化的节点搜集与合并工具。它的核心逻辑非常简单且强大：</p>
+<ul>
+<li><strong>自动抓取</strong>：定时从互联网上公开的各种渠道（如 GitHub 仓库、公开订阅链接等）抓取最新的节点信息。</li>
+<li><strong>自动合并</strong>：将抓取到的各种格式（SS、SSR、V2Ray、Trojan、Hysteria2 等）的节点进行汇总。</li>
+<li><strong>持续更新</strong>：该项目通过 GitHub Actions 每隔几小时就会更新一次，确保提供的订阅链接中的节点始终可用。</li>
+</ul>
+<hr>
+<h2 id="如何“白嫖”这些免费节点？"><a href="#如何“白嫖”这些免费节点？" class="headerlink" title="如何“白嫖”这些免费节点？"></a>如何“白嫖”这些免费节点？</h2><p>该项目最大的优点在于：<strong>你不需要自己搭建任何服务器，只需要把订阅地址复制到你的客户端即可。</strong></p>
+<h3 id="第一步：获取订阅链接"><a href="#第一步：获取订阅链接" class="headerlink" title="第一步：获取订阅链接"></a>第一步：获取订阅链接</h3><p>直接访问项目的 GitHub 主页，在 <code>README.md</code> 文件中，作者已经为我们准备好了各种工具对应的订阅转换链接。你可以根据你使用的客户端选择对应的链接：</p>
+<ol>
+<li><strong>Clash 订阅地址</strong> (推荐使用):<br><code>https://fastly.jsdelivr.net/gh/chengaopan/AutoMergePublicNodes@master/list.yml</code></li>
+<li><strong>V2Ray&#x2F;Base64 订阅地址</strong>:<br><code>https://fastly.jsdelivr.net/gh/chengaopan/AutoMergePublicNodes@master/list.txt</code></li>
+<li><strong>Hysteria2 专用订阅</strong>:<br><code>https://fastly.jsdelivr.net/gh/chengaopan/AutoMergePublicNodes@master/list_raw.txt</code></li>
+</ol>
+<blockquote>
+<p><strong>小贴士</strong>：如果 <code>jsdelivr</code> 链接在国内访问缓慢，可以将域名更换为 <code>raw.githubusercontent.com</code> 的国内镜像加速。</p>
+</blockquote>
+<h3 id="第二步：配置客户端"><a href="#第二步：配置客户端" class="headerlink" title="第二步：配置客户端"></a>第二步：配置客户端</h3><p>根据你使用的设备，将上述链接填入相应的软件中：</p>
+<ul>
+<li><strong>Windows&#x2F;macOS</strong>: 推荐使用 <strong>Clash Verge (Rev)</strong> 或 <strong>Clash for Windows</strong>。在“配置(Profiles)”中粘贴链接并下载即可。</li>
+<li><strong>Android</strong>: 推荐使用 <strong>ClashMetaForAndroid</strong> 或 <strong>v2rayNG</strong>。</li>
+<li><strong>iOS</strong>: 推荐使用 <strong>Shadowrocket (小火箭)</strong> 或 <strong>Stash</strong>。</li>
+</ul>
+<h3 id="第三步：节点选择与延迟测试"><a href="#第三步：节点选择与延迟测试" class="headerlink" title="第三步：节点选择与延迟测试"></a>第三步：节点选择与延迟测试</h3><p>由于是公开节点，难免会有部分节点因负载过高或失效而连接失败。</p>
+<ol>
+<li>下载完配置文件后，点击<strong>“延迟测试”</strong>或<strong>“测速”</strong>。</li>
+<li>按照延迟从低到高排序，选择一个延迟较低且带有“自动选择”或具体国别标识的节点。</li>
+<li>开启代理模式（建议使用“规则模式”或“绕过中国大陆”），即可畅游网络。</li>
+</ol>
+<hr>
+<h2 id="进阶玩法：打造自己的订阅"><a href="#进阶玩法：打造自己的订阅" class="headerlink" title="进阶玩法：打造自己的订阅"></a>进阶玩法：打造自己的订阅</h2><p>如果你担心公开的订阅链接因为人多而变慢，你甚至可以 <strong>Fork</strong> 这个项目。</p>
+<ol>
+<li>在 GitHub 上 Fork <code>chengaopan/AutoMergePublicNodes</code>。</li>
+<li>启用你仓库中的 <strong>GitHub Actions</strong>。</li>
+<li>你可以在 <code>sources.list</code> 中加入你私藏的免费节点源。</li>
+<li>从此，你将拥有一个专属于你自己的、定时更新的免费节点池。</li>
+</ol>
+<hr>
+<h2 id="注意事项（白嫖党必读）"><a href="#注意事项（白嫖党必读）" class="headerlink" title="注意事项（白嫖党必读）"></a>注意事项（白嫖党必读）</h2><ol>
+<li><strong>隐私安全</strong>：公开节点由热心网友或机器人搜集，<strong>切记不要在连接此类节点时登录银行网卡、输入涉及极度私密的账号密码</strong>。建议仅用于查阅资料、看 Youtube、刷推特等。</li>
+<li><strong>备用方案</strong>：免费节点具有时效性，建议收藏该项目的 GitHub 地址，万一当前的订阅链接失效，可以第一时间获取最新的发布地址。</li>
+<li><strong>按需使用</strong>：虽然是免费的，但请节约公共资源，不要长时间占用大带宽进行超大规模下载。</li>
+</ol>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>感谢 <code>chengaopan</code> 同学的开源贡献，让大家能够通过自动化的方式享受到互联网的便利。如果你觉得这个项目好用，不妨去 GitHub 给作者点个 <strong>Star</strong> 支持一下！</p>
+<p><strong>项目地址：</strong> <a target="_blank" rel="noopener" href="https://github.com/chengaopan/AutoMergePublicNodes">https://github.com/chengaopan/AutoMergePublicNodes</a></p>
+
+        
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5400876400049616"
+     data-ad-slot="3064162511"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://waiyiyuyan.github.io/2026/01/27/public-nodes/" data-id="cmkwme7wy000060tqdxuf79j1" data-title="告别付费：利用 AutoMergePublicNodes 开启免费科学上网之旅" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoMergePublicNodes/" rel="tag">AutoMergePublicNodes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Clash%E8%AE%A2%E9%98%85/" rel="tag">Clash订阅</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%8D%E8%B4%B9V2Ray/" rel="tag">免费V2Ray</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%8D%E8%B4%B9%E6%9C%BA%E5%9C%BA/" rel="tag">免费机场</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%99%BD%E5%AB%96%E6%9C%BA%E5%9C%BA/" rel="tag">白嫖机场</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E5%90%88%E5%B9%B6%E8%8A%82%E7%82%B9/" rel="tag">自动合并节点</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/01/24/freenodes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">2026 最新免费节点获取指南：FreeNodes 自动更新订阅，支持 4K/ChatGPT</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/vpn/">vpn</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%92%E8%81%94%E7%BD%91%E8%B5%84%E6%BA%90/">互联网资源</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%9C%BA/">机场</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%BA%90%E5%AF%BC%E8%88%AA/">资源导航</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apple-ID/" rel="tag">Apple ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AutoMergePublicNodes/" rel="tag">AutoMergePublicNodes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Clash%E8%AE%A2%E9%98%85/" rel="tag">Clash订阅</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RuTracker/" rel="tag">RuTracker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/" rel="tag">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E8%B4%B9V2Ray/" rel="tag">免费V2Ray</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E8%B4%B9%E6%9C%BA%E5%9C%BA/" rel="tag">免费机场</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E8%B4%B9%E8%8A%82%E7%82%B9/" rel="tag">免费节点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="tag">文件传输</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E4%B8%8B%E8%BD%BD/" rel="tag">游戏下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BD%E5%AB%96%E6%9C%BA%E5%9C%BA/" rel="tag">白嫖机场</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%A2%E8%AD%A6/" rel="tag">红警</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E5%90%88%E5%B9%B6%E8%8A%82%E7%82%B9/" rel="tag">自动合并节点</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Apple-ID/" style="font-size: 10px;">Apple ID</a> <a href="/tags/AutoMergePublicNodes/" style="font-size: 10px;">AutoMergePublicNodes</a> <a href="/tags/Clash%E8%AE%A2%E9%98%85/" style="font-size: 10px;">Clash订阅</a> <a href="/tags/RuTracker/" style="font-size: 10px;">RuTracker</a> <a href="/tags/cloudflare/" style="font-size: 10px;">cloudflare</a> <a href="/tags/vpn/" style="font-size: 20px;">vpn</a> <a href="/tags/%E5%85%8D%E8%B4%B9V2Ray/" style="font-size: 10px;">免费V2Ray</a> <a href="/tags/%E5%85%8D%E8%B4%B9%E6%9C%BA%E5%9C%BA/" style="font-size: 10px;">免费机场</a> <a href="/tags/%E5%85%8D%E8%B4%B9%E8%8A%82%E7%82%B9/" style="font-size: 10px;">免费节点</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" style="font-size: 10px;">文件传输</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E4%B8%8B%E8%BD%BD/" style="font-size: 15px;">游戏下载</a> <a href="/tags/%E7%99%BD%E5%AB%96%E6%9C%BA%E5%9C%BA/" style="font-size: 10px;">白嫖机场</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 15px;">科学上网</a> <a href="/tags/%E7%BA%A2%E8%AD%A6/" style="font-size: 10px;">红警</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%90%88%E5%B9%B6%E8%8A%82%E7%82%B9/" style="font-size: 10px;">自动合并节点</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">一月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">十二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">十一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/01/27/public-nodes/">告别付费：利用 AutoMergePublicNodes 开启免费科学上网之旅</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/24/freenodes/">2026 最新免费节点获取指南：FreeNodes 自动更新订阅，支持 4K/ChatGPT</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/22/luluyun/">白嫖机场推荐：0元解锁30天100GB！水豚噜噜试用套餐实测</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/19/99yun/">白嫖机场推荐：99云 0元白嫖100GB流量！解锁ChatGPT</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/19/rutracker/">互联网的“诺亚方舟”：俄罗斯最大资源站 RuTracker</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 waiyiyuyan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<!-- 橱窗广告 -->
+  
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-format="autorelaxed"
+      data-ad-client="ca-pub-5400876400049616"
+      data-ad-slot="9222376757"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</body>
+</html>
