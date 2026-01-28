@@ -6,7 +6,7 @@
   <link href="https://waiyiyuyan.github.io/atom.xml" rel="self"/>
   
   <link href="https://waiyiyuyan.github.io/"/>
-  <updated>2026-01-27T13:17:29.165Z</updated>
+  <updated>2026-01-28T04:25:37.106Z</updated>
   <id>https://waiyiyuyan.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>有没有一款无广告、算法可控的知乎客户端？这款3MB的开源工具，彻底摆脱信息茧房</title>
+    <link href="https://waiyiyuyan.github.io/2026/01/28/zhihu/"/>
+    <id>https://waiyiyuyan.github.io/2026/01/28/zhihu/</id>
+    <published>2026-01-28T04:20:31.000Z</published>
+    <updated>2026-01-28T04:25:37.106Z</updated>
+    
+    <content type="html"><![CDATA[<p>用过知乎官方客户端的朋友大概率都有同感：打开App，首页一半是推广软文、带货内容，盐选专栏的弹窗更是防不胜防；刷到的推荐内容永远绕着算法认定的「你感兴趣的」转，想跳出信息茧房比登天还难。</p><p>直到我发现了「zhihu-plus-plus」——一款专为Android用户打造的知乎第三方客户端，3MB的体积，无广告、可定制算法，把浏览知乎的主动权重新交回用户手里。</p><span id="more"></span><h2 id="为什么说它能解决知乎官方客户端的核心痛点？"><a href="#为什么说它能解决知乎官方客户端的核心痛点？" class="headerlink" title="为什么说它能解决知乎官方客户端的核心痛点？"></a>为什么说它能解决知乎官方客户端的核心痛点？</h2><h3 id="1-告别广告轰炸，回归纯粹的内容浏览"><a href="#1-告别广告轰炸，回归纯粹的内容浏览" class="headerlink" title="1. 告别广告轰炸，回归纯粹的内容浏览"></a>1. 告别广告轰炸，回归纯粹的内容浏览</h3><p>官方客户端动辄100+MB的体积里，藏了太多广告、推广模块，刷回答时冷不丁跳出的带货链接、盐选专栏推荐，总能瞬间打断阅读节奏。</p><p>而zhihu-plus-plus从底层剥离了这些冗余内容：推广软文、推销带货、盐选专栏相关弹窗全部移除，打开App就是纯纯的问答和文章，不用在广告堆里找内容，浏览效率直接翻倍。3MB的体积对比官方110MB+的安装包，也让低配手机运行起来毫无压力。</p><h3 id="2-本地推荐算法，彻底摆脱平台的「信息茧房」"><a href="#2-本地推荐算法，彻底摆脱平台的「信息茧房」" class="headerlink" title="2. 本地推荐算法，彻底摆脱平台的「信息茧房」"></a>2. 本地推荐算法，彻底摆脱平台的「信息茧房」</h3><p>这是我觉得最核心的亮点——它独创了<strong>本地推荐算法</strong>。</p><p>不同于知乎官方把你的浏览数据、兴趣标签攥在手里，用中心化算法投喂内容，这款工具依靠爬虫获取内容后，所有推荐逻辑都在本地完成：</p><ul><li>算法完全独立于知乎官方，不用怕自己的浏览行为被追踪分析；</li><li>支持自定义推荐权重（比如你可以调高「科技」话题权重，调低「娱乐」权重）；</li><li>还能切换手机端&#x2F;网页端&#x2F;混合模式的推荐方案，甚至可以选择「登录&#x2F;非登录状态」的推荐内容，想跳出信息茧房，只需要调整几个参数就行。</li></ul><p>简单说，不再是平台喂什么你看什么，而是你想看到什么，就可以让算法推什么。</p><h3 id="3-精细化屏蔽，把不喜欢的内容全挡在门外"><a href="#3-精细化屏蔽，把不喜欢的内容全挡在门外" class="headerlink" title="3. 精细化屏蔽，把不喜欢的内容全挡在门外"></a>3. 精细化屏蔽，把不喜欢的内容全挡在门外</h3><p>如果说无广告是基础，那精细化屏蔽就是锦上添花：</p><ul><li>自定义屏蔽词：比如不想看「职场PUA」「内卷」相关内容，加个屏蔽词就能自动过滤；</li><li>AI屏蔽回答：智能识别低质、水文类回答，不用手动划走；</li><li>屏蔽用户&#x2F;话题：遇到总发无关内容的博主，或者不感兴趣的话题，一键屏蔽，从此首页清净。</li></ul><h2 id="除了核心体验，这些细节也很加分"><a href="#除了核心体验，这些细节也很加分" class="headerlink" title="除了核心体验，这些细节也很加分"></a>除了核心体验，这些细节也很加分</h2><p>除了上面说的核心功能，它还补齐了日常使用的关键体验：</p><ul><li>支持手机验证码、扫码、手动设置Cookie三种登录方式；</li><li>回答页长按就能保存无水印图片，不用再截图裁剪；</li><li>自带朗读功能，通勤路上可以「听」回答、听文章；</li><li>还有历史记录、收藏夹、评论区、表情包等基础功能，甚至能扫码提取网址、Wi-Fi密码，兼顾实用性。</li></ul><h2 id="最后想说的话"><a href="#最后想说的话" class="headerlink" title="最后想说的话"></a>最后想说的话</h2><p>这款工具是开源项目（地址：<a href="https://github.com/zly2006/zhihu-plus-plus">https://github.com/zly2006/zhihu-plus-plus</a>），完全免费使用，开发者的初衷就是「帮助用户从大公司手中夺回选择的权利——不被算法奴役的权利」。<br><img src="/images/zhihu_shit.png" alt="知乎图标"></p><p>当然要提醒一句：它是第三方工具，使用时请遵守知乎的平台规范和相关法规，尊重内容创作者的权益。</p><p>如果你也厌倦了知乎官方客户端的广告和算法绑架，又恰好是Android用户，不妨试试这款轻量又好用的工具——毕竟，浏览内容的体验，本该由自己说了算。</p>]]></content>
+    
+    
+    <summary type="html">zhihu-plus-plus：安卓无广告知乎客户端，3MB 体积，本地推荐算法，屏蔽广告 / 软文 / 盐选，自定义推荐权重</summary>
+    
+    
+    
+    <category term="app" scheme="https://waiyiyuyan.github.io/categories/app/"/>
+    
+    
+    <category term="知乎" scheme="https://waiyiyuyan.github.io/tags/%E7%9F%A5%E4%B9%8E/"/>
+    
+  </entry>
   
   <entry>
     <title>告别付费：利用 AutoMergePublicNodes 开启免费科学上网之旅</title>
@@ -422,27 +443,6 @@
     
     
     <category term="cloudflare" scheme="https://waiyiyuyan.github.io/tags/cloudflare/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>白嫖机场推荐：Ezyun EZ 云机场｜0 元领 100GB 直连套餐</title>
-    <link href="https://waiyiyuyan.github.io/2025/12/06/ezyun/"/>
-    <id>https://waiyiyuyan.github.io/2025/12/06/ezyun/</id>
-    <published>2025-12-06T00:55:17.000Z</published>
-    <updated>2026-01-22T11:06:06.220Z</updated>
-    
-    <content type="html"><![CDATA[<p>ezyun EZ 云机场目前推出了一个超值的活动，你只需要使用我的专属优惠券，就能<strong>0 元</strong>购得一个非常实用的<strong>“直连白嫖套餐”</strong>！</p><span id="more"></span><ul><li><strong>套餐内容：</strong> 100GB 流量 &#x2F; 30 天</li><li><strong>购买价格：</strong> 0 元！</li><li><strong>优惠券码：</strong> <code>EZAA100</code></li></ul><p>🚨 <strong>注意！</strong> 这个优惠券<strong>只能使用 1000 次</strong>，数量有限，先到先得！手慢无！</p><p><strong>👉 注册地址：</strong> <a href="https://eyun.org/#/register?code=F1VPS7dh">https://eyun.org/#/register?code=F1VPS7dh</a></p><hr><p>选择这个套餐进行购买<br><img src="/images/ezyun/ezyun3.png" alt="直连白嫖套餐"></p><ul><li><strong>节点位置：</strong> 涵盖了<strong>日本</strong>、<strong>香港</strong>、<strong>美国</strong>等热门地区。</li><li><strong>协议类型：</strong> 支持 <strong>Hysteria</strong> 和 <strong>VLESS</strong> 两种主流、高效的协议，保证连接的稳定性和穿透力。</li></ul><p>我只测试了日本节点，在所有节点中，<strong>日本节点</strong>的体验尤为出色：</p><ul><li><strong>延迟表现：</strong> <strong>延迟最低</strong>，这意味着你在浏览网页、观看视频或者进行轻量级网络游戏时，响应速度会非常快。</li><li><strong>速度测试：</strong> 表现稳定，上传和下载速度都能达到 <strong>50Mbps 左右</strong>，对于观看 1080P 甚至 4K 视频都毫无压力。</li></ul><p><img src="/images/ezyun/ezyun2.png" alt="节点测速"><br><img src="/images/ezyun/ezyun.png" alt="IP纯净度检测"></p>]]></content>
-    
-    
-    <summary type="html">Ezyun EZ 云机场限时推出 0 元白嫖活动，通过优惠券可免费领取 100GB 直连流量套餐，使用周期 30 天，支持 Hysteria 和 VLESS 协议，节点覆盖日本、香港、美国，适合测试和日常上网使用。</summary>
-    
-    
-    
-    <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
-    
-    
-    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
     
   </entry>
   
