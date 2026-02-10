@@ -6,7 +6,7 @@
   <link href="https://waiyiyuyan.github.io/atom.xml" rel="self"/>
   
   <link href="https://waiyiyuyan.github.io/"/>
-  <updated>2026-02-09T11:16:24.357Z</updated>
+  <updated>2026-02-10T03:43:18.438Z</updated>
   <id>https://waiyiyuyan.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>小而美机场评测：50GB 免费套餐值不值得用？</title>
+    <link href="https://waiyiyuyan.github.io/2026/02/10/xiaoermei/"/>
+    <id>https://waiyiyuyan.github.io/2026/02/10/xiaoermei/</id>
+    <published>2026-02-10T03:37:41.000Z</published>
+    <updated>2026-02-10T03:43:18.438Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近看到一个名字挺有意思的机场 —— <strong>小而美</strong>。名字听起来就走精品路线，不是那种动不动上万用户的大场子，而是偏向<strong>小规模、高质量线路</strong>的类型。我简单体验了一下，把关键信息和使用感受整理给大家参考。</p><span id="more"></span><hr><h2 id="📦-套餐信息"><a href="#📦-套餐信息" class="headerlink" title="📦 套餐信息"></a>📦 套餐信息</h2><ul><li><strong>机场名称</strong>：小而美  </li><li><strong>注册地址</strong>：<a href="https://luv.xem.lat/#/register?code=nWX6JTO3">https://luv.xem.lat/#/register?code=nWX6JTO3</a>  </li><li><strong>优惠方式</strong>：使用优惠券 <strong><code>welcome</code></strong>  </li><li><strong>套餐价格</strong>：0 元  </li><li><strong>流量额度</strong>：<strong>50GB &#x2F; 30 天</strong></li></ul><p>对于轻度用户来说，这个流量完全够日常使用，比如刷网页、看看视频、查资料之类。</p><p><img src="/images/xiaoermei/subscription.png" alt="选择这个订阅使用白嫖优惠码进行购买"></p><hr><h2 id="🌏-节点分布"><a href="#🌏-节点分布" class="headerlink" title="🌏 节点分布"></a>🌏 节点分布</h2><p>目前提供的节点地区不多，但都是热门线路：</p><p><img src="/images/xiaoermei/nodes.png" alt="节点信息"></p><hr><h2 id="🚀-线路质量与负载"><a href="#🚀-线路质量与负载" class="headerlink" title="🚀 线路质量与负载"></a>🚀 线路质量与负载</h2><p>根据实际使用和观察：</p><ul><li><p><strong>IP 质量：不错</strong><br>解锁能力和稳定性都还可以，属于干净 IP 类型，不是那种明显被滥用的线路。</p></li><li><p><strong>共享人数：约 10 – 100 人</strong><br>这个区间算是比较理想的负载水平。<br>不像大机场动辄几千人挤一条线路，小而美整体更偏向<strong>低拥堵、小规模共享</strong>。</p></li></ul><p><img src="/images/xiaoermei/ping0.cc.png" alt="IP纯净度检测"></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;最近看到一个名字挺有意思的机场 —— &lt;strong&gt;小而美&lt;/strong&gt;。名字听起来就走精品路线，不是那种动不动上万用户的大场子，而是偏向&lt;strong&gt;小规模、高质量线路&lt;/strong&gt;的类型。我简单体验了一下，把关键信息和使用感受整理给大家参考。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
+    
+    
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
+  </entry>
   
   <entry>
     <title>白嫖机场：注册即送 200GB，但风险较高</title>
@@ -415,27 +436,6 @@
     
     
     <summary type="html">注册即送100GB免费流量，畅享30天高速VPN服务，支持多个国家节点，解锁ChatGPT与Gemini，体验稳定加速，立即注册，无需优惠码。</summary>
-    
-    
-    
-    <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
-    
-    
-    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>0 元白嫖 80GB 高速流量套餐 | 低延迟 Hysteria 协议，覆盖欧美节点</title>
-    <link href="https://waiyiyuyan.github.io/2025/12/19/dabache/"/>
-    <id>https://waiyiyuyan.github.io/2025/12/19/dabache/</id>
-    <published>2025-12-19T14:29:23.000Z</published>
-    <updated>2026-01-18T10:54:54.399Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天分享一个超给力的福利！<strong>大巴车 (dabache)</strong> 使用专属优惠码可以 <strong>0 元</strong> 开启包月基础套餐。</p><span id="more"></span><hr><h3 id="🌟-套餐亮点"><a href="#🌟-套餐亮点" class="headerlink" title="🌟 套餐亮点"></a>🌟 套餐亮点</h3><ul><li><strong>价格：</strong> 0 元（需使用优惠码）</li><li><strong>流量：</strong> 80GB &#x2F; 30 天</li><li><strong>连接数：</strong> 支持 <strong>2 台设备</strong>同时在线</li><li><strong>注册门槛：</strong> 极低！<strong>无需邮箱验证</strong>，保护隐私且快速。</li></ul><h3 id="🚀-节点信息"><a href="#🚀-节点信息" class="headerlink" title="🚀 节点信息"></a>🚀 节点信息</h3><p>该机场节点覆盖广泛，且采用了高性能的 <strong>Hysteria</strong> 协议，在各种网络环境下表现都很出色：</p><ul><li><strong>节点位置：</strong> 英国、俄罗斯、加拿大、美国、德国、荷兰</li><li><strong>协议类型：</strong> Hysteria（UDP 加速，低延迟）</li></ul><h3 id="🛠️-领取流程"><a href="#🛠️-领取流程" class="headerlink" title="🛠️ 领取流程"></a>🛠️ 领取流程</h3><ol><li><strong>注册账号：</strong> <a href="https://dabache.top/#/register?code=N546uxiP">点击进入大白车注册地址</a></li><li><strong>选择套餐：</strong> 进入商店&#x2F;购买订阅，选择 <strong>“包月基础套餐”</strong>。</li><li><strong>使用优惠码：</strong> 在支付结账页面输入优惠码 <code>dabache</code>。</li><li><strong>0 元激活：</strong> 确认金额变为 0 后点击购买，即可获得 80GB 订阅地址。</li></ol><blockquote><p><strong>温馨提示：</strong> &gt; 机场优惠活动通常有截止时间或名额限制。因为注册不需要验证邮箱，建议先动手注册一个备用。</p></blockquote>]]></content>
-    
-    
-    <summary type="html">限时领取80GB免费流量，使用Hysteria协议提供极速体验，支持欧美多个节点，无需邮箱验证，立即注册享受低延迟连接。</summary>
     
     
     
