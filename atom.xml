@@ -6,7 +6,7 @@
   <link href="https://waiyiyuyan.github.io/atom.xml" rel="self"/>
   
   <link href="https://waiyiyuyan.github.io/"/>
-  <updated>2026-02-10T03:43:18.438Z</updated>
+  <updated>2026-02-22T00:32:07.667Z</updated>
   <id>https://waiyiyuyan.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>免费薅羊毛：Tera Cloud 试用机场测评，50GB 流量香不香？</title>
+    <link href="https://waiyiyuyan.github.io/2026/02/22/teracloud/"/>
+    <id>https://waiyiyuyan.github.io/2026/02/22/teracloud/</id>
+    <published>2026-02-22T00:24:25.000Z</published>
+    <updated>2026-02-22T00:32:07.667Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天推荐一家名为 <strong>Tera Cloud</strong> 的新机场，主打“注册即送”的福利。对于需要备用节点或者追求 IP 纯净度的朋友来说，这 50GB 的免费流量还是值得领一下的。</p><span id="more"></span><h3 id="🎁-核心福利：手慢无"><a href="#🎁-核心福利：手慢无" class="headerlink" title="🎁 核心福利：手慢无"></a>🎁 核心福利：手慢无</h3><ul><li><strong>赠送内容</strong>：注册即送 <strong>50GB</strong> “体验套餐”</li><li><strong>有效期限</strong>：30 天</li><li><strong>协议类型</strong>：<strong>VLESS</strong>（目前抗封锁能力较强的主流协议）</li><li><strong>注册地址</strong>：<a href="https://amz2.awsy.top/#/register?code=hE9nUlfA">点击直达 Tera Cloud 领取 50GB</a></li></ul><hr><h3 id="🌐-节点实测：别被名字骗了"><a href="#🌐-节点实测：别被名字骗了" class="headerlink" title="🌐 节点实测：别被名字骗了"></a>🌐 节点实测：别被名字骗了</h3><p>官方面板上标注了日本、新加坡、香港和美国四个位置，但我用<a href="https://ping0.cc/">ping0.cc</a>测了一下，发现了一些真相：</p><table><thead><tr><th>标称位置</th><th>Ping0.cc 实测结果</th><th>IP 纯净度</th></tr></thead><tbody><tr><td>香港 &#x2F; 日本 &#x2F; 新加坡</td><td><strong>基本全是美国落地</strong></td><td>优秀 (Clean)</td></tr><tr><td>美国</td><td>美国</td><td>优秀 (Clean)</td></tr></tbody></table><p><img src="/images/teracloud.png" alt="IP纯净度检测"></p><hr><h3 id="🚀-使用体验：稳健但不飞速"><a href="#🚀-使用体验：稳健但不飞速" class="headerlink" title="🚀 使用体验：稳健但不飞速"></a>🚀 使用体验：稳健但不飞速</h3><ul><li><strong>使用人数</strong>：目前极度小众，实测当前在线人数在 <strong>10 人以下</strong>。</li><li><strong>测速表现</strong>：表现比较<strong>平庸</strong>。虽然人少，但带宽上限似乎有一定限制，不要指望它能跑满你的千兆光纤。</li><li><strong>解锁能力</strong>：这是它最大的卖点！由于 IP 纯净度高，<strong>流媒体</strong>（如 Netflix, Disney+）和 <strong>AI 工具</strong>（ChatGPT, Claude）基本都能正常访问。</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;今天推荐一家名为 &lt;strong&gt;Tera Cloud&lt;/strong&gt; 的新机场，主打“注册即送”的福利。对于需要备用节点或者追求 IP 纯净度的朋友来说，这 50GB 的免费流量还是值得领一下的。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
+    
+    
+    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
+    
+  </entry>
   
   <entry>
     <title>小而美机场评测：50GB 免费套餐值不值得用？</title>
@@ -415,27 +436,6 @@
     
     
     <summary type="html">宝可梦机场入门精灵球套餐（60G/30天）。</summary>
-    
-    
-    
-    <category term="机场" scheme="https://waiyiyuyan.github.io/categories/%E6%9C%BA%E5%9C%BA/"/>
-    
-    
-    <category term="vpn" scheme="https://waiyiyuyan.github.io/tags/vpn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>白嫖机场推荐：注册即送100GB/30天套餐｜高速VPN服务，解锁ChatGPT和Gemini</title>
-    <link href="https://waiyiyuyan.github.io/2025/12/23/ftclash/"/>
-    <id>https://waiyiyuyan.github.io/2025/12/23/ftclash/</id>
-    <published>2025-12-23T00:34:53.000Z</published>
-    <updated>2026-01-18T10:51:08.510Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天我注册了一个提供免费流量的VPN服务，注册即送 <strong>100GB 免费流量</strong>，有效期为 <strong>30天</strong>。这个套餐无需优惠码，注册完成后直接获得。对于需要临时加速或解锁访问的用户来说，这无疑是一个很好的选择。</p><span id="more"></span><h3 id="节点位置"><a href="#节点位置" class="headerlink" title="节点位置"></a>节点位置</h3><ul><li>美国</li><li>香港</li><li>日本</li><li>台湾</li></ul><p>还有一些其他国家，在我这个地区是 ping 不通，所以就不写了。用户可以根据自己的需求选择最佳节点进行连接。</p><h3 id="注册地址-FTClash"><a href="#注册地址-FTClash" class="headerlink" title="注册地址 : FTClash"></a>注册地址 : <a href="https://dash.f9vip.net/#/register?code=B6azQ9cJ">FTClash</a></h3><h3 id="协议类型"><a href="#协议类型" class="headerlink" title="协议类型"></a>协议类型</h3><ul><li><strong>Hysteria</strong></li><li><strong>VMess</strong></li></ul><p>这两种协议都能为用户提供稳定且高效的连接，适合不同使用需求的用户。</p><h3 id="测试体验"><a href="#测试体验" class="headerlink" title="测试体验"></a>测试体验</h3><p>我发现 <strong>日本节点</strong> 的速度最快，IP最纯净，表现非常出色。</p><p><img src="/images/ftclash/1.png" alt="IP测速与纯净度"></p><p>此外，使用这个VPN还能成功解锁 <strong>ChatGPT</strong> 和 <strong>Gemini</strong>，对于需要访问这些服务的用户来说，简直是一个福利。</p>]]></content>
-    
-    
-    <summary type="html">注册即送100GB免费流量，畅享30天高速VPN服务，支持多个国家节点，解锁ChatGPT与Gemini，体验稳定加速，立即注册，无需优惠码。</summary>
     
     
     
