@@ -22,7 +22,7 @@
 <meta property="og:description" content="本次分享一套全功能在线留言板解决方案，技术栈采用 Cloudflare Workers + D1 SQLite，无需本地服务器，依托 Cloudflare 边缘网络即可快速上线。 程序自带随机昵称生成、帖子发布、多层回复、@好友通知、消息红点提醒、回复折叠、帖子删除等交互功能。整套程序共依赖三张数据表，也是项目最关键的部分。本文重点对每张数据表的用途、字段、约束、索引进行详细说明，同时提供一键建表">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-07T00:41:47.000Z">
-<meta property="article:modified_time" content="2026-06-07T13:08:53.342Z">
+<meta property="article:modified_time" content="2026-06-07T13:11:17.164Z">
 <meta property="article:author" content="waiyiyuyan">
 <meta property="article:tag" content="留言板">
 <meta name="twitter:card" content="summary">
@@ -132,6 +132,7 @@
       
         <p>本次分享一套全功能在线留言板解决方案，技术栈采用 Cloudflare Workers + D1 SQLite，无需本地服务器，依托 Cloudflare 边缘网络即可快速上线。</p>
 <p>程序自带随机昵称生成、帖子发布、多层回复、@好友通知、消息红点提醒、回复折叠、帖子删除等交互功能。整套程序共依赖三张数据表，也是项目最关键的部分。本文重点对每张数据表的用途、字段、约束、索引进行详细说明，同时提供一键建表 SQL 语句，前端 JS 源码可直接复制使用，帮助大家快速搭建、维护这款留言板。</p>
+<p>代码是不定时更新的。也许你不巧赶在我更新代码还没来的急上传到博客，就部署好了，可能会报错。不过不要着急，我测试好了，就会把代码贴到这里。</p>
 <span id="more"></span>
 
 <h2 id="一、数据表总览"><a href="#一、数据表总览" class="headerlink" title="一、数据表总览"></a>一、数据表总览</h2><p>整套程序共使用 3 张数据表，分工明确，缺一不可：</p>
