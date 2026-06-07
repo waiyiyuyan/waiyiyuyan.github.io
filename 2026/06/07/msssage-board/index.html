@@ -22,7 +22,7 @@
 <meta property="og:description" content="本次分享一套全功能在线留言板解决方案，技术栈采用 Cloudflare Workers + D1 SQLite，无需本地服务器，依托 Cloudflare 边缘网络即可快速上线。 程序自带随机昵称生成、帖子发布、多层回复、@好友通知、消息红点提醒、回复折叠、帖子删除等交互功能。整套程序共依赖三张数据表，也是项目最关键的部分。本文重点对每张数据表的用途、字段、约束、索引进行详细说明，同时提供一键建表">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-07T00:41:47.000Z">
-<meta property="article:modified_time" content="2026-06-07T04:50:19.756Z">
+<meta property="article:modified_time" content="2026-06-07T11:04:53.743Z">
 <meta property="article:author" content="waiyiyuyan">
 <meta property="article:tag" content="留言板">
 <meta name="twitter:card" content="summary">
@@ -257,7 +257,7 @@
 
 <hr>
 <h3 id="3-消息通知表-notify"><a href="#3-消息通知表-notify" class="headerlink" title="3. 消息通知表 notify"></a>3. 消息通知表 <code>notify</code></h3><p><strong>用途</strong>：存储 @昵称 产生的提醒消息，支持标记已读功能，为消息铃铛提供数据源。</p>
-<h4 id="字段明细-2"><a href="#字段明细-2" class="headerlink" title="字段明细"></a>字段明细</h4><table>
+<h4 id="字段明细-2"><a href="#字段明细-2" class="headerlink" title="字段明细"></a>字段明细</h4><h1 id="notify-表字段说明（Markdown-完整版，对齐线上实际结构）"><a href="#notify-表字段说明（Markdown-完整版，对齐线上实际结构）" class="headerlink" title="notify 表字段说明（Markdown 完整版，对齐线上实际结构）"></a>notify 表字段说明（Markdown 完整版，对齐线上实际结构）</h1><table>
 <thead>
 <tr>
 <th>字段名</th>
@@ -270,7 +270,7 @@
 <tbody><tr>
 <td><code>id</code></td>
 <td><code>INTEGER</code></td>
-<td>主键、自增、非空</td>
+<td>主键、自增</td>
 <td>通知唯一 ID</td>
 <td>标记已读接口根据此 ID 更新数据</td>
 </tr>
@@ -289,49 +289,56 @@
 <td>接收通知的用户，消息列表按此字段筛选</td>
 </tr>
 <tr>
+<td><code>is_read</code></td>
+<td><code>INTEGER</code></td>
+<td>默认 0</td>
+<td>已读状态</td>
+<td>0 &#x3D; 未读（小红点），1 &#x3D; 已读（灰色文字）</td>
+</tr>
+<tr>
+<td><code>create_time</code></td>
+<td><code>TIMESTAMP</code></td>
+<td>默认当前时间</td>
+<td>通知生成时间</td>
+<td>前端展示通知时间</td>
+</tr>
+<tr>
 <td><code>reply_id</code></td>
 <td><code>INTEGER</code></td>
-<td>非空</td>
+<td>无</td>
 <td>关联回复 ID</td>
 <td>跳转消息时精准定位到单条回复</td>
 </tr>
 <tr>
 <td><code>reply_name</code></td>
 <td><code>TEXT</code></td>
-<td>非空</td>
+<td>无</td>
 <td>发起 @的回复人昵称</td>
 <td>前端展示「XX@了你」</td>
 </tr>
 <tr>
+<td><code>post_title</code></td>
+<td><code>TEXT</code></td>
+<td>无</td>
+<td>主帖标题</td>
+<td>通知列表展示对应帖子标题，区分消息来源</td>
+</tr>
+<tr>
 <td><code>reply_preview</code></td>
 <td><code>TEXT</code></td>
-<td>非空</td>
+<td>无</td>
 <td>回复内容预览</td>
 <td>截取前 20 字，用于通知弹窗展示</td>
 </tr>
-<tr>
-<td><code>is_read</code></td>
-<td><code>INTEGER</code></td>
-<td>非空、默认 0</td>
-<td>已读状态</td>
-<td>0 &#x3D; 未读（小红点），1 &#x3D; 已读（灰色文字）</td>
-</tr>
-<tr>
-<td><code>create_time</code></td>
-<td><code>TEXT</code></td>
-<td>非空、默认当前时间</td>
-<td>通知生成时间</td>
-<td>前端展示通知时间</td>
-</tr>
 </tbody></table>
-<h4 id="建表语句-索引-2"><a href="#建表语句-索引-2" class="headerlink" title="建表语句 + 索引"></a>建表语句 + 索引</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> notify (</span><br><span class="line">    id <span class="type">INTEGER</span> <span class="keyword">PRIMARY KEY</span> AUTOINCREMENT,</span><br><span class="line">    target_msg_id <span class="type">INTEGER</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">    receive_uid TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    reply_id <span class="type">INTEGER</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">    reply_name TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    reply_preview TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    is_read <span class="type">INTEGER</span> <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">    create_time TEXT <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 索引：根据接收人昵称查询通知（高频查询，加速）</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> idx_notify_uid <span class="keyword">ON</span> notify(receive_uid);</span><br></pre></td></tr></table></figure>
+<h4 id="建表语句-索引-2"><a href="#建表语句-索引-2" class="headerlink" title="建表语句 + 索引"></a>建表语句 + 索引</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> notify (</span><br><span class="line">    id <span class="type">INTEGER</span> <span class="keyword">PRIMARY KEY</span> AUTOINCREMENT,</span><br><span class="line">    target_msg_id <span class="type">INTEGER</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">    receive_uid TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    is_read <span class="type">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">    create_time <span class="type">TIMESTAMP</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span>,</span><br><span class="line">    reply_id <span class="type">INTEGER</span>,</span><br><span class="line">    reply_name TEXT,</span><br><span class="line">    post_title TEXT,</span><br><span class="line">    reply_preview TEXT</span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 索引：根据接收人查询通知</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> idx_notify_uid <span class="keyword">ON</span> notify(receive_uid);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>说明：已修复原语句中 <code>reply_preview</code> 重复定义问题，避免执行报错。</p>
 </blockquote>
 <hr>
 <h2 id="三、一键全套建表-SQL（推荐直接使用）"><a href="#三、一键全套建表-SQL（推荐直接使用）" class="headerlink" title="三、一键全套建表 SQL（推荐直接使用）"></a>三、一键全套建表 SQL（推荐直接使用）</h2><p>将下方完整代码复制到 D1 数据库 <code>Query</code> 面板，<strong>一次性执行</strong>，即可完成三张表 + 所有索引的创建。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- ========== 一键创建所有数据表 + 索引（适配当前新版源码） ==========</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> message (</span><br><span class="line">    id <span class="type">INTEGER</span> <span class="keyword">PRIMARY KEY</span> AUTOINCREMENT,</span><br><span class="line">    title TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    name TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    content TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    create_time TEXT <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> idx_message_ct <span class="keyword">ON</span> message(create_time <span class="keyword">DESC</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> reply (</span><br><span class="line">    id <span class="type">INTEGER</span> <span class="keyword">PRIMARY KEY</span> AUTOINCREMENT,</span><br><span class="line">    msg_id <span class="type">INTEGER</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">    r_name TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    r_content TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    create_time TEXT <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> idx_reply_msgid <span class="keyword">ON</span> reply(msg_id);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> notify (</span><br><span class="line">    id <span class="type">INTEGER</span> <span class="keyword">PRIMARY KEY</span> AUTOINCREMENT,</span><br><span class="line">    target_msg_id <span class="type">INTEGER</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">    receive_uid TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    reply_id <span class="type">INTEGER</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">    reply_name TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    reply_preview TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    is_read <span class="type">INTEGER</span> <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">    create_time TEXT <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> idx_notify_uid <span class="keyword">ON</span> notify(receive_uid);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- ========== 一键创建所有数据表 + 索引（适配当前新版源码） ==========</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> message (</span><br><span class="line">    id <span class="type">INTEGER</span> <span class="keyword">PRIMARY KEY</span> AUTOINCREMENT,</span><br><span class="line">    title TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    name TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    content TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    create_time TEXT <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> idx_message_ct <span class="keyword">ON</span> message(create_time <span class="keyword">DESC</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> reply (</span><br><span class="line">    id <span class="type">INTEGER</span> <span class="keyword">PRIMARY KEY</span> AUTOINCREMENT,</span><br><span class="line">    msg_id <span class="type">INTEGER</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">    r_name TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    r_content TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    create_time TEXT <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> idx_reply_msgid <span class="keyword">ON</span> reply(msg_id);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> notify (</span><br><span class="line">    id <span class="type">INTEGER</span> <span class="keyword">PRIMARY KEY</span> AUTOINCREMENT,</span><br><span class="line">    target_msg_id <span class="type">INTEGER</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">    receive_uid TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    is_read <span class="type">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">    create_time <span class="type">TIMESTAMP</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span>,</span><br><span class="line">    reply_id <span class="type">INTEGER</span>,</span><br><span class="line">    reply_name TEXT,</span><br><span class="line">    post_title TEXT,</span><br><span class="line">    reply_preview TEXT</span><br><span class="line">);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> idx_notify_uid <span class="keyword">ON</span> notify(receive_uid);</span><br></pre></td></tr></table></figure>
 
 <hr>
 <h3 id="补充小贴士（运维使用）"><a href="#补充小贴士（运维使用）" class="headerlink" title="补充小贴士（运维使用）"></a>补充小贴士（运维使用）</h3><p>如果数据库内存在旧表&#x2F;旧结构，可先执行以下语句清空旧表，再运行上方建表 SQL：</p>
