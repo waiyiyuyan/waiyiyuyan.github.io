@@ -470,7 +470,7 @@ document.querySelectorAll('figure.highlight').forEach(item => {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2026/06/07/msssage-board/" data-id="cmq6rk9ja000fzctq3kio3gwi" data-title="用 cloudflare 搭建留言板源码" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2026/06/07/msssage-board/" data-id="cmq6rn5ip000hc8tq2svne6rn" data-title="用 cloudflare 搭建留言板源码" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -572,19 +572,18 @@ document.querySelectorAll('figure.highlight').forEach(item => {
         
       </div>
       <style>
-  /* 外层容器定位，按钮放这里，不侵入代码内部 */
-  figure.highlight {
+  figure.highlight pre {
     position: relative !important;
   }
-  .copy-btn {
+  .code-copy-btn {
     position: absolute !important;
-    top: 6px;
-    right: 6px;
-    background: #333;
+    top: 8px;
+    right: 8px;
+    background: #222;
     color: #fff;
     border: none;
-    border-radius: 3px;
-    padding: 2px 8px;
+    border-radius: 4px;
+    padding: 3px 10px;
     font-size: 12px;
     cursor: pointer;
     z-index: 9999 !important;
@@ -592,53 +591,46 @@ document.querySelectorAll('figure.highlight').forEach(item => {
   </style>
   
   <script>
-  // 只在外层 figure 创建按钮，永不进入 pre/code 内部
-  document.addEventListener('DOMContentLoaded', function () {
-    // 精准匹配所有代码块外层容器
-    const codeBlocks = document.querySelectorAll('figure.highlight');
+  (function(){
+    const pres = document.querySelectorAll('figure.highlight .code pre');
+    pres.forEach(function(pre){
+      if (pre.querySelector('.code-copy-btn')) return;
   
-    codeBlocks.forEach(function (fig) {
-      // 防重复创建，杜绝多个按钮
-      if (fig.querySelector('.copy-btn')) return;
+      let btn = document.createElement('button');
+      btn.className = 'code-copy-btn';
+      btn.innerText = '复制';
   
-      const btn = document.createElement('button');
-      btn.className = 'copy-btn';
-      btn.textContent = '复制';
+      btn.onclick = function(){
+        // 只取代码文本，排除按钮
+        let code = pre.querySelector('code');
+        // 克隆节点，剥离按钮再取值
+        let clone = code.cloneNode(true);
+        let btnNode = clone.querySelector('.code-copy-btn');
+        if(btnNode) btnNode.remove();
+        let text = clone.innerText;
   
-      btn.addEventListener('click', function () {
-        // 精准获取代码区域 code
-        const codeDom = fig.querySelector('.code code');
-        if (!codeDom) return;
+        navigator.clipboard.writeText(text).then(function(){
+          btn.innerText = '已复制';
+        }).catch(function(){
+          // 兜底兼容方案
+          let range = document.createRange();
+          range.selectNodeContents(code);
+          let sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          document.execCommand('copy');
+          sel.removeAllRanges();
+          btn.innerText = '已复制';
+        });
   
-        // 纯文本复制，只取代码内容
-        const codeText = codeDom.innerText;
-  
-        // 现代剪贴板 + 传统方案双兜底
-        navigator.clipboard.writeText(codeText)
-          .then(() => {
-            btn.textContent = '已复制';
-          })
-          .catch(() => {
-            const range = document.createRange();
-            range.selectNodeContents(codeDom);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            document.execCommand('copy');
-            selection.removeAllRanges();
-            btn.textContent = '已复制';
-          });
-  
-        // 复原文字
-        setTimeout(() => {
-          btn.textContent = '复制';
+        setTimeout(function(){
+          btn.innerText = '复制';
         }, 1200);
-      });
+      };
   
-      // 按钮加到最外层 figure，和代码区域完全分离
-      fig.appendChild(btn);
+      pre.appendChild(btn);
     });
-  });
+  })();
   </script>
     </div>
     <nav id="mobile-nav">
