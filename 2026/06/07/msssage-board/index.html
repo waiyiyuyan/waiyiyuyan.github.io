@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://waiyiyuyan.github.io/images/msgboard/info.png">
 <meta property="og:image" content="https://waiyiyuyan.github.io/images/msgboard/domain.png">
 <meta property="article:published_time" content="2026-06-07T00:41:47.000Z">
-<meta property="article:modified_time" content="2026-06-09T14:47:55.021Z">
+<meta property="article:modified_time" content="2026-06-09T15:05:49.382Z">
 <meta property="article:author" content="waiyiyuyan">
 <meta property="article:tag" content="留言板">
 <meta name="twitter:card" content="summary">
@@ -409,52 +409,6 @@
 </ol>
 <h2 id="二、补充说明"><a href="#二、补充说明" class="headerlink" title="二、补充说明"></a>二、补充说明</h2><p>我已提前修改过前端 <code>uploadFile</code> 函数，<strong>若继续沿用原 telegraph 图床，图片上传功能必然无法正常使用</strong>。</p>
 <p>如果项目<strong>不需要图片上传功能</strong>，可直接跳过图床改造，程序其余功能均可正常部署运行。</p>
-<style>
-figure.highlight {
-  position: relative;
-}
-.code-copy {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #444;
-  color: #fff;
-  border: 0;
-  padding: 2px 8px;
-  border-radius: 3px;
-  font-size: 12px;
-  cursor: pointer;
-  opacity: 0;
-  transition: 0.2s;
-  z-index: 999;
-}
-figure.highlight:hover .code-copy {
-  opacity: 1;
-}
-</style>
-
-<script>
-document.querySelectorAll('figure.highlight').forEach(item => {
-  // 防重复
-  if(item.querySelector('.code-copy')) return;
-  let btn = document.createElement('button');
-  btn.className = 'code-copy';
-  btn.innerText = '复制';
-
-  btn.onclick = function(){
-    let code = item.querySelector('code');
-    navigator.clipboard.writeText(code.innerText).then(()=>{
-      this.innerText = '已复制';
-      setTimeout(()=>this.innerText='复制',1200);
-    }).catch(()=>{
-      this.innerText = '失败';
-      setTimeout(()=>this.innerText='复制',1200);
-    })
-  }
-  item.appendChild(btn);
-})
-</script>
-
 
         
 <ins class="adsbygoogle"
@@ -470,7 +424,7 @@ document.querySelectorAll('figure.highlight').forEach(item => {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2026/06/07/msssage-board/" data-id="cmq6rs6zo000f7otq41x2gjhr" data-title="用 cloudflare 搭建留言板源码" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2026/06/07/msssage-board/" data-id="cmq6rvbhf000f0ctqdrzvhrz7" data-title="用 cloudflare 搭建留言板源码" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
