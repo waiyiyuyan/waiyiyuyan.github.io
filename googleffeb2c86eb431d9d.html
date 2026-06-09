@@ -132,7 +132,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/googleffeb2c86eb431d9d.html" data-id="cmq6r75mo0000rgtq73zyfpgr" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/googleffeb2c86eb431d9d.html" data-id="cmq6rfh000000j8tqf1fe09qc" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -221,18 +221,54 @@
 </aside>
         
       </div>
-      <footer id="footer">
+      <style>
+  /* 定位到 pre 标签 */
+  figure.highlight pre {
+    position: relative !important;
+  }
+  .code-copy-btn {
+    position: absolute !important;
+    top: 8px;
+    right: 8px;
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 9999 !important;
+  }
+  </style>
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 waiyiyuyan<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
- 
-</footer>
-
+  <script>
+  (function(){
+    // 直接选中代码里的 pre
+    const pres = document.querySelectorAll('figure.highlight pre');
+    pres.forEach(function(pre){
+      if (pre.querySelector('.code-copy-btn')) return;
+  
+      let btn = document.createElement('button');
+      btn.className = 'code-copy-btn';
+      btn.innerText = '复制';
+  
+      btn.onclick = function(){
+        let code = pre.querySelector('code');
+        if(!code) return;
+        navigator.clipboard.writeText(code.innerText).then(function(){
+          btn.innerText = '已复制';
+        }).catch(function(){
+          btn.innerText = '复制失败';
+        });
+        setTimeout(function(){
+          btn.innerText = '复制';
+        }, 1200);
+      };
+  
+      pre.appendChild(btn);
+    });
+  })();
+  </script>
     </div>
     <nav id="mobile-nav">
   
