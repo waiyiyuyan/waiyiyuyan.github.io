@@ -142,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2026/06/07/msssage-board/" data-id="cmq6rfh0l000fj8tqgzuif9k8" data-title="用 cloudflare 搭建留言板源码" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2026/06/07/msssage-board/" data-id="cmq6rhnjt000ffotq9x7w8rbc" data-title="用 cloudflare 搭建留言板源码" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -194,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2026/01/18/pairdrop/" data-id="cmq6rfh0m000hj8tqgmtz24kd" data-title="跨设备文件传输神器 PairDrop 完全使用指南：告别数据线，浏览器搞定一切" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2026/01/18/pairdrop/" data-id="cmq6rhnju000hfotq2rywhekp" data-title="跨设备文件传输神器 PairDrop 完全使用指南：告别数据线，浏览器搞定一切" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -246,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/" data-id="cmq6rfh080003j8tqea9k5n9s" data-title="用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/" data-id="cmq6rhnjd0003fotqeett3e88" data-title="用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -311,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2025/11/19/fmhy/" data-id="cmq6rfh0j000ej8tq6t69dulq" data-title="互联网的指南针：FMHY.net 一站式数字资源索引" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2025/11/19/fmhy/" data-id="cmq6rhnjs000efotq8bhthv5q" data-title="互联网的指南针：FMHY.net 一站式数字资源索引" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -361,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2024/12/18/appleid/" data-id="cmq6rfh040001j8tq07w1d16v" data-title="Apple ID 教程：一步步更改国家或地区，轻松切换账户" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2024/12/18/appleid/" data-id="cmq6rhnj90001fotq0ysqe9c0" data-title="Apple ID 教程：一步步更改国家或地区，轻松切换账户" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -457,7 +457,6 @@
         
       </div>
       <style>
-  /* 定位到 pre 标签 */
   figure.highlight pre {
     position: relative !important;
   }
@@ -478,8 +477,7 @@
   
   <script>
   (function(){
-    // 直接选中代码里的 pre
-    const pres = document.querySelectorAll('figure.highlight pre');
+    const pres = document.querySelectorAll('figure.highlight .code pre');
     pres.forEach(function(pre){
       if (pre.querySelector('.code-copy-btn')) return;
   
@@ -488,13 +486,28 @@
       btn.innerText = '复制';
   
       btn.onclick = function(){
+        // 只取代码文本，排除按钮
         let code = pre.querySelector('code');
-        if(!code) return;
-        navigator.clipboard.writeText(code.innerText).then(function(){
+        // 克隆节点，剥离按钮再取值
+        let clone = code.cloneNode(true);
+        let btnNode = clone.querySelector('.code-copy-btn');
+        if(btnNode) btnNode.remove();
+        let text = clone.innerText;
+  
+        navigator.clipboard.writeText(text).then(function(){
           btn.innerText = '已复制';
         }).catch(function(){
-          btn.innerText = '复制失败';
+          // 兜底兼容方案
+          let range = document.createRange();
+          range.selectNodeContents(code);
+          let sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          document.execCommand('copy');
+          sel.removeAllRanges();
+          btn.innerText = '已复制';
         });
+  
         setTimeout(function(){
           btn.innerText = '复制';
         }, 1200);

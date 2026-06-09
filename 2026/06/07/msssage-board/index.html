@@ -470,7 +470,7 @@ document.querySelectorAll('figure.highlight').forEach(item => {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2026/06/07/msssage-board/" data-id="cmq6rfh0l000fj8tqgzuif9k8" data-title="用 cloudflare 搭建留言板源码" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2026/06/07/msssage-board/" data-id="cmq6rhnjt000ffotq9x7w8rbc" data-title="用 cloudflare 搭建留言板源码" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -572,7 +572,6 @@ document.querySelectorAll('figure.highlight').forEach(item => {
         
       </div>
       <style>
-  /* 定位到 pre 标签 */
   figure.highlight pre {
     position: relative !important;
   }
@@ -593,8 +592,7 @@ document.querySelectorAll('figure.highlight').forEach(item => {
   
   <script>
   (function(){
-    // 直接选中代码里的 pre
-    const pres = document.querySelectorAll('figure.highlight pre');
+    const pres = document.querySelectorAll('figure.highlight .code pre');
     pres.forEach(function(pre){
       if (pre.querySelector('.code-copy-btn')) return;
   
@@ -603,13 +601,28 @@ document.querySelectorAll('figure.highlight').forEach(item => {
       btn.innerText = '复制';
   
       btn.onclick = function(){
+        // 只取代码文本，排除按钮
         let code = pre.querySelector('code');
-        if(!code) return;
-        navigator.clipboard.writeText(code.innerText).then(function(){
+        // 克隆节点，剥离按钮再取值
+        let clone = code.cloneNode(true);
+        let btnNode = clone.querySelector('.code-copy-btn');
+        if(btnNode) btnNode.remove();
+        let text = clone.innerText;
+  
+        navigator.clipboard.writeText(text).then(function(){
           btn.innerText = '已复制';
         }).catch(function(){
-          btn.innerText = '复制失败';
+          // 兜底兼容方案
+          let range = document.createRange();
+          range.selectNodeContents(code);
+          let sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          document.execCommand('copy');
+          sel.removeAllRanges();
+          btn.innerText = '已复制';
         });
+  
         setTimeout(function(){
           btn.innerText = '复制';
         }, 1200);
