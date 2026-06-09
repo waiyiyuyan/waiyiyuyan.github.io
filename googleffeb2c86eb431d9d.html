@@ -132,7 +132,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/googleffeb2c86eb431d9d.html" data-id="cmq6rn5hz0000c8tq7031deli" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/googleffeb2c86eb431d9d.html" data-id="cmq6roy9t00000stq90wh9nau" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -222,7 +222,7 @@
         
       </div>
       <style>
-  figure.highlight pre {
+  figure.highlight {
     position: relative !important;
   }
   .code-copy-btn {
@@ -242,43 +242,43 @@
   
   <script>
   (function(){
-    const pres = document.querySelectorAll('figure.highlight .code pre');
-    pres.forEach(function(pre){
-      if (pre.querySelector('.code-copy-btn')) return;
+    // 选中所有代码块外层容器
+    const blocks = document.querySelectorAll('figure.highlight');
+    blocks.forEach(fig => {
+      // 防止重复创建按钮
+      if (fig.querySelector('.code-copy-btn')) return;
   
-      let btn = document.createElement('button');
+      const btn = document.createElement('button');
       btn.className = 'code-copy-btn';
       btn.innerText = '复制';
   
       btn.onclick = function(){
-        // 只取代码文本，排除按钮
-        let code = pre.querySelector('code');
-        // 克隆节点，剥离按钮再取值
-        let clone = code.cloneNode(true);
-        let btnNode = clone.querySelector('.code-copy-btn');
-        if(btnNode) btnNode.remove();
-        let text = clone.innerText;
+        // 精准逐层查找 code 标签，适配你的表格结构
+        const code = fig.querySelector('td.code pre code');
+        // 强制判空，找不到直接返回，终止执行
+        if (!code) {
+          btn.innerText = '无代码';
+          setTimeout(() => btn.innerText = '复制', 1200);
+          return;
+        }
   
-        navigator.clipboard.writeText(text).then(function(){
-          btn.innerText = '已复制';
-        }).catch(function(){
-          // 兜底兼容方案
-          let range = document.createRange();
-          range.selectNodeContents(code);
-          let sel = window.getSelection();
-          sel.removeAllRanges();
-          sel.addRange(range);
-          document.execCommand('copy');
-          sel.removeAllRanges();
-          btn.innerText = '已复制';
-        });
+        // 传统选区复制，兼容性最好
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        
+        // 执行复制
+        const ok = document.execCommand('copy');
+        sel.removeAllRanges();
   
-        setTimeout(function(){
-          btn.innerText = '复制';
-        }, 1200);
+        btn.innerText = ok ? '已复制' : '复制失败';
+        setTimeout(() => btn.innerText = '复制', 1200);
       };
   
-      pre.appendChild(btn);
+      // 按钮放在最外层 figure，不插入 pre/code 内部
+      fig.appendChild(btn);
     });
   })();
   </script>
