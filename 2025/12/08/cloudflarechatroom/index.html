@@ -244,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/" data-id="cmq6roy9z00030stq4hkdf85q" data-title="用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/" data-id="cmq6rs6za00037otq3yt4etfy" data-title="用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -355,9 +355,11 @@
         
       </div>
       <style>
+  /* 外层容器开启定位，按钮悬浮在代码块右上角 */
   figure.highlight {
     position: relative !important;
   }
+  /* 复制按钮样式 */
   .code-copy-btn {
     position: absolute !important;
     top: 8px;
@@ -370,50 +372,68 @@
     font-size: 12px;
     cursor: pointer;
     z-index: 9999 !important;
+    user-select: none;
   }
   </style>
   
   <script>
-  (function(){
-    // 选中所有代码块外层容器
-    const blocks = document.querySelectorAll('figure.highlight');
-    blocks.forEach(fig => {
-      // 防止重复创建按钮
-      if (fig.querySelector('.code-copy-btn')) return;
+  // 页面 DOM 加载完成后执行
+  document.addEventListener('DOMContentLoaded', function () {
+    // 匹配所有代码块外层容器
+    const allFigures = document.querySelectorAll('figure.highlight');
   
-      const btn = document.createElement('button');
-      btn.className = 'code-copy-btn';
-      btn.innerText = '复制';
+    allFigures.forEach(function (fig) {
+      // 双重防重复：已有按钮 / 已标记，直接跳过
+      if (fig.querySelector('.code-copy-btn') || fig.dataset.hasCopyBtn === '1') {
+        return;
+      }
+      // 打标记，永久防止重复创建
+      fig.dataset.hasCopyBtn = '1';
   
-      btn.onclick = function(){
-        // 精准逐层查找 code 标签，适配你的表格结构
-        const code = fig.querySelector('td.code pre code');
-        // 强制判空，找不到直接返回，终止执行
-        if (!code) {
-          btn.innerText = '无代码';
-          setTimeout(() => btn.innerText = '复制', 1200);
+      // 创建按钮
+      const copyBtn = document.createElement('button');
+      copyBtn.className = 'code-copy-btn';
+      copyBtn.innerText = '复制';
+  
+      // 点击事件
+      copyBtn.addEventListener('click', function () {
+        let codeNode = null;
+        // 多重选择器逐级兜底，适配你表格结构 + 通用代码结构
+        // 1. 优先匹配你的标准结构：td.code > pre > code
+        codeNode = fig.querySelector('td.code pre code');
+        // 2. 兜底：全局 pre > code
+        if (!codeNode) codeNode = fig.querySelector('pre code');
+        // 3. 兜底：直接找 code 标签
+        if (!codeNode) codeNode = fig.querySelector('code');
+  
+        // 全程判空，找不到代码直接终止，杜绝 null 报错
+        if (!codeNode) {
+          this.innerText = '无代码';
+          setTimeout(() => this.innerText = '复制', 1200);
           return;
         }
   
-        // 传统选区复制，兼容性最好
+        // 传统选区复制（兼容性最强，无剪贴板 API 兼容问题）
         const range = document.createRange();
-        range.selectNodeContents(code);
-        const sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
-        
+        range.selectNodeContents(codeNode);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+  
         // 执行复制
-        const ok = document.execCommand('copy');
-        sel.removeAllRanges();
+        const copySuccess = document.execCommand('copy');
+        // 取消选中
+        selection.removeAllRanges();
   
-        btn.innerText = ok ? '已复制' : '复制失败';
-        setTimeout(() => btn.innerText = '复制', 1200);
-      };
+        // 状态反馈
+        this.innerText = copySuccess ? '已复制' : '复制失败';
+        setTimeout(() => this.innerText = '复制', 1200);
+      });
   
-      // 按钮放在最外层 figure，不插入 pre/code 内部
-      fig.appendChild(btn);
+      // 按钮挂载到最外层 figure，不侵入代码内部，不会复制多余内容
+      fig.appendChild(copyBtn);
     });
-  })();
+  });
   </script>
     </div>
     <nav id="mobile-nav">
