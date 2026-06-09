@@ -244,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/" data-id="cmq6s4gd30003owtq6ost0l1n" data-title="用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/" data-id="cmq6sbfad0003cstqahwt4cgp" data-title="用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -358,7 +358,7 @@
   figure.highlight {
     position: relative !important;
   }
-  .copy-btn {
+  .code-copy-btn {
     position: absolute !important;
     top: 8px;
     right: 8px;
@@ -376,45 +376,45 @@
   
   <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const figures = document.querySelectorAll('figure.highlight');
+    const figureList = document.querySelectorAll('figure.highlight');
   
-    figures.forEach(fig => {
-      // 双重防重复：已有按钮 / 已标记，直接跳过
-      if (fig.querySelector('.copy-btn') || fig.dataset.hasCopy) return;
+    figureList.forEach(fig => {
+      // 双重防重复：已有按钮 / 已做标记，直接跳过
+      if (fig.querySelector('.code-copy-btn') || fig.dataset.hasCopy) return;
       fig.dataset.hasCopy = '1';
   
       // 创建按钮
       const btn = document.createElement('button');
-      btn.className = 'copy-btn';
+      btn.className = 'code-copy-btn';
       btn.innerText = '复制';
   
       btn.addEventListener('click', function () {
-        // 精准匹配：代码列的 pre（你的真实结构，无 code 标签）
-        const codePre = fig.querySelector('td.code pre');
-        
-        // 判空兜底，杜绝 null 报错
-        if (!codePre) {
+        // 直接精准匹配：代码区域的 pre（不再查找 code 标签）
+        const codeArea = fig.querySelector('td.code pre');
+  
+        // 判空兜底
+        if (!codeArea) {
           this.innerText = '无内容';
           setTimeout(() => this.innerText = '复制', 1200);
           return;
         }
   
-        // 选区复制（兼容性最强）
+        // 选区复制，兼容所有浏览器
         const range = document.createRange();
-        range.selectNodeContents(codePre);
-        const sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
+        range.selectNodeContents(codeArea);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
   
-        const success = document.execCommand('copy');
-        sel.removeAllRanges();
+        const isSuccess = document.execCommand('copy');
+        selection.removeAllRanges();
   
-        // 状态提示
-        this.innerText = success ? '已复制' : '复制失败';
+        // 状态反馈
+        this.innerText = isSuccess ? '已复制' : '复制失败';
         setTimeout(() => this.innerText = '复制', 1200);
       });
   
-      // 按钮挂载到最外层 figure，和代码分离
+      // 按钮挂载到最外层 figure，和代码区域分离
       fig.appendChild(btn);
     });
   });
