@@ -14,12 +14,12 @@
   <meta property="twitter:title" content="我爱白嫖——提供最新、安全、免费的VPN和机场推荐">
   <meta name="title" content="我爱白嫖——提供最新、安全、免费的VPN和机场推荐">
 
-  <meta name="description" content="2026-06-12 这一版可以部署，趁我目前还没有更新前端。2026-06-10 正在进行重大更新，暂时不要部署这个代码了  我梳理以下我重构的过程，新手的话按我的来吧，其实我也是新手。 1 建图床，给图床配个域名，然后记下来，建 kv 命名空间。把kv 命名空间绑定到图床2 建服务端，服务端也配域名，记下来，建立D1 SQLite 数据库，绑定到服务端。3 建前端，绑定域名，记下来。4 下载n">
+  <meta name="description" content="2026-06-13 今天优化数据库，暂时停止部署，优化好了，我会通知2026-06-12 这一版可以部署，趁我目前还没有更新前端。2026-06-10 正在进行重大更新，暂时不要部署这个代码了  我梳理以下我重构的过程，新手的话按我的来吧，其实我也是新手。 1 建图床，给图床配个域名，然后记下来，建 kv 命名空间。把kv 命名空间绑定到图床2 建服务端，服务端也配域名，记下来，建立D1 SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用 cloudflare 搭建留言板源码">
 <meta property="og:url" content="https://waiyiyuyan.github.io/2026/06/07/msssage-board/index.html">
 <meta property="og:site_name" content="代码小栈">
-<meta property="og:description" content="2026-06-12 这一版可以部署，趁我目前还没有更新前端。2026-06-10 正在进行重大更新，暂时不要部署这个代码了  我梳理以下我重构的过程，新手的话按我的来吧，其实我也是新手。 1 建图床，给图床配个域名，然后记下来，建 kv 命名空间。把kv 命名空间绑定到图床2 建服务端，服务端也配域名，记下来，建立D1 SQLite 数据库，绑定到服务端。3 建前端，绑定域名，记下来。4 下载n">
+<meta property="og:description" content="2026-06-13 今天优化数据库，暂时停止部署，优化好了，我会通知2026-06-12 这一版可以部署，趁我目前还没有更新前端。2026-06-10 正在进行重大更新，暂时不要部署这个代码了  我梳理以下我重构的过程，新手的话按我的来吧，其实我也是新手。 1 建图床，给图床配个域名，然后记下来，建 kv 命名空间。把kv 命名空间绑定到图床2 建服务端，服务端也配域名，记下来，建立D1 SQL">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://waiyiyuyan.github.io/images/msgboard/kv_space1.png">
 <meta property="og:image" content="https://waiyiyuyan.github.io/images/msgboard/kv_space2.png">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://waiyiyuyan.github.io/images/msgboard/info.png">
 <meta property="og:image" content="https://waiyiyuyan.github.io/images/msgboard/domain.png">
 <meta property="article:published_time" content="2026-06-07T00:41:47.000Z">
-<meta property="article:modified_time" content="2026-06-12T03:18:31.399Z">
+<meta property="article:modified_time" content="2026-06-12T23:22:59.499Z">
 <meta property="article:author" content="waiyiyuyan">
 <meta property="article:tag" content="留言板">
 <meta name="twitter:card" content="summary">
@@ -143,7 +143,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>2026-06-12 这一版可以部署，趁我目前还没有更新前端。<br>2026-06-10 正在进行重大更新，暂时不要部署这个代码了 </p>
+        <p>2026-06-13 今天优化数据库，暂时停止部署，优化好了，我会通知<br>2026-06-12 这一版可以部署，趁我目前还没有更新前端。<br>2026-06-10 正在进行重大更新，暂时不要部署这个代码了 </p>
 <p>我梳理以下我重构的过程，新手的话按我的来吧，其实我也是新手。</p>
 <h3 id="1-建图床，给图床配个域名，然后记下来，建-kv-命名空间。把kv-命名空间绑定到图床"><a href="#1-建图床，给图床配个域名，然后记下来，建-kv-命名空间。把kv-命名空间绑定到图床" class="headerlink" title="1 建图床，给图床配个域名，然后记下来，建 kv 命名空间。把kv 命名空间绑定到图床"></a>1 建图床，给图床配个域名，然后记下来，建 kv 命名空间。把kv 命名空间绑定到图床</h3><h3 id="2-建服务端，服务端也配域名，记下来，建立D1-SQLite-数据库，绑定到服务端。"><a href="#2-建服务端，服务端也配域名，记下来，建立D1-SQLite-数据库，绑定到服务端。" class="headerlink" title="2 建服务端，服务端也配域名，记下来，建立D1 SQLite 数据库，绑定到服务端。"></a>2 建服务端，服务端也配域名，记下来，建立D1 SQLite 数据库，绑定到服务端。</h3><h3 id="3-建前端，绑定域名，记下来。"><a href="#3-建前端，绑定域名，记下来。" class="headerlink" title="3 建前端，绑定域名，记下来。"></a>3 建前端，绑定域名，记下来。</h3><h3 id="4-下载node-js-安装wangler-这一步算是建立耐用对象-也就是-durable-object"><a href="#4-下载node-js-安装wangler-这一步算是建立耐用对象-也就是-durable-object" class="headerlink" title="4 下载node.js 安装wangler 这一步算是建立耐用对象 也就是 durable object"></a>4 下载node.js 安装wangler 这一步算是建立耐用对象 也就是 durable object</h3><h3 id="5-配置wrangler-初始化出来的文件"><a href="#5-配置wrangler-初始化出来的文件" class="headerlink" title="5 配置wrangler 初始化出来的文件"></a>5 配置wrangler 初始化出来的文件</h3><h3 id="6-wrangler-deploy-把配置好的服务端文件推到cloudflare-至此全部结束。"><a href="#6-wrangler-deploy-把配置好的服务端文件推到cloudflare-至此全部结束。" class="headerlink" title="6 wrangler deploy 把配置好的服务端文件推到cloudflare 至此全部结束。"></a>6 wrangler deploy 把配置好的服务端文件推到cloudflare 至此全部结束。</h3><p>大概是这么个流程，当初在做的时候，改来改去，改到我现在脑子都是一片混乱，我都不知道该怎么教，我都差点被劝退，别说新手了，一看这都是什么玩意，瞬间失去兴趣了</p>
 <p>以下是详细步骤，也许详细。有问题在给我留言吧，去我的留言板，我会在更新这个教程的，<br>其实我还没优化完，但是我看留言，有的小伙伴有点跃跃欲试了，其实就差最后一步了。就是后端分页</p>
