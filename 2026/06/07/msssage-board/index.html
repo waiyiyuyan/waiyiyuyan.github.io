@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://waiyiyuyan.github.io/images/msgboard/info.png">
 <meta property="og:image" content="https://waiyiyuyan.github.io/images/msgboard/domain.png">
 <meta property="article:published_time" content="2026-06-07T00:41:47.000Z">
-<meta property="article:modified_time" content="2026-06-14T14:03:30.021Z">
+<meta property="article:modified_time" content="2026-06-14T14:07:05.045Z">
 <meta property="article:author" content="waiyiyuyan">
 <meta property="article:tag" content="留言板">
 <meta name="twitter:card" content="summary">
@@ -141,7 +141,10 @@
 
 <ol>
 <li>建服务端，部署到 worker, 服务端配置域名，把域名记下来，建立 D1 SQLite 数据库，绑定到服务端。D1 数据库的变量名是 DB</li>
-<li>建前端，部署到 pages, 绑定域名，把域名记下来。<br>3.下载node.js 安装wangler 这一步是建立耐用对象 也就是 durable object，用于实现 websocket 长连接。<br>4.配置 wrangler 初始化出来的文件<br>5.wrangler deploy 把配置好的服务端文件推到 cloudflare worker 服务端，至此全部结束。</li>
+<li>建前端，部署到 pages, 绑定域名，把域名记下来。</li>
+<li>下载node.js 安装wangler 这一步是建立耐用对象 也就是 durable object，用于实现 websocket 长连接。</li>
+<li>配置 wrangler 初始化出来的文件</li>
+<li>wrangler deploy 把配置好的服务端文件推到 cloudflare worker 服务端，至此全部结束。</li>
 </ol>
 <h2 id="留言系统-D1-数据表设计文档（Cloudflare-D1-SQLite）如果没记错我的微信公众号里有数据库搭建的过程，搜索电脑瞎折腾，有一篇讲怎么搭建留言板的帖子就是"><a href="#留言系统-D1-数据表设计文档（Cloudflare-D1-SQLite）如果没记错我的微信公众号里有数据库搭建的过程，搜索电脑瞎折腾，有一篇讲怎么搭建留言板的帖子就是" class="headerlink" title="留言系统 D1 数据表设计文档（Cloudflare D1 &#x2F; SQLite）如果没记错我的微信公众号里有数据库搭建的过程，搜索电脑瞎折腾，有一篇讲怎么搭建留言板的帖子就是"></a>留言系统 D1 数据表设计文档（Cloudflare D1 &#x2F; SQLite）如果没记错我的微信公众号里有数据库搭建的过程，搜索电脑瞎折腾，有一篇讲怎么搭建留言板的帖子就是</h2><h2 id="一、数据表总览"><a href="#一、数据表总览" class="headerlink" title="一、数据表总览"></a>一、数据表总览</h2><p>整套留言系统共包含 <strong>3 张核心数据表</strong>，分别存储主帖子、楼中楼回复、用户@通知，表之间通过 ID 关联联动。</p>
 <table>
