@@ -19,7 +19,7 @@
 <meta property="og:description" content="前端：纯静态 HTML&#x2F;CSS&#x2F;JS，托管 GitHub + Cloudflare Pages，仅做交互界面；彻底移除浏览器localStorage本地存储，图片记录全部云端持久化； 后端：2 套独立 Cloudflare Worker，分别负责「图片上传至 Imgur + D1云端入库」「图片&#x2F;视频代理回显（解决国内访问、跨域、视频强制下载问题）」； 产出：一键复">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-15T15:17:14.000Z">
-<meta property="article:modified_time" content="2026-06-16T01:03:35.774Z">
+<meta property="article:modified_time" content="2026-06-16T01:06:48.432Z">
 <meta property="article:author" content="waiyiyuyan">
 <meta property="article:tag" content="图床">
 <meta name="twitter:card" content="summary">
@@ -161,7 +161,7 @@
 </ol>
 <h2 id="三、后端-Cloudflare-Worker-部署教程"><a href="#三、后端-Cloudflare-Worker-部署教程" class="headerlink" title="三、后端 Cloudflare Worker 部署教程"></a>三、后端 Cloudflare Worker 部署教程</h2><h3 id="模块-1：上传-Worker（Imgur-文件上传接口-D1数据库读写）"><a href="#模块-1：上传-Worker（Imgur-文件上传接口-D1数据库读写）" class="headerlink" title="模块 1：上传 Worker（Imgur 文件上传接口 + D1数据库读写）"></a>模块 1：上传 Worker（Imgur 文件上传接口 + D1数据库读写）</h3><h4 id="前置额外操作：创建并绑定D1数据库"><a href="#前置额外操作：创建并绑定D1数据库" class="headerlink" title="前置额外操作：创建并绑定D1数据库"></a>前置额外操作：创建并绑定D1数据库</h4><ol>
 <li>Cloudflare后台 → 计算&amp;网络 → D1 SQL数据库 → 创建数据库，自定义库名（如<code>img-bed-storage</code>）；</li>
-<li>进入数据库「查询」页面，执行建表SQL：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> media (</span><br><span class="line">  id <span class="type">INTEGER</span> <span class="keyword">PRIMARY KEY</span> AUTOINCREMENT,</span><br><span class="line">  name TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">  rawUrl TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">  create_time DATETIME <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> idx_media_time <span class="keyword">ON</span> media(create_time <span class="keyword">DESC</span>);</span><br></pre></td></tr></table></figure></li>
+<li>进入数据库「控制台」页面，执行建表SQL：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> media (</span><br><span class="line">  id <span class="type">INTEGER</span> <span class="keyword">PRIMARY KEY</span> AUTOINCREMENT,</span><br><span class="line">  name TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">  rawUrl TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">  create_time DATETIME <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> idx_media_time <span class="keyword">ON</span> media(create_time <span class="keyword">DESC</span>);</span><br></pre></td></tr></table></figure></li>
 <li>返回上传Worker详情页 → 设置 → D1数据库绑定：<ul>
 <li>变量名称固定填写：<code>DB</code></li>
 <li>下拉选中刚刚创建的D1数据库，保存并部署Worker。</li>
@@ -379,23 +379,6 @@
 <li><strong>上传Worker新增D1持久化存储，所有上传图片记录云端永久留存</strong>；资源代理Worker无状态，仅做转发、代理中转；</li>
 <li>所有跨域、安全、缓存规则均封装在后端，前端无敏感配置，分发、分享前端仓库不会泄露 Imgur 密钥；</li>
 <li>旧版本地存储架构存在5MB容量上限、换域名丢数据、多设备不同步缺陷，改造D1云端存储后彻底根治全部问题。</li>
-</ol>
-<hr>
-<h1 id="文档修改总结（你可以直接对照更新原有文档）"><a href="#文档修改总结（你可以直接对照更新原有文档）" class="headerlink" title="文档修改总结（你可以直接对照更新原有文档）"></a>文档修改总结（你可以直接对照更新原有文档）</h1><ol>
-<li>开篇架构：补充D1数据库持久化说明，删除本地存储描述；</li>
-<li>模块分工：上传Worker新增D1绑定、分页接口说明，前端删除本地80张限制；</li>
-<li>数据流：补充上传自动入库、分页拉取云端数据流程；</li>
-<li>前置准备：新增Cloudflare D1数据库要求；</li>
-<li>上传Worker模块：<ul>
-<li>新增D1创建+绑定前置步骤；</li>
-<li>替换改造后完整Worker源码；</li>
-<li>补充<code>/listMedia</code>分页接口说明；</li>
-</ul>
-</li>
-<li>部署顺序：调整流程，先创建D1再部署Worker；</li>
-<li>新增「旧本地历史数据迁移」独立章节；</li>
-<li>性能优化、故障排查全部同步适配D1新架构；</li>
-<li>文末补充新旧架构优劣对比，说明改造价值。</li>
 </ol>
 
         
