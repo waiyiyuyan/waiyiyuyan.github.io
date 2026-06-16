@@ -181,8 +181,8 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <ul>
-<li>前端：纯静态 HTML&#x2F;CSS&#x2F;JS，托管 GitHub + Cloudflare Pages，仅做交互界面；</li>
-<li>后端：2 套独立 Cloudflare Worker，分别负责「图片上传至 Imgur」「图片&#x2F;视频代理回显（解决国内访问、跨域、视频强制下载问题）」；</li>
+<li>前端：纯静态 HTML&#x2F;CSS&#x2F;JS，托管 GitHub + Cloudflare Pages，仅做交互界面；<strong>彻底移除浏览器localStorage本地存储，图片记录全部云端持久化</strong>；</li>
+<li>后端：2 套独立 Cloudflare Worker，分别负责「图片上传至 Imgur + D1云端入库」「图片&#x2F;视频代理回显（解决国内访问、跨域、视频强制下载问题）」；</li>
 <li>产出：一键复制标准 Hexo Markdown 图片链接，直接粘贴博客使用。</li>
 </ul>
         
