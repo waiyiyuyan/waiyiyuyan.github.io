@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 20
       - run: npm install
-      - run: hexo clean && hexo generate
+      - run: npx hexo clean && npx hexo generate
       - name: 部署Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
