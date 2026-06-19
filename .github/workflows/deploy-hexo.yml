@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
       - run: npm install
       - run: npx hexo clean && npx hexo generate
       - name: 部署Pages
