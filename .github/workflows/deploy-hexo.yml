@@ -14,14 +14,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: false # 关键修复：关闭子模块递归，不再读取themes子模块标记
+          submodules: false
+          persist-credentials: false
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 24
       - run: npm install
       - run: npx hexo clean && npx hexo generate
-      # 自动生成.nojekyll 解决Jekyll过滤、404问题
       - name: 生成.nojekyll文件
         run: touch ./public/.nojekyll
       - name: 部署Pages
