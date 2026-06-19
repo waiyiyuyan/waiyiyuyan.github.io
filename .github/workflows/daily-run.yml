@@ -4,14 +4,15 @@ on:
     - cron: "0 18 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   crawl:
     runs-on: ubuntu-latest
     steps:
       - name: 拉取仓库代码
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false
 
       - name: 配置Node20
         uses: actions/setup-node@v4
@@ -33,7 +34,7 @@ jobs:
 
       - name: 提交推送新文章
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
         run: |
           git add source/_posts/daily.md
           git diff --quiet --staged || (
