@@ -1,0 +1,40 @@
+name: 每日爬虫更新Hexo
+on:
+  schedule:
+    - cron: "0 18 * * *"
+  workflow_dispatch:
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取仓库代码
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: 配置Node20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 安装依赖
+        run: npm install
+
+      - name: 执行爬虫
+        run: node crawl.js
+
+      - name: Git账号配置
+        run: |
+          git config --global user.name "AutoCrawler"
+          git config --global user.email "auto@github.com"
+
+      - name: 提交推送新文章
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add source/_posts/daily.md
+          git diff --quiet --staged || (
+            git commit -m "自动抓取资讯 ${{ github.run_date }}"
+            git push https://${GH_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
+          )
