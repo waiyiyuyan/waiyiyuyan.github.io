@@ -13,13 +13,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # 新增步骤：云端删除本地残缺主题，重新克隆完整landspace
+      - name: 拉取完整Landspace主题
+        run: |
+          rm -rf themes/landspace
+          git clone https://github.com/landscape1998/hexo-theme-landspace.git themes/landspace
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 24
       - run: npm install
       - run: npx hexo clean && npx hexo generate
-      # 新增：自动在静态目录生成.nojekyll，禁用GitHub Jekyll构建
+      # 自动在静态目录生成.nojekyll，禁用GitHub Jekyll构建
       - name: 生成.nojekyll文件
         run: touch ./public/.nojekyll
       - name: 部署Pages
