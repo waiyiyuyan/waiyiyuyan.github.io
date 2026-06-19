@@ -15,7 +15,7 @@
     "axios": "^1.18.0",
     "cheerio": "^1.2.0",
     "dayjs": "^1.11.21",
-    "hexo": "^7.3.0",
+    "hexo": "^8.1.2",
     "hexo-deployer-git": "^4.0.0",
     "hexo-directory-category": "^1.1.4",
     "hexo-generator-archive": "^2.0.0",
