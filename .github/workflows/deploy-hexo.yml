@@ -13,11 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # 新增：关闭Git交互式认证弹窗，解决公开仓库克隆报错
+      # 拉取完整Landspace主题，修复鉴权报错
       - name: 拉取完整Landspace主题
         run: |
-          git config --global core.askpass ""
           rm -rf themes/landspace
+          git config --local credential.helper ""
           git clone https://github.com/landscape1998/hexo-theme-landspace.git themes/landspace
       - name: Setup Node
         uses: actions/setup-node@v4
