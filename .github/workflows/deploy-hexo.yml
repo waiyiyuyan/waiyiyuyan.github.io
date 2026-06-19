@@ -13,12 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # 拉取完整Landspace主题，修复鉴权报错
-      - name: 拉取完整Landspace主题
-        run: |
-          rm -rf themes/landspace
-          git config --local credential.helper ""
-          git clone https://github.com/landscape1998/hexo-theme-landspace.git themes/landspace
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
