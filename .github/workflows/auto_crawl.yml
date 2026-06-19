@@ -1,0 +1,53 @@
+name: Daily Auto Crawl and Deploy
+
+on:
+  schedule:
+    # 每天北京时间早上 8:30 自动运行 (12:30 UTC + 8小时 = 20:30)
+    # 你可以根据需要修改 Cron 表达式
+    - cron: '30 0 * * *'
+  workflow_dispatch: # 允许你在 GitHub 页面上手动点击按钮触发，方便测试
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. 检出代码
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: true # 必须保留，后面 push 需要
+        submodules: false         # 显式关闭子模块处理，防止卡死
+
+    # 2. 设置 Node.js 环境
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24' # 匹配你的 Node 版本
+        cache: 'npm'
+
+    # 3. 安装依赖（包括 hexo、axios、cheerio、dayjs 等）
+    - name: Install Dependencies
+      run: |
+        npm install
+
+    # 4. 运行你的爬虫脚本
+    - name: Run Crawler
+      run: |
+        node crawl.js
+
+    # 5. 配置 Git 用户信息（用于提交生成的 Markdown 文件回仓库，可选）
+    - name: Commit New Posts
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add source/_posts/
+        # 如果没有新文件生成，忽略报错继续执行
+        git diff-index --quiet HEAD || git commit -m "chore: auto update daily posts [skip ci]"
+        git push origin main # 假设你的默认分支是 main，如果是 master 请修改
+
+    # 6. 生成 Hexo 静态文件并部署
+    - name: Deploy to GitHub Pages
+      run: |
+        npx hexo clean
+        npx hexo deploy
