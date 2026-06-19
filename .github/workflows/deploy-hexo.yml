@@ -19,6 +19,9 @@ jobs:
           node-version: 24
       - run: npm install
       - run: npx hexo clean && npx hexo generate
+      # 新增：自动在静态目录生成.nojekyll，禁用GitHub Jekyll构建
+      - name: 生成.nojekyll文件
+        run: touch ./public/.nojekyll
       - name: 部署Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
