@@ -22,7 +22,9 @@ jobs:
         run: npm install
 
       - name: 执行爬虫
-        run: node crawl.js
+        run: |
+          mkdir -p source/_posts
+          node crawl.js
 
       - name: Git账号配置
         run: |
