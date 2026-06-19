@@ -103,7 +103,7 @@ theme: landspace
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repository: git@github.com:waiyiyuyan/waiyiyuyan.github.io.git
+  repository: https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/waiyiyuyan/waiyiyuyan.github.io.git
   branch: main
 
 
