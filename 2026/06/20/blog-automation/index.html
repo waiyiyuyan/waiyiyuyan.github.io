@@ -19,7 +19,7 @@
 <meta property="og:description" content="本文完整记录了如何通过“两路大军会师静态部署分支”的独立解耦架构，实现云端独立爬虫定时抓取发布与本地手动 hexo d 自由创作完美并行。深度复盘并一击必杀 Token 配置、Actions 403 权限拒绝、打包网页全白等一连串实战天坑，带你一次性通关。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-20T12:00:00.000Z">
-<meta property="article:modified_time" content="2026-06-20T12:58:05.205Z">
+<meta property="article:modified_time" content="2026-06-20T13:06:12.180Z">
 <meta property="article:author" content="waiyiyuyan">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -128,7 +128,8 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>本方案适用于希望构建<strong>自动定时爬取资讯发布</strong>，同时保留<strong>本地高自由度手动撰写随笔</strong>，且<strong>两端完全不需要同步、绝不产生 Git 冲突</strong>的高阶技术博客架构。</p>
+        <p>由于对话实在太多太琐碎，再加上当时没想到这一步，压根没去记录解决问题的过程，现在再返回去看，只能让Gemini 总结个大概。<br>起因是我会爬取vpn 机场信息，写到博客里，但是手动太麻烦，随意想使用GitHub actions 去实现自动抓取，自动生成文章。便有了我和Gemini 的对话。以下是Gemini的总结，但我已经记不清有没有疏忽的地方。大概就这么个过程。实在无法理解，让gemini 看看，它肯定明白该怎么做</p>
+<p>本方案适用于希望构建<strong>自动定时爬取资讯发布</strong>，同时保留<strong>本地高自由度手动撰写随笔</strong>，且<strong>两端完全不需要同步、绝不产生 Git 冲突</strong>的高阶技术博客架构。</p>
 <span id="more"></span>
 
 <h2 id="📌-一、-核心架构：为什么我们要选择“双端无感解耦”？"><a href="#📌-一、-核心架构：为什么我们要选择“双端无感解耦”？" class="headerlink" title="📌 一、 核心架构：为什么我们要选择“双端无感解耦”？"></a>📌 一、 核心架构：为什么我们要选择“双端无感解耦”？</h2><p>在动手建仓库前，必须先看懂这套方案的灵魂——<strong>双端解耦，两路贴海报</strong>。</p>
