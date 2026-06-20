@@ -20,9 +20,11 @@ jobs:
         node-version: '20' # Hexo 建议用稳定的旧版 Node 运行环境，兼容性最好
         cache: 'npm'
 
-    # 3. 安装 Hexo 和主题所需的依赖
+    # 3. 安装 Hexo 和主题所需的依赖（强行补全样式渲染器避免空白）
     - name: Install Dependencies
-      run: npm install
+      run: |
+        npm install
+        npm install hexo-renderer-ejs hexo-renderer-marked hexo-renderer-stylus --save
 
     # 4. 【核心】在云端代替你运行三连命令：生成静态网页
     - name: Generate Hexo Files
