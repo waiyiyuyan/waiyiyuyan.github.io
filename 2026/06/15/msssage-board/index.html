@@ -412,6 +412,7 @@
       <style>
   figure.highlight {
     position: relative !important;
+    overflow: visible !important;
   }
   .code-copy-btn {
     position: absolute !important;
@@ -426,7 +427,6 @@
     cursor: pointer;
     z-index: 9999 !important;
     user-select: none;
-    /* 新增：默认透明，hover才显示 */
     opacity: 0;
     transition: opacity 0.2s ease;
   }
@@ -443,6 +443,7 @@
     const figureList = document.querySelectorAll('figure.highlight');
   
     figureList.forEach(fig => {
+      // 防止重复生成按钮
       if (fig.querySelector('.code-copy-btn') || fig.dataset.hasCopy) return;
       fig.dataset.hasCopy = '1';
   
@@ -451,13 +452,17 @@
       btn.innerText = '复制';
   
       btn.addEventListener('click', async function () {
-        const codeArea = fig.querySelector('td.code pre');
+        // 优先匹配带行号结构
+        let codeArea = fig.querySelector('td.code pre');
+        // 无行号则直接取 pre 标签
+        if (!codeArea) codeArea = fig.querySelector('pre');
+  
         if (!codeArea) {
           this.innerText = '无内容';
           setTimeout(() => this.innerText = '复制', 1200);
           return;
         }
-        // 现代标准 Clipboard API 替代废弃 execCommand
+  
         try {
           await navigator.clipboard.writeText(codeArea.innerText);
           this.innerText = '已复制';
