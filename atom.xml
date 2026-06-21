@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>专注各类网站搭建，编程实战，开源小工具开发，vpn分享</title>
+  <title>我爱白嫖</title>
   
-  <subtitle>建站，代码，工具，实战笔记.vpn</subtitle>
+  <subtitle>建站，代码，工具，实战笔记，vpn</subtitle>
   <link href="https://waiyiyuyan.github.io/atom.xml" rel="self"/>
   
   <link href="https://waiyiyuyan.github.io/"/>
