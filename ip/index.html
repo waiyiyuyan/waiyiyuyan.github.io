@@ -22,13 +22,26 @@
     </div>
 
     <script>
-        fetch('https://ipapi.co/json/')
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('ip').innerText = data.ip;
-                document.getElementById('loc').innerText = data.country_name;
-                document.getElementById('isp').innerText = data.org;
-            });
-    </script>
+		async function getIP() {
+			try {
+				// 获取基本信息
+				const res = await fetch('https://ipapi.co/json/');
+				const data = await res.json();
+				
+				document.getElementById('ip').innerText = data.ip;
+				document.getElementById('loc').innerText = data.country_name + ' (' + data.region + ')';
+				document.getElementById('isp').innerText = data.org;
+
+				// 如果你想判断是否是代理，可以加一段逻辑
+				// 很多机场IP的 org 字段里会包含 "Cloudflare" 或 "DigitalOcean" 等信息
+				if (data.org.includes("Cloudflare")) {
+					document.getElementById('isp').innerHTML += ' <span style="color:red">(⚠️ 疑似代理)</span>';
+				}
+			} catch (e) {
+				document.getElementById('ip').innerText = "获取失败";
+			}
+		}
+		getIP();
+	</script>
 </body>
 </html>
