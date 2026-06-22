@@ -32,7 +32,7 @@
         header h1 { margin: 0; color: #007bff; font-size: 2rem; }
         header p { margin: 5px 0 0; color: #666; font-size: 1rem; }
         
-        /* 🧭 新增：导航栏样式，未来有了新页面随时往里面加 <a> 标签即可 */
+        /* 🧭 导航栏样式 */
         .nav-bar {
             background: #fff;
             padding: 12px 20px;
@@ -81,7 +81,6 @@
         .node-card ul { padding-left: 20px; }
         .node-card li { font-family: monospace; word-break: break-all; background: #f8f9fa; margin-bottom: 5px; padding: 4px 8px; border-radius: 4px; border: 1px solid #e9ecef; }
         
-        /* 正在加载提示 */
         .loading-text { text-align: center; color: #999; padding: 20px 0; font-size: 0.95rem; }
     </style>
 </head>
@@ -124,23 +123,31 @@
                     return;
                 }
 
-                // 拼装符合你原本排版样式的 HTML 字符串
                 let htmlContent = '';
                 data.forEach(item => {
-                    // 生成 <li> 列表项
+                    // 1. 生成 <li> 列表项 (对应 crawl.js 中的 item.list)
                     let listItems = '';
-                    if (item.details && Array.isArray(item.details)) {
-                        listItems = item.details.map(detail => `<li>${detail}</li>`).join('');
+                    if (item.list && Array.isArray(item.list) && item.list.length > 0) {
+                        listItems = `<ul>${item.list.map(li => `<li>${li}</li>`).join('')}</ul>`;
                     }
 
+                    // 2. 处理 blockquote 发布日期 (对应 crawl.js 中的 item.publishDate)
+                    let dateHtml = item.publishDate ? `<blockquote>${item.publishDate}</blockquote>` : '';
+
+                    // 3. 处理 p 标签描述，并将 \n 换行符转换为网页识别的 <br> 标签 (对应 crawl.js 中的 item.desc)
+                    let descHtml = '';
+                    if (item.desc) {
+                        const htmlDesc = item.desc.trim().replace(/\n/g, '<br>');
+                        descHtml = `<p>${htmlDesc}</p>`;
+                    }
+
+                    // 4. 完美还原你原本的卡片排版
                     htmlContent += `
                         <div class="node-card">
-                            <h2>${item.name}</h2>
-                            <blockquote>发布于：${item.date}</blockquote>
-                            <p>${item.desc}</p>
-                            <ul>
-                                ${listItems}
-                            </ul>
+                            <h2>${item.title}</h2>
+                            ${dateHtml}
+                            ${descHtml}
+                            ${listItems}
                         </div>
                     `;
                 });
