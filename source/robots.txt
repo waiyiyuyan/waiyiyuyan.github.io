@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://waiyiyuyan.github.io/sitemap.xml
