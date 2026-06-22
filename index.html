@@ -1,82 +1,78 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-	<meta name="google-adsense-remove" content="all">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 优化标题，包含核心关键词 -->
-    <title>公网IP查询工具 | IPv4/IPv6归属地、运营商、代理VPN检测</title>
-    <!-- 核心描述，谷歌搜索结果展示文字 -->
-    <meta name="description" content="免费在线IP检测工具，输入IPv4/IPv6即可查询IP归属城市、运营商、AS号，自动识别VPS/机房/代理IP，适配手机电脑，无需登录。">
-    <!-- 关键词辅助 -->
-    <meta name="keywords" content="IP查询,IPv6查询,公网IP检测,IP归属地查询,VPN识别,机房IP检测,AS信息查询">
-    <!-- 允许谷歌抓取、收录页面 -->
-    <meta name="robots" content="index,follow">
-    <!-- 规范链接，避免重复URL不收录 -->
-    <link rel="canonical" href="https://waiyiyuyan.github.io/ip/">
-    <!-- 社交预览标签（可选，提升展示效果） -->
-    <meta property="og:title" content="公网IP查询工具 | IPv4/IPv6归属地、代理VPN检测">
-    <meta property="og:description" content="免费在线IP检测工具，输入IPv4/IPv6即可查询IP归属城市、运营商、AS号，自动识别VPS/机房/代理IP">
-    <meta property="og:url" content="https://waiyiyuyan.github.io/ip/">
-    <meta property="og:type" content="tool">
-    <!-- 引入独立样式 -->
-    <link rel="stylesheet" href="./style.css">
+    <meta charset="utf-8">
+    <title>我爱白嫖 | 每日免费机场节点与高速VPN推荐实时更新</title>
+    <meta name="description" content="我爱白嫖专注于分享全网每日最新免费机场节点、高速安全VPN评测、科学上网导航及节点订阅源，旨在为用户提供稳定、流畅的科学上网资源推荐。">
+    <meta name="keywords" content="我爱白嫖,免费机场,机场节点,VPN推荐,科学上网,节点订阅,免费VPN,翻墙资源">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="google-adsense-account" content="ca-pub-5400876400049616">
+    <meta name="google-site-verification" content="aH851F92gNj2VQSV3o4uDaXBVIwNG1q5aHBKeBlBceQ" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5400876400049616" crossorigin="anonymous"></script>
+    
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            color: #333;
+            background-color: #f7f9fa;
+        }
+        header { 
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        header h1 { margin: 0; color: #007bff; font-size: 2rem; }
+        header p { margin: 5px 0 0; color: #666; font-size: 1rem; }
+        .ads-container { margin: 20px 0; min-height: 100px; }
+        .article-list { 
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-top: 20px; 
+        }
+        /* 针对机场/VPN信息卡片的排版样式预留 */
+        .node-card {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+        }
+        .node-card:last-child { border-bottom: none; }
+        .node-card h2 { font-size: 1.4rem; color: #222; margin-top: 0; }
+        .node-card blockquote { background: #f1f3f5; padding: 10px 15px; margin: 10px 0; border-left: 4px solid #adb5bd; color: #495057; }
+        .node-card ul { padding-left: 20px; }
+        .node-card li { font-family: monospace; word-break: break-all; background: #f8f9fa; margin-bottom: 5px; padding: 4px 8px; border-radius: 4px; border: 1px solid #e9ecef; }
+    </style>
 </head>
 <body>
-    <div class="card">
-        <div class="card-header">
-            <h2>🌐 网络环境检测</h2>
-            <p>实时查询您的公网IP与网络属性</p>
-        </div>
 
-        <!-- 新增IP搜索区域 -->
-        <div class="search-box">
-            <input type="text" id="ipInput" placeholder="输入IPv4/IPv6地址查询">
-            <button id="searchBtn">查询</button>
-            <button id="resetBtn">查看本机</button>
-        </div>
+    <header>
+        <h1>我爱白嫖</h1>
+        <p>每日免费机场节点 · 高速VPN测试 · 科学上网资源导航</p>
+    </header>
 
-        <div class="info-list">
-            <div class="info-item">
-                <span class="info-label">查询IP</span>
-                <span class="info-value" id="queryIp"><span class="loading"></span>查询中...</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">国家地区</span>
-                <span class="info-value" id="area"><span class="loading"></span>查询中...</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">经纬度</span>
-                <span class="info-value" id="locationCoord"><span class="loading"></span>查询中...</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">时区</span>
-                <span class="info-value" id="timezone"><span class="loading"></span>查询中...</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">运营商ISP</span>
-                <span class="info-value" id="isp"><span class="loading"></span>查询中...</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">机房组织</span>
-                <span class="info-value" id="org"><span class="loading"></span>查询中...</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">AS编号</span>
-                <span class="info-value" id="asInfo"><span class="loading"></span>查询中...</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">代理检测</span>
-                <span class="info-value" id="proxyCheck"><span class="loading"></span>检测中...</span>
-            </div>
-        </div>
-
-        <div class="card-footer">
-            <a href="/">← 返回首页</a>
-        </div>
+    <div class="ads-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5400876400049616" data-ad-slot="4680496511" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <!-- 外部JS逻辑文件 -->
-    <script src="./ip-detect.js"></script>
+    <div id="content" class="article-list">
+        <h2>最新资讯</h2>
+        <p>正在从服务器同步最新数据，请稍候...</p>
+    </div>
+
+    <div class="ads-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-5400876400049616" data-ad-slot="9222376757"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
 </body>
 </html>
