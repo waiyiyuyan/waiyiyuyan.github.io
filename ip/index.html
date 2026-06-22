@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<meta name="google-adsense-remove" content="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 优化标题，包含核心关键词 -->
+    <title>公网IP查询工具 | IPv4/IPv6归属地、运营商、代理VPN检测</title>
+    <!-- 核心描述，谷歌搜索结果展示文字 -->
+    <meta name="description" content="免费在线IP检测工具，输入IPv4/IPv6即可查询IP归属城市、运营商、AS号，自动识别VPS/机房/代理IP，适配手机电脑，无需登录。">
+    <!-- 关键词辅助 -->
+    <meta name="keywords" content="IP查询,IPv6查询,公网IP检测,IP归属地查询,VPN识别,机房IP检测,AS信息查询">
+    <!-- 允许谷歌抓取、收录页面 -->
+    <meta name="robots" content="index,follow">
+    <!-- 规范链接，避免重复URL不收录 -->
+    <link rel="canonical" href="https://waiyiyuyan.github.io/ip/">
+    <!-- 社交预览标签（可选，提升展示效果） -->
+    <meta property="og:title" content="公网IP查询工具 | IPv4/IPv6归属地、代理VPN检测">
+    <meta property="og:description" content="免费在线IP检测工具，输入IPv4/IPv6即可查询IP归属城市、运营商、AS号，自动识别VPS/机房/代理IP">
+    <meta property="og:url" content="https://waiyiyuyan.github.io/ip/">
+    <meta property="og:type" content="tool">
+    <!-- 引入独立样式 -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h2>🌐 网络环境检测</h2>
+            <p>实时查询您的公网IP与网络属性</p>
+        </div>
+
+        <!-- 新增IP搜索区域 -->
+        <div class="search-box">
+            <input type="text" id="ipInput" placeholder="输入IPv4/IPv6地址查询">
+            <button id="searchBtn">查询</button>
+            <button id="resetBtn">查看本机</button>
+        </div>
+
+        <div class="info-list">
+            <div class="info-item">
+                <span class="info-label">查询IP</span>
+                <span class="info-value" id="queryIp"><span class="loading"></span>查询中...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">国家地区</span>
+                <span class="info-value" id="area"><span class="loading"></span>查询中...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">经纬度</span>
+                <span class="info-value" id="locationCoord"><span class="loading"></span>查询中...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">时区</span>
+                <span class="info-value" id="timezone"><span class="loading"></span>查询中...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">运营商ISP</span>
+                <span class="info-value" id="isp"><span class="loading"></span>查询中...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">机房组织</span>
+                <span class="info-value" id="org"><span class="loading"></span>查询中...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">AS编号</span>
+                <span class="info-value" id="asInfo"><span class="loading"></span>查询中...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">代理检测</span>
+                <span class="info-value" id="proxyCheck"><span class="loading"></span>检测中...</span>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="/">← 返回首页</a>
+        </div>
+    </div>
+
+    <!-- 外部JS逻辑文件 -->
+    <script src="./ip-detect.js"></script>
+</body>
+</html>
