@@ -26,11 +26,42 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: center;
         }
         header h1 { margin: 0; color: #007bff; font-size: 2rem; }
         header p { margin: 5px 0 0; color: #666; font-size: 1rem; }
+        
+        /* 🧭 新增：导航栏样式，未来有了新页面随时往里面加 <a> 标签即可 */
+        .nav-bar {
+            background: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .nav-bar a {
+            color: #555;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .nav-bar a:hover {
+            color: #007bff;
+            background-color: #f0f7ff;
+        }
+        .nav-bar a.active {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            border-radius: 4px 4px 0 0;
+        }
+
         .ads-container { margin: 20px 0; min-height: 100px; }
         .article-list { 
             background: #fff;
@@ -39,7 +70,6 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             margin-top: 20px; 
         }
-        /* 机场/VPN信息卡片的排版样式 */
         .node-card {
             margin-bottom: 30px;
             padding-bottom: 20px;
@@ -50,6 +80,9 @@
         .node-card blockquote { background: #f1f3f5; padding: 10px 15px; margin: 10px 0; border-left: 4px solid #adb5bd; color: #495057; }
         .node-card ul { padding-left: 20px; }
         .node-card li { font-family: monospace; word-break: break-all; background: #f8f9fa; margin-bottom: 5px; padding: 4px 8px; border-radius: 4px; border: 1px solid #e9ecef; }
+        
+        /* 正在加载提示 */
+        .loading-text { text-align: center; color: #999; padding: 20px 0; font-size: 0.95rem; }
     </style>
 </head>
 <body>
@@ -59,19 +92,68 @@
         <p>每日免费机场节点 · 高速VPN测试 · 科学上网资源导航</p>
     </header>
 
+    <nav class="nav-bar">
+        <a href="/" class="active">🏠 首页节点</a>
+        <a href="/ip/">🌐 IP环境检测</a>
+    </nav>
+
     <div class="ads-container">
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5400876400049616" data-ad-slot="4680496511" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <div id="content" class="article-list">
-        <div class="node-card"><h2>轻松云</h2><blockquote>发布于：2026/6/17</blockquote><p>注册即送 100GB️/7 天套餐。</p><ul><li>节点：香港、日本、新加坡、美国</li><li>协议：VLESS</li><li>网站：轻松云.com</li><li>频道：t.me/qingsongcom</li><li>群组：t.me/qingsongchat</li></ul></div><div class="node-card"><h2>SkyLink</h2><blockquote>发布于：2026/6/16</blockquote><p>使用礼品卡 2NKq1YXziOXkK7Dy 兑换“体验/测试”50GB️ 6GB/30 天套餐。</p><ul><li>节点：香港、日本、澳门、美国</li><li>协议：AnyTLS</li><li>网站：zxjdbnlfkjf.8746578.xyz</li><li>频道：t.me/skylink111</li><li>群组：t.me/skylink11</li></ul></div><div class="node-card"><h2>交个朋友</h2><blockquote>发布于：2026/6/15</blockquote><p>使用优惠劵 befriends 0 元购买“公益套餐”100GB️/30 天套餐。</p><ul><li>节点：香港、日本、美国</li><li>协议：AnyTLS、VLESS</li><li>网站：交个朋友.com</li><li>频道：t.me/befriendsvpn</li><li>群组：t.me/befriendsgroup</li></ul></div><div class="node-card"><h2>Node 火箭</h2><blockquote>发布于：2026/6/09</blockquote><p>使用优惠劵 nodew 0 元购买 1024GB️/3 年套餐。</p><ul><li>节点：香港、日本、新加坡、台湾、德国、美国、韩国、英国、芬兰、荷兰、俄罗斯……</li><li>协议：AnyTLS、Hysteria、Trojan、VLESS、VMess</li><li>网站：nodew.me</li><li>频道：t.me/vpn03</li><li>群组：t.me/nodewvpn</li></ul></div><div class="node-card"><h2>LyNvX</h2><blockquote>发布于：2026/6/07</blockquote><p>使用优惠劵 xNfjrNec 0 元购买“Lite Starter-30GB”30GB️/30 天套餐。</p><ul><li>节点：香港、台湾、日本、韩国、越南、泰国、以色列、俄罗斯、美国、德国、荷兰……</li><li>协议：VLESS</li><li>网站：dash.lynvx.info</li><li>频道：-</li><li>群组：t.me/LyNvXChat</li></ul></div><div class="node-card"><h2>Ran</h2><blockquote>发布于：2026/6/05</blockquote><p>使用优惠劵 shachash 0 元购买“一元体验”10GB️/30 天套餐。</p><ul><li>节点：香港、澳门、日本、新加坡</li><li>协议：AnyTLS</li><li>网站：ran.ranhaha.zdjzhejshsxintaid.kuaivpn.app</li><li>频道：t.me/ranjsq</li><li>群组：t.me/+6D-YYKH4kohiMWEx</li></ul></div><div class="node-card"><h2>Koipy</h2><blockquote>发布于：2026/6/04</blockquote><p>注册即送 100GB️/30 天套餐。<br>使用优惠劵 Koipy 0 元购买“T-精品”10GB/每月重置 1 年套餐。</p><ul><li>节点：香港、德国</li><li>协议：AnyTLS</li><li>网站：portal.f2vip.net</li><li>频道：t.me/F1ssChannel</li><li>群组：t.me/F1ssGroup</li></ul></div><div class="node-card"><h2>Roxi</h2><blockquote>发布于：2026/6/01</blockquote><p>注册即送 100GB️/每月套餐。</p><ul><li>节点：美国、立陶宛、印度</li><li>协议：VLESS</li><li>网站：roxijet.cloud</li><li>频道：无</li><li>群组：t.me/Roxifree</li></ul></div><div class="node-card"><h2>蛙爪云</h2><blockquote>发布于：2026/6/01</blockquote><p>使用优惠劵 wazhua 0 元购买“（入门）蝌蚪免费套餐”100GB️/30 天套餐。</p><ul><li>节点：德国、香港、美国</li><li>协议：Hysteria、VLESS</li><li>网站：app.wazhua.org</li><li>频道：t.me/webwapc_you</li><li>群组：t.me/webwapcyou</li></ul></div>
+        <div class="loading-text">🔄 正在同步全网最新白嫖节点，请稍候...</div>
     </div>
 
     <div class="ads-container">
         <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-5400876400049616" data-ad-slot="9222376757"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
+
+    <script>
+        fetch('./data.json')
+            .then(response => {
+                if (!response.ok) throw new Error('未能加载到今日节点数据');
+                return response.json();
+            })
+            .then(data => {
+                const contentDiv = document.getElementById('content');
+                if (!data || data.length === 0) {
+                    contentDiv.innerHTML = '<div class="loading-text">⚠️ 今日暂无节点推荐，请稍后再试。</div>';
+                    return;
+                }
+
+                // 拼装符合你原本排版样式的 HTML 字符串
+                let htmlContent = '';
+                data.forEach(item => {
+                    // 生成 <li> 列表项
+                    let listItems = '';
+                    if (item.details && Array.isArray(item.details)) {
+                        listItems = item.details.map(detail => `<li>${detail}</li>`).join('');
+                    }
+
+                    htmlContent += `
+                        <div class="node-card">
+                            <h2>${item.name}</h2>
+                            <blockquote>发布于：${item.date}</blockquote>
+                            <p>${item.desc}</p>
+                            <ul>
+                                ${listItems}
+                            </ul>
+                        </div>
+                    `;
+                });
+
+                contentDiv.innerHTML = htmlContent;
+            })
+            .catch(error => {
+                document.getElementById('content').innerHTML = `
+                    <div class="loading-text" style="color: #dc3545;">❌ 节点数据加载失败，请刷新页面重试。</div>
+                `;
+                console.error(error);
+            });
+    </script>
 
 </body>
 </html>
