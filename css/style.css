@@ -380,10 +380,10 @@ body {
 .nav-icon,
 .main-nav-link {
   float: left;
-  color: #fff;
-  opacity: 0.6;
+  color: #000 !important; /* 强制设为黑色 */
+  opacity: 0.9 !important; /* 去掉透明度，让字更实 */
   text-decoration: none;
-  text-shadow: 0 1px rgba(0,0,0,0.2);
+  text-shadow: none !important; /* 去掉阴影 */
   -webkit-transition: opacity 0.2s;
   -moz-transition: opacity 0.2s;
   -ms-transition: opacity 0.2s;
