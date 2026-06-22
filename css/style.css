@@ -380,10 +380,10 @@ body {
 .nav-icon,
 .main-nav-link {
   float: left;
-  color: #000 !important; /* 强制设为黑色 */
-  opacity: 0.9 !important; /* 去掉透明度，让字更实 */
+  color: #fff;
+  opacity: 0.6;
   text-decoration: none;
-  text-shadow: none !important; /* 去掉阴影 */
+  text-shadow: 0 1px rgba(0,0,0,0.2);
   -webkit-transition: opacity 0.2s;
   -moz-transition: opacity 0.2s;
   -ms-transition: opacity 0.2s;
@@ -844,10 +844,10 @@ a.article-title:hover {
   color: #999;
   text-shadow: 0 1px #fff;
 }
-.article-share-twitter .fa,
-.article-share-facebook .fa,
-.article-share-pinterest .fa,
-.article-share-linkedin .fa {
+.article-share-twitter:before,
+.article-share-facebook:before,
+.article-share-pinterest:before,
+.article-share-linkedin:before {
   font-size: 20px;
   width: 20px;
   height: 20px;
@@ -903,23 +903,6 @@ a.article-title:hover {
   display: block;
   max-width: 100%;
   margin: 0 auto;
-}
-@media screen and (max-width: 479px) {
-  .article-inner {
-    max-width: 100% !important;
-  }
-  .article-entry {
-    max-width: 100% !important;
-  }
-  .article-entry > div[style*="margin: 20px auto"] {
-    max-width: 100% !important;
-    width: 100% !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-}
-.article-entry > div[style*="margin: 20px auto"] {
-  clear: both !important;
 }
 #comments {
   background: #fff;

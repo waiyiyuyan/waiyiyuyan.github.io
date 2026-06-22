@@ -1,28 +1,23 @@
 <!DOCTYPE html>
-
-<html lang="zh-CN">
+<html>
 <head>
-
   <meta charset="utf-8">
   
   
-  <title>我爱白嫖</title>
+  <title>代码小栈</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="google-adsense-account" content="ca-pub-5400876400049616">
-  <meta http-equiv="content-language" content="zh-CN">
-
-  <meta name="description" content="分享网络技术、开源网络检测工具与网络配置教程，提供IP归属查询、网络环境检测等实用在线工具，学习网络底层知识。">
+  <meta name="description" content="专注各类网站搭建，编程实战，开源小工具开发，零基础也能跟着手动部署">
 <meta property="og:type" content="website">
-<meta property="og:title" content="我爱白嫖">
+<meta property="og:title" content="代码小栈">
 <meta property="og:url" content="https://waiyiyuyan.github.io/index.html">
-<meta property="og:site_name" content="我爱白嫖">
-<meta property="og:description" content="分享网络技术、开源网络检测工具与网络配置教程，提供IP归属查询、网络环境检测等实用在线工具，学习网络底层知识。">
+<meta property="og:site_name" content="代码小栈">
+<meta property="og:description" content="专注各类网站搭建，编程实战，开源小工具开发，零基础也能跟着手动部署">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="waiyiyuyan">
-<meta property="article:tag" content="IP查询,网络工具,开源项目,网络配置教程,IPv6检测,AS查询,机房IP识别,网络技术分享">
+<meta property="article:tag" content="建站教程,编程实战,开源工具,源码分享">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="我爱白嫖" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="代码小栈" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -37,40 +32,21 @@
 
   
   
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-
-
-  <meta name="google-site-verification" content="aH851F92gNj2VQSV3o4uDaXBVIwNG1q5aHBKeBlBceQ" />
-
-  
-     
 <meta name="generator" content="Hexo 7.3.0"></head>
+
 <body>
-
-<!-- 展示广告 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5400876400049616"
-     data-ad-slot="4680496511"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
   <div id="container">
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
-      <h2 id="logo-wrap">
-        <a href="/" id="logo">我爱白嫖</a>
-      </h2>
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">代码小栈</a>
+      </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">免费开源网络工具与技术分享</a>
+          <a href="/" id="subtitle">建站，代码，工具，实战笔记</a>
         </h2>
       
     </div>
@@ -81,8 +57,6 @@
           <a class="main-nav-link" href="/">Home</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/ip/">IP查询</a>
         
       </nav>
       <nav id="sub-nav">
@@ -101,119 +75,11 @@
 
       <div class="outer">
         <section id="main">
-      
-  <article id="post-blog-automation" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    <article id="post-daily" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2026/06/20/blog-automation/" class="article-date">
-  <time class="dt-published" datetime="2026-06-20T12:00:00.000Z" itemprop="datePublished">2026-06-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <!-- 首页/归档列表页使用 h2，杜绝多H1报错 -->
-    <h2 itemprop="name">
-      <a class="p-name article-title" href="/2026/06/20/blog-automation/">从零打造「全自动无人驾驶」Hexo 博客：独立爬虫定时抓取与 GitHub Actions 联动避坑全纪录</a>
-    </h2>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>由于对话实在太多太琐碎，再加上当时没想到这一步，压根没去记录解决问题的过程，现在再返回去看，只能让Gemini 总结个大概。<br>起因是我会爬取vpn 机场信息，写到博客里，但是手动太麻烦，随意想使用GitHub actions 去实现自动抓取，自动生成文章。便有了我和Gemini 的对话。以下是Gemini的总结，但我已经记不清有没有疏忽的地方。大概就这么个过程。实在无法理解，让gemini 看看，它肯定明白该怎么做</p>
-<p>本方案适用于希望构建<strong>自动定时爬取资讯发布</strong>，同时保留<strong>本地高自由度手动撰写随笔</strong>，且<strong>两端完全不需要同步、绝不产生 Git 冲突</strong>的高阶技术博客架构。</p>
-        
-          <p class="article-more-link">
-            <a href="/2026/06/20/blog-automation/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2026/06/20/blog-automation/" data-id="cmqopzo5s0003astq83ovaeol" data-title="从零打造「全自动无人驾驶」Hexo 博客：独立爬虫定时抓取与 GitHub Actions 联动避坑全纪录" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-      
-       
-      
-  
-  <article id="post-copy-script" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/06/20/copy-script/" class="article-date">
-  <time class="dt-published" datetime="2026-06-20T12:00:00.000Z" itemprop="datePublished">2026-06-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">博客美化</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <!-- 首页/归档列表页使用 h2，杜绝多H1报错 -->
-    <h2 itemprop="name">
-      <a class="p-name article-title" href="/2026/06/20/copy-script/">Hexo Landscape美化：仅修改footer.ejs添加代码复制按钮</a>
-    </h2>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Hexo 自带的默认主题 <code>landscape</code> 原生没有代码块复制功能，写技术教程贴大量命令、代码片段时，访客只能手动框选复制，体验很差。</p>
-<p>这套方案使用纯 CSS+原生 JS，<strong>无需安装插件、仅修改单个模板文件</strong>，同时兼容开启&#x2F;关闭代码行号两种页面渲染结构，不会复制出行号数字、不会出现空白复制的问题。</p>
-        
-          <p class="article-more-link">
-            <a href="/2026/06/20/copy-script/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2026/06/20/copy-script/" data-id="cmqopzo5y0009astqdzgi3rnj" data-title="Hexo Landscape美化：仅修改footer.ejs添加代码复制按钮" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-      
-       
-      
-  
-  <article id="post-daily" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/06/20/daily/" class="article-date">
-  <time class="dt-published" datetime="2026-06-19T20:49:24.000Z" itemprop="datePublished">2026-06-20</time>
+    <a href="/2026/06/21/daily/" class="article-date">
+  <time class="dt-published" datetime="2026-06-21T21:40:12.000Z" itemprop="datePublished">2026-06-22</time>
 </a>
     
   <div class="article-category">
@@ -227,10 +93,9 @@
       <header class="article-header">
         
   
-    <!-- 首页/归档列表页使用 h2，杜绝多H1报错 -->
-    <h2 itemprop="name">
-      <a class="p-name article-title" href="/2026/06/20/daily/">每日机场节点与VPN测试推荐（2026年06月）</a>
-    </h2>
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/06/21/daily/">每日机场节点与VPN测试推荐（2026年06月）</a>
+    </h1>
   
 
       </header>
@@ -328,21 +193,10 @@
 </ul>
 <hr>
 
-        
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-5400876400049616"
-     data-ad-slot="3064162511"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2026/06/20/daily/" data-id="cmqopzo5z000aastq9m1a6n14" data-title="每日机场节点与VPN测试推荐（2026年06月）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2026/06/21/daily/" data-id="cmqose82e0007vj0jh75s5ed3" data-title="每日机场节点与VPN测试推荐（2026年06月）" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -355,23 +209,8 @@
 
 
 
-      
-       
-          <div style="margin: 30px auto; max-width: 95%;">
-              <ins class="adsbygoogle"
-                   style="display:block"
-                   data-ad-format="fluid"
-                   data-ad-layout-key="-fb+5w+4e-db+86"
-                   data-ad-client="ca-pub-5400876400049616"
-                   data-ad-slot="2601128087"></ins>
-              <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-          </div>
-      
-      
   
-  <article id="post-imgur-bed" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-imgur-bed" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/06/15/imgur-bed/" class="article-date">
   <time class="dt-published" datetime="2026-06-15T15:17:14.000Z" itemprop="datePublished">2026-06-15</time>
@@ -388,10 +227,9 @@
       <header class="article-header">
         
   
-    <!-- 首页/归档列表页使用 h2，杜绝多H1报错 -->
-    <h2 itemprop="name">
+    <h1 itemprop="name">
       <a class="p-name article-title" href="/2026/06/15/imgur-bed/">Imgur 图床双 Cloudflare Worker 部署教学文档</a>
-    </h2>
+    </h1>
   
 
       </header>
@@ -411,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2026/06/15/imgur-bed/" data-id="cmqopzo6b000wastqajqo701g" data-title="Imgur 图床双 Cloudflare Worker 部署教学文档" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2026/06/15/imgur-bed/" data-id="cmqose82f0009vj0jec8tdozz" data-title="Imgur 图床双 Cloudflare Worker 部署教学文档" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -424,11 +262,8 @@
 
 
 
-      
-       
-      
   
-  <article id="post-msssage-board" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-msssage-board" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/06/15/msssage-board/" class="article-date">
   <time class="dt-published" datetime="2026-06-15T15:17:14.000Z" itemprop="datePublished">2026-06-15</time>
@@ -445,10 +280,9 @@
       <header class="article-header">
         
   
-    <!-- 首页/归档列表页使用 h2，杜绝多H1报错 -->
-    <h2 itemprop="name">
+    <h1 itemprop="name">
       <a class="p-name article-title" href="/2026/06/15/msssage-board/">Cloudflare 全套免费部署｜实时留言板（支持图片/视频/楼中楼/@通知/分页加载）</a>
-    </h2>
+    </h1>
   
 
       </header>
@@ -464,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2026/06/15/msssage-board/" data-id="cmqopzo6c000yastq6a7f8x5o" data-title="Cloudflare 全套免费部署｜实时留言板（支持图片/视频/楼中楼/@通知/分页加载）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2026/06/15/msssage-board/" data-id="cmqose82g000avj0jhoxucgru" data-title="Cloudflare 全套免费部署｜实时留言板（支持图片/视频/楼中楼/@通知/分页加载）" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -477,11 +311,8 @@
 
 
 
-      
-       
-      
   
-  <article id="post-pairdrop" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-pairdrop" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/01/18/pairdrop/" class="article-date">
   <time class="dt-published" datetime="2026-01-18T01:09:51.000Z" itemprop="datePublished">2026-01-18</time>
@@ -498,10 +329,9 @@
       <header class="article-header">
         
   
-    <!-- 首页/归档列表页使用 h2，杜绝多H1报错 -->
-    <h2 itemprop="name">
+    <h1 itemprop="name">
       <a class="p-name article-title" href="/2026/01/18/pairdrop/">跨设备文件传输神器 PairDrop 完全使用指南：告别数据线，浏览器搞定一切</a>
-    </h2>
+    </h1>
   
 
       </header>
@@ -517,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2026/01/18/pairdrop/" data-id="cmqopzo6d0010astqci4rdn1e" data-title="跨设备文件传输神器 PairDrop 完全使用指南：告别数据线，浏览器搞定一切" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2026/01/18/pairdrop/" data-id="cmqose82o000wvj0j7d1raohw" data-title="跨设备文件传输神器 PairDrop 完全使用指南：告别数据线，浏览器搞定一切" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -530,18 +360,15 @@
 
 
 
-      
-       
-      
   
-  <article id="post-cloudflarechatroom" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-cloudflarechatroom" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/12/08/cloudflarechatroom/" class="article-date">
   <time class="dt-published" datetime="2025-12-08T13:18:59.000Z" itemprop="datePublished">2025-12-08</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Cloudflare-Worker/">Cloudflare Worker</a>
+    <a class="article-category-link" href="/categories/cloudflare/">cloudflare</a>
   </div>
 
   </div>
@@ -551,10 +378,9 @@
       <header class="article-header">
         
   
-    <!-- 首页/归档列表页使用 h2，杜绝多H1报错 -->
-    <h2 itemprop="name">
+    <h1 itemprop="name">
       <a class="p-name article-title" href="/2025/12/08/cloudflarechatroom/">用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室</a>
-    </h2>
+    </h1>
   
 
       </header>
@@ -570,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/" data-id="cmqopzo5x0007astq6nyq1a52" data-title="用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/" data-id="cmqose82b0003vj0j2ihgbqku" data-title="用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -583,11 +409,8 @@
 
 
 
-      
-       
-      
   
-  <article id="post-fmhy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-fmhy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/11/19/fmhy/" class="article-date">
   <time class="dt-published" datetime="2025-11-19T01:21:16.000Z" itemprop="datePublished">2025-11-19</time>
@@ -604,10 +427,9 @@
       <header class="article-header">
         
   
-    <!-- 首页/归档列表页使用 h2，杜绝多H1报错 -->
-    <h2 itemprop="name">
+    <h1 itemprop="name">
       <a class="p-name article-title" href="/2025/11/19/fmhy/">互联网的指南针：FMHY.net 一站式数字资源索引</a>
-    </h2>
+    </h1>
   
 
       </header>
@@ -624,7 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2025/11/19/fmhy/" data-id="cmqopzo6a000vastqcna8f1l1" data-title="互联网的指南针：FMHY.net 一站式数字资源索引" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2025/11/19/fmhy/" data-id="cmqose82o000vvj0jgl2cho0x" data-title="互联网的指南针：FMHY.net 一站式数字资源索引" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -635,11 +457,8 @@
 
 
 
-      
-       
-      
   
-  <article id="post-appleid" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-appleid" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/12/18/appleid/" class="article-date">
   <time class="dt-published" datetime="2024-12-18T09:38:47.000Z" itemprop="datePublished">2024-12-18</time>
@@ -656,10 +475,9 @@
       <header class="article-header">
         
   
-    <!-- 首页/归档列表页使用 h2，杜绝多H1报错 -->
-    <h2 itemprop="name">
+    <h1 itemprop="name">
       <a class="p-name article-title" href="/2024/12/18/appleid/">Apple ID 教程：一步步更改国家或地区，轻松切换账户</a>
-    </h2>
+    </h1>
   
 
       </header>
@@ -675,7 +493,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://waiyiyuyan.github.io/2024/12/18/appleid/" data-id="cmqopzo5n0001astq4b620yoz" data-title="Apple ID 教程：一步步更改国家或地区，轻松切换账户" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://waiyiyuyan.github.io/2024/12/18/appleid/" data-id="cmqose8280001vj0j617s2khx" data-title="Apple ID 教程：一步步更改国家或地区，轻松切换账户" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -688,12 +506,10 @@
 
 
 
-      
-       
-      
   
-  
-  </section>
+
+
+</section>
         
           <aside id="sidebar">
   
@@ -701,7 +517,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloudflare-Worker/">Cloudflare Worker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vpn/">vpn</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">博客美化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%BA%90%E5%AF%BC%E8%88%AA/">资源导航</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloudflare-Worker/">Cloudflare Worker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cloudflare/">cloudflare</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vpn/">vpn</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%BA%90%E5%AF%BC%E8%88%AA/">资源导航</a></li></ul>
     </div>
   </div>
 
@@ -711,7 +527,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apple-ID/" rel="tag">Apple ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag">图床</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="tag">文件传输</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%99%E8%A8%80%E6%9D%BF/" rel="tag">留言板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%81%8A%E5%A4%A9%E5%AE%A4/" rel="tag">聊天室</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/" rel="tag">自动更新</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apple-ID/" rel="tag">Apple ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag">图床</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="tag">文件传输</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%99%E8%A8%80%E6%9D%BF/" rel="tag">留言板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%81%8A%E5%A4%A9%E5%AE%A4/" rel="tag">聊天室</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/" rel="tag">自动更新</a></li></ul>
     </div>
   </div>
 
@@ -721,7 +537,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Apple-ID/" style="font-size: 10px;">Apple ID</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 10px;">图床</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" style="font-size: 10px;">文件传输</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="/tags/%E7%95%99%E8%A8%80%E6%9D%BF/" style="font-size: 10px;">留言板</a> <a href="/tags/%E8%81%8A%E5%A4%A9%E5%AE%A4/" style="font-size: 10px;">聊天室</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/" style="font-size: 10px;">自动更新</a>
+      <a href="/tags/Apple-ID/" style="font-size: 10px;">Apple ID</a> <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 10px;">图床</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" style="font-size: 10px;">文件传输</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="/tags/%E7%95%99%E8%A8%80%E6%9D%BF/" style="font-size: 10px;">留言板</a> <a href="/tags/%E8%81%8A%E5%A4%A9%E5%AE%A4/" style="font-size: 10px;">聊天室</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/" style="font-size: 10px;">自动更新</a>
     </div>
   </div>
 
@@ -743,15 +559,7 @@
       <ul>
         
           <li>
-            <a href="/2026/06/20/blog-automation/">从零打造「全自动无人驾驶」Hexo 博客：独立爬虫定时抓取与 GitHub Actions 联动避坑全纪录</a>
-          </li>
-        
-          <li>
-            <a href="/2026/06/20/copy-script/">Hexo Landscape美化：仅修改footer.ejs添加代码复制按钮</a>
-          </li>
-        
-          <li>
-            <a href="/2026/06/20/daily/">每日机场节点与VPN测试推荐（2026年06月）</a>
+            <a href="/2026/06/21/daily/">每日机场节点与VPN测试推荐（2026年06月）</a>
           </li>
         
           <li>
@@ -762,6 +570,14 @@
             <a href="/2026/06/15/msssage-board/">Cloudflare 全套免费部署｜实时留言板（支持图片/视频/楼中楼/@通知/分页加载）</a>
           </li>
         
+          <li>
+            <a href="/2026/01/18/pairdrop/">跨设备文件传输神器 PairDrop 完全使用指南：告别数据线，浏览器搞定一切</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/08/cloudflarechatroom/">用 Cloudflare Workers + Durable Objects 搭建一个极简 Web 文本聊天室</a>
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -770,81 +586,23 @@
 </aside>
         
       </div>
-      <style>
-  figure.highlight {
-    position: relative !important;
-    overflow: visible !important;
-  }
-  .code-copy-btn {
-    position: absolute !important;
-    top: 8px;
-    right: 8px;
-    background: #222;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 3px 10px;
-    font-size: 12px;
-    cursor: pointer;
-    z-index: 9999 !important;
-    user-select: none;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-  }
-  figure.highlight:hover .code-copy-btn {
-    opacity: 1;
-  }
-  .code-copy-btn:hover {
-    background: #444;
-  }
-  </style>
+      <footer id="footer">
   
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const figureList = document.querySelectorAll('figure.highlight');
-  
-    figureList.forEach(fig => {
-      // 防止重复生成按钮
-      if (fig.querySelector('.code-copy-btn') || fig.dataset.hasCopy) return;
-      fig.dataset.hasCopy = '1';
-  
-      const btn = document.createElement('button');
-      btn.className = 'code-copy-btn';
-      btn.innerText = '复制';
-  
-      btn.addEventListener('click', async function () {
-        // 优先匹配带行号结构
-        let codeArea = fig.querySelector('td.code pre');
-        // 无行号则直接取 pre 标签
-        if (!codeArea) codeArea = fig.querySelector('pre');
-  
-        if (!codeArea) {
-          this.innerText = '无内容';
-          setTimeout(() => this.innerText = '复制', 1200);
-          return;
-        }
-  
-        try {
-          await navigator.clipboard.writeText(codeArea.innerText);
-          this.innerText = '已复制';
-        } catch (err) {
-          this.innerText = '复制失败';
-        }
-        setTimeout(() => this.innerText = '复制', 1200);
-      });
-  
-      fig.appendChild(btn);
-    });
-  });
-  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 waiyiyuyan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
     </div>
     <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/ip/" class="mobile-nav-link">IP查询</a>
   
 </nav>
     
@@ -867,15 +625,5 @@
 
 
   </div>
-<!-- 橱窗广告 -->
-  
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-format="autorelaxed"
-      data-ad-client="ca-pub-5400876400049616"
-      data-ad-slot="9222376757"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
 </body>
 </html>

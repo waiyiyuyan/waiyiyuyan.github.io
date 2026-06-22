@@ -2,45 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://waiyiyuyan.github.io/2026/06/20/copy-script/</loc>
-    
-    <lastmod>2026-06-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/</loc>
-    
-    <lastmod>2026-06-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/2026/06/20/blog-automation/</loc>
-    
-    <lastmod>2026-06-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/2026/06/20/daily/</loc>
-    
-    <lastmod>2026-06-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://waiyiyuyan.github.io/tags/index.html</loc>
     
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-06-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -49,61 +13,7 @@
   <url>
     <loc>https://waiyiyuyan.github.io/googleffeb2c86eb431d9d.html</loc>
     
-    <lastmod>2026-06-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/categories/index.html</loc>
-    
-    <lastmod>2026-06-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/about/index.html</loc>
-    
-    <lastmod>2026-06-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/2026/01/18/pairdrop/</loc>
-    
-    <lastmod>2026-06-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/2026/06/15/msssage-board/</loc>
-    
-    <lastmod>2026-06-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/2026/06/15/imgur-bed/</loc>
-    
-    <lastmod>2026-06-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/2025/11/19/fmhy/</loc>
-    
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-06-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -112,7 +22,79 @@
   <url>
     <loc>https://waiyiyuyan.github.io/2024/12/18/appleid/</loc>
     
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2025/12/08/cloudflarechatroom/</loc>
+    
+    <lastmod>2026-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2026/06/21/daily/</loc>
+    
+    <lastmod>2026-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2026/06/15/imgur-bed/</loc>
+    
+    <lastmod>2026-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2026/06/15/msssage-board/</loc>
+    
+    <lastmod>2026-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2025/11/19/fmhy/</loc>
+    
+    <lastmod>2026-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/2026/01/18/pairdrop/</loc>
+    
+    <lastmod>2026-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/about/index.html</loc>
+    
+    <lastmod>2026-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/categories/index.html</loc>
+    
+    <lastmod>2026-06-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -129,13 +111,6 @@
   
   <url>
     <loc>https://waiyiyuyan.github.io/tags/Apple-ID/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/tags/Hexo/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -193,14 +168,7 @@
   </url>
   
   <url>
-    <loc>https://waiyiyuyan.github.io/categories/Cloudflare-Worker/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://waiyiyuyan.github.io/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
+    <loc>https://waiyiyuyan.github.io/categories/cloudflare/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -208,6 +176,13 @@
   
   <url>
     <loc>https://waiyiyuyan.github.io/categories/vpn/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://waiyiyuyan.github.io/categories/Cloudflare-Worker/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
