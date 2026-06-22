@@ -1,8 +1,7 @@
 // 页面DOM元素
 const el = {
     queryIp: document.getElementById('queryIp'),
-    area: document.getElementById('area'),
-    locationCoord: document.getElementById('locationCoord'),
+    area: document.getElementById('locationCoord'),
     timezone: document.getElementById('timezone'),
     isp: document.getElementById('isp'),
     org: document.getElementById('org'),
@@ -79,11 +78,12 @@ function jsonpIpSb(targetIp = null) {
 }
 
 /**
- * IP格式校验，拦截内网/本地回环
+ * IP格式校验，修复闭合括号的IPv6正则
  */
 function isValidIp(ipStr) {
-    const v4Reg = /^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d\d?)$/;
-    const v6Reg = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,6})$|:((:[0-9a-fA-F]{1,4}){1,7})$/;
+    const v4Reg = /^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$/;
+    // 修复：补齐最后缺失的闭合括号 )
+    const v6Reg = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,6})|(:([0-9a-fA-F]{1,4}){1,7}))$/;
     // 内网IP拦截规则
     const privateReg = /^(127\.|192\.168\.|10\.|172\.1[6-9]\.|172\.2[0-9]\.|172\.3[0-1]\.|::1|fd)/;
     if (privateReg.test(ipStr)) return false;
