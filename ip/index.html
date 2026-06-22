@@ -195,7 +195,6 @@
     </div>
 
     <script>
-        // DOM元素缓存
         const el = {
             ipv4: document.getElementById('ipv4'),
             ipv6: document.getElementById('ipv6'),
@@ -204,7 +203,7 @@
             proxyCheck: document.getElementById('proxyCheck')
         };
 
-        // 云服务商/机房关键词库（用于代理识别）
+        // 云服务商/机房关键词库
         const cloudKeywords = [
             "Cloudflare", "DigitalOcean", "Vultr", "Linode", "AWS", "Amazon",
             "Azure", "GCP", "Google Cloud", "OVH", "Contabo", "Hetzner",
@@ -213,47 +212,65 @@
         ];
 
         /**
-         * 通用JSONP请求函数，带超时兜底
-         * @param {string} url 请求地址
-         * @param {string} callbackName 全局回调函数名
-         * @param {number} timeout 超时时间（毫秒）
+         * 带超时的 fetch 封装
          */
-        function jsonpRequest(url, callbackName, timeout = 5000) {
-            return new Promise((resolve) => {
-                let timer = setTimeout(() => {
-                    window[callbackName] = () => {};
-                    resolve(null);
-                }, timeout);
+        function fetchWithTimeout(url, timeout = 5000) {
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), timeout);
+            return fetch(url, { signal: controller.signal }).finally(() => clearTimeout(timer));
+        }
 
-                window[callbackName] = (data) => {
-                    clearTimeout(timer);
-                    resolve(data);
+        /**
+         * 主接口：ip-api.com 强制IPv4
+         */
+        function getIPv4Info() {
+            return fetchWithTimeout('https://ip4.ip-api.com/json/?lang=zh-CN')
+                .then(res => res.ok ? res.json() : null)
+                .catch(() => null);
+        }
+
+        /**
+         * 主接口：ip-api.com 强制IPv6
+         */
+        function getIPv6Info() {
+            return fetchWithTimeout('https://ip6.ip-api.com/json/?lang=zh-CN')
+                .then(res => res.ok ? res.json() : null)
+                .catch(() => null);
+        }
+
+        /**
+         * 备用接口：国内CSDN JSONP接口（网络不通时降级使用）
+         */
+        function getFallbackInfo() {
+            return new Promise((resolve) => {
+                const callbackName = 'csdnIpCallback_' + Date.now();
+                window[callbackName] = (res) => {
+                    if (res && res.code === 200) {
+                        resolve({
+                            query: res.data.ip,
+                            country: res.data.country,
+                            regionName: res.data.province,
+                            city: res.data.city,
+                            isp: res.data.isp
+                        });
+                    } else {
+                        resolve(null);
+                    }
                 };
 
                 const script = document.createElement('script');
-                script.src = url;
-                script.onerror = () => {
-                    clearTimeout(timer);
-                    resolve(null);
-                };
+                script.src = `https://searchplugin.csdn.net/api/v1/ip/get?callback=${callbackName}`;
+                script.onerror = () => resolve(null);
                 document.body.appendChild(script);
             });
         }
 
-        // 强制获取IPv4信息
-        function getIPv4Info() {
-            return jsonpRequest('https://ipv4.ip.sb/geoip?callback=cb4', 'cb4');
-        }
-
-        // 强制获取IPv6信息
-        function getIPv6Info() {
-            return jsonpRequest('https://ipv6.ip.sb/geoip?callback=cb6', 'cb6');
-        }
-
-        // 代理判断逻辑
+        /**
+         * 代理判断逻辑
+         */
         function judgeProxy(data) {
             const result = { isProxy: false, reason: "普通家用/企业宽带", level: "ok" };
-            const isp = (data.isp || data.organization || "").toString().toLowerCase();
+            const isp = (data.isp || data.org || "").toString().toLowerCase();
 
             const hit = cloudKeywords.some(keyword => 
                 isp.includes(keyword.toLowerCase())
@@ -268,43 +285,78 @@
             return result;
         }
 
-        // 主执行函数
+        /**
+         * 填充页面数据
+         */
+        function fillData(data) {
+            el.location.textContent = [data.country, data.regionName, data.city].filter(Boolean).join(" · ");
+            el.isp.textContent = data.isp || "未知";
+
+            const proxyRes = judgeProxy(data);
+            el.proxyCheck.className = `badge badge-${proxyRes.level}`;
+            el.proxyCheck.textContent = proxyRes.isProxy 
+                ? `⚠️ ${proxyRes.reason}` 
+                : `✅ ${proxyRes.reason}`;
+        }
+
+        /**
+         * 主执行函数
+         */
         async function runDetect() {
-            // 并行请求双栈IP
+            // 并行请求双栈主接口
             const [v4Data, v6Data] = await Promise.all([getIPv4Info(), getIPv6Info()]);
 
-            // 填充IPv4相关信息
-            if (v4Data && v4Data.ip) {
-                el.ipv4.textContent = v4Data.ip;
-                el.isp.textContent = v4Data.isp || v4Data.organization || "未知";
-                
-                const loc = [v4Data.country, v4Data.region, v4Data.city].filter(Boolean).join(" · ");
-                el.location.textContent = loc || "未知";
+            // 主接口有一个成功即可正常展示
+            if (v4Data || v6Data) {
+                // 填充IPv4
+                if (v4Data && v4Data.query) {
+                    el.ipv4.textContent = v4Data.query;
+                    fillData(v4Data); // 用IPv4的归属地信息作为展示基准
+                } else {
+                    el.ipv4.textContent = "无可用IPv4出口";
+                    el.ipv4.style.color = "#999";
+                }
 
-                const proxyRes = judgeProxy(v4Data);
-                el.proxyCheck.className = `badge badge-${proxyRes.level}`;
-                el.proxyCheck.textContent = proxyRes.isProxy 
-                    ? `⚠️ ${proxyRes.reason}` 
-                    : `✅ ${proxyRes.reason}`;
-            } else {
-                el.ipv4.textContent = "无可用IPv4出口";
-                el.ipv4.style.color = "#999";
-                el.location.textContent = "无法获取";
-                el.isp.textContent = "无法获取";
-                el.proxyCheck.className = "badge badge-gray";
-                el.proxyCheck.textContent = "数据不足，无法检测";
+                // 填充IPv6
+                if (v6Data && v6Data.query) {
+                    el.ipv6.textContent = v6Data.query;
+                    // 如果IPv4失败，用IPv6的归属地信息
+                    if (!v4Data) fillData(v6Data);
+                } else {
+                    el.ipv6.textContent = "未启用IPv6";
+                    el.ipv6.style.color = "#999";
+                }
+
+                // 极端情况：两个IP都拿到但归属地都没填充到（理论不会出现）
+                if (el.location.textContent.includes("查询中")) {
+                    el.location.textContent = "无法获取";
+                    el.isp.textContent = "无法获取";
+                    el.proxyCheck.className = "badge badge-gray";
+                    el.proxyCheck.textContent = "数据不足，无法检测";
+                }
+
+                return;
             }
 
-            // 填充IPv6信息
-            if (v6Data && v6Data.ip) {
-                el.ipv6.textContent = v6Data.ip;
-            } else {
-                el.ipv6.textContent = "未启用IPv6";
+            // 主接口全部失败，走国内备用接口
+            const fallbackData = await getFallbackInfo();
+            if (fallbackData) {
+                // 备用接口无法区分双栈，只展示当前连接的IP
+                el.ipv4.textContent = fallbackData.query;
+                el.ipv6.textContent = "未检测（单IP模式）";
                 el.ipv6.style.color = "#999";
+                fillData(fallbackData);
+            } else {
+                // 全部接口失败
+                el.ipv4.textContent = "获取失败";
+                el.ipv6.textContent = "获取失败";
+                el.location.textContent = "获取失败";
+                el.isp.textContent = "获取失败";
+                el.proxyCheck.className = "badge badge-gray";
+                el.proxyCheck.textContent = "网络异常，检测失败";
             }
         }
 
-        // 启动检测
         runDetect();
     </script>
 </body>
