@@ -1,7 +1,8 @@
-// 页面DOM元素
+// 页面DOM元素（修复：补全 area 节点）
 const el = {
     queryIp: document.getElementById('queryIp'),
-    area: document.getElementById('locationCoord'),
+    area: document.getElementById('area'),
+    locationCoord: document.getElementById('locationCoord'),
     timezone: document.getElementById('timezone'),
     isp: document.getElementById('isp'),
     org: document.getElementById('org'),
@@ -82,7 +83,6 @@ function jsonpIpSb(targetIp = null) {
  */
 function isValidIp(ipStr) {
     const v4Reg = /^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$/;
-    // 修复：补齐最后缺失的闭合括号 )
     const v6Reg = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,6})|(:([0-9a-fA-F]{1,4}){1,7}))$/;
     // 内网IP拦截规则
     const privateReg = /^(127\.|192\.168\.|10\.|172\.1[6-9]\.|172\.2[0-9]\.|172\.3[0-1]\.|::1|fd)/;
@@ -110,7 +110,9 @@ function judgeProxy(data) {
  */
 function setLoading() {
     const allVal = [el.queryIp, el.area, el.locationCoord, el.timezone, el.isp, el.org, el.asInfo, el.proxyCheck];
-    allVal.forEach(item => item.innerHTML = '<span class="loading"></span>查询中...');
+    allVal.forEach(item => {
+        if (item) item.innerHTML = '<span class="loading"></span>查询中...';
+    });
 }
 
 /**
@@ -118,7 +120,7 @@ function setLoading() {
  */
 function renderData(data) {
     if (!data) {
-        el.queryIp.textContent = "查询失败";
+        el.query.textContent = "查询失败";
         el.area.textContent = "-";
         el.locationCoord.textContent = "-";
         el.timezone.textContent = "-";
