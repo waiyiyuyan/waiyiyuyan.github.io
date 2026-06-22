@@ -48,6 +48,7 @@ body {
   border-radius: 3px;
   font-size: 14px;
   outline: none;
+  margin-left: -1px;
 }
 #ipInput:focus {
   border-color: #0078e7;
