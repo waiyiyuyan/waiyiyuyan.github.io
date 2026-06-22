@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网络环境检测</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f6f8; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 400px; text-align: center; }
+        .info { margin: 15px 0; font-size: 18px; color: #333; }
+        .label { font-weight: bold; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>🌐 网络环境检测</h2>
+        <div class="info"><span class="label">当前 IP:</span> <span id="ip">查询中...</span></div>
+        <div class="info"><span class="label">归属地:</span> <span id="loc">查询中...</span></div>
+        <div class="info"><span class="label">运营商:</span> <span id="isp">查询中...</span></div>
+        <br>
+        <a href="/">返回首页</a>
+    </div>
+
+    <script>
+        fetch('https://ipapi.co/json/')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('ip').innerText = data.ip;
+                document.getElementById('loc').innerText = data.country_name;
+                document.getElementById('isp').innerText = data.org;
+            });
+    </script>
+</body>
+</html>
