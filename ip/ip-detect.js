@@ -22,7 +22,7 @@ const cloudKeywords = [
 ];
 
 /**
- * 备用接口：搜狐HTTPS JSONP，主接口失败降级
+ * 备用接口：搜狐HTTPS JSONP
  */
 function getFallbackInfo() {
     return new Promise((resolve) => {
@@ -54,13 +54,15 @@ function getFallbackInfo() {
 }
 
 /**
- * JSONP 请求 api.ip.sb 纯HTTPS
- * @param {string|null} targetIp null=本机，传IP=查询指定地址
+ * JSONP 请求 api.ip.sb
  */
 function jsonpIpSb(targetIp = null) {
     return new Promise((resolve) => {
         const cbName = 'ipSbCb_' + Date.now();
-        window[cbName] = (res) => resolve(res);
+        window[cbName] = (res) => {
+			resolve(res);
+			delete window[cbName]; // 执行后删除全局函数
+		};
         let url = 'https://api.ip.sb/geoip';
         if (targetIp) url += '/' + targetIp;
         url += `?callback=${cbName}`;
@@ -69,7 +71,6 @@ function jsonpIpSb(targetIp = null) {
         script.src = url;
         script.onerror = async () => {
             document.body.removeChild(script);
-            // api.ip.sb访问失败，切换搜狐兜底
             const fb = await getFallbackInfo();
             resolve(fb);
         };
@@ -79,19 +80,18 @@ function jsonpIpSb(targetIp = null) {
 }
 
 /**
- * IP格式校验，修复闭合括号的IPv6正则
+ * IP格式校验
  */
 function isValidIp(ipStr) {
     const v4Reg = /^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$/;
     const v6Reg = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,6})|(:([0-9a-fA-F]{1,4}){1,7}))$/;
-    // 内网IP拦截规则
     const privateReg = /^(127\.|192\.168\.|10\.|172\.1[6-9]\.|172\.2[0-9]\.|172\.3[0-1]\.|::1|fd)/;
     if (privateReg.test(ipStr)) return false;
     return v4Reg.test(ipStr) || v6Reg.test(ipStr);
 }
 
 /**
- * 机房/代理IP判定
+ * 机房/代理判定
  */
 function judgeProxy(data) {
     const result = { isProxy: false, reason: "普通家用/企业宽带", level: "ok" };
@@ -116,11 +116,16 @@ function setLoading() {
 }
 
 /**
- * 渲染页面，做ip.sb → 页面字段映射
+ * 渲染页面（修复el.query → el.queryIp）
  */
 function renderData(data) {
+    // 兜底内网拦截
+    if (data && data.ip && /^(127\.|192\.168\.|10\.|172\.1[6-9]\.|::1)/.test(data.ip)) {
+        data = null;
+    }
+
     if (!data) {
-        el.query.textContent = "查询失败";
+        el.queryIp.textContent = "查询失败";
         el.area.textContent = "-";
         el.locationCoord.textContent = "-";
         el.timezone.textContent = "-";
@@ -147,7 +152,6 @@ function renderData(data) {
 
 /**
  * 统一查询入口
- * @param {string|null} ip 为空查本机
  */
 async function runQuery(ip = null) {
     setLoading();
@@ -159,7 +163,7 @@ async function runQuery(ip = null) {
 document.addEventListener('DOMContentLoaded', () => {
     runQuery(null);
 
-    // 查询按钮点击
+    // 查询按钮
     el.searchBtn.addEventListener('click', () => {
         const inputVal = el.ipInput.value.trim();
         if (!inputVal) return alert("请输入IPv4/IPv6地址");
@@ -167,13 +171,13 @@ document.addEventListener('DOMContentLoaded', () => {
         runQuery(inputVal);
     });
 
-    // 重置查看本机
+    // 重置本机
     el.resetBtn.addEventListener('click', () => {
         el.ipInput.value = "";
         runQuery(null);
     });
 
-    // 回车快捷查询
+    // 回车查询
     el.ipInput.addEventListener('keydown', e => {
         if (e.key === 'Enter') el.searchBtn.click();
     });
