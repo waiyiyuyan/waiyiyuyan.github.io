@@ -14,22 +14,41 @@
             <p>实时查询您的公网IP与网络属性</p>
         </div>
 
+        <!-- 新增IP搜索区域 -->
+        <div class="search-box">
+            <input type="text" id="ipInput" placeholder="输入IPv4/IPv6地址查询">
+            <button id="searchBtn">查询</button>
+            <button id="resetBtn">查看本机</button>
+        </div>
+
         <div class="info-list">
             <div class="info-item">
-                <span class="info-label">IPv4 地址</span>
-                <span class="info-value" id="ipv4"><span class="loading"></span>查询中...</span>
+                <span class="info-label">查询IP</span>
+                <span class="info-value" id="queryIp"><span class="loading"></span>查询中...</span>
             </div>
             <div class="info-item">
-                <span class="info-label">IPv6 地址</span>
-                <span class="info-value" id="ipv6"><span class="loading"></span>查询中...</span>
+                <span class="info-label">国家地区</span>
+                <span class="info-value" id="area"><span class="loading"></span>查询中...</span>
             </div>
             <div class="info-item">
-                <span class="info-label">IP 归属地</span>
-                <span class="info-value" id="location"><span class="loading"></span>查询中...</span>
+                <span class="info-label">经纬度</span>
+                <span class="info-value" id="locationCoord"><span class="loading"></span>查询中...</span>
             </div>
             <div class="info-item">
-                <span class="info-label">运营商</span>
+                <span class="info-label">时区</span>
+                <span class="info-value" id="timezone"><span class="loading"></span>查询中...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">运营商ISP</span>
                 <span class="info-value" id="isp"><span class="loading"></span>查询中...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">机房组织</span>
+                <span class="info-value" id="org"><span class="loading"></span>查询中...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">AS编号</span>
+                <span class="info-value" id="asInfo"><span class="loading"></span>查询中...</span>
             </div>
             <div class="info-item">
                 <span class="info-label">代理检测</span>

@@ -1,9 +1,16 @@
+// 页面DOM元素
 const el = {
-    ipv4: document.getElementById('ipv4'),
-    ipv6: document.getElementById('ipv6'),
-    location: document.getElementById('location'),
+    queryIp: document.getElementById('queryIp'),
+    area: document.getElementById('area'),
+    locationCoord: document.getElementById('locationCoord'),
+    timezone: document.getElementById('timezone'),
     isp: document.getElementById('isp'),
-    proxyCheck: document.getElementById('proxyCheck')
+    org: document.getElementById('org'),
+    asInfo: document.getElementById('asInfo'),
+    proxyCheck: document.getElementById('proxyCheck'),
+    ipInput: document.getElementById('ipInput'),
+    searchBtn: document.getElementById('searchBtn'),
+    resetBtn: document.getElementById('resetBtn')
 };
 
 // 云服务商/机房关键词库
@@ -15,139 +22,157 @@ const cloudKeywords = [
 ];
 
 /**
- * 带超时的 fetch 封装
- */
-function fetchWithTimeout(url, timeout = 6000) {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeout);
-    return fetch(url, { signal: controller.signal }).finally(() => clearTimeout(timer));
-}
-
-/**
- * 主接口1：seeip.org 强制IPv4，支持CORS
- */
-function getIPv4Info() {
-    return fetchWithTimeout('https://ipv4.seeip.org/geoip')
-        .then(res => res.ok ? res.json() : null)
-        .catch(() => null);
-}
-
-/**
- * 主接口2：seeip.org 强制IPv6，支持CORS
- */
-function getIPv6Info() {
-    return fetchWithTimeout('https://ipv6.seeip.org/geoip')
-        .then(res => res.ok ? res.json() : null)
-        .catch(() => null);
-}
-
-/**
- * 备用接口：搜狐公共IP接口，国内超稳定，JSONP无跨域
- * 只能获取当前连接的IP和城市，无法区分双栈
+ * 备用接口：搜狐JSONP，demo访问失败降级
  */
 function getFallbackInfo() {
     return new Promise((resolve) => {
         const script = document.createElement('script');
         script.src = 'https://pv.sohu.com/cityjson?ie=utf-8';
         script.onload = () => {
+            document.body.removeChild(script);
             if (window.returnCitySN && window.returnCitySN.cip) {
                 resolve({
-                    ip: window.returnCitySN.cip,
+                    query: window.returnCitySN.cip,
+                    country: "未知",
+                    regionName: "",
                     city: window.returnCitySN.cname,
-                    isp: '暂无数据'
+                    lat: "",
+                    lon: "",
+                    timezone: "无",
+                    isp: "接口获取失败",
+                    org: "无",
+                    as: "无",
+                    status: "success"
                 });
-            } else {
-                resolve(null);
-            }
+            } else resolve(null);
         };
-        script.onerror = () => resolve(null);
+        script.onerror = () => {
+            document.body.removeChild(script);
+            resolve(null);
+        };
         document.body.appendChild(script);
     });
 }
 
 /**
- * 代理判断逻辑
+ * JSONP 请求 demo.ip-api
+ * @param {string|null} targetIp 要查询的IP，null=查本机
+ */
+function jsonpDemoApi(targetIp = null) {
+    return new Promise((resolve) => {
+        const cbName = 'ipApiCb_' + Date.now();
+        window[cbName] = (res) => resolve(res);
+        let url = 'https://demo.ip-api.com/json';
+        if (targetIp) url += '/' + targetIp;
+        url += `?lang=zh-CN&callback=${cbName}`;
+
+        const script = document.createElement('script');
+        script.src = url;
+        script.onerror = async () => {
+            document.body.removeChild(script);
+            // demo失败，调用备用搜狐接口
+            const fb = await getFallbackInfo();
+            resolve(fb);
+        };
+        script.onload = () => document.body.removeChild(script);
+        document.body.appendChild(script);
+    });
+}
+
+/**
+ * IP格式校验 IPv4 / IPv6
+ */
+function isValidIp(ipStr) {
+    const v4Reg = /^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$/;
+    const v6Reg = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})$|:((:[0-9a-fA-F]{1,4}){1,7})$/;
+    // 拦截内网本地IP
+    const privateReg = /^(127\.|192\.168\.|10\.|172\.1[6-9]\.|172\.2[0-9]\.|172\.3[0-1]\.|::1|fd)/;
+    if (privateReg.test(ipStr)) return false;
+    return v4Reg.test(ipStr) || v6Reg.test(ipStr);
+}
+
+/**
+ * 代理/VPN判定
  */
 function judgeProxy(data) {
     const result = { isProxy: false, reason: "普通家用/企业宽带", level: "ok" };
-    const isp = (data.isp || data.organization || "").toString().toLowerCase();
-
-    const hit = cloudKeywords.some(keyword =>
-        isp.includes(keyword.toLowerCase())
-    );
-
+    const text = (data.isp + ' ' + data.org).toLowerCase();
+    const hit = cloudKeywords.some(k => text.includes(k.toLowerCase()));
     if (hit) {
         result.isProxy = true;
         result.reason = "机房IP，疑似代理/VPN";
         result.level = "warn";
     }
-
     return result;
 }
 
 /**
- * 填充页面数据
+ * 页面全部置为加载状态
  */
-function fillData(data) {
-    const loc = [data.country, data.region, data.city].filter(Boolean).join(" · ");
-    el.location.textContent = loc || data.city || "未知";
-    el.isp.textContent = data.isp || "未知";
-
-    const proxyRes = judgeProxy(data);
-    el.proxyCheck.className = `badge badge-${proxyRes.level}`;
-    el.proxyCheck.textContent = proxyRes.isProxy
-        ? `⚠️ ${proxyRes.reason}`
-        : `✅ ${proxyRes.reason}`;
+function setLoading() {
+    const allVal = [el.queryIp, el.area, el.locationCoord, el.timezone, el.isp, el.org, el.asInfo, el.proxyCheck];
+    allVal.forEach(item => item.innerHTML = '<span class="loading"></span>查询中...');
 }
 
 /**
- * 主执行函数
+ * 渲染接口数据到页面
  */
-async function runDetect() {
-    // 并行请求双栈主接口
-    const [v4Data, v6Data] = await Promise.all([getIPv4Info(), getIPv6Info()]);
-
-    // 主接口有一个成功即可正常展示
-    if (v4Data || v6Data) {
-        // 填充IPv4
-        if (v4Data && v4Data.ip) {
-            el.ipv4.textContent = v4Data.ip;
-            fillData(v4Data); // 用IPv4的归属地信息作为展示基准
-        } else {
-            el.ipv4.textContent = "无可用IPv4出口";
-            el.ipv4.style.color = "#999";
-        }
-
-        // 填充IPv6
-        if (v6Data && v6Data.ip) {
-            el.ipv6.textContent = v6Data.ip;
-            // 如果IPv4失败，用IPv6的归属地信息
-            if (!v4Data) fillData(v6Data);
-        } else {
-            el.ipv6.textContent = "未启用IPv6";
-            el.ipv6.style.color = "#999";
-        }
+function renderData(data) {
+    if (!data || data.status !== "success") {
+        el.queryIp.textContent = "查询失败/无效IP";
+        el.area.textContent = "-";
+        el.locationCoord.textContent = "-";
+        el.timezone.textContent = "-";
+        el.isp.textContent = "-";
+        el.org.textContent = "-";
+        el.asInfo.textContent = "-";
+        el.proxyCheck.className = "badge badge-gray";
+        el.proxyCheck.textContent = "无数据";
         return;
     }
+    el.queryIp.textContent = data.query;
+    el.area.textContent = [data.country, data.regionName, data.city].filter(Boolean).join(" · ");
+    el.locationCoord.textContent = data.lat + " , " + data.lon;
+    el.timezone.textContent = data.timezone;
+    el.isp.textContent = data.isp;
+    el.org.textContent = data.org;
+    el.asInfo.textContent = data.as;
 
-    // 主接口全部失败，走国内备用搜狐接口
-    const fallbackData = await getFallbackInfo();
-    if (fallbackData) {
-        // 备用接口无法区分双栈，统一显示在IPv4栏
-        el.ipv4.textContent = fallbackData.ip;
-        el.ipv6.textContent = "未检测（单IP模式）";
-        el.ipv6.style.color = "#999";
-        fillData(fallbackData);
-    } else {
-        // 全部接口失败
-        el.ipv4.textContent = "获取失败";
-        el.ipv6.textContent = "获取失败";
-        el.location.textContent = "获取失败";
-        el.isp.textContent = "获取失败";
-        el.proxyCheck.className = "badge badge-gray";
-        el.proxyCheck.textContent = "网络异常，检测失败";
-    }
+    const proxyRes = judgeProxy(data);
+    el.proxyCheck.className = `badge badge-${proxyRes.level}`;
+    el.proxyCheck.textContent = proxyRes.isProxy ? `⚠️ ${proxyRes.reason}` : `✅ ${proxyRes.reason}`;
 }
 
-// 页面加载完成后执行检测
-document.addEventListener('DOMContentLoaded', runDetect);
+/**
+ * 核心查询入口
+ * @param {string|null} ip 目标IP，null=本机
+ */
+async function runQuery(ip = null) {
+    setLoading();
+    const res = await jsonpDemoApi(ip);
+    renderData(res);
+}
+
+// 页面加载自动查询本机
+document.addEventListener('DOMContentLoaded', () => {
+    runQuery(null);
+
+    // 查询按钮
+    el.searchBtn.addEventListener('click', () => {
+        const inputVal = el.ipInput.value.trim();
+        if (!inputVal) return alert("请输入IP地址");
+        if (!isValidIp(inputVal)) return alert("IP格式错误或为内网地址");
+        runQuery(inputVal);
+    });
+
+    // 重置按钮 切回本机
+    el.resetBtn.addEventListener('click', () => {
+        el.ipInput.value = "";
+        runQuery(null);
+    });
+
+    // 回车快捷查询
+    el.ipInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') el.searchBtn.click();
+    });
+});

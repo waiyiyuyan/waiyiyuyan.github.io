@@ -4,7 +4,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   min-height: 100vh;
@@ -14,40 +13,64 @@ body {
   padding: 24px 16px;
   background: #f5f5f5; /* Landscape 默认浅灰背景 */
 }
-
 .card {
   width: 100%;
   max-width: 540px;
   background: #ffffff;
-  border-radius: 4px; /* 小圆角，和Landscape统一 */
+  border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   padding: 36px 32px;
 }
-
 .card-header {
   text-align: center;
   margin-bottom: 30px;
 }
-
 .card-header h2 {
   font-size: 22px;
   color: #333;
   font-weight: normal;
   margin-bottom: 6px;
 }
-
 .card-header p {
   color: #999;
   font-size: 14px;
 }
-
+/* 新增搜索框样式 */
+.search-box {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 26px;
+}
+#ipInput {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 14px;
+  outline: none;
+}
+#ipInput:focus {
+  border-color: #0078e7;
+}
+.search-box button {
+  padding: 6px 14px;
+  border: 1px solid #0078e7;
+  background: #fff;
+  color: #0078e7;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.search-box button:hover {
+  background: #0078e7;
+  color: #fff;
+}
 .info-list {
   display: flex;
   flex-direction: column;
   gap: 18px;
   margin-bottom: 26px;
 }
-
 .info-item {
   display: grid;
   grid-template-columns: 105px 1fr;
@@ -56,24 +79,20 @@ body {
   border-bottom: 1px solid #eee;
   gap: 10px;
 }
-
 .info-item:last-child {
   border-bottom: none;
   padding-bottom: 0;
 }
-
 .info-label {
   color: #666;
   font-size: 15px;
 }
-
 .info-value {
   color: #333;
   font-size: 15px;
   word-break: break-all;
   line-height: 1.5;
 }
-
 /* 状态标签 */
 .badge {
   display: inline-block;
@@ -93,7 +112,6 @@ body {
   background: #f7f7f7;
   color: #888;
 }
-
 .card-footer {
   text-align: center;
   padding-top: 18px;
@@ -107,7 +125,6 @@ body {
 .card-footer a:hover {
   text-decoration: underline;
 }
-
 /* 加载旋转动画 */
 .loading {
   display: inline-block;
@@ -123,7 +140,6 @@ body {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-
 /* 移动端适配 */
 @media (max-width: 480px) {
   .card {
@@ -132,5 +148,11 @@ body {
   .info-item {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+  .search-box {
+    flex-wrap: wrap;
+  }
+  #ipInput {
+    width: 100%;
   }
 }
