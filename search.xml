@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Apple ID 教程：一步步更改国家或地区，轻松切换账户</title>
+    <url>/2024/12/18/appleid/</url>
+    <content><![CDATA[<p><strong>首先，打开Apple的<a href="https://account.apple.com/">官方网站</a>，并选择“创建你的账户”选项。确保你填写的所有个人信息都是真实的，因为这会影响到后续的验证和使用体验。填好信息后，点击“继续”。</strong></p>
+<span id="more"></span>
+<p><img src="/../images/1.jpeg" alt="create_account"></p>
+<p><strong>接下来，Apple会向你注册时提供的邮箱发送一个验证码。收到验证码后，输入它以继续注册过程。之后，Apple会发送一个短信验证码到你的手机号码，再次输入验证码。</strong></p>
+<p><img src="/../images/3.png" alt="verification"><br><strong>如果一切顺利，你的Apple ID此时就已经注册成功了。页面会跳转到你的个人主页。点击“个人信息”，然后选择“国家或地区”。接着，点击“更改国家和地区”。这会将你带到一个新的注册页面</strong></p>
+<p><img src="/../images/4.jpeg" alt="profile"></p>
+<p><strong>此时，建议使用一个地址生成器，选择你希望将账户设置为的国家或地区，按顺序填写相关信息。如果你没有合适的付款方式，可以选择“无”。对于寄送地址这一步，如果不想详细填写，可以直接选择“拷贝账单地址”。</strong></p>
+<p><img src="/../images/5.jpeg" alt="generate"></p>
+<p><strong>完成这些步骤后，点击“更新”。然后，在你的手机上再次登录Apple ID，以确保所有更改都已生效。现在，你可以去验证一下你的新Apple ID是否正常工作了。</strong></p>
+<p><img src="/../images/6.jpeg" alt="A brand new account"></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Apple ID</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>从零打造「全自动无人驾驶」Hexo 博客：独立爬虫定时抓取与 GitHub Actions 联动避坑全纪录</title>
     <url>/2026/06/20/blog-automation/</url>
     <content><![CDATA[<p>由于对话实在太多太琐碎，再加上当时没想到这一步，压根没去记录解决问题的过程，现在再返回去看，只能让Gemini 总结个大概。<br>起因是我会爬取vpn 机场信息，写到博客里，但是手动太麻烦，随意想使用GitHub actions 去实现自动抓取，自动生成文章。便有了我和Gemini 的对话。以下是Gemini的总结，但我已经记不清有没有疏忽的地方。大概就这么个过程。实在无法理解，让gemini 看看，它肯定明白该怎么做</p>
@@ -95,27 +116,6 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Apple ID 教程：一步步更改国家或地区，轻松切换账户</title>
-    <url>/2024/12/18/appleid/</url>
-    <content><![CDATA[<p><strong>首先，打开Apple的<a href="https://account.apple.com/">官方网站</a>，并选择“创建你的账户”选项。确保你填写的所有个人信息都是真实的，因为这会影响到后续的验证和使用体验。填好信息后，点击“继续”。</strong></p>
-<span id="more"></span>
-<p><img src="/../images/1.jpeg" alt="create_account"></p>
-<p><strong>接下来，Apple会向你注册时提供的邮箱发送一个验证码。收到验证码后，输入它以继续注册过程。之后，Apple会发送一个短信验证码到你的手机号码，再次输入验证码。</strong></p>
-<p><img src="/../images/3.png" alt="verification"><br><strong>如果一切顺利，你的Apple ID此时就已经注册成功了。页面会跳转到你的个人主页。点击“个人信息”，然后选择“国家或地区”。接着，点击“更改国家和地区”。这会将你带到一个新的注册页面</strong></p>
-<p><img src="/../images/4.jpeg" alt="profile"></p>
-<p><strong>此时，建议使用一个地址生成器，选择你希望将账户设置为的国家或地区，按顺序填写相关信息。如果你没有合适的付款方式，可以选择“无”。对于寄送地址这一步，如果不想详细填写，可以直接选择“拷贝账单地址”。</strong></p>
-<p><img src="/../images/5.jpeg" alt="generate"></p>
-<p><strong>完成这些步骤后，点击“更新”。然后，在你的手机上再次登录Apple ID，以确保所有更改都已生效。现在，你可以去验证一下你的新Apple ID是否正常工作了。</strong></p>
-<p><img src="/../images/6.jpeg" alt="A brand new account"></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Apple ID</tag>
       </tags>
   </entry>
   <entry>
