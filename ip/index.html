@@ -214,52 +214,49 @@
         /**
          * 带超时的 fetch 封装
          */
-        function fetchWithTimeout(url, timeout = 5000) {
+        function fetchWithTimeout(url, timeout = 6000) {
             const controller = new AbortController();
             const timer = setTimeout(() => controller.abort(), timeout);
             return fetch(url, { signal: controller.signal }).finally(() => clearTimeout(timer));
         }
 
         /**
-         * 主接口：ip-api.com 强制IPv4
+         * 主接口1：seeip.org 强制IPv4，支持CORS
          */
         function getIPv4Info() {
-            return fetchWithTimeout('https://ip4.ip-api.com/json/?lang=zh-CN')
+            return fetchWithTimeout('https://ipv4.seeip.org/geoip')
                 .then(res => res.ok ? res.json() : null)
                 .catch(() => null);
         }
 
         /**
-         * 主接口：ip-api.com 强制IPv6
+         * 主接口2：seeip.org 强制IPv6，支持CORS
          */
         function getIPv6Info() {
-            return fetchWithTimeout('https://ip6.ip-api.com/json/?lang=zh-CN')
+            return fetchWithTimeout('https://ipv6.seeip.org/geoip')
                 .then(res => res.ok ? res.json() : null)
                 .catch(() => null);
         }
 
         /**
-         * 备用接口：国内CSDN JSONP接口（网络不通时降级使用）
+         * 备用接口：搜狐公共IP接口，国内超稳定，JSONP无跨域
+         * 只能获取当前连接的IP和城市，无法区分双栈
          */
         function getFallbackInfo() {
             return new Promise((resolve) => {
-                const callbackName = 'csdnIpCallback_' + Date.now();
-                window[callbackName] = (res) => {
-                    if (res && res.code === 200) {
+                const script = document.createElement('script');
+                script.src = 'https://pv.sohu.com/cityjson?ie=utf-8';
+                script.onload = () => {
+                    if (window.returnCitySN && window.returnCitySN.cip) {
                         resolve({
-                            query: res.data.ip,
-                            country: res.data.country,
-                            regionName: res.data.province,
-                            city: res.data.city,
-                            isp: res.data.isp
+                            ip: window.returnCitySN.cip,
+                            city: window.returnCitySN.cname,
+                            isp: '暂无数据'
                         });
                     } else {
                         resolve(null);
                     }
                 };
-
-                const script = document.createElement('script');
-                script.src = `https://searchplugin.csdn.net/api/v1/ip/get?callback=${callbackName}`;
                 script.onerror = () => resolve(null);
                 document.body.appendChild(script);
             });
@@ -270,7 +267,7 @@
          */
         function judgeProxy(data) {
             const result = { isProxy: false, reason: "普通家用/企业宽带", level: "ok" };
-            const isp = (data.isp || data.org || "").toString().toLowerCase();
+            const isp = (data.isp || data.organization || "").toString().toLowerCase();
 
             const hit = cloudKeywords.some(keyword => 
                 isp.includes(keyword.toLowerCase())
@@ -289,7 +286,8 @@
          * 填充页面数据
          */
         function fillData(data) {
-            el.location.textContent = [data.country, data.regionName, data.city].filter(Boolean).join(" · ");
+            const loc = [data.country, data.region, data.city].filter(Boolean).join(" · ");
+            el.location.textContent = loc || data.city || "未知";
             el.isp.textContent = data.isp || "未知";
 
             const proxyRes = judgeProxy(data);
@@ -309,8 +307,8 @@
             // 主接口有一个成功即可正常展示
             if (v4Data || v6Data) {
                 // 填充IPv4
-                if (v4Data && v4Data.query) {
-                    el.ipv4.textContent = v4Data.query;
+                if (v4Data && v4Data.ip) {
+                    el.ipv4.textContent = v4Data.ip;
                     fillData(v4Data); // 用IPv4的归属地信息作为展示基准
                 } else {
                     el.ipv4.textContent = "无可用IPv4出口";
@@ -318,31 +316,22 @@
                 }
 
                 // 填充IPv6
-                if (v6Data && v6Data.query) {
-                    el.ipv6.textContent = v6Data.query;
+                if (v6Data && v6Data.ip) {
+                    el.ipv6.textContent = v6Data.ip;
                     // 如果IPv4失败，用IPv6的归属地信息
                     if (!v4Data) fillData(v6Data);
                 } else {
                     el.ipv6.textContent = "未启用IPv6";
                     el.ipv6.style.color = "#999";
                 }
-
-                // 极端情况：两个IP都拿到但归属地都没填充到（理论不会出现）
-                if (el.location.textContent.includes("查询中")) {
-                    el.location.textContent = "无法获取";
-                    el.isp.textContent = "无法获取";
-                    el.proxyCheck.className = "badge badge-gray";
-                    el.proxyCheck.textContent = "数据不足，无法检测";
-                }
-
                 return;
             }
 
-            // 主接口全部失败，走国内备用接口
+            // 主接口全部失败，走国内备用搜狐接口
             const fallbackData = await getFallbackInfo();
             if (fallbackData) {
-                // 备用接口无法区分双栈，只展示当前连接的IP
-                el.ipv4.textContent = fallbackData.query;
+                // 备用接口无法区分双栈，统一显示在IPv4栏
+                el.ipv4.textContent = fallbackData.ip;
                 el.ipv6.textContent = "未检测（单IP模式）";
                 el.ipv6.style.color = "#999";
                 fillData(fallbackData);
