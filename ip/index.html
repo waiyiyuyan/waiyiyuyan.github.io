@@ -9,6 +9,7 @@
         .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 400px; text-align: center; }
         .info { margin: 15px 0; font-size: 18px; color: #333; }
         .label { font-weight: bold; color: #555; }
+        .warn { color: red; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -22,26 +23,46 @@
     </div>
 
     <script>
-		async function getIP() {
-			try {
-				// 获取基本信息
-				const res = await fetch('https://ipapi.co/json/');
-				const data = await res.json();
-				
-				document.getElementById('ip').innerText = data.ip;
-				document.getElementById('loc').innerText = data.country_name + ' (' + data.region + ')';
-				document.getElementById('isp').innerText = data.org;
+        async function getIPInfo() {
+            const ipEl = document.getElementById('ip');
+            const locEl = document.getElementById('loc');
+            const ispEl = document.getElementById('isp');
 
-				// 如果你想判断是否是代理，可以加一段逻辑
-				// 很多机场IP的 org 字段里会包含 "Cloudflare" 或 "DigitalOcean" 等信息
-				if (data.org.includes("Cloudflare")) {
-					document.getElementById('isp').innerHTML += ' <span style="color:red">(⚠️ 疑似代理)</span>';
-				}
-			} catch (e) {
-				document.getElementById('ip').innerText = "获取失败";
-			}
-		}
-		getIP();
-	</script>
+            // 备用国内JSONP接口，解决CORS跨域问题
+            const apiUrl = 'https://api.ip.sb/geoip?callback=parseIpData';
+
+            // JSONP 处理函数
+            window.parseIpData = function(data) {
+                ipEl.innerText = data.ip || '未知';
+                // 拼接归属地
+                let location = '';
+                if (data.country) location += data.country;
+                if (data.region) location += ' ' + data.region;
+                if (data.city) location += ' ' + data.city;
+                locEl.innerText = location || '未知';
+
+                const isp = data.isp || data.organization || '未知';
+                ispEl.innerText = isp;
+
+                // 检测代理/云服务器标识
+                const proxyKeywords = ['Cloudflare', 'DigitalOcean', 'Vultr', 'Linode', 'AWS', 'Azure', 'GCP'];
+                const isProxy = proxyKeywords.some(key => isp.includes(key));
+                if (isProxy) {
+                    ispEl.innerHTML += ' <span class="warn">(⚠️ 疑似代理/VPN)</span>';
+                }
+            }
+
+            // 创建script标签实现JSONP跨域请求
+            const script = document.createElement('script');
+            script.src = apiUrl;
+            script.onerror = function() {
+                ipEl.innerText = '获取失败';
+                locEl.innerText = '获取失败';
+                ispEl.innerText = '获取失败';
+            };
+            document.body.appendChild(script);
+        }
+        getIPInfo();
+    </script>
 </body>
 </html>
