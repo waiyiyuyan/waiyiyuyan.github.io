@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的全网去水印下载站</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; text-align: center; background: #f5f7fa; }
+        input { width: 80%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; }
+        button { padding: 12px 24px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #0056b3; }
+        #result { margin-top: 20px; padding: 15px; border-radius: 6px; display: none; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .loading { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <h2>🚀 我的专属全能视频下载器</h2>
+    <p>支持 YouTube, Bilibili, TikTok, 小红书 等主流平台</p>
+    
+    <input type="text" id="videoUrl" placeholder="请粘贴视频长链接（例如：https://www.bilibili.com/video/...）">
+    <br>
+    <button onclick="startDownload()">开始解析</button>
+
+    <div id="result"></div>
+
+    <script>
+        // 🌟 这里已经换成了你刚刚当场调通的专属 API 地址！
+        const MY_API_URL = "https://zhaojing986-my-cobalt-downloader.hf.space/";
+
+        async function startDownload() {
+            const userInput = document.getElementById('videoUrl').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (!userInput) {
+                alert('请先输入网址！');
+                return;
+            }
+
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'loading';
+            resultDiv.innerHTML = '正在疯狂解析中，请稍候...';
+
+            try {
+                // 向你的 Hugging Face 私人节点发送 POST 请求
+                const response = await fetch(MY_API_URL, {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        url: userInput,
+                        videoQuality: "1080", // 默认高清
+                        filenameStyle: "nerdy" // 极客文件名风格
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'redirect' || data.status === 'tunnel') {
+                    // 解析成功，给出下载按钮
+                    resultDiv.className = 'success';
+                    resultDiv.innerHTML = `
+                        <strong>🎉 解析成功！</strong><br><br>
+                        <a href="${data.url}" target="_blank" download="${data.filename || 'video.mp4'}" style="display:inline-block; padding:10px 20px; background:#28a745; color:white; text-decoration:none; border-radius:4px;">
+                            点击下载：${data.filename || '点击保存视频'}
+                        </a>
+                    `;
+                } else if (data.status === 'error') {
+                    resultDiv.className = 'error';
+                    resultDiv.innerHTML = `❌ 解析失败：${data.error.code}`;
+                } else {
+                    resultDiv.className = 'error';
+                    resultDiv.innerHTML = `⚠️ 遇到了未知的返回状态: ${data.status}`;
+                }
+
+            } catch (error) {
+                resultDiv.className = 'error';
+                resultDiv.innerHTML = `💥 无法连接到你的 API 节点，请检查 Space 是否在 Running。错误信息: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
