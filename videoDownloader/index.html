@@ -17,7 +17,41 @@
     
     <style>
         body { font-family: Arial, sans-serif; max-width: 600px; margin: 30px auto; padding: 20px; text-align: center; background: #f5f7fa; color: #333; }
-        input, select { width: 80%; padding: 12px 30px 12px 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box; }
+        input { 
+            width: 80%; 
+            padding: 12px; 
+            margin: 10px 0; 
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
+            font-size: 16px; 
+            box-sizing: border-box; 
+        }
+
+        select { 
+            width: 80%; 
+            margin: 10px 0; 
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
+            font-size: 16px; 
+            box-sizing: border-box; 
+            
+            /* 🛠️ 终极三部曲：彻底降服小箭头 */
+            appearance: none;            /* 1. 强行扒掉系统自带的老土小箭头（关键） */
+            -webkit-appearance: none;    /* 兼容 Chrome/Safari/Edge 内核 */
+            -moz-appearance: none;       /* 兼容 Firefox 内核 */
+            
+            /* 2. 重新画一个优雅的、离右边有距离的小箭头（这里用 base64 SVG 图标） */
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%23333' d='M7 10l5 5 5-5z'/></svg>");
+            background-repeat: no-repeat;
+            
+            /* 3. ✨ 精准定位：右边留出 24px 的安全距离，居中显示 */
+            background-position: right 24px center; 
+            background-size: 18px;
+            
+            /* 留够右边的内边距，确保文字不会盖在箭头上 */
+            padding: 12px 45px 12px 12px; 
+            cursor: pointer;
+        }
         button { padding: 12px 24px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; margin-top: 10px; font-weight: bold; }
         button:hover { background: #0056b3; }
         #result { margin-top: 20px; padding: 15px; border-radius: 6px; display: none; word-break: break-all; }
