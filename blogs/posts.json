@@ -4,5 +4,12 @@
     "date": "2026-06-22",
     "category": "图床",
     "file": "imgbed-deploy-tutorial.html"
-  }
+  },
+  {
+    "title": "Cloudflare 全套免费部署｜实时留言板（支持图片/视频/楼中楼/@通知/分页加载）",
+    "date": "2026-06-22",
+    "category": "留言板",
+    "file": "message-board-deploy-tutorial.html"
+  },
+  
 ]
