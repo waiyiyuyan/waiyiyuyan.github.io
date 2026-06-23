@@ -42,7 +42,6 @@
 
         async function startDownload() {
             const userInput = document.getElementById('videoUrl').value.trim();
-            // ✨ 获取用户当前选择的清晰度值
             const selectedQuality = document.getElementById('qualitySelect').value;
             const resultDiv = document.getElementById('result');
             
@@ -55,8 +54,19 @@
             resultDiv.className = 'loading';
             resultDiv.innerHTML = '正在疯狂解析中，请稍候...';
 
-            // 根据选择是否为 audio，动态调整传给后端的参数
-            const isAudio = selectedQuality === 'audio';
+            // 📦 核心修复：根据新版 API 规范，动态构建干净的动态参数包
+            let requestBody = {
+                url: userInput,
+                filenameStyle: "nerdy"
+            };
+
+            if (selectedQuality === 'audio') {
+                // 如果是纯音频，只传 downloadMode，绝不传任何 videoQuality
+                requestBody.downloadMode = "audio";
+            } else {
+                // 如果是视频，只传 videoQuality，绝不传 downloadMode 或 isAudioOnly
+                requestBody.videoQuality = selectedQuality;
+            }
 
             try {
                 const response = await fetch(MY_API_URL, {
@@ -65,12 +75,7 @@
                         "Accept": "application/json",
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({
-                        url: userInput,
-                        videoQuality: isAudio ? "720" : selectedQuality, // 如果是音频，画质参数随便传个默认的
-                        isAudioOnly: isAudio, // ✨ 如果选了音频，告诉后端“我只要声音”
-                        filenameStyle: "nerdy"
-                    })
+                    body: JSON.stringify(requestBody) // 发送完美互斥的干净 JSON
                 });
 
                 const data = await response.json();
@@ -85,7 +90,7 @@
                     `;
                 } else if (data.status === 'error') {
                     resultDiv.className = 'error';
-                    resultDiv.innerHTML = `❌ 解析失败：${data.error.code}`;
+                    resultDiv.innerHTML = `❌ 解析失败，后端返回错误码：${data.error.code}`;
                 } else {
                     resultDiv.className = 'error';
                     resultDiv.innerHTML = `⚠️ 未知状态: ${data.status}`;
