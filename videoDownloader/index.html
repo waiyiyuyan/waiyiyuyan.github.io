@@ -4,22 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <title>我的视频下载站</title>
+    
+    <title>Twitter/TikTok/Snapchat 视频下载器 - 免费去水印音视频提取工具</title>
+    
+    <meta name="description" content="专为 Twitter (X)、TikTok、Snapchat 打造的免费去水印视频解析下载站。一键提取高清无水印 Mp4 视频及纯音频 Mp3 文件，全自动兼容最高画质，绿色无广告。">
+    
+    <meta name="keywords" content="Twitter视频下载,TikTok去水印,Snapchat视频保存,推特视频解析,海外短视频下载,音频提取Mp3">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Twitter/TikTok/Snapchat 视频去水印下载器">
+    <meta property="og:description" content="一键免费提取 Twitter、TikTok、Snapchat 高清去水印短视频及 MP3 音频。">
+    
     <style>
-        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; text-align: center; background: #f5f7fa; }
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 30px auto; padding: 20px; text-align: center; background: #f5f7fa; color: #333; }
         input, select { width: 80%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box; }
-        button { padding: 12px 24px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        button { padding: 12px 24px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; margin-top: 10px; font-weight: bold; }
         button:hover { background: #0056b3; }
         #result { margin-top: 20px; padding: 15px; border-radius: 6px; display: none; word-break: break-all; }
         .success { background: #d4edda; color: #155724; }
         .error { background: #f8d7da; color: #721c24; }
         .loading { color: #666; font-style: italic; }
+        
+        /* SEO 落地文本样式 */
+        .seo-content { text-align: left; margin-top: 50px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 13px; color: #666; line-height: 1.8; }
+        .seo-content h3 { font-size: 15px; color: #222; margin-bottom: 8px; }
+        .seo-content ul { padding-left: 20px; margin: 5px 0; }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Twitter/TikTok/Snapchat 视频下载器",
+      "url": "https://yourdomain.com/videoDownloader/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5",
+      "description": "专为主流海外平台（Twitter、TikTok、Snapchat）打造的去水印流媒体提取工具。"
+    }
+    </script>
 </head>
 <body>
 
-    <h2>🚀 我的视频下载站</h2>
-    <p>目前支持 Twitter, TikTok, Snapchat</p>
+    <h1>🚀 视频下载站</h1>
+    <p>目前仅支持 Twitter (X), TikTok, Snapchat</p>
     
     <input type="text" id="videoUrl" placeholder="请粘贴视频长链接...">
     <br>
@@ -36,6 +64,21 @@
     <button onclick="startDownload()">开始解析</button>
 
     <div id="result"></div>
+
+    <div class="seo-content">
+        <h3>💡 为什么选择本站进行视频去水印下载？</h3>
+        <p>本站采用专门的流媒体嗅探技术，专为 Twitter、TikTok、Snapchat 三大社交平台提供便捷的媒体素材保存方案。网页端一键操作即可剥离水印，完美保存原视频画质。</p>
+        
+        <h3>🛠️ 当前支持解析平台及规范：</h3>
+        <ul>
+            <li><strong>Twitter (X) 视频下载</strong>：支持推特原生态视频长链接，支持高清画质及流媒体音频直接保存。</li>
+            <li><strong>TikTok (海外抖音) 去水印</strong>：完美剥离官方浮动水印，秒出干净、原始的 Mp4 视频流。</li>
+            <li><strong>Snapchat 聚光灯保存</strong>：轻松抓取公开分享的短视频，向下兼容各种分辨率音视频源。</li>
+        </ul>
+
+        <h3>📌 使用须知与免责声明：</h3>
+        <p>请确保复制的是上述三大平台的<strong>真实视频长链接</strong>（而非分享短链接），以便解析器能精准嗅探。本工具仅供个人学习、技术研究与素材收集使用，请勿将下载内容用于任何侵犯原作者权益的商业用途。</p>
+    </div>
 
     <script>
         const MY_API_URL = "https://zhaojing986-my-cobalt-downloader.hf.space/";
@@ -54,17 +97,14 @@
             resultDiv.className = 'loading';
             resultDiv.innerHTML = '正在疯狂解析中，请稍候...';
 
-            // 📦 核心修复：根据新版 API 规范，动态构建干净的动态参数包
             let requestBody = {
                 url: userInput,
                 filenameStyle: "nerdy"
             };
 
             if (selectedQuality === 'audio') {
-                // 如果是纯音频，只传 downloadMode，绝不传任何 videoQuality
                 requestBody.downloadMode = "audio";
             } else {
-                // 如果是视频，只传 videoQuality，绝不传 downloadMode 或 isAudioOnly
                 requestBody.videoQuality = selectedQuality;
             }
 
@@ -75,7 +115,7 @@
                         "Accept": "application/json",
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(requestBody) // 发送完美互斥的干净 JSON
+                    body: JSON.stringify(requestBody)
                 });
 
                 const data = await response.json();
