@@ -1,0 +1,50 @@
+/* blog-style.css */
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; 
+    line-height: 1.8; 
+    max-width: 850px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    color: #333; 
+    background-color: #f7f9fa; 
+}
+.back-btn { 
+    display: inline-block; 
+    margin-bottom: 20px; 
+    color: #007bff; 
+    text-decoration: none; 
+    font-weight: bold; 
+    transition: color 0.2s;
+}
+.back-btn:hover { color: #0056b3; }
+.article-container { 
+    background: #fff; 
+    padding: 35px 40px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+}
+h1 { font-size: 2rem; color: #111; margin-top: 0; line-height: 1.4; }
+.meta { 
+    color: #888; 
+    font-size: 0.9rem; 
+    margin-bottom: 30px; 
+    border-bottom: 1px solid #eee; 
+    padding-bottom: 18px; 
+}
+.meta span { margin-right: 15px; }
+.tag-badge { background: #e6f0ff; color: #007bff; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; }
+.cat-badge { background: #eef1f6; color: #495057; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; }
+.content h2 { font-size: 1.5rem; color: #007bff; margin-top: 40px; padding-bottom: 8px; border-bottom: 2px solid #f0f4f8; }
+.content h3 { font-size: 1.25rem; color: #222; margin-top: 30px; }
+.content p, .content li { font-size: 1.05rem; color: #444; text-align: justify; }
+.content a { color: #007bff; text-decoration: none; }
+.content a:hover { text-decoration: underline; }
+.content blockquote { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #007bff; margin: 25px 0; border-radius: 0 8px 8px 0; color: #555; }
+pre { background: #1e1e1e; color: #d4d4d4; padding: 18px; border-radius: 8px; overflow-x: auto; font-family: Consolas, monospace; font-size: 0.92rem; line-height: 1.6; margin: 20px 0; border: 1px solid #2d2d2d; }
+code { font-family: Consolas, monospace; background: #eaedf0; color: #d63384; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+pre code { background: none; color: inherit; padding: 0; border-radius: 0; font-size: inherit; }
+table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95rem; background: #fff; }
+th, td { padding: 12px 14px; border: 1px solid #dee2e6; text-align: left; }
+th { background: #f1f3f5; font-weight: bold; }
+tr:nth-child(even) { background: #f8f9fa; }
+@media (max-width: 600px) { .article-container { padding: 20px; } body { padding: 10px; } }
