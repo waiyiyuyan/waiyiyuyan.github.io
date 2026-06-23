@@ -4,131 +4,7 @@
     <meta charset="utf-8">
     <title>Imgur 图床双 Cloudflare Worker 部署教学文档 | 我爱白嫖</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        /* 保持与整站一致的精美现代风格 */
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
-            line-height: 1.8; 
-            max-width: 850px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            color: #333; 
-            background-color: #f7f9fa; 
-        }
-        .back-btn { 
-            display: inline-block; 
-            margin-bottom: 20px; 
-            color: #007bff; 
-            text-decoration: none; 
-            font-weight: bold; 
-            transition: color 0.2s;
-        }
-        .back-btn:hover { color: #0056b3; }
-        
-        .article-container { 
-            background: #fff; 
-            padding: 35px 40px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
-        }
-        
-        /* 文章头部样式 */
-        h1 { font-size: 2rem; color: #111; margin-top: 0; line-height: 1.4; }
-        .meta { 
-            color: #888; 
-            font-size: 0.9rem; 
-            margin-bottom: 30px; 
-            border-bottom: 1px solid #eee; 
-            padding-bottom: 18px; 
-        }
-        .meta span { margin-right: 15px; }
-        .tag-badge { background: #e6f0ff; color: #007bff; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; }
-        .cat-badge { background: #eef1f6; color: #495057; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; }
-
-        /* 正文排版样式 */
-        .content h2 { 
-            font-size: 1.5rem; 
-            color: #007bff; 
-            margin-top: 40px; 
-            padding-bottom: 8px;
-            border-bottom: 2px solid #f0f4f8;
-        }
-        .content h3 { font-size: 1.25rem; color: #222; margin-top: 30px; }
-        .content h4 { font-size: 1.1rem; color: #444; margin-top: 20px; }
-        .content p { font-size: 1.05rem; color: #444; text-align: justify; }
-        .content li { font-size: 1.05rem; color: #444; margin-bottom: 6px; }
-        .content a { color: #007bff; text-decoration: none; }
-        .content a:hover { text-decoration: underline; }
-
-        /* 引用块样式 */
-        .content blockquote { 
-            background: #f8f9fa; 
-            padding: 15px 20px; 
-            border-left: 4px solid #007bff; 
-            margin: 25px 0; 
-            border-radius: 0 8px 8px 0; 
-            color: #555;
-        }
-        
-        /* 精美深色代码块样式 */
-        pre { 
-            background: #1e1e1e; 
-            color: #d4d4d4; 
-            padding: 18px; 
-            border-radius: 8px; 
-            overflow-x: auto; 
-            font-family: Consolas, Monaco, 'Andale Mono', monospace; 
-            font-size: 0.92rem; 
-            line-height: 1.6;
-            margin: 20px 0;
-            border: 1px solid #2d2d2d;
-        }
-        code { 
-            font-family: Consolas, Monaco, 'Andale Mono', monospace; 
-            background: #eaedf0; 
-            color: #d63384; 
-            padding: 2px 6px; 
-            border-radius: 4px; 
-            font-size: 0.9em; 
-        }
-        pre code { 
-            background: none; 
-            color: inherit; 
-            padding: 0; 
-            border-radius: 0; 
-            font-size: inherit; 
-        }
-
-        /* 响应式精美表格样式 */
-        table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            margin: 25px 0; 
-            font-size: 0.95rem;
-            background: #fff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        th { 
-            background: #f1f3f5; 
-            color: #333; 
-            font-weight: bold; 
-            padding: 12px 14px; 
-            border: 1px solid #dee2e6; 
-            text-align: left; 
-        }
-        td { 
-            padding: 12px 14px; 
-            border: 1px solid #dee2e6; 
-            text-align: left; 
-            color: #444; 
-        }
-        tr:nth-child(even) { background: #f8f9fa; }
-
-        @media (max-width: 600px) {
-            .article-container { padding: 20px; }
-            body { padding: 10px; }
-        }
-    </style>
+    <link rel="stylesheet" href="/blogs/style.css">
 </head>
 <body>
 
@@ -599,7 +475,7 @@ const PROXY_WORKER = "https://imgvideop.你的域名.com";
                 </li>
                 <li>后端代理 Worker：
                     <ul>
-                        <li>24h 静态资源缓存，重复访问直接读取浏览器本地缓存；</li>
+                        <li>24h 静态资源缓存，重复访问直接读取浏览器本地缓存;</li>
                         <li>自动修复视频资源响应头，兼容网页播放器。</li>
                     </ul>
                 </li>
@@ -625,5 +501,6 @@ const PROXY_WORKER = "https://imgvideop.你的域名.com";
         </div>
     </div>
 
+    <script src="/blogs/main.js" defer></script>
 </body>
 </html>
