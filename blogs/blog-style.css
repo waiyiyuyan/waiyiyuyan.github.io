@@ -88,6 +88,50 @@ blockquote { background: #f0f7ff; border-left: 4px solid #007bff; margin: 1.5em 
     border-radius: 6px; /* 加一点微小的圆角，和整体卡片风格更搭 */
     box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* 给图片加一层极轻的边框阴影，防止白底图片和网页混在一起 */
 }
+/* 代码块容器相对定位，配合 JS 里的定位 */
+.content pre {
+    position: relative;
+}
+
+/* 复制按钮基础样式 */
+.copy-code-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #eee;
+    border: none;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    z-index: 10;
+}
+.copy-code-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+/* 复制成功后的绿色高亮反馈 */
+.copy-code-btn.copied {
+    background: #28a745;
+    color: #fff;
+}
+
+/* 顺便优化下图片在正文中的自适应和悬停反馈 */
+.content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: opacity 0.2s;
+}
+.content img:hover {
+    opacity: 0.9; /* 鼠标移上去微微变淡，提示可以点击 */
+}
 /* 移动端适配 */
 @media (max-width: 768px) {
     body { padding: 15px; }
