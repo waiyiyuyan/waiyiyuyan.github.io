@@ -1,152 +1,80 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>Cloudflare 全套免费部署｜实时留言板（支持图片/视频/楼中楼/@通知/分页加载）</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.3em;
-        }
-        h1 { font-size: 2em; }
-        h2 { font-size: 1.5em; margin-top: 1.5em; }
-        h3 { font-size: 1.25em; }
-        code {
-            background-color: #f8f9fa;
-            border: 1px solid #eadfdf;
-            border-radius: 3px;
-            padding: 2px 4px;
-            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-            font-size: 0.9em;
-        }
-        pre {
-            background-color: #f8f9fa;
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            padding: 16px;
-            overflow: auto;
-        }
-        pre code {
-            background-color: transparent;
-            border: none;
-            padding: 0;
-            font-size: 0.85em;
-            color: #24292e;
-        }
-        blockquote {
-            margin: 20px 0;
-            padding: 0 1em;
-            color: #6a737d;
-            border-left: 0.25em solid #dfe2e5;
-        }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 0.5em; }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 20px 0;
-            border: 1px solid #eee;
-            border-radius: 4px;
-        }
-        .post-meta {
-            color: #888;
-            font-size: 0.9em;
-            margin-bottom: 20px;
-        }
-        .post-meta span {
-            margin-right: 15px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/blogs/style.css">
 </head>
 <body>
 
-<article>
-    <h1>Cloudflare 全套免费部署｜实时留言板（支持图片/视频/楼中楼/@通知/分页加载）</h1>
-    
-    <div class="post-meta">
-        <span><strong>日期:</strong> 2026-06-15 23:17:14</span>
-        <span><strong>标签:</strong> 留言板</span>
-        <span><strong>分类:</strong> Cloudflare Worker</span>
-    </div>
+    <a href="/blogs/" class="back-btn">← 返回文章列表</a>
 
-    <p><strong>简介</strong>：全程基于 Cloudflare 免费资源搭建，无需服务器、无需备案、纯免费部署。集成 D1 数据库、WebSocket 实时通讯、DurableObject 全局会话、Imgur 全球图床，完美解决国内访问问题，支持文字、图片、视频留言、楼中楼回复、用户通知、分页防卡顿，是一套完整可商用的轻量化留言系统。</p>
+    <div class="article-container">
+        <h1>Cloudflare 全套免费部署｜实时留言板（支持图片/视频/楼中楼/@通知/分页加载）</h1>
+        <div class="meta">
+            <span>📅 发布时间：2026-06-15 23:17:14</span>
+            <span>🏷️ 标签：<span class="tag-badge">留言板</span></span>
+            <span>📂 分类：<span class="cat-badge">Cloudflare Worker</span></span>
+        </div>
+        
+        <div class="content">
+            <p><strong>简介</strong>：全程基于 Cloudflare 免费资源搭建，无需服务器、无需备案、纯免费部署。集成 D1 数据库、WebSocket 实时通讯、DurableObject 全局会话、Imgur 全球图床，完美解决国内访问问题，支持文字、图片、视频留言、楼中楼回复、用户通知、分页防卡顿，是一套完整可商用的轻量化留言系统。</p>
 
-    <p><strong>核心优势</strong>：</p>
-    <ul>
-        <li>✅ 全自动实时更新，无需刷新页面</li>
-        <li>✅ 游标分页加载，万条数据不卡顿，彻底解决全量查询压力</li>
-        <li>✅ 支持图片、MP4/WEBM 视频留言，自动修复视频强制下载问题</li>
-        <li>✅ 完整@用户通知、上线自动补发离线未读消息</li>
-        <li>✅ 双 Worker 架构，分离上传业务与资源代理，稳定不冲突</li>
-        <li>✅ 全部跨域配置内置，无需手动处理跨域报错</li>
-        <li>✅ 国内可正常访问 Imgur 图片视频，解决境外资源拦截问题</li>
-    </ul>
+            <p><strong>核心优势</strong>：</p>
+            <ul>
+                <li>✅ 全自动实时更新，无需刷新页面</li>
+                <li>✅ 游标分页加载，万条数据不卡顿，彻底解决全量查询压力</li>
+                <li>✅ 支持图片、MP4/WEBM 视频留言，自动修复视频强制下载问题</li>
+                <li>✅ 完整@用户通知、上线自动补发离线未读消息</li>
+                <li>✅ 双 Worker 架构，分离上传业务与资源代理，稳定不冲突</li>
+                <li>✅ 全部跨域配置内置，无需手动处理跨域报错</li>
+                <li>✅ 国内可正常访问 Imgur 图片视频，解决境外资源拦截问题</li>
+            </ul>
 
-    <h2>一、整体架构认知（必看，杜绝配置混乱）</h2>
-    <p>整套系统由 <strong>3 个独立服务</strong> 组成，各司其职、互不干扰，所有配置、域名、修改位置完全分开：</p>
+            <h2>一、整体架构认知（必看，杜绝配置混乱）</h2>
+            <p>整套系统由 <strong>3 个独立服务</strong> 组成，各司其职、互不干扰，所有配置、域名、修改位置完全分开：</p>
 
-    <h3>1. 前端服务（Cloudflare Pages）</h3>
-    <p>托管于 GitHub + Cloudflare Pages，纯静态页面，无任何后端逻辑。仅负责页面展示、用户操作、调用后端接口。</p>
-    <ul>
-        <li>✅ 需配置：2 个后端服务域名</li>
-        <li>✅ 绑定：前端展示域名（你的留言板访问网址）</li>
-    </ul>
+            <h3>1. 前端服务（Cloudflare Pages）</h3>
+            <p>托管于 GitHub + Cloudflare Pages，纯静态页面，无任何后端逻辑。仅负责页面展示、用户操作、调用后端接口。</p>
+            <p>✅ 需配置：2 个后端服务域名<br>✅ 绑定：前端展示域名（你的留言板访问网址）</p>
 
-    <h3>2. 主业务后端（Cloudflare Worker）</h3>
-    <p>系统核心服务，绑定 D1 数据库 + DurableObject。承担数据库读写、WebSocket 实时推送、发帖/回复/删除/通知、Imgur 文件上传全部核心业务。</p>
-    <ul>
-        <li>✅ 需配置：D1 数据库信息、跨域白名单、Imgur 密钥</li>
-        <li>✅ 绑定：后端 API 域名</li>
-    </ul>
+            <h3>2. 主业务后端（Cloudflare Worker）</h3>
+            <p>系统核心服务，绑定 D1 数据库 + DurableObject。承担数据库读写、WebSocket 实时推送、发帖/回复/删除/通知、Imgur 文件上传全部核心业务。</p>
+            <p>✅ 需配置：D1 数据库信息、跨域白名单、Imgur 密钥<br>✅ 绑定：后端 API 域名</p>
 
-    <h3>3. Imgur 资源代理后端（Cloudflare Worker）</h3>
-    <p>独立中转服务，专门解决国内无法访问 Imgur 原图、视频强制下载、图片跨域报错问题。24小时缓存资源，加速访问。</p>
-    <ul>
-        <li>✅ 零代码配置，粘贴即用</li>
-        <li>✅ 绑定：图片视频代理域名</li>
-    </ul>
+            <h3>3. Imgur 资源代理后端（Cloudflare Worker）</h3>
+            <p>独立中转服务，专门解决国内无法访问 Imgur 原图、视频强制下载、图片跨域报错问题。24小时缓存资源，加速访问。</p>
+            <p>✅ 零代码配置，粘贴即用<br>✅ 绑定：图片视频代理域名</p>
 
-    <h2>二、部署前置准备（全部备齐再开始）</h2>
-    <ul>
-        <li>Cloudflare 账号（核心部署平台）</li>
-        <li>GitHub 账号（托管前端源码）</li>
-        <li>Imgur 账号（申请 Client ID，用于图片视频上传）</li>
-        <li>电脑安装 <strong>Node.js</strong>（用于安装部署工具）</li>
-        <li>自有域名（用于绑定自定义域名，替代官方临时域名）</li>
-    </ul>
+            <h2>二、部署前置准备（全部备齐再开始）</h2>
+            <ul>
+                <li>Cloudflare 账号（核心部署平台）</li>
+                <li>GitHub 账号（托管前端源码）</li>
+                <li>Imgur 账号（申请 Client ID，用于图片视频上传）</li>
+                <li>电脑安装 <strong>Node.js</strong>（用于安装部署工具）</li>
+                <li>自有域名（用于绑定自定义域名，替代官方临时域名）</li>
+            </ul>
 
-    <p><strong>安装部署工具 Wrangler</strong>（终端执行,先安装node.js）</p>
-    <pre><code class="language-bash">npm install -g wrangler</code></pre>
+            <p><strong>安装部署工具 Wrangler</strong>（终端执行,先安装node.js）</p>
+<pre><code class="language-bash">npm install -g wrangler</code></pre>
+            <p>验证安装成功</p>
+<pre><code class="language-bash">wrangler -v</code></pre>
+            <p>登录 Cloudflare 授权</p>
+<pre><code class="language-bash">wrangler login</code></pre>
 
-    <p>验证安装成功</p>
-    <pre><code class="language-bash">wrangler -v</code></pre>
+            <h2>三、第一步：云端创建 D1 数据库（最底层核心）</h2>
+            <h3>1. 创建 D1 数据库</h3>
+            <p>Cloudflare 后台 → 计算 & 网络 → D1 SQL 数据库 → 创建数据库</p>
+            <ul>
+                <li>数据库名称：自定义（如 msg-board-db）</li>
+                <li>部署区域：自动</li>
+            </ul>
+            <p>创建完成后，<strong>复制保存数据库名称、数据库ID</strong>，后续后端配置必须使用。</p>
 
-    <p>登录 Cloudflare 授权</p>
-    <pre><code class="language-bash">wrangler login</code></pre>
-
-    <h2>三、第一步：云端创建 D1 数据库（最底层核心）</h2>
-    
-    <h3>1. 创建 D1 数据库</h3>
-    <p>Cloudflare 后台 → 计算 & 网络 → D1 SQL 数据库 → 创建数据库</p>
-    <ul>
-        <li>数据库名称：自定义（如 msg-board-db）</li>
-        <li>部署区域：自动</li>
-    </ul>
-    <p>创建完成后，<strong>复制保存数据库名称、数据库ID</strong>，后续后端配置必须使用。</p>
-
-    <h3>2. 执行建表 SQL</h3>
-    <p>进入数据库 → 查询，一次性执行以下完整 SQL，自动创建 3 张业务表 + 索引：</p>
-    <pre><code class="language-sql">-- 1. 主留言表
+            <h3>2. 执行建表 SQL</h3>
+            <p>进入数据库 → 查询，一次性执行以下完整 SQL，自动创建 3 张业务表 + 索引：</p>
+<pre><code class="language-sql">-- 1. 主留言表
 CREATE TABLE IF NOT EXISTS message (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
@@ -188,24 +116,23 @@ CREATE INDEX IF NOT EXISTS idx_reply_create_time ON reply(create_time DESC);
 CREATE INDEX IF NOT EXISTS idx_notify_receive_uid ON notify(receive_uid);
 CREATE INDEX IF NOT EXISTS idx_notify_create_time ON notify(create_time DESC);</code></pre>
 
-    <h2>四、第二步：本地搭建主业务 Worker 后端</h2>
+            <h2>四、第二步：本地搭建主业务 Worker 后端</h2>
+            <h3>1. 初始化项目</h3>
+            <p>新建空文件夹，终端进入目录，执行初始化命令：</p>
+<pre><code class="language-bash">wrangler init</code></pre>
+            <p>交互选择（固定选项）：</p>
+            <ul>
+                <li>Would you like to create a new project? → y</li>
+                <li>Which template would you like to use? → None (bare-bones)</li>
+                <li>Would you like to install dependencies? → y</li>
+            </ul>
 
-    <h3>1. 初始化项目</h3>
-    <p>新建空文件夹，终端进入目录，执行初始化命令：</p>
-    <pre><code class="language-bash">wrangler init</code></pre>
-    <p>交互选择（固定选项,有的问题我忘记了，问问豆包）：</p>
-    <ul>
-        <li>Would you like to create a new project? → y</li>
-        <li>Which template would you like to use? → None (bare-bones)</li>
-        <li>Would you like to install dependencies? → y</li>
-    </ul>
-
-    <h3>2. 替换核心文件</h3>
-    <p>初始化完成后，进入 src 目录，替换以下两个文件，同时修改根目录配置文件：</p>
-
-    <h4>文件1：wrangler.jsonc（根目录，核心绑定配置）</h4>
-    <p>仅需修改：<strong>数据库名称、数据库ID</strong>，其余不动</p>
-    <pre><code class="language-json">{
+            <h3>2. 替换核心文件</h3>
+            <p>初始化完成后，进入 src 目录，替换以下两个文件，同时修改根目录配置文件：</p>
+            
+            <h4>文件1：wrangler.jsonc（根目录，核心绑定配置）</h4>
+            <p>仅需修改：<strong>数据库名称、数据库ID</strong>，其余不动</p>
+<pre><code class="language-json">{
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "msg-worker",
   "main": "src/index.js",
@@ -245,9 +172,9 @@ CREATE INDEX IF NOT EXISTS idx_notify_create_time ON notify(create_time DESC);</
   }
 }</code></pre>
 
-    <h4>文件2：src/ChatRoom.js（WebSocket 会话核心）</h4>
-    <p>直接全量复制，无需修改</p>
-    <pre><code class="language-js">import { DurableObject } from "cloudflare:workers";
+            <h4>文件2：src/ChatRoom.js（WebSocket 会话核心）</h4>
+            <p>直接全量复制，无需修改</p>
+<pre><code class="language-javascript">import { DurableObject } from "cloudflare:workers";
 
 function add8h(utcStr) {
   if (!utcStr) return "";
@@ -377,9 +304,9 @@ export class ChatRoom extends DurableObject {
   }
 }</code></pre>
 
-    <h4>文件3：src/index.js（主业务接口）</h4>
-    <p><strong>仅需手动修改两处</strong>：跨域白名单域名、Imgur ClientID</p>
-    <pre><code class="language-js">import { ChatRoom } from "./ChatRoom";
+            <h4>文件3：src/index.js（主业务接口）</h4>
+            <p><strong>仅需手动修改两处</strong>：跨域白名单域名、Imgur ClientID</p>
+<pre><code class="language-javascript">import { ChatRoom } from "./ChatRoom";
 
 function add8h(utcStr) {
   if (!utcStr) return "";
@@ -721,14 +648,14 @@ export default {
 
 export { ChatRoom };</code></pre>
 
-    <h3>3. 部署主业务 Worker</h3>
-    <p>终端执行部署命令：</p>
-    <pre><code class="language-bash">wrangler deploy</code></pre>
-    <p>部署成功后，进入 Cloudflare Worker 后台，为该服务<strong>绑定自定义API域名</strong>，记录域名备用。</p>
+            <h3>3. 部署主业务 Worker</h3>
+            <p>终端执行部署命令：</p>
+<pre><code class="language-bash">wrangler deploy</code></pre>
+            <p>部署成功后，进入 Cloudflare Worker 后台，为该服务<strong>绑定自定义API域名</strong>，记录域名备用。</p>
 
-    <h2>五、第三步：部署 Imgur 资源代理 Worker（独立服务）</h2>
-    <p>新建空白 Worker，全量复制以下代码，<strong>无需任何修改，直接部署</strong>，部署后绑定独立代理域名。</p>
-    <pre><code class="language-js">export default {
+            <h2>五、第三步：部署 Imgur 资源代理 Worker（独立服务）</h2>
+            <p>新建空白 Worker，全量复制以下代码，<strong>无需任何修改，直接部署</strong>，部署后绑定独立代理域名。</p>
+<pre><code class="language-javascript">export default {
   async fetch(request) {
     const corsHeaders = {
       "Access-Control-Allow-Origin": "*",
@@ -757,79 +684,75 @@ export { ChatRoom };</code></pre>
   }
 };</code></pre>
 
-    <h2>六、第四步：部署前端页面（GitHub + Cloudflare Pages）</h2>
+            <h2>六、第四步：部署前端页面（GitHub + Cloudflare Pages）</h2>
+            <h3>1. Fork 前端源码</h3>
+            <p>源码地址：<code>https://github.com/waiyiyuyan/msg-board/tree/main</code></p>
+            <p>Fork 到自己的 GitHub 仓库，克隆/在线编辑文件。</p>
 
-    <h3>1. Fork 前端源码</h3>
-    <p>源码地址：<a href="https://github.com/waiyiyuyan/msg-board/tree/main" target="_blank">https://github.com/waiyiyuyan/msg-board/tree/main</a></p>
-    <p>Fork 到自己的 GitHub 仓库，克隆/在线编辑文件。</p>
-
-    <h3>2. 修改前端核心配置（仅两处）</h3>
-    <p>打开仓库 index.html，找到两处常量，替换为自己的域名：</p>
-    <pre><code class="language-js">// 1. 后端业务API域名
+            <h3>2. 修改前端核心配置（仅两处）</h3>
+            <p>打开仓库 <code>index.html</code>，找到两处常量，替换为自己的域名：</p>
+<pre><code class="language-javascript">// 1. 后端业务API域名
 const API_BASE = "https://你的主业务Worker域名";
 
 // 2. 图片视频代理域名（固定后缀格式，不能错）
 const PROXY_PREFIX = "https://你的代理Worker域名/?url=";</code></pre>
 
-    <h3>3. Cloudflare Pages 部署配置</h3>
-    <p>创建 Pages 项目 → 导入 GitHub 仓库，固定配置：</p>
-    <img src="/images/msgboard/github_repositories.png" alt="导入仓库">
-    <p>Left navigation bar points to Compute -> Worker and Pages -> Create application</p>
-    <img src="/images/msgboard/use_pages.png" alt="创建page">
-    <img src="/images/msgboard/info.png" alt="填写信息">
-    <ul>
-        <li>框架预设：无</li>
-        <li>构建命令：exit 0</li>
-        <li>输出目录：/</li>
-    </ul>
-    <p>部署完成后，绑定<strong>前端展示自定义域名</strong>。</p>
-    <img src="/images/msgboard/domain.png" alt="绑定域名">
+            <h3>3. Cloudflare Pages 部署配置</h3>
+            <p>创建 Pages 项目 → 导入 GitHub 仓库，固定配置：</p>
+            <p><img src="/images/msgboard/github_repositories.png" alt="导入仓库"></p>
+            <p>左侧导航栏找到 计算 -> worker 和 page -> 创建应用程序</p>
+            <p><img src="/images/msgboard/use_pages.png" alt="创建page"></p>
+            <p><img src="/images/msgboard/info.png" alt="填写信息"></p>
+            <ul>
+                <li>框架预设：无</li>
+                <li>构建命令：<code>exit 0</code></li>
+                <li>输出目录：<code>/</code></li>
+            </ul>
+            <p>部署完成后，绑定<strong>前端展示自定义域名</strong>。</p>
+            <p><img src="/images/msgboard/domain.png" alt="绑定域名"></p>
 
-    <h2>七、最终配置核对表（必看，杜绝所有报错）</h2>
+            <h2>七、最终配置核对表（必看，杜绝所有报错）</h2>
+            <h3>后端修改项（3处）</h3>
+            <ul>
+                <li><code>wrangler.jsonc</code>：D1 数据库名称、数据库ID</li>
+                <li><code>index.js</code>：跨域白名单（前端域名+后端API域名）</li>
+                <li><code>index.js</code>：Imgur ClientID</li>
+            </ul>
 
-    <h3>后端修改项（3处）</h3>
-    <ul>
-        <li>wrangler.jsonc：D1 数据库名称、数据库ID</li>
-        <li>index.js：跨域白名单（前端域名+后端API域名）</li>
-        <li>index.js：Imgur ClientID</li>
-    </ul>
+            <h3>前端修改项（2处）</h3>
+            <ul>
+                <li><code>API_BASE</code>：主业务 Worker 域名</li>
+                <li><code>PROXY_PREFIX</code>：代理 Worker 域名（带 <code>/?url=</code> 后缀）</li>
+            </ul>
 
-    <h3>前端修改项（2处）</h3>
-    <ul>
-        <li>API_BASE：主业务 Worker 域名</li>
-        <li>PROXY_PREFIX：代理 Worker 域名（带 /?url= 后缀）</li>
-    </ul>
+            <h3>域名绑定区分（3个独立域名，不可混用）</h3>
+            <ul>
+                <li>前端 Pages 域名：用户访问留言板的网址</li>
+                <li>主 Worker 域名：接口请求、WebSocket 连接</li>
+                <li>代理 Worker 域名：图片、视频国内中转加载</li>
+            </ul>
 
-    <h3>域名绑定区分（3个独立域名，不可混用）</h3>
-    <ul>
-        <li>前端 Pages 域名：用户访问留言板的网址</li>
-        <li>主 Worker 域名：接口请求、WebSocket 连接</li>
-        <li>代理 Worker 域名：图片、视频国内中转加载</li>
-    </ul>
+            <h2>八、核心功能原理说明</h2>
+            <h3>1. 分页防卡顿原理</h3>
+            <p>摒弃一次性全量查询数据库，采用游标分页，每次仅加载10条最新留言。无论数据库存储多少数据，单用户单次请求仅查询10条，彻底解决高并发、大数据量页面卡死问题。</p>
 
-    <h2>八、核心功能原理说明</h2>
+            <h3>2. 实时通讯原理</h3>
+            <p>基于 Cloudflare DurableObject 维持全局唯一会话，所有在线用户共享 WebSocket 连接，发帖、回复、删除操作实时广播，无需刷新页面。用户离线后再次上线，自动补发未读@通知。</p>
 
-    <h3>1. 分页防卡顿原理</h3>
-    <p>摒弃一次性全量查询数据库，采用游标分页，每次仅加载10条最新留言。无论数据库存储多少数据，单用户单次请求仅查询10条，彻底解决高并发、大数据量页面卡死问题。</p>
+            <h3>3. Imgur 兼容方案</h3>
+            <p>上传逻辑集成主后端，通过 Worker 代理请求 Imgur 官方接口，规避本地网络拦截；图片视频展示通过独立代理 Worker 中转，修复视频强制下载问题、解决国内境外资源无法访问问题，24小时缓存加速访问。</p>
 
-    <h3>2. 实时通讯原理</h3>
-    <p>基于 Cloudflare DurableObject 维持全局唯一会话，所有在线用户共享 WebSocket 连接，发帖、回复、删除操作实时广播，无需刷新页面。用户离线后再次上线，自动补发未读@通知。</p>
-
-    <h3>3. Imgur 兼容方案</h3>
-    <p>上传逻辑集成主后端，通过 Worker 代理请求 Imgur 官方接口，规避本地网络拦截；图片视频展示通过独立代理 Worker 中转，修复视频强制下载问题、解决国内境外资源无法访问问题，24小时缓存加速访问。</p>
-
-    <h2>九、常见问题排错手册</h2>
-    <ul>
-        <li><strong>图片空白加载失败</strong>：检查前端 PROXY_PREFIX 域名及后缀格式是否正确，必须带 <code>/?url=</code></li>
-        <li><strong>视频点击直接下载</strong>：必须使用代理 Worker 链接，禁止直接使用 Imgur 原生链接</li>
-        <li><strong>上传图片失败</strong>：检查主 Worker 内 Imgur ClientID 是否正确、有效</li>
-        <li><strong>跨域报错</strong>：检查后端跨域白名单是否填写完整前端+后端域名</li>
-        <li><strong>无实时更新</strong>：检查主 Worker 是否正常部署、WebSocket 路由正常、DO 绑定生效</li>
-        <li><strong>数据库读写失败</strong>：检查 wrangler.jsonc 内 D1 数据库ID、名称是否和云端一致</li>
-    </ul>
-
-    <blockquote>（注：文档部分内容可能由 AI 生成）</blockquote>
-</article>
+            <h2>九、常见问题排错手册</h2>
+            <ul>
+                <li><strong>图片空白加载失败</strong>：检查前端 <code>PROXY_PREFIX</code> 域名及后缀格式是否正确，必须带 <code>/?url=</code></li>
+                <li><strong>视频点击直接下载</strong>：必须使用代理 Worker 链接，禁止直接使用 Imgur 原生链接</li>
+                <li><strong>上传图片失败</strong>：检查主 Worker 内 Imgur ClientID 是否正确、有效</li>
+                <li><strong>跨域报错</strong>：检查后端跨域白名单是否填写完整前端+后端域名</li>
+                <li><strong>无实时更新</strong>：检查主 Worker 是否正常部署、WebSocket 路由正常、DO 绑定生效</li>
+                <li><strong>数据库读写失败</strong>：检查 <code>wrangler.jsonc</code> 内 D1 数据库ID、名称是否和云端一致</li>
+            </ul>
+        </div>
+    </div>
 
 </body>
 </html>
