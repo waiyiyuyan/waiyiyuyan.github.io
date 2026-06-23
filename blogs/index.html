@@ -28,38 +28,23 @@
 
         /* 📄 文章列表专属样式 */
         .blog-list { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-top: 20px; }
-        .post-item { 
-            padding: 24px 0; 
+    
+        .post-item {
+            padding: 20px 0; 
             border-bottom: 1px solid #f0f0f0; 
             display: flex; 
-            flex-direction: column;   /* 核心：把左右排列改成上下垂直排列 */
-            align-items: flex-start;  /* 核心：让按钮靠左对齐，防止被拉伸得和整行一样宽 */
-            gap: 12px;                /* 核心：让标题、日期、按钮之间有 12px 的间距 */
+            flex-wrap: wrap; 
+            justify-content: space-between; 
+            align-items: center; 
         }
         .post-item:last-child { border-bottom: none; }
+        .post-info { display: contents; }
         .post-info h2 { margin: 0 0 8px 0; font-size: 1.25rem; }
         .post-info h2 a { color: #222; text-decoration: none; transition: color 0.2s; }
         .post-info h2 a:hover { color: #007bff; }
         .post-meta { color: #999; font-size: 0.85rem; }
-        .read-more { 
-            color: #007bff; 
-            text-decoration: none; 
-            font-weight: 500; 
-            font-size: 0.85rem; 
-            padding: 6px 14px;        /* 内边距，撑开变成按钮 */
-            border: 1px solid #e0e0e0;/* 浅灰色边框 */
-            border-radius: 6px;       /* 圆角 */
-            background-color: #fff;
-            transition: all 0.2s ease;/* 平滑过渡动画 */
-        }
-        
-        /* 鼠标放上去时的交互效果 */
-        .read-more:hover { 
-            color: #fff;
-            background-color: #007bff; /* 变成蓝底白字 */
-            border-color: #007bff;
-            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2); /* 加上轻微发光阴影 */
-        }
+        .read-more { color: #007bff; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+        .read-more:hover { text-decoration: underline; } /* 鼠标悬停时加个常规的下划线 */
         
         @media (max-width: 900px) { body { padding-top: 80px; } }
     </style>
