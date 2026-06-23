@@ -79,6 +79,15 @@ a:hover { color: #0056b3; }
 .content th { background-color: #f8f9fa; }
 blockquote { background: #f0f7ff; border-left: 4px solid #007bff; margin: 1.5em 0; padding: 12px 20px; color: #555; border-radius: 0 6px 6px 0; }
 
+/* 图片自适应约束（防止大图撑破卡片和手机屏幕） */
+.content img {
+    max-width: 100%;    /* 最大宽度不超过文字区域，自动缩放 */
+    height: auto;       /* 高度按比例自适应，绝对不变形 */
+    display: block;     /* 独占一行，避免和文字挤在同一行 */
+    margin: 20px auto;  /* 上下空出间距，并且居中显示 */
+    border-radius: 6px; /* 加一点微小的圆角，和整体卡片风格更搭 */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* 给图片加一层极轻的边框阴影，防止白底图片和网页混在一起 */
+}
 /* 移动端适配 */
 @media (max-width: 768px) {
     body { padding: 15px; }
