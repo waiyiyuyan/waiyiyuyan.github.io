@@ -117,19 +117,7 @@ body {
   background: #f7f7f7;
   color: #888;
 }
-.card-footer {
-  text-align: center;
-  padding-top: 18px;
-  border-top: 1px solid #eee;
-}
-.card-footer a {
-  color: #0078e7;
-  text-decoration: none;
-  font-size: 14px;
-}
-.card-footer a:hover {
-  text-decoration: underline;
-}
+
 /* 加载旋转动画 */
 .loading {
   display: inline-block;
