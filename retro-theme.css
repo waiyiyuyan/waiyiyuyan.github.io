@@ -8,15 +8,19 @@
 }
 
 body { 
+    /* 采用 Windows 经典等宽与系统硬核字体 */
     font-family: "Consolas", "Courier New", "SimSun", "Microsoft YaHei", monospace; 
     line-height: 1.6; 
-    background-color: #d4d0c8; /* 标志性的外壳灰 */
+    /* 标志性的复古计算机灰/台式机外壳底色 */
+    background-color: #d4d0c8;
     color: #000000;
+    transition: padding 0.3s ease;
 }
 
-/* 🎛️ 统一的硬核复古主窗体面板（Header 和 Card 通用） */
-header, .card { 
+/* 🎛️ 统一的硬核复古主窗体面板 */
+header, .retro-card { 
     background: #ffffff;
+    /* 经典的像素级双色立体硬边框 */
     border-top: 2px solid #fff;
     border-left: 2px solid #fff;
     border-right: 2px solid #808080;
@@ -24,14 +28,14 @@ header, .card {
     box-shadow: 1px 1px 0px #000000;
 }
 
-/* 顶部系统蓝条 */
-.header-title-bar, .card-header {
+/* 统一的系统标题蓝条 */
+.retro-title-bar {
     background: linear-gradient(90deg, #000080, #1084d0);
     padding: 6px 12px;
     border: 1px inset #fff;
 }
 
-.header-title-bar h1, .card-header h2 { 
+.retro-title-bar h1, .retro-title-bar h2 { 
     margin: 0 !important; 
     color: #ffffff !important; 
     font-size: 16px !important; 
@@ -40,46 +44,8 @@ header, .card {
     text-align: left;
 }
 
-/* ⌨️ 命令行式输入框 */
-input[type="text"] {
-    padding: 6px 8px;
-    background: #ffffff;
-    border-top: 2px solid #808080;
-    border-left: 2px solid #808080;
-    border-right: 2px solid #dfdfdf;
-    border-bottom: 2px solid #dfdfdf;
-    font-family: inherit;
-    font-size: 14px;
-    color: #000;
-    outline: none;
-}
-input[type="text"]:focus {
-    background: #ffffcc; /* 聚焦淡黄纸质感 */
-}
-
-/* 怀旧立体物理按钮 */
-button, .btn {
-    padding: 6px 16px;
-    background: #d4d0c8;
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    border-right: 2px solid #808080;
-    border-bottom: 2px solid #808080;
-    color: #000;
-    font-family: inherit;
-    font-size: 13px;
-    cursor: pointer;
-    font-weight: bold;
-}
-button:active, .btn:active {
-    border-top: 2px solid #808080;
-    border-left: 2px solid #808080;
-    border-right: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-}
-
-/* 📊 统一的内容/数据容器框 */
-.article-list, .info-list { 
+/* 📊 统一的数据/内容列表容器框 */
+.retro-list-container { 
     background: #ffffff;
     border-top: 2px solid #808080;
     border-left: 2px solid #808080;
@@ -88,7 +54,7 @@ button:active, .btn:active {
     box-shadow: 1px 1px 0px #000000;
 }
 
-/* 引言块 / 提示框 */
+/* 引言块：通用的复古指示内框 */
 blockquote { 
     background: #e4e4e4; 
     padding: 8px 12px; 
