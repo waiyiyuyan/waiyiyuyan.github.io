@@ -17,171 +17,162 @@
     
     <style>
         /* ==========================================================================
-           🌌 Frutiger Aero 经典生态蓝绿渐变背景与全局设置
+           💾 经典系统复古怀旧风格（Classic Terminal / Win95 Retro）
            ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body { 
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; 
+            /* 采用 Windows 经典等宽与系统硬核字体 */
+            font-family: "Consolas", "Courier New", "SimSun", "Microsoft YaHei", monospace; 
             line-height: 1.6; 
             max-width: 850px; 
             margin: 60px auto 30px auto; 
             padding: 20px; 
-            /* 水晶质感极光渐变底层 */
-            background: linear-gradient(135deg, #cbe6ff 0%, #e8fbe5 50%, #c4f5dc 100%);
-            background-attachment: fixed;
-            color: #1e3d59;
+            /* 标志性的复古计算机灰/台式机外壳底色 */
+            background-color: #d4d0c8;
+            color: #000000;
             transition: padding 0.3s ease;
-            position: relative;
-            overflow-x: hidden;
         }
-
-        /* 🫧 Frutiger Aero 标志性生态透明气泡装饰 */
-        body::before, body::after {
-            content: '';
-            position: fixed;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.45);
-            box-shadow: inset -6px -6px 18px rgba(0,0,0,0.04), 
-                        inset 6px 6px 12px rgba(255,255,255,0.85), 
-                        0 6px 15px rgba(0,0,0,0.03);
-            z-index: -1;
-        }
-        body::before { width: 140px; height: 140px; top: 12%; right: -30px; }
-        body::after { width: 90px; height: 90px; bottom: 15%; left: -20px; }
 
         /* ==========================================================================
-           🔮 顶部水灵光泽感 Header
+           🎛️ 硬核复古“大头显”控制台面板 (主框体)
            ========================================================================== */
         header { 
-            background: rgba(255, 255, 255, 0.45);
-            -webkit-backdrop-filter: blur(12px);
-            backdrop-filter: blur(12px);
-            padding: 30px 20px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 8px 32px rgba(31, 135, 240, 0.08), 
-                        inset 0 1px 0 rgba(255,255,255,0.9);
+            background: #ffffff;
+            /* 经典的像素级双色立体硬边框 */
+            border-top: 2px solid #fff;
+            border-left: 2px solid #fff;
+            border-right: 2px solid #808080;
+            border-bottom: 2px solid #808080;
+            padding: 12px 15px;
             margin-bottom: 25px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 1px 1px 0px #000000;
         }
-        /* 头部反光切面 */
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 50%;
-            background: linear-gradient(rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
-            pointer-events: none;
+        /* 顶部系统蓝条 */
+        .header-title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            padding: 6px 12px;
+            margin-bottom: 12px;
+            border: 1px inset #fff;
         }
         header h1 { 
             margin: 0; 
-            color: #0066cc; 
-            font-size: 2.4rem; 
-            text-shadow: 0 2px 4px rgba(255,255,255,0.8);
-            font-weight: 700;
+            color: #ffffff; 
+            font-size: 16px; 
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-align: left;
         }
+        /* 副标题表现为控制台内正文 */
         header p { 
-            margin: 8px 0 0; 
-            color: #4f748e; 
-            font-size: 1.05rem; 
-            text-shadow: 0 1px 2px rgba(255,255,255,0.6);
+            margin: 5px 0 0 4px; 
+            color: #333333; 
+            font-size: 13px;
+            font-weight: bold;
         }
 
         .ads-container { margin: 20px 0; min-height: 100px; text-align: center; }
 
         /* ==========================================================================
-           💎 主体内容高斯模糊玻璃卡片群
+           📊 纯表格/表单式复古内容清单
            ========================================================================== */
         .article-list { 
-            background: rgba(255, 255, 255, 0.55);
-            -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.75);
-            box-shadow: 0 10px 40px rgba(0, 102, 204, 0.08), 
-                        inset 0 1px 0 rgba(255,255,255,0.95);
+            background: #ffffff;
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            padding: 20px;
             margin-top: 20px; 
+            box-shadow: 1px 1px 0px #000000;
         }
 
-        /* 节点内页微调：让生成的 node-card 显得透亮圆润 */
+        /* 动态生成的节点卡片容器微调 */
         .node-card {
-            margin-bottom: 35px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            padding: 16px;
+            background: #fafafa;
+            border: 1px solid #808080;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
         }
-        .node-card:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.65);
-            border-color: rgba(0, 119, 255, 0.3);
-            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.08);
+        .node-card:nth-child(even) {
+            background-color: #f5f5f5; /* 经典交替行深浅底色 */
         }
         .node-card:last-child { margin-bottom: 0; }
         
         .node-card h2 { 
-            font-size: 1.4rem; 
-            color: #0052cc; 
+            font-size: 1.15rem; 
+            color: #000080; 
             margin-top: 0; 
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        /* 给标题加个生态感的叶子或水滴符号前缀 */
-        .node-card h2::before {
-            content: '💧';
-            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid #808080;
+            padding-bottom: 4px;
         }
 
-        /* 引言块：改造成通透的淡蓝指示牌 */
+        /* 引言块：改造成复古指示内框 */
         .node-card blockquote { 
-            background: rgba(218, 237, 255, 0.5); 
-            padding: 12px 18px; 
-            margin: 12px 0; 
-            border-left: 4px solid #3399ff; 
-            color: #2b577a; 
-            border-radius: 0 8px 8px 0;
-            font-size: 0.95rem;
-        }
-        .node-card p {
-            color: #3e5e78;
-            font-size: 0.98rem;
-        }
-        .node-card ul { padding-left: 0; list-style: none; margin-top: 15px; }
-        
-        /* 节点内容框：晶莹剃透的单条样式 */
-        .node-card li { 
-            font-family: Consolas, Monaco, monospace; 
-            word-break: break-all; 
-            background: rgba(255, 255, 255, 0.8); 
-            margin-bottom: 8px; 
-            padding: 8px 14px; 
-            border-radius: 6px; 
-            border: 1px solid rgba(0, 102, 204, 0.15); 
-            color: #111;
+            background: #e4e4e4; 
+            padding: 8px 12px; 
+            margin: 10px 0; 
+            border-left: 4px solid #000080; 
+            color: #111111; 
             font-size: 0.9rem;
-            box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
         }
         
+        .node-card p {
+            color: #222222;
+            font-size: 0.92rem;
+            margin-bottom: 10px;
+        }
+        
+        .node-card ul { padding-left: 0; list-style: none; margin-top: 10px; }
+        
+        /* 节点内容框：内凹的文本区域质感 */
+        .node-card li { 
+            font-family: inherit; 
+            word-break: break-all; 
+            background: #ffffff; 
+            margin-bottom: 6px; 
+            padding: 6px 10px; 
+            border-top: 1px solid #808080;
+            border-left: 1px solid #808080;
+            border-right: 1px solid #dfdfdf;
+            border-bottom: 1px solid #dfdfdf;
+            color: #000000;
+            font-size: 0.88rem;
+        }
+        
+        /* 复古方块刻度等待效果 */
         .loading-text { 
             text-align: center; 
-            color: #527895; 
-            padding: 30px 0; 
-            font-size: 1rem; 
+            color: #000000; 
+            padding: 20px 0; 
+            font-size: 14px; 
             font-weight: bold;
-            text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+        }
+        .loading-text::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #000080;
+            margin-right: 8px;
+            animation: blink 0.8s steps(2, start) infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            to { visibility: hidden; }
         }
 
         /* 移动端适配 */
         @media (max-width: 768px) {
-            body { padding: 12px; margin-top: 65px; }
-            header h1 { font-size: 1.8rem; }
-            .article-list { padding: 18px; }
-            .node-card { padding: 15px; }
+            body { padding: 10px; margin-top: 65px; }
+            .article-list { padding: 12px; }
+            .node-card { padding: 12px; }
         }
     </style>
 </head>
@@ -197,8 +188,10 @@
     </div>
 
     <header>
-        <h1>我爱白嫖</h1>
-        <p>每日免费机场节点 · 高速VPN测试 · 科学上网资源导航</p>
+        <div class="header-title-bar">
+            <h1>⚙️ RESOURCE_FREE_MANAGER.EXE</h1>
+        </div>
+        <p>我爱白嫖 - 每日免费机场节点 · 高速VPN测试 · 科学上网资源导航</p>
     </header>
 
     <div class="ads-container">
@@ -207,7 +200,7 @@
     </div>
 
     <div id="content" class="article-list">
-        <div class="loading-text">🔄 正在同步全网最新白嫖节点，请稍候...</div>
+        <div class="loading-text">正在同步全网最新白嫖节点，请稍候...</div>
     </div>
 
     <div class="ads-container">
@@ -259,7 +252,7 @@
             })
             .catch(error => {
                 document.getElementById('content').innerHTML = `
-                    <div class="loading-text" style="color: #dc3545;">❌ 节点数据加载失败，请刷新页面重试。</div>
+                    <div class="loading-text" style="color: #cc0000;">❌ 节点数据加载失败，请刷新页面重试。</div>
                 `;
                 console.error(error);
             });
