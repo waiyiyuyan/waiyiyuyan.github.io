@@ -14,79 +14,40 @@
     <meta property="og:url" content="https://waiyiyuyan.github.io/ip/">
     <meta property="og:type" content="tool">
     
+    <link rel="stylesheet" href="/retro-theme.css">
+    
     <style>
         /* ==========================================================================
-           💾 经典系统复古怀旧风格（Classic Terminal / Win95 Retro）
+           🌐 仅限 IP 查询工具页面使用的局部排版与组件微调
            ========================================================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
-            /* 采用 Windows 经典等宽与系统硬核字体 */
-            font-family: "Consolas", "Courier New", "SimSun", "Microsoft YaHei", monospace;
             min-height: 100vh;
             padding: 24px 16px;
-            /* 标志性的复古计算机灰/台式机外壳绿 */
-            background-color: #d4d0c8; 
-            color: #000000;
             display: block;
         }
 
-        /* ==========================================================================
-           🎛️ 硬核复古“大头显”控制台面板
-           ========================================================================== */
+        /* 控制台主卡片：限定宽度与外边距 */
         .card {
             width: 100%;
             max-width: 580px;
-            background: #ffffff;
-            /* 经典的像素级双色立体硬边框（Windows 经典凹凸边框效果） */
-            border-top: 2px solid #fff;
-            border-left: 2px solid #fff;
-            border-right: 2px solid #808080;
-            border-bottom: 2px solid #808080;
             padding: 24px;
             margin: 60px auto 20px auto;
-            box-shadow: 1px 1px 0px #000000;
         }
 
-        /* 顶部深蓝系统标头栏 */
         .card-header {
-            background: linear-gradient(90deg, #000080, #1084d0);
-            padding: 6px 10px;
             margin-bottom: 24px;
-            border: 1px inset #fff;
-        }
-        .card-header h2 {
-            font-size: 16px;
-            color: #ffffff;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-align: left;
-        }
-        /* 副标题表现为系统底部的说明行 */
-        .card-header p {
-            display: none; /* 剔除现代多余视觉，回归极简 */
         }
 
-        /* ==========================================================================
-           ⌨️ 命令行式输入框与像素立体按钮
-           ========================================================================== */
+        /* 搜索功能区：横向弹性排布 */
         .search-box {
             display: flex;
             gap: 8px;
             margin-bottom: 20px;
         }
+        
         #ipInput {
             flex: 1;
             padding: 6px 8px;
-            background: #ffffff;
-            /* 文本框专用的内凹阴影边框 */
-            border-top: 2px solid #808080;
-            border-left: 2px solid #808080;
-            border-right: 2px solid #dfdfdf;
-            border-bottom: 2px solid #dfdfdf;
             font-family: inherit;
             font-size: 14px;
             color: #000;
@@ -96,7 +57,7 @@
             background: #ffffcc; /* 聚焦时变成经典怀旧淡黄纸质感 */
         }
         
-        /* 怀旧立体物理按钮 */
+        /* 怀旧立体物理按钮局部样式 */
         .search-box button {
             padding: 6px 16px;
             background: #d4d0c8;
@@ -111,7 +72,6 @@
             font-weight: bold;
         }
         .search-box button:active {
-            /* 按下时反转立体边框，产生真实的物理按下感 */
             border-top: 2px solid #808080;
             border-left: 2px solid #808080;
             border-right: 2px solid #fff;
@@ -119,17 +79,11 @@
             padding: 7px 15px 5px 17px;
         }
 
-        /* ==========================================================================
-           📊 纯表格/表单式复古数据清单
-           ========================================================================== */
+        /* 数据清单：紧凑的表格连线风格 */
         .info-list {
             display: flex;
             flex-direction: column;
-            gap: 0; /* 采用紧凑的无间缝表格连线风格 */
-            border-top: 2px solid #808080;
-            border-left: 2px solid #808080;
-            border-right: 2px solid #fff;
-            border-bottom: 2px solid #fff;
+            gap: 0; 
             background: #fafafa;
         }
         .info-item {
@@ -144,7 +98,7 @@
             border-bottom: none;
         }
         .info-item:nth-child(even) {
-            background-color: #f1f1f1; /* 经典的交替行深浅底色（便于阅读） */
+            background-color: #f1f1f1; /* 经典的交替行深浅底色 */
         }
         
         .info-label {
@@ -160,9 +114,7 @@
             font-weight: normal;
         }
 
-        /* ==========================================================================
-           🏷️ 经典状态纯色标识
-           ========================================================================== */
+        /* 标签纯色标识 */
         .badge {
             display: inline-block;
             padding: 2px 6px;
@@ -170,18 +122,9 @@
             font-size: 12px;
             font-weight: bold;
         }
-        .badge-ok {
-            background: #c0ffc0;
-            color: #006600;
-        }
-        .badge-warn {
-            background: #ffc0c0;
-            color: #cc0000;
-        }
-        .badge-gray {
-            background: #e0e0e0;
-            color: #444;
-        }
+        .badge-ok { background: #c0ffc0; color: #006600; }
+        .badge-warn { background: #ffc0c0; color: #cc0000; }
+        .badge-gray { background: #e0e0e0; color: #444; }
 
         /* 复古方块刻度等待效果 */
         .loading {
@@ -197,30 +140,13 @@
             to { visibility: hidden; }
         }
 
-        /* ==========================================================================
-           📱 移动端自适应微调
-           ========================================================================== */
+        /* 📱 移动端自适应微调 */
         @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            .card {
-                padding: 16px;
-                margin-top: 65px;
-            }
-            .info-item {
-                grid-template-columns: 1fr;
-                gap: 2px;
-                padding: 8px;
-            }
-            .search-box {
-                flex-direction: column;
-                gap: 6px;
-            }
-            .search-box button {
-                width: 100%;
-                padding: 8px;
-            }
+            body { padding: 10px; }
+            .card { padding: 16px; margin-top: 65px; }
+            .info-item { grid-template-columns: 1fr; gap: 2px; padding: 8px; }
+            .search-box { flex-direction: column; gap: 6px; }
+            .search-box button { width: 100%; padding: 8px; }
         }
     </style>
 </head>
@@ -235,8 +161,8 @@
         <a href="/blogs/">✍️ 优质博文</a>
     </div>
 
-    <div class="card">
-        <div class="card-header">
+    <div class="card retro-card">
+        <div class="card-header retro-title-bar">
             <h2>⚙️ NETWORK_ENVIRONMENT_DETECTOR.EXE</h2>
         </div>
 
@@ -246,7 +172,7 @@
             <button id="resetBtn">本机(R)</button>
         </div>
 
-        <div class="info-list">
+        <div class="info-list retro-list-container">
             <div class="info-item">
                 <span class="info-label">QUERY_IP</span>
                 <span class="info-value" id="queryIp"><span class="loading"></span>查询中...</span>
@@ -283,7 +209,6 @@
     </div>
 
     <script src="/nav.js"></script>
-
     <script src="./ip-detect.js"></script>
 </body>
 </html>
