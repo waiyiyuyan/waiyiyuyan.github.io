@@ -2,34 +2,36 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-	<meta name="google-adsense-remove" content="all">
+    <meta name="google-adsense-remove" content="all">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 优化标题，包含核心关键词 -->
     <title>公网IP查询工具 | IPv4/IPv6归属地、运营商、代理VPN检测</title>
-    <!-- 核心描述，谷歌搜索结果展示文字 -->
     <meta name="description" content="免费在线IP检测工具，输入IPv4/IPv6即可查询IP归属城市、运营商、AS号，自动识别VPS/机房/代理IP，适配手机电脑，无需登录。">
-    <!-- 关键词辅助 -->
     <meta name="keywords" content="IP查询,IPv6查询,公网IP检测,IP归属地查询,VPN识别,机房IP检测,AS信息查询">
-    <!-- 允许谷歌抓取、收录页面 -->
     <meta name="robots" content="index,follow">
-    <!-- 规范链接，避免重复URL不收录 -->
     <link rel="canonical" href="https://waiyiyuyan.github.io/ip/">
-    <!-- 社交预览标签（可选，提升展示效果） -->
     <meta property="og:title" content="公网IP查询工具 | IPv4/IPv6归属地、代理VPN检测">
     <meta property="og:description" content="免费在线IP检测工具，输入IPv4/IPv6即可查询IP归属城市、运营商、AS号，自动识别VPS/机房/代理IP">
     <meta property="og:url" content="https://waiyiyuyan.github.io/ip/">
     <meta property="og:type" content="tool">
-    <!-- 引入独立样式 -->
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+
+    <div id="common-nav" class="seo-nav-links">
+        <a href="/">🏠 首页节点</a>
+        <a href="/ip/">🌐 IP环境检测</a>
+        <a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">📝 留言板</a>
+        <a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">🖼️ 图床</a>
+        <a href="/videoDownloader/">🎬 视频下载</a>
+        <a href="/blogs/">✍️ 优质博文</a>
+    </div>
+
     <div class="card">
         <div class="card-header">
             <h2>🌐 网络环境检测</h2>
             <p>实时查询您的公网IP与网络属性</p>
         </div>
 
-        <!-- 新增IP搜索区域 -->
         <div class="search-box">
             <input type="text" id="ipInput" placeholder="输入IPv4/IPv6地址查询">
             <button id="searchBtn">查询</button>
@@ -76,7 +78,8 @@
         </div>
     </div>
 
-    <!-- 外部JS逻辑文件 -->
+    <script src="/nav.js"></script>
+
     <script src="./ip-detect.js"></script>
 </body>
 </html>
