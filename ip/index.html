@@ -147,6 +147,16 @@
             .info-item { grid-template-columns: 1fr; gap: 2px; padding: 8px; }
             .search-box { flex-direction: column; gap: 6px; }
             .search-box button { width: 100%; padding: 8px; }
+            .retro-title-bar h2 {
+                color: #ffffff !important;         /* 强制设置为白色 */
+                font-size: 16px !important;        /* 统一标题大小 */
+                margin: 0 !important;              /* 清除默认间距 */
+                
+                /* 强制换行配置 */
+                white-space: normal !important;    
+                word-break: break-all !important;  /* 确保长字符强制换行 */
+                max-width: 100%;
+            }
         }
     </style>
 </head>
