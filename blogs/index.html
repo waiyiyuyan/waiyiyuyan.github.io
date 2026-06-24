@@ -5,31 +5,128 @@
     <title>优质博文 | 我爱白嫖</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="./style.css">
+    
+    <link rel="stylesheet" href="/retro-theme.css">
+    
+    <style>
+        /* ==========================================================================
+           ✍️ 仅限博文列表及内页排版复古微调（精简自原 style.css）
+           ========================================================================== */
+        body { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+        }
+
+        /* 顶部系统标题栏 */
+        header { 
+            margin-bottom: 20px; 
+            margin-top: 50px; 
+        }
+
+        /* 核心卡片容器：统一复古主面板 */
+        .blog-list, .article-container { 
+            padding: 24px; 
+            margin-top: 20px; 
+        }
+
+        /* 📄 文章列表项网格布局，微调以完美嵌入复古凹陷底框 */
+        .post-item { 
+            padding: 16px 12px; 
+            border-bottom: 1px solid #d4d0c8; 
+            display: grid;
+            grid-template-columns: 1fr auto; 
+            gap: 8px 0;                    
+        }
+        .post-item:last-child { border-bottom: none; }
+        .post-item:nth-child(even) { background-color: #f1f1f1; } /* 交替行深浅底色便于阅读 */
+        
+        .post-info { display: contents; }
+        .post-info h2 { 
+            grid-column: span 2; 
+            margin: 0; 
+            font-size: 1.15rem; 
+            font-weight: bold;
+        }
+        .post-info h2 a { color: #000000; text-decoration: none; }
+        .post-info h2 a:hover { color: #000080; text-decoration: underline; }
+        
+        .post-meta { color: #555; font-size: 0.85rem; align-self: center; font-weight: normal; }
+        .read-more { color: #000080; font-weight: bold; font-size: 0.85rem; align-self: center; text-align: right; }
+        .read-more:hover { text-decoration: underline; }
+
+        /* ==========================================================================
+           📜 兼容后续可能动态加载的文章内页排版（Readme文本风格）
+           ========================================================================== */
+        .article-container h1 { margin: 10px 0; color: #000; font-size: 1.6rem; }
+        .meta { 
+            color: #555; 
+            font-size: 0.85rem; 
+            border-bottom: 1px solid #d4d0c8; 
+            padding-bottom: 12px; 
+            margin-bottom: 20px; 
+            display: flex; 
+            gap: 15px; 
+            flex-wrap: wrap; 
+        }
+        .tag-badge, .cat-badge { background: #e0e0e0; color: #333; padding: 2px 6px; border: 1px inset #fff; font-size: 12px; font-weight: bold; }
+
+        .content h2 { color: #000; border-left: 4px solid #000080; padding-left: 10px; margin-top: 30px; margin-bottom: 12px; font-size: 1.3rem; }
+        .content p, .content li { color: #000; line-height: 1.7; margin-bottom: 12px; }
+        
+        /* 复古代码块 */
+        .content code { background: #fff; color: #db2828; padding: 2px 6px; border: 1px solid #808080; font-family: Consolas, monospace; font-size: 0.9rem; }
+        .content pre { background: #000000; padding: 15px; border: 2px inset #fff; overflow-x: auto; margin: 15px 0; }
+        .content pre code { background: none; color: #00ff00; border: none; padding: 0; font-size: 0.85rem; } /* 黑底绿字高仿老式终端 */
+
+        /* 表格与引用 */
+        .content table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #fff; }
+        .content th, .content td { border: 1px solid #808080; padding: 8px; text-align: left; }
+        .content th { background-color: #d4d0c8; font-weight: bold; }
+        blockquote { background: #fff; border-left: 4px solid #808080; border-top: 1px solid #d4d0c8; border-right: 1px solid #d4d0c8; border-bottom: 1px solid #d4d0c8; margin: 1.5em 0; padding: 12px 20px; color: #444; }
+
+        /* 📱 移动端适配 */
+        @media (max-width: 768px) {
+            body { padding: 10px; padding-top: 60px; }
+            .blog-list, .article-container { padding: 16px; }
+            .post-item { grid-template-columns: 1fr; gap: 4px; }
+            .read-more { text-align: left; margin-top: 2px; }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <h1>✍️ 优质博文</h1>
-        <p>技术教程 · 经验分享</p>
+    <div id="common-nav" class="seo-nav-links">
+        <a href="/">🏠 首页节点</a>
+        <a href="/ip/">🌐 IP环境检测</a>
+        <a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">📝 留言板</a>
+        <a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">🖼️ 图床</a>
+        <a href="/videoDownloader/">🎬 视频下载</a>
+        <a href="/blogs/">✍️ 优质博文</a>
+    </div>
+
+    <header class="retro-title-bar">
+        <h1>✍️ ARTICLE_MANAGER.EXE</h1>
     </header>
 
-    <div class="blog-list" id="blogList">
-        <div style="text-align: center; color: #999;">🔄 正在加载文章列表...</div>
+    <div class="blog-list retro-card">
+        <div id="blogList" class="retro-list-container">
+            <div style="text-align: center; color: #555; padding: 20px; font-weight: bold;">
+                🔄 正在检索系统文章数据库，请稍候...
+            </div>
+        </div>
     </div>
 
     <script src="/nav.js"></script>
 
     <script>
-        // 🗑️ 原来的侧边栏开关逻辑 toggleMenu() 已经删除，全部交由上面的 nav.js 处理
-
-        // 🔄 动态读取文章列表 JSON（保持不变）
+        // 🔄 动态读取文章列表 JSON
         fetch('./posts.json')
             .then(res => { if(!res.ok) throw new Error(); return res.json(); })
             .then(data => {
                 const listDiv = document.getElementById('blogList');
                 if(!data || data.length === 0) {
-                    listDiv.innerHTML = '<div style="text-align:center;color:#999;">📭 暂无博文发布。</div>';
+                    listDiv.innerHTML = '<div style="text-align:center;color:#555;padding:20px;font-weight:bold;">📭 暂无博文发布。</div>';
                     return;
                 }
                 
@@ -38,17 +135,17 @@
                     html += `
                         <div class="post-item">
                             <div class="post-info">
-                                <h2><a href="./articles/${post.file}">${post.title}</a></h2>
-                                <div class="post-meta">📅 发布日期: ${post.date} · 🏷️ 分类: ${post.category}</div>
+                                <h2><a href="./articles/${post.file}">📂 ${post.title}</a></h2>
+                                <div class="post-meta">📅 DATE: ${post.date} · 🏷️ TYPE: ${post.category}</div>
                             </div>
-                            <a href="./articles/${post.file}" class="read-more">阅读全文 →</a>
+                            <a href="./articles/${post.file}" class="read-more">阅读原文(O) →</a>
                         </div>
                     `;
                 });
                 listDiv.innerHTML = html;
             })
             .catch(() => {
-                document.getElementById('blogList').innerHTML = '<div style="text-align:center;color:#dc3545;">❌ 文章列表加载失败。</div>';
+                document.getElementById('blogList').innerHTML = '<div style="text-align:center;color:#cc0000;padding:20px;font-weight:bold;">❌ 数据库检索失败，请检查系统状态。</div>';
             });
     </script>
 </body>
