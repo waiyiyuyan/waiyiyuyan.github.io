@@ -10,24 +10,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const cat = postData.getAttribute("data-cat") || "";
     const bodyContent = postData.querySelector(".content")?.innerHTML || "";
 
-    // 2. 动态拼装精美渲染外壳
+    // 2. 🛠️ 动态拼装精美渲染外壳（全面融入 Windows 95 质感组件）
     const finalLayout = `
-        <a href="/blogs/" class="back-btn">← 返回文章列表</a>
-        <div class="article-container">
-            <h1>${title}</h1>
-            <div class="meta">
-                <span>📅 发布时间：${date}</span>
-                <span>🏷️ 标签：<span class="tag-badge">${tag}</span></span>
-                <span>📂 分类：<span class="cat-badge">${cat}</span></span>
+        <a href="/blogs/" class="btn back-btn" style="text-decoration: none; margin-bottom: 15px; margin-top: 60px; display: inline-block;">
+            ⬅️ 返回文章列表(B)
+        </a>
+        
+        <div class="article-container retro-card" style="padding: 24px; margin-top: 10px;">
+            
+            <div class="retro-title-bar" style="margin: -24px -24px 20px -24px; padding: 4px 8px;">
+                <h1 style="font-size: 1.3rem; margin: 0; font-weight: bold;">📄 TEXT_VIEWER.EXE - ${title}</h1>
             </div>
-            <div class="content">
+            
+            <div class="meta" style="color: #222; font-size: 0.85rem; border-bottom: 2px inset #fff; padding-bottom: 12px; margin-bottom: 20px; display: flex; gap: 15px; flex-wrap: wrap; font-weight: bold;">
+                <span>📅 属性时间: ${date}</span>
+                <span>🏷️ 标记: <span class="tag-badge" style="background: #e0e0e0; color: #000; padding: 2px 6px; border: 1px inset #fff; font-size: 11px;">${tag}</span></span>
+                <span>📂 路径: <span class="cat-badge" style="background: #e0e0e0; color: #000; padding: 2px 6px; border: 1px inset #fff; font-size: 11px;">${cat}</span></span>
+            </div>
+            
+            <div class="content retro-list-container" style="padding: 16px; background: #ffffff; text-align: left;">
                 ${bodyContent}
             </div>
         </div>
     `;
 
     // 3. ✨ 优雅替代：创建一个专属容器放置文章，绝不粗暴覆盖整个 body
-    // 这样能够保证页面上的全局公共导航（nav.js 生成的内容）安全存活！
     let articleWrapper = document.getElementById("article-wrapper");
     if (!articleWrapper) {
         articleWrapper = document.createElement("div");
@@ -51,8 +58,16 @@ document.addEventListener("DOMContentLoaded", () => {
         pre.style.position = "relative";
 
         const copyBtn = document.createElement("button");
-        copyBtn.className = "copy-code-btn";
-        copyBtn.innerText = "复制";
+        // 🛠️ 这里的复制按钮同样穿上复古按钮的衣服 class="btn copy-code-btn"
+        copyBtn.className = "btn copy-code-btn";
+        copyBtn.innerText = "复制(C)";
+        // 微调其在代码块右上方悬浮的位置与字体大小
+        copyBtn.style.position = "absolute";
+        copyBtn.style.top = "6px";
+        copyBtn.style.right = "6px";
+        copyBtn.style.padding = "2px 8px";
+        copyBtn.style.fontSize = "11px";
+        copyBtn.style.zIndex = "10";
         pre.appendChild(copyBtn);
 
         copyBtn.addEventListener("click", () => {
@@ -61,11 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             navigator.clipboard.writeText(codeBlock.innerText).then(() => {
                 copyBtn.innerText = "已复制！";
-                copyBtn.classList.add("copied");
                 
                 setTimeout(() => {
-                    copyBtn.innerText = "复制";
-                    copyBtn.classList.remove("copied");
+                    copyBtn.innerText = "复制(C)";
                 }, 2000);
             }).catch(err => {
                 console.error("复制失败: ", err);
@@ -78,6 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const images = contentDiv.querySelectorAll("img");
     images.forEach((img) => {
         img.style.cursor = "zoom-in";
+        // 🛠️ 给图片加一个像素风浅色内凹边框，使其融入文章页
+        img.style.border = "2px inset #fff";
+        img.style.padding = "4px";
+        img.style.background = "#d4d0c8";
+        
         img.addEventListener("click", () => {
             window.open(img.src, "_blank");
         });
