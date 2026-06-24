@@ -5,78 +5,9 @@
     <title>优质博文 | 我爱白嫖</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* 保持与首页高度一致的视觉风格 */
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; background-color: #f7f9fa; }
-        header { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 15px; text-align: center; }
-        header h1 { margin: 0; color: #007bff; font-size: 2rem; }
-        
-        /* 🍔 汉堡按钮与侧边栏 (代码同首页) */
-        .menu-btn { position: fixed; top: 20px; left: 20px; z-index: 1001; background: #007bff; border: none; border-radius: 8px; padding: 12px; cursor: pointer; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3); }
-        .menu-btn span { display: block; width: 22px; height: 3px; background-color: #fff; border-radius: 2px; transition: all 0.3s; }
-        .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .menu-btn.open span:nth-child(2) { opacity: 0; }
-        .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-        .sidebar { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background: #fff; box-shadow: 4px 0 15px rgba(0,0,0,0.05); transition: left 0.3s; z-index: 1000; padding: 90px 15px 20px 15px; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; }
-        .sidebar.open { left: 0; }
-        .sidebar-title { font-size: 1.1rem; color: #999; font-weight: bold; padding: 0 12px 10px 12px; border-bottom: 1px solid #eee; margin-bottom: 10px; }
-        .sidebar a { color: #555; text-decoration: none; font-weight: bold; padding: 12px 16px; border-radius: 6px; display: block; }
-        .sidebar a:hover { color: #007bff; background-color: #f0f7ff; }
-        .sidebar a.active { color: #007bff; background-color: #e6f0ff; border-left: 4px solid #007bff; border-radius: 0 6px 6px 0; padding-left: 12px; }
-        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 999; display: none; }
-        .sidebar-overlay.open { display: block; }
-
-        /* 📄 文章列表专属样式 */
-        .blog-list { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-top: 20px; }
-    
-        .post-item { 
-            padding: 20px 0; 
-            border-bottom: 1px solid #f0f0f0; 
-            display: grid;
-            grid-template-columns: 1fr auto; /* 左边栏占满剩余空间，右边栏自动宽度 */
-            gap: 8px 0;                      /* 标题和第二行之间上下空出 8px 间距 */
-        }
-        .post-item:last-child { border-bottom: none; }
-        .post-info { display: contents; }
-        .post-info h2 { 
-            grid-column: span 2; 
-            margin: 0; 
-            font-size: 1.25rem; 
-        }
-        .post-info h2 a { color: #222; text-decoration: none; transition: color 0.2s; }
-        .post-info h2 a:hover { color: #007bff; }
-        .post-meta { 
-            color: #999; 
-            font-size: 0.85rem; 
-            align-self: center; 
-        }
-        .read-more { 
-            color: #007bff; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 0.9rem; 
-            align-self: center; 
-            text-align: right;
-        }
-        .read-more:hover { text-decoration: underline; }
-        
-        @media (max-width: 900px) { body { padding-top: 80px; } }
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-
-    <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-    <nav class="sidebar" id="sidebar">
-        <div class="sidebar-title">网站导航</div>
-        <a href="/">🏠 首页节点</a>
-        <a href="/blog/" class="active">✍️ 优质博文</a>
-        <a href="/ip/">🌐 IP环境检测</a>
-        <a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">📝 留言板</a>
-        <a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">🖼️ 图床</a>
-        <a href="/videoDownloader/">🎬 视频下载</a>
-    </nav>
 
     <header>
         <h1>✍️ 优质博文</h1>
@@ -87,20 +18,12 @@
         <div style="text-align: center; color: #999;">🔄 正在加载文章列表...</div>
     </div>
 
-    <script>
-        // 侧边栏开关逻辑
-        const menuBtn = document.getElementById('menuBtn');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        function toggleMenu() {
-            menuBtn.classList.toggle('open');
-            sidebar.classList.toggle('open');
-            sidebarOverlay.classList.toggle('open');
-        }
-        menuBtn.addEventListener('click', toggleMenu);
-        sidebarOverlay.addEventListener('click', toggleMenu);
+    <script src="/nav.js"></script>
 
-        // 🔄 动态读取文章列表 JSON
+    <script>
+        // 🗑️ 原来的侧边栏开关逻辑 toggleMenu() 已经删除，全部交由上面的 nav.js 处理
+
+        // 🔄 动态读取文章列表 JSON（保持不变）
         fetch('./posts.json')
             .then(res => { if(!res.ok) throw new Error(); return res.json(); })
             .then(data => {
