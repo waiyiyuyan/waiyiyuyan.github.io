@@ -139,6 +139,16 @@
         @keyframes blink {
             to { visibility: hidden; }
         }
+      .biaoti {
+        color: #ffffff !important;         /* 强制设置为白色 */
+                font-size: 16px !important;        /* 统一标题大小 */
+                margin: 0 !important;              /* 清除默认间距 */
+                
+                /* 强制换行配置 */
+                white-space: normal !important;    
+                word-break: break-all !important;  /* 确保长字符强制换行 */
+                max-width: 100%;
+      }
 
         /* 📱 移动端自适应微调 */
         @media (max-width: 480px) {
@@ -173,7 +183,7 @@
 
     <div class="card retro-card">
         <div class="card-header retro-title-bar">
-            <h2>⚙️ NETWORK_ENVIRONMENT_DETECTOR.EXE</h2>
+            <h2 class="biaoti">⚙️ NETWORK_ENVIRONMENT_DETECTOR.EXE</h2>
         </div>
 
         <div class="search-box">
