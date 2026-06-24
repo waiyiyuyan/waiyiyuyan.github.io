@@ -9,7 +9,7 @@
         }
         /* 任务栏内部容器：与你的主体内容对齐 */
         .taskbar-inner {
-            width: 100%; max-width: 850px; margin: 0 auto;
+            width: 100%; max-width: 850px; margin: 0;
             position: relative; display: flex; align-items: center;
         }
         /* 🏁 开始按钮 */
