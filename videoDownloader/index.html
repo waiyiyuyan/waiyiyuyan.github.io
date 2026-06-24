@@ -8,71 +8,104 @@
     <title>Twitter/TikTok/Snapchat 视频下载器 - 免费去水印音视频提取工具</title>
     
     <meta name="description" content="专为 Twitter (X)、TikTok、Snapchat 打造的免费去水印视频解析下载站。一键提取高清无水印 Mp4 视频及纯音频 Mp3 文件，全自动兼容最高画质，绿色无广告。">
-    
     <meta name="keywords" content="Twitter视频下载,TikTok去水印,Snapchat视频保存,推推视频解析,海外短视频下载,音频提取Mp3">
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="Twitter/TikTok/Snapchat 视频去水印下载器">
     <meta property="og:description" content="一键免费提取 Twitter、TikTok、Snapchat 高清去水印短视频及 MP3 音频。">
     
+    <link rel="stylesheet" href="/retro-theme.css">
+    
     <style>
+        /* ==========================================================================
+           🎬 仅限视频下载器页面使用的局部排版与组件微调
+           ========================================================================== */
         body { 
-            font-family: Arial, sans-serif; 
             max-width: 600px; 
             margin: 60px auto 30px auto; 
             padding: 20px; 
-            text-align: center; 
-            background: #f5f7fa; 
-            color: #333; 
-        }
-        input { 
-            width: 80%; 
-            padding: 12px; 
-            margin: 10px 0; 
-            border: 1px solid #ddd; 
-            border-radius: 6px; 
-            font-size: 16px; 
-            box-sizing: border-box; 
         }
 
-        select { 
-            width: 80%; 
+        /* 视频控制台主卡片面板 */
+        .card {
+            width: 100%;
+            padding: 24px;
+            margin-bottom: 25px;
+        }
+        .card-header {
+            margin-bottom: 20px;
+        }
+        .card p {
+            margin: 8px 0;
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* 交互表单区组件微调 */
+        input, select { 
+            width: 90%; 
             margin: 10px 0; 
-            border: 1px solid #ddd; 
-            border-radius: 6px; 
-            font-size: 16px; 
-            box-sizing: border-box; 
-            
-            appearance: none;            
-            -webkit-appearance: none;    
-            -moz-appearance: none;       
-            
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%23333' d='M7 10l5 5 5-5z'/></svg>");
-            background-repeat: no-repeat;
-            background-position: right 12px center; 
-            background-size: 18px;
-            
-            padding: 12px 45px 12px 12px; 
+            font-size: 14px; 
+        }
+
+        /* 针对下拉选择框定制的微调：保留系统原生下拉箭头或在复古基础上适配 */
+        select { 
+            padding: 6px 8px;
+            background: #ffffff;
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #dfdfdf;
+            border-bottom: 2px solid #dfdfdf;
+            font-family: inherit;
             cursor: pointer;
         }
-        button { padding: 12px 24px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; margin-top: 10px; font-weight: bold; }
-        button:hover { background: #0056b3; }
-        #result { margin-top: 20px; padding: 15px; border-radius: 6px; display: none; word-break: break-all; }
-        .success { background: #d4edda; color: #155724; }
-        .error { background: #f8d7da; color: #721c24; }
-        .loading { color: #666; font-style: italic; }
+
+        /* 结果展示区：应用内凹文本框质感 */
+        #result { 
+            width: 90%;
+            margin: 20px auto 0 auto; 
+            padding: 15px; 
+            display: none; 
+            word-break: break-all; 
+            text-align: left;
+        }
+        /* 继承公共样式的凹槽，再微调三种状态的配色质感 */
+        .success { background: #ffffff; border-left: 4px solid #008000 !important; color: #000; }
+        .error { background: #ffffff; border-left: 4px solid #cc0000 !important; color: #cc0000; font-weight: bold; }
+        .loading { color: #000; font-weight: bold; }
         
-        /* SEO 落地文本样式 */
-        .seo-content { text-align: left; margin-top: 50px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 13px; color: #666; line-height: 1.8; }
-        .seo-content h3 { font-size: 15px; color: #222; margin-bottom: 8px; }
+        /* 方块动画加载效果补充 */
+        .loading::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #000080;
+            margin-right: 8px;
+            animation: blink 0.8s steps(2, start) infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink { to { visibility: hidden; } }
+
+        /* SEO 落地文本块转换为说明小贴士 */
+        .seo-content { 
+            text-align: left; 
+            margin-top: 40px; 
+            padding: 16px; 
+            font-size: 13px; 
+            color: #222; 
+            line-height: 1.8; 
+        }
+        .seo-content h3 { font-size: 14px; color: #000080; margin: 12px 0 6px 0; font-weight: bold; }
+        .seo-content h3:first-child { margin-top: 0; }
         .seo-content ul { padding-left: 20px; margin: 5px 0; }
 
-        /* 🛠️ 新增：防御全局居中对导航组件的干扰 */
-        .sidebar {
-            text-align: left !important;
-        }
-        .sidebar a {
-            text-align: left !important;
+        /* 移动端自适应 */
+        @media (max-width: 768px) {
+            body { padding: 10px; margin-top: 65px; }
+            .card { padding: 16px; }
+            input, select, #result { width: 100%; }
         }
     </style>
 
@@ -100,26 +133,30 @@
         <a href="/blogs/">✍️ 优质博文</a>
     </div>
 
-    <h1>🚀 视频下载站</h1>
-    <p>目前仅支持 Twitter (X), TikTok, Snapchat</p>
-    
-    <input type="text" id="videoUrl" placeholder="请粘贴视频长链接...">
-    <br>
+    <div class="card retro-card">
+        <div class="card-header retro-title-bar">
+            <h1>🚀 VIDEO_STREAM_EXTRACTOR.EXE</h1>
+        </div>
+        <p>核心引擎已就绪。当前支持解析：Twitter (X), TikTok, Snapchat</p>
+        
+        <input type="text" id="videoUrl" placeholder="请粘贴视频长链接...">
+        <br>
 
-    <select id="qualitySelect">
-        <option value="max">🔥 全自动：获取最高画质 (推荐)</option>
-        <option value="720">📺 720P 标准</option>
-        <option value="480">📱 480P 标清</option>
-        <option value="360">📱 360P 流畅</option>
-        <option value="audio">🎵 只要音频 (纯 MP3/M4A)</option>
-    </select>
-    <br>
+        <select id="qualitySelect">
+            <option value="max">🔥 全自动：获取最高画质 (推荐)</option>
+            <option value="720">📺 720P 标准</option>
+            <option value="480">📱 480P 标清</option>
+            <option value="360">📱 360P 流畅</option>
+            <option value="audio">🎵 只要音频 (纯 MP3/M4A)</option>
+        </select>
+        <br>
 
-    <button onclick="startDownload()">开始解析</button>
+        <button onclick="startDownload()">开始解析(E)</button>
 
-    <div id="result"></div>
+        <div id="result"></div>
+    </div>
 
-    <div class="seo-content">
+    <div class="seo-content retro-list-container">
         <h3>💡 为什么选择本站进行视频去水印下载？</h3>
         <p>本站采用专门的流媒体嗅探技术，专为 Twitter、TikTok、Snapchat 三大社交平台提供便捷的媒体素材保存方案。网页端一键操作即可剥离水印，完美保存原视频画质。</p>
         
@@ -149,8 +186,9 @@
                 return;
             }
 
+            // 激活内凹列表框的基础样式
+            resultDiv.className = 'retro-list-container loading';
             resultDiv.style.display = 'block';
-            resultDiv.className = 'loading';
             resultDiv.innerHTML = '正在疯狂解析中，请稍候...';
 
             let requestBody = {
@@ -177,23 +215,23 @@
                 const data = await response.json();
 
                 if (data.status === 'redirect' || data.status === 'tunnel') {
-                    resultDiv.className = 'success';
+                    resultDiv.className = 'retro-list-container success';
                     resultDiv.innerHTML = `
                         <strong>🎉 解析成功！</strong><br><br>
-                        <a href="${data.url}" target="_blank" download="${data.filename || 'download.mp4'}" style="display:inline-block; padding:10px 20px; background:#28a745; color:white; text-decoration:none; border-radius:4px;">
-                            点击下载：${data.filename || '点击保存文件'}
+                        <a href="${data.url}" target="_blank" download="${data.filename || 'download.mp4'}" class="btn" style="display:inline-block; text-decoration:none;">
+                            💾 点击保存文件：${data.filename || '点击保存到本地'}
                         </a>
                     `;
                 } else if (data.status === 'error') {
-                    resultDiv.className = 'error';
+                    resultDiv.className = 'retro-list-container error';
                     resultDiv.innerHTML = `❌ 解析失败，后端返回错误码：${data.error.code}`;
                 } else {
-                    resultDiv.className = 'error';
+                    resultDiv.className = 'retro-list-container error';
                     resultDiv.innerHTML = `⚠️ 未知状态: ${data.status}`;
                 }
 
             } catch (error) {
-                resultDiv.className = 'error';
+                resultDiv.className = 'retro-list-container error';
                 resultDiv.innerHTML = `💥 无法连接到 API，请检查后端状态。错误: ${error.message}`;
             }
         }
