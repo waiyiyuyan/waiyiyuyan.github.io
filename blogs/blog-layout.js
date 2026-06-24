@@ -1,3 +1,20 @@
+// ==========================================================================
+// 🚀 自动注入复古组件：无需修改每个 HTML 文件
+// ==========================================================================
+(function() {
+    // 1. 注入 CSS 样式表 (确保页面有皮肤)
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/retro-theme.css'; // 确保路径正确
+    document.head.appendChild(link);
+
+    // 2. 注入导航 JS (确保页面有任务栏)
+    const script = document.createElement('script');
+    script.src = '/nav.js'; // 确保路径正确
+    script.async = true; // 异步加载，不阻塞渲染
+    document.body.appendChild(script);
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
     // 找到具体的原始博文数据节点
     const postData = document.getElementById("post-data");
