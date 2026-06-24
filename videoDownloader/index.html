@@ -19,7 +19,6 @@
         body { 
             font-family: Arial, sans-serif; 
             max-width: 600px; 
-            /* 🌟 调整上下 margin，顶部留出 60px 给汉堡按钮，并去掉居中对齐 body 的限制 */
             margin: 60px auto 30px auto; 
             padding: 20px; 
             text-align: center; 
@@ -67,6 +66,14 @@
         .seo-content { text-align: left; margin-top: 50px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 13px; color: #666; line-height: 1.8; }
         .seo-content h3 { font-size: 15px; color: #222; margin-bottom: 8px; }
         .seo-content ul { padding-left: 20px; margin: 5px 0; }
+
+        /* 🛠️ 新增：防御全局居中对导航组件的干扰 */
+        .sidebar {
+            text-align: left !important;
+        }
+        .sidebar a {
+            text-align: left !important;
+        }
     </style>
 
     <script type="application/ld+json">
