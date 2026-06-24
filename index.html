@@ -15,58 +15,25 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     
+    <link rel="stylesheet" href="/retro-theme.css">
+    
     <style>
         /* ==========================================================================
-           💾 经典系统复古怀旧风格（Classic Terminal / Win95 Retro）
+           🏠 仅限首页使用的局部排版微调
            ========================================================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body { 
-            /* 采用 Windows 经典等宽与系统硬核字体 */
-            font-family: "Consolas", "Courier New", "SimSun", "Microsoft YaHei", monospace; 
-            line-height: 1.6; 
             max-width: 850px; 
             margin: 60px auto 30px auto; 
             padding: 20px; 
-            /* 标志性的复古计算机灰/台式机外壳底色 */
-            background-color: #d4d0c8;
-            color: #000000;
-            transition: padding 0.3s ease;
         }
-
-        /* ==========================================================================
-           🎛️ 硬核复古“大头显”控制台面板 (主框体)
-           ========================================================================== */
+        
         header { 
-            background: #ffffff;
-            /* 经典的像素级双色立体硬边框 */
-            border-top: 2px solid #fff;
-            border-left: 2px solid #fff;
-            border-right: 2px solid #808080;
-            border-bottom: 2px solid #808080;
             padding: 12px 15px;
             margin-bottom: 25px;
-            box-shadow: 1px 1px 0px #000000;
         }
-        /* 顶部系统蓝条 */
         .header-title-bar {
-            background: linear-gradient(90deg, #000080, #1084d0);
-            padding: 6px 12px;
             margin-bottom: 12px;
-            border: 1px inset #fff;
         }
-        header h1 { 
-            margin: 0; 
-            color: #ffffff; 
-            font-size: 16px; 
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-align: left;
-        }
-        /* 副标题表现为控制台内正文 */
         header p { 
             margin: 5px 0 0 4px; 
             color: #333333; 
@@ -76,21 +43,12 @@
 
         .ads-container { margin: 20px 0; min-height: 100px; text-align: center; }
 
-        /* ==========================================================================
-           📊 纯表格/表单式复古内容清单
-           ========================================================================== */
         .article-list { 
-            background: #ffffff;
-            border-top: 2px solid #808080;
-            border-left: 2px solid #808080;
-            border-right: 2px solid #fff;
-            border-bottom: 2px solid #fff;
             padding: 20px;
             margin-top: 20px; 
-            box-shadow: 1px 1px 0px #000000;
         }
 
-        /* 动态生成的节点卡片容器微调 */
+        /* 动态生成的节点卡片布局 */
         .node-card {
             margin-bottom: 30px;
             padding: 16px;
@@ -99,7 +57,7 @@
             box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
         }
         .node-card:nth-child(even) {
-            background-color: #f5f5f5; /* 经典交替行深浅底色 */
+            background-color: #f5f5f5;
         }
         .node-card:last-child { margin-bottom: 0; }
         
@@ -112,16 +70,6 @@
             border-bottom: 1px solid #808080;
             padding-bottom: 4px;
         }
-
-        /* 引言块：改造成复古指示内框 */
-        .node-card blockquote { 
-            background: #e4e4e4; 
-            padding: 8px 12px; 
-            margin: 10px 0; 
-            border-left: 4px solid #000080; 
-            color: #111111; 
-            font-size: 0.9rem;
-        }
         
         .node-card p {
             color: #222222;
@@ -131,7 +79,7 @@
         
         .node-card ul { padding-left: 0; list-style: none; margin-top: 10px; }
         
-        /* 节点内容框：内凹的文本区域质感 */
+        /* 节点单条文本框：内凹样式 */
         .node-card li { 
             font-family: inherit; 
             word-break: break-all; 
@@ -146,7 +94,7 @@
             font-size: 0.88rem;
         }
         
-        /* 复古方块刻度等待效果 */
+        /* 方块动画加载效果 */
         .loading-text { 
             text-align: center; 
             color: #000000; 
@@ -187,8 +135,8 @@
         <a href="/blogs/">✍️ 优质博文</a>
     </div>
 
-    <header>
-        <div class="header-title-bar">
+    <header class="retro-card">
+        <div class="retro-title-bar header-title-bar">
             <h1>⚙️ RESOURCE_FREE_MANAGER.EXE</h1>
         </div>
         <p>我爱白嫖 - 每日免费机场节点 · 高速VPN测试 · 科学上网资源导航</p>
@@ -199,7 +147,7 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <div id="content" class="article-list">
+    <div id="content" class="article-list retro-list-container">
         <div class="loading-text">正在同步全网最新白嫖节点，请稍候...</div>
     </div>
 
