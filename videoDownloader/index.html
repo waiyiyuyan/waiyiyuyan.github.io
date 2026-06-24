@@ -9,14 +9,23 @@
     
     <meta name="description" content="专为 Twitter (X)、TikTok、Snapchat 打造的免费去水印视频解析下载站。一键提取高清无水印 Mp4 视频及纯音频 Mp3 文件，全自动兼容最高画质，绿色无广告。">
     
-    <meta name="keywords" content="Twitter视频下载,TikTok去水印,Snapchat视频保存,推特视频解析,海外短视频下载,音频提取Mp3">
+    <meta name="keywords" content="Twitter视频下载,TikTok去水印,Snapchat视频保存,推推视频解析,海外短视频下载,音频提取Mp3">
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="Twitter/TikTok/Snapchat 视频去水印下载器">
     <meta property="og:description" content="一键免费提取 Twitter、TikTok、Snapchat 高清去水印短视频及 MP3 音频。">
     
     <style>
-        body { font-family: Arial, sans-serif; max-width: 600px; margin: 30px auto; padding: 20px; text-align: center; background: #f5f7fa; color: #333; }
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 600px; 
+            /* 🌟 调整上下 margin，顶部留出 60px 给汉堡按钮，并去掉居中对齐 body 的限制 */
+            margin: 60px auto 30px auto; 
+            padding: 20px; 
+            text-align: center; 
+            background: #f5f7fa; 
+            color: #333; 
+        }
         input { 
             width: 80%; 
             padding: 12px; 
@@ -35,20 +44,15 @@
             font-size: 16px; 
             box-sizing: border-box; 
             
-            /* 🛠️ 终极三部曲：彻底降服小箭头 */
-            appearance: none;            /* 1. 强行扒掉系统自带的老土小箭头（关键） */
-            -webkit-appearance: none;    /* 兼容 Chrome/Safari/Edge 内核 */
-            -moz-appearance: none;       /* 兼容 Firefox 内核 */
+            appearance: none;            
+            -webkit-appearance: none;    
+            -moz-appearance: none;       
             
-            /* 2. 重新画一个优雅的、离右边有距离的小箭头（这里用 base64 SVG 图标） */
             background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%23333' d='M7 10l5 5 5-5z'/></svg>");
             background-repeat: no-repeat;
-            
-            /* 3. ✨ 精准定位：右边留出 24px 的安全距离，居中显示 */
             background-position: right 12px center; 
             background-size: 18px;
             
-            /* 留够右边的内边距，确保文字不会盖在箭头上 */
             padding: 12px 45px 12px 12px; 
             cursor: pointer;
         }
@@ -79,6 +83,15 @@
     </script>
 </head>
 <body>
+
+    <div id="common-nav" class="seo-nav-links">
+        <a href="/">🏠 首页节点</a>
+        <a href="/ip/">🌐 IP环境检测</a>
+        <a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">📝 留言板</a>
+        <a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">🖼️ 图床</a>
+        <a href="/videoDownloader/">🎬 视频下载</a>
+        <a href="/blogs/">✍️ 优质博文</a>
+    </div>
 
     <h1>🚀 视频下载站</h1>
     <p>目前仅支持 Twitter (X), TikTok, Snapchat</p>
@@ -113,6 +126,8 @@
         <h3>📌 使用须知与免责声明：</h3>
         <p>请确保复制的是上述三大平台的<strong>真实视频长链接</strong>（而非分享短链接），以便解析器能精准嗅探。本工具仅供个人学习、技术研究与素材收集使用，请勿将下载内容用于任何侵犯原作者权益的商业用途。</p>
     </div>
+
+    <script src="/nav.js"></script>
 
     <script>
         const MY_API_URL = "https://zhaojing986-my-cobalt-downloader.hf.space/";
