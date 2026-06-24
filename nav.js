@@ -1,128 +1,147 @@
 (function() {
-    // 1. 动态注入侧边栏所需的全部 CSS 样式（这样各个子页面就不用重复写样式了）
+    // 1. 动态注入复古微机风格的侧边栏样式（对齐 Win95 经典视窗质感）
     const css = `
-        /* 🍔 汉堡按钮样式 */
+        /* ⌨️ 复古命令式汉堡按钮 */
         .menu-btn {
             position: fixed;
-            top: 20px;
-            left: 20px;
+            top: 15px;
+            left: 15px;
             z-index: 1001;
-            background: #007bff;
-            border: none;
-            border-radius: 8px;
-            padding: 12px;
+            background: #d4d0c8;
+            /* 经典的像素级物理凸起边框 */
+            border-top: 2px solid #fff;
+            border-left: 2px solid #fff;
+            border-right: 2px solid #808080;
+            border-bottom: 2px solid #808080;
+            padding: 10px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             gap: 4px;
-            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-            transition: all 0.2s ease;
+            box-shadow: 1px 1px 0px #000000;
         }
-        .menu-btn:hover {
-            background: #0056b3;
-            box-shadow: 0 4px 16px rgba(0, 86, 179, 0.4);
+        .menu-btn:active {
+            /* 按下时物理内凹反转 */
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
         }
         .menu-btn span {
             display: block;
-            width: 22px;
+            width: 20px;
             height: 3px;
-            background-color: #fff;
-            border-radius: 2px;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            background-color: #000000; /* 回归纯黑高对比色 */
+            transition: transform 0.2s, opacity 0.2s;
         }
-        .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        /* 三色旗式的像素开关动作 */
+        .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); background-color: #000080; }
         .menu-btn.open span:nth-child(2) { opacity: 0; }
-        .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background-color: #000080; }
 
-        /* 🧭 侧边栏竖向导航栏 */
+        /* 🧭 经典视窗系统侧边栏 */
         .sidebar {
             position: fixed;
             top: 0;
-            left: -280px;
-            width: 280px;
+            left: -260px;
+            width: 260px;
             height: 100%;
-            background: #fff;
-            box-shadow: 4px 0 15px rgba(0,0,0,0.05);
-            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #d4d0c8; /* 标志性的外壳灰 */
+            /* 侧边栏右侧厚重阴影边框 */
+            border-right: 3px solid #808080;
+            box-shadow: 2px 0px 5px rgba(0,0,0,0.2);
+            transition: left 0.25s steps(8, end); /* 略带像素帧感的过渡效果 */
             z-index: 1000;
-            padding: 90px 15px 20px 15px;
+            padding: 75px 12px 20px 12px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
             overflow-y: auto;
+            font-family: "Consolas", "Courier New", "SimSun", monospace;
         }
         .sidebar.open { left: 0; }
+        
+        /* 侧边栏标题栏：高仿系统标头 */
         .sidebar-title {
-            font-size: 1.1rem;
-            color: #999;
+            font-size: 14px;
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: #ffffff;
             font-weight: bold;
-            padding: 0 12px 10px 12px;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 10px;
+            padding: 4px 8px;
+            margin-bottom: 12px;
+            border: 1px inset #fff;
             letter-spacing: 1px;
         }
+        
+        /* 菜单项：未激活时表现为普通的列表项 */
         .sidebar a {
-            color: #555;
+            color: #000000;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            padding: 12px 16px;
-            border-radius: 6px;
-            transition: all 0.2s;
+            font-size: 14px;
+            padding: 8px 12px;
+            border: 1px solid transparent;
             display: block;
         }
         .sidebar a:hover {
-            color: #007bff;
-            background-color: #f0f7ff;
+            color: #ffffff;
+            background-color: #000080; /* 悬停时蓝屏经典蓝高亮 */
         }
+        
+        /* 当前页面激活态：呈凹陷文本框质感 */
         .sidebar a.active {
-            color: #007bff;
-            background-color: #e6f0ff;
-            border-left: 4px solid #007bff;
-            border-radius: 0 6px 6px 0;
-            padding-left: 12px;
+            color: #000000;
+            background-color: #ffffff;
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #dfdfdf;
+            border-bottom: 2px solid #dfdfdf;
+            padding-left: 14px;
+            font-weight: bold;
+        }
+        /* 在激活项前面加一个经典控制台指示符 */
+        .sidebar a.active::before {
+            content: '>';
+            margin-right: 6px;
+            color: #000080;
         }
 
-        /* 🖤 背景遮罩层 */
+        /* 🖤 遮罩层（调成带有一点复古颗粒感的纯黑半透明） */
         .sidebar-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
             z-index: 999;
             display: none;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.25s ease;
         }
         .sidebar-overlay.open { display: block; opacity: 1; }
 
-        /* 📱 移动端/小屏幕适配：给身体加内边距，防止按钮挡住主体内容 */
+        /* 📱 移动端小屏幕适配 */
         @media (max-width: 900px) {
-            body { padding-top: 80px !important; }
+            body { padding-top: 75px !important; }
         }
         
         /* 隐藏原本暴露在外的纯 HTML SEO 导航 */
         .seo-nav-links { display: none !important; }
     `;
 
-    // 将样式插入到页面中
+    // 将复古样式插入页面head
     const styleEl = document.createElement('style');
     styleEl.innerHTML = css;
     document.head.appendChild(styleEl);
 
-    // 2. 当 DOM 加载完成后，开始构建和绑定导航栏
+    // 2. DOM 准备就绪后，提取并装配复古视窗菜单
     document.addEventListener("DOMContentLoaded", function() {
         const seoNav = document.getElementById('common-nav');
         if (!seoNav) return;
 
-        // 提取原先写在 HTML 里的链接
         const links = seoNav.querySelectorAll('a');
         let linksHtml = '';
-        
-        // 获取当前页面的路径，用来自动高亮对应的菜单
         const currentPath = window.location.pathname;
 
         links.forEach(link => {
@@ -130,7 +149,7 @@
             const target = link.getAttribute('target') ? `target="${link.getAttribute('target')}"` : '';
             const rel = link.getAttribute('rel') ? `rel="${link.getAttribute('rel')}"` : '';
             
-            // 判断是否是当前激活的页面
+            // 精确计算激活态
             let isActive = false;
             if (href === '/' && (currentPath === '/' || currentPath === '/index.html')) {
                 isActive = true;
@@ -141,23 +160,23 @@
             linksHtml += `<a href="${href}" ${target} ${rel} class="${isActive ? 'active' : ''}">${link.innerHTML}</a>`;
         });
 
-        // 动态拼装出华丽的“汉堡菜单”和“侧边栏”完整的 HTML 结构
+        // 拼装出复古风格的按钮和侧边栏
         const navWrapper = document.createElement('div');
         navWrapper.innerHTML = `
-            <button class="menu-btn" id="menuBtn" aria-label="切换导航菜单">
+            <button class="menu-btn" id="menuBtn" aria-label="SYSTEM_MENU">
                 <span></span><span></span><span></span>
             </button>
             <div class="sidebar-overlay" id="sidebarOverlay"></div>
             <nav class="sidebar" id="sidebar">
-                <div class="sidebar-title">网站导航</div>
+                <div class="sidebar-title">📁 SYS_NAV_MENU</div>
                 ${linksHtml}
             </nav>
         `;
 
-        // 插入到页面中
+        // 插入至最前行
         document.body.insertBefore(navWrapper, document.body.firstChild);
 
-        // 3. 绑定核心的点击交互逻辑
+        // 3. 极简的开关逻辑绑定
         const menuBtn = document.getElementById('menuBtn');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
