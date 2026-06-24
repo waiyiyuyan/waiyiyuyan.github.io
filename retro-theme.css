@@ -74,3 +74,75 @@ header, .retro-card {
 
 /* 隐藏原本的 SEO 导航 */
 .seo-nav-links { display: none !important; }
+
+/* ==========================================================================
+   📄 文章详情页内容样式 (Content Styles)
+   ========================================================================== */
+
+/* 针对文章正文的容器 */
+.content {
+    font-family: "MS Sans Serif", "Microsoft Sans Serif", "SimSun", sans-serif;
+    font-size: 14px;
+    color: #000;
+}
+
+/* 文章标题级别控制 */
+.content h2 {
+    font-size: 18px;
+    margin: 20px 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #000; /* 复古标题下划线 */
+    color: #000080;
+}
+
+.content h3 {
+    font-size: 16px;
+    margin: 15px 0 8px 0;
+    font-weight: bold;
+    color: #000080;
+}
+
+/* 段落间距 */
+.content p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+/* 链接样式 */
+.content a {
+    color: #000080;
+    text-decoration: underline;
+}
+.content a:hover {
+    color: #ff0000; /* 悬停变红，经典怀旧 */
+}
+
+/* 代码块样式 (关键：必须看起来像记事本或代码编辑器) */
+.content pre {
+    background: #e0e0e0;
+    border: 2px inset #fff;
+    padding: 10px;
+    margin: 15px 0;
+    overflow-x: auto;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 13px;
+}
+
+/* 列表样式 */
+.content ul, .content ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+.content li {
+    margin-bottom: 5px;
+}
+
+/* 引用块 */
+.content blockquote {
+    border-left: 4px solid #808080;
+    background: #f0f0f0;
+    padding: 10px;
+    margin: 15px 0;
+    font-style: italic;
+    color: #444;
+}
