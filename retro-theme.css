@@ -68,21 +68,58 @@ blockquote {
 /* 隐藏原本暴露在外的纯 HTML SEO 导航 */
 .seo-nav-links { display: none !important; }
 
-/* 🖥️ 复古任务栏样式 */
+/* 🖥️ 调整后的任务栏：宽度与内容对齐 */
 .taskbar {
     position: fixed;
     bottom: 0;
     left: 0;
+    right: 0; /* 配合 margin 居中 */
+    margin: 0 auto;
     width: 100%;
+    max-width: 850px; /* 强制与内容宽度一致 */
     height: 45px;
     background: #c0c0c0;
     border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #808080;
     z-index: 9999;
+    padding: 0 5px;
     display: flex;
     align-items: center;
-    padding: 0 5px;
-    padding-bottom: env(safe-area-inset-bottom);
     box-sizing: border-box;
+}
+
+/* 🏁 Win95 风格的 Start 菜单弹窗 */
+.start-menu {
+    position: absolute;
+    bottom: 45px; /* 紧贴任务栏上方 */
+    left: 5px;
+    width: 200px;
+    height: auto; /* 关键：高度随内容变化 */
+    background: #d4d0c8;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    padding: 4px;
+    display: none; /* 默认隐藏 */
+    flex-direction: column;
+    z-index: 9998;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+.start-menu.show { display: flex; } /* JS 控制显示 */
+
+/* 菜单列表样式 */
+.start-menu a {
+    color: #000;
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    display: block;
+}
+.start-menu a:hover {
+    background-color: #000080;
+    color: #fff;
 }
 
 .menu-btn {
