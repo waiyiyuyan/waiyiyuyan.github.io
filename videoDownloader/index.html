@@ -48,6 +48,20 @@
             margin: 10px 0; 
             font-size: 14px; 
         }
+      input[type="text"] {
+    width: 90%; 
+    padding: 10px; 
+    margin: 10px auto;
+    font-size: 15px;
+    background: #ffffff;
+    box-sizing: border-box;
+
+    /* 经典复古内凹边框设置 */
+    border-top: 2px solid #808080;    /* 顶部深灰 */
+    border-left: 2px solid #808080;   /* 左侧深灰 */
+    border-right: 2px solid #dfdfdf;  /* 右侧浅灰 */
+    border-bottom: 2px solid #dfdfdf; /* 底部浅灰 */
+}
 
         /* 针对下拉选择框定制的微调：保留系统原生下拉箭头或在复古基础上适配 */
         select { 
@@ -100,6 +114,23 @@
         .seo-content h3 { font-size: 14px; color: #000080; margin: 12px 0 6px 0; font-weight: bold; }
         .seo-content h3:first-child { margin-top: 0; }
         .seo-content ul { padding-left: 20px; margin: 5px 0; }
+      
+      /* 3. 给下载按钮添加复古“点击感” */
+    button {
+            width: 90%;
+            margin: 10px auto;      /* 改为 auto 自动居中 */
+            padding: 10px;
+            background: #d4d0c8;
+            border: 2px outset #fff; /* 使用 outset 自动产生立体感 */
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:active {
+            border-style: inset;    /* 点击时按下 */
+            background: #c0c0c0;
+        }
 
         /* 移动端自适应 */
         @media (max-width: 768px) {
