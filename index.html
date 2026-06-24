@@ -15,6 +15,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <style>
+        /* 这里只保留主页内容本身的样式，导航样式的全删了 */
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             line-height: 1.6; 
@@ -35,111 +36,6 @@
         }
         header h1 { margin: 0; color: #007bff; font-size: 2rem; }
         header p { margin: 5px 0 0; color: #666; font-size: 1rem; }
-        
-        /* 🍔 汉堡按钮样式 */
-        .menu-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1001;
-            background: #007bff;
-            border: none;
-            border-radius: 8px;
-            padding: 12px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-            transition: all 0.2s ease;
-        }
-        .menu-btn:hover {
-            background: #0056b3;
-            box-shadow: 0 4px 16px rgba(0, 86, 179, 0.4);
-        }
-        .menu-btn span {
-            display: block;
-            width: 22px;
-            height: 3px;
-            background-color: #fff;
-            border-radius: 2px;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        /* 汉堡按钮动画化为 "X" */
-        .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .menu-btn.open span:nth-child(2) { opacity: 0; }
-        .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-        /* 🧭 侧边栏竖向导航栏 */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -280px;
-            width: 280px;
-            height: 100%;
-            background: #fff;
-            box-shadow: 4px 0 15px rgba(0,0,0,0.05);
-            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000;
-            padding: 90px 15px 20px 15px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            overflow-y: auto; /* 页面变多时支持内部滚动 */
-        }
-        .sidebar.open {
-            left: 0;
-        }
-        .sidebar-title {
-            font-size: 1.1rem;
-            color: #999;
-            font-weight: bold;
-            padding: 0 12px 10px 12px;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-        .sidebar a {
-            color: #555;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            padding: 12px 16px;
-            border-radius: 6px;
-            transition: all 0.2s;
-            display: block;
-        }
-        .sidebar a:hover {
-            color: #007bff;
-            background-color: #f0f7ff;
-        }
-        .sidebar a.active {
-            color: #007bff;
-            background-color: #e6f0ff;
-            border-left: 4px solid #007bff;
-            border-radius: 0 6px 6px 0;
-            padding-left: 12px;
-        }
-
-        /* 🖤  배경 遮罩层 */
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 999;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .sidebar-overlay.open {
-            display: block;
-            opacity: 1;
-        }
-
         .ads-container { margin: 20px 0; min-height: 100px; }
         .article-list { 
             background: #fff;
@@ -158,35 +54,20 @@
         .node-card blockquote { background: #f1f3f5; padding: 10px 15px; margin: 10px 0; border-left: 4px solid #adb5bd; color: #495057; }
         .node-card ul { padding-left: 20px; }
         .node-card li { font-family: monospace; word-break: break-all; background: #f8f9fa; margin-bottom: 5px; padding: 4px 8px; border-radius: 4px; border: 1px solid #e9ecef; }
-        
         .loading-text { text-align: center; color: #999; padding: 20px 0; font-size: 0.95rem; }
-
-        /* 📱 移动端/小屏幕适配：防止按钮挡住主体内容 */
-        @media (max-width: 900px) {
-            body { padding-top: 80px; }
-            .menu-btn { top: 15px; left: 15px; }
-        }
     </style>
 </head>
 <body>
 
-    <button class="menu-btn" id="menuBtn" aria-label="切换导航菜单">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-    <nav class="sidebar" id="sidebar">
-        <div class="sidebar-title">网站导航</div>
-        <a href="/" class="active">🏠 首页节点</a>
+    <!-- 🌟 留给爬虫的纯文本链接区（真实打开时会被 nav.js 完美隐藏并升级为精美侧边栏） -->
+    <div id="common-nav" class="seo-nav-links">
+        <a href="/">🏠 首页节点</a>
         <a href="/ip/">🌐 IP环境检测</a>
         <a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">📝 留言板</a>
         <a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">🖼️ 图床</a>
         <a href="/videoDownloader/">🎬 视频下载</a>
         <a href="/blogs/">✍️ 优质博文</a>
-        </nav>
+    </div>
 
     <header>
         <h1>我爱白嫖</h1>
@@ -198,6 +79,7 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
+    <!-- 节点主体容器 -->
     <div id="content" class="article-list">
         <div class="loading-text">🔄 正在同步全网最新白嫖节点，请稍候...</div>
     </div>
@@ -207,22 +89,11 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
+    <!-- 🌟 引入公共导航 JS -->
+    <script src="/nav.js"></script>
+
+    <!-- 节点数据加载逻辑（保持原样） -->
     <script>
-        // 🛠️ 侧边栏开关交互逻辑
-        const menuBtn = document.getElementById('menuBtn');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-
-        function toggleMenu() {
-            menuBtn.classList.toggle('open');
-            sidebar.classList.toggle('open');
-            sidebarOverlay.classList.toggle('open');
-        }
-
-        menuBtn.addEventListener('click', toggleMenu);
-        sidebarOverlay.addEventListener('click', toggleMenu);
-
-        // 🔄 节点数据加载逻辑 (保持你原有的逻辑不变)
         fetch('./data.json')
             .then(response => {
                 if (!response.ok) throw new Error('未能加载到今日节点数据');
