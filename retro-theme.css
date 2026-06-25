@@ -1,5 +1,5 @@
 /* ==========================================================================
-   💾 全站公共复古微机风格（Cleaned Version）
+   💾 全站公共复古微机风格 Win95（标签无凹陷+按钮对齐最终版）
    ========================================================================== */
 * {
     margin: 0; padding: 0; box-sizing: border-box;
@@ -10,14 +10,13 @@ body {
     line-height: 1.6; 
     background-color: #d4d0c8;
     color: #000;
-    /* 核心：确保底部内容不被任务栏遮挡 */
     padding-bottom: calc(50px + env(safe-area-inset-bottom)) !important;
 }
 
 /* 🎛️ 统一复古面板 */
 header, .retro-card { 
     background: #ffffff;
-    border: 2px outset #fff; /* 简化边框写法 */
+    border: 2px outset #fff;
     box-shadow: 1px 1px 0px #000;
 }
 
@@ -25,10 +24,15 @@ header, .retro-card {
 .retro-title-bar {
     background: linear-gradient(90deg, #000080, #1084d0);
     padding: 6px 12px;
+    margin: -24px -24px 20px -24px;
 }
-.retro-title-bar h1 { color: #fff !important; font-size: 16px !important; }
+.retro-title-bar h1 { 
+    color: #fff !important; 
+    font-size: 16px !important;
+    margin: 0;
+}
 
-/* 🖥️ 任务栏 (全宽版) */
+/* 🖥️ 任务栏 */
 .taskbar {
     position: fixed; bottom: 0; left: 0; width: 100%; height: 45px;
     background: #c0c0c0;
@@ -57,14 +61,13 @@ header, .retro-card {
     background: #d4d0c8;
     border: 2px outset #fff;
     padding: 4px;
-    display: none; /* 默认隐藏 */
+    display: none;
     flex-direction: column;
     z-index: 9998;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
 .start-menu.show { display: flex; }
 
-/* 菜单列表样式 */
 .start-menu a {
     color: #000; text-decoration: none; padding: 8px 12px;
     font-size: 14px; display: block;
@@ -72,26 +75,101 @@ header, .retro-card {
 .start-menu a:hover { background-color: #000080; color: #fff; }
 .start-menu a.active { font-weight: bold; background: #e0e0e0; }
 
-/* 隐藏原本的 SEO 导航 */
 .seo-nav-links { display: none !important; }
 
 /* ==========================================================================
-   📄 文章详情页内容样式 (Content Styles)
+   🎮 全局复古按钮：返回、复制按钮完全同款
    ========================================================================== */
+.btn {
+    font-family: "MS Sans Serif", "SimSun", monospace;
+    border: 2px outset #ffffff;
+    padding: 3px 10px;
+    cursor: pointer;
+    font-size: 13px;
+}
+/* 按压效果完全统一 */
+.btn:active {
+    border-style: inset;
+    padding: 4px 9px 2px 11px;
+}
 
-/* 针对文章正文的容器 */
+/* 复制按钮仅定位，外观继承.btn */
+.copy-code-btn {}
+
+/* 返回按钮容器：和文章窗口共用居中宽度，左内边距24px和窗口一致 */
+.back-btn-wrap {
+    max-width: 1200px;
+    margin: 30px auto 12px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.back-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #000;
+}
+.back-btn:hover {
+    background: #d4d0c8;
+}
+
+/* ==========================================================================
+   📄 博文窗口容器
+   ========================================================================== */
+.article-container {
+    padding: 24px;
+    margin-top: 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 元信息栏基础样式（标签无凹陷纯文字） */
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    border-bottom: 2px inset #fff;
+    font-size: 0.85rem;
+    font-weight: normal;
+    color: #222;
+}
+.meta > span {
+    font-size: 0.85rem;
+    font-weight: normal;
+    color: #222;
+}
+/* 标签完全纯文字，无凹陷灰色框 */
+.tag-badge, .cat-badge {
+    font-size: 0.85rem !important;
+    font-weight: normal !important;
+    color: #222 !important;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.retro-list-container {
+    background: #ffffff;
+    padding: 16px;
+    text-align: left;
+}
+
+/* ==========================================================================
+   📄 文章正文内容样式
+   ========================================================================== */
 .content {
     font-family: "MS Sans Serif", "Microsoft Sans Serif", "SimSun", sans-serif;
     font-size: 14px;
     color: #000;
 }
 
-/* 文章标题级别控制 */
 .content h2 {
     font-size: 18px;
     margin: 20px 0 10px 0;
     padding-bottom: 5px;
-    border-bottom: 2px solid #000; /* 复古标题下划线 */
+    border-bottom: 2px solid #000;
     color: #000080;
 }
 
@@ -102,22 +180,26 @@ header, .retro-card {
     color: #000080;
 }
 
-/* 段落间距 */
+.content h4 {
+    font-size: 15px;
+    margin: 12px 0 6px;
+    font-weight: bold;
+    color: #111;
+}
+
 .content p {
     margin-bottom: 12px;
     line-height: 1.6;
 }
 
-/* 链接样式 */
 .content a {
     color: #000080;
     text-decoration: underline;
 }
 .content a:hover {
-    color: #ff0000; /* 悬停变红，经典怀旧 */
+    color: #ff0000;
 }
 
-/* 代码块样式 (关键：必须看起来像记事本或代码编辑器) */
 .content pre {
     background: #e0e0e0;
     border: 2px inset #fff;
@@ -126,9 +208,15 @@ header, .retro-card {
     overflow-x: auto;
     font-family: "Consolas", "Courier New", monospace;
     font-size: 13px;
+    position: relative;
 }
 
-/* 列表样式 */
+.content code {
+    background: #e0e0e0;
+    padding: 2px 4px;
+    font-family: "Consolas", monospace;
+}
+
 .content ul, .content ol {
     margin-left: 20px;
     margin-bottom: 15px;
@@ -137,7 +225,6 @@ header, .retro-card {
     margin-bottom: 5px;
 }
 
-/* 引用块 */
 .content blockquote {
     border-left: 4px solid #808080;
     background: #f0f0f0;
@@ -145,4 +232,26 @@ header, .retro-card {
     margin: 15px 0;
     font-style: italic;
     color: #444;
+}
+
+.content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 15px 0;
+    background: #fff;
+    border: 2px outset #fff;
+}
+.content th, .content td {
+    border: 1px solid #999;
+    padding: 6px 10px;
+}
+.content th {
+    background: #c0c0c0;
+}
+
+.content img {
+    border: 2px inset #fff;
+    padding: 4px;
+    background: #d4d0c8;
+    max-width: 100%;
 }
