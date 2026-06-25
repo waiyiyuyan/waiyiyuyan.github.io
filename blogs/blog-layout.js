@@ -1,58 +1,68 @@
 // ==========================================================================
-// 🚀 自动注入复古组件：无需修改每个 HTML 文件
+// 🚀 优先注入Win95全局CSS，再渲染页面，杜绝样式延迟失效
 // ==========================================================================
 (function() {
-    // 1. 注入全局复古CSS
+    // 1. 最先执行：注入复古Win95样式，优先加载，不等待DOM加载
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = '/retro-theme.css';
+    // 等待CSS加载完成再执行页面渲染逻辑
+    link.onload = () => {
+        initArticleRender();
+    };
     document.head.appendChild(link);
 
-    // 2. 注入任务栏/开始菜单导航JS
+    // 2. 注入导航JS（任务栏/开始菜单）
     const script = document.createElement('script');
     script.src = '/nav.js';
     script.async = true;
     document.body.appendChild(script);
 })();
 
-document.addEventListener("DOMContentLoaded", () => {
+// 页面渲染主逻辑，CSS加载完毕后执行
+function initArticleRender() {
     const postData = document.getElementById("post-data");
     if (!postData) return;
 
-    // 先隐藏原生内容，避免页面闪烁
+    // 清空页面所有 #post-data 以外的元素，杜绝原生DOM冲突
+    Array.from(document.body.children).forEach(el => {
+        if(el.id !== 'post-data') el.remove();
+    });
+
+    // 隐藏原生博文内容，不闪烁
     postData.style.display = "none";
 
-    // 提取文章数据（正文bodyContent完整提取，一字不改）
+    // 提取博文基础数据（仅读取#post-data内部内容，无需手动写布局）
     const title = postData.querySelector("h1")?.innerHTML || document.title;
     const date = postData.getAttribute("data-date") || "";
     const tag = postData.getAttribute("data-tag") || "";
     const cat = postData.getAttribute("data-cat") || "";
     const bodyContent = postData.querySelector(".content")?.innerHTML || "";
 
-    // 组装Win95窗口外壳，所有尺寸、间距、边框全部交给retro-theme.css控制
-const finalLayout = `
-    <div class="back-btn-wrap">
-        <a href="/blogs/" class="btn back-btn">返回文章列表(B)</a>
-    </div>
-    
-    <div class="article-container retro-card">
-        <div class="retro-title-bar">
-            <h1>📄 TEXT_VIEWER.EXE - ${title}</h1>
+    // 全自动生成标准Win95 TEXT_VIEWER窗口完整结构
+    const finalLayout = `
+        <div class="back-btn-wrap">
+            <a href="/blogs/" class="btn back-btn">返回文章列表(B)</a>
         </div>
         
-        <div class="meta">
-            <span>📅 属性时间: ${date}</span>
-            <span>🏷️ 标记: <span class="tag-badge">${tag}</span></span>
-            <span>📂 路径: <span class="cat-badge">${cat}</span></span>
+        <div class="article-container retro-card">
+            <div class="retro-title-bar">
+                <h1>📄 TEXT_VIEWER.EXE - ${title}</h1>
+            </div>
+            
+            <div class="meta">
+                <span>📅 属性时间: ${date}</span>
+                <span>🏷️ 标记: <span class="tag-badge">${tag}</span></span>
+                <span>📂 路径: <span class="cat-badge">${cat}</span></span>
+            </div>
+            
+            <div class="content retro-list-container">
+                ${bodyContent}
+            </div>
         </div>
-        
-        <div class="content retro-list-container">
-            ${bodyContent}
-        </div>
-    </div>
-`;
+    `;
 
-    // 创建外层容器渲染窗口
+    // 创建唯一渲染容器，页面只保留这一套Win95窗口
     let articleWrapper = document.getElementById("article-wrapper");
     if (!articleWrapper) {
         articleWrapper = document.createElement("div");
@@ -61,13 +71,9 @@ const finalLayout = `
     }
     articleWrapper.innerHTML = finalLayout;
 
-    // --------------------------
-    // 交互逻辑完全保留，不改动正文渲染
-    // --------------------------
+    // 代码块自动添加复制按钮（Win95同款btn样式）
     const contentDiv = articleWrapper.querySelector(".content");
     if (!contentDiv) return;
-
-    // 代码块复制按钮逻辑不变
     const preBlocks = contentDiv.querySelectorAll("pre");
     preBlocks.forEach((pre) => {
         pre.style.position = "relative";
@@ -81,7 +87,6 @@ const finalLayout = `
         copyBtn.style.fontSize = "11px";
         copyBtn.style.zIndex = "10";
         pre.appendChild(copyBtn);
-
         copyBtn.addEventListener("click", () => {
             const codeBlock = pre.querySelector("code");
             if (!codeBlock) return;
@@ -89,13 +94,12 @@ const finalLayout = `
                 copyBtn.innerText = "已复制！";
                 setTimeout(() => copyBtn.innerText = "复制(C)", 2000);
             }).catch(err => {
-                console.error("复制失败: ", err);
                 copyBtn.innerText = "失败";
             });
         });
     });
 
-    // 图片复古边框+新标签打开逻辑不变
+    // 图片自动添加Win95内嵌复古边框
     const images = contentDiv.querySelectorAll("img");
     images.forEach((img) => {
         img.style.cursor = "zoom-in";
@@ -104,4 +108,4 @@ const finalLayout = `
         img.style.background = "#d4d0c8";
         img.addEventListener("click", () => window.open(img.src, "_blank"));
     });
-});
+}
