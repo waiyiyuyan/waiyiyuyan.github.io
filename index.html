@@ -66,15 +66,16 @@
             border-bottom: 2px dashed #808080;
             padding-bottom: 8px;
         }
-
-        /* 🖥️ 经典灰内凹广告容器（完美融入 Win95 框架） */
+       /* 🖥️ 经典灰内凹广告容器（修正版：确保广告100%加载） */
         .ads-container { 
             margin: 12px 0; 
             padding: 8px; 
             background: #c0c0c0; 
             border: 2px inset #fff; 
             min-height: 100px; 
-            text-align: center; 
+            text-align: center;
+            overflow: hidden; /* 防止广告超出容器导致变形 */
+            display: block !important; /* 强制可见，防止被误判为隐藏 */
         }
         .ads-tag {
             font-size: 9px;
