@@ -211,47 +211,50 @@ async function runQuery(ip = null) {
     }
 }
 
-// ========== 页面初始化 ==========
+// ========== 页面初始化（已加安全防护，防止非IP页面崩溃） ==========
 document.addEventListener('DOMContentLoaded', () => {
-    // 自动查询本机
-    runQuery(null);
-    // 输入框自动聚焦
-    el.ipInput.focus();
-
-    // 查询按钮
-    el.searchBtn.addEventListener('click', () => {
-        const inputVal = el.ipInput.value.trim();
-        if (!inputVal) return alert(CONFIG.ERROR_MSG.EMPTY_INPUT);
-        if (!isValidIp(inputVal)) return alert(CONFIG.ERROR_MSG.INVALID_IP);
-        runQuery(inputVal);
-    });
-
-    // 重置本机
-    el.resetBtn.addEventListener('click', () => {
-        el.ipInput.value = "";
+    // 只有当页面确实存在 queryIp 元素时（说明在IP检测页），才执行核心逻辑
+    if (el.queryIp) {
+        // 自动查询本机
         runQuery(null);
-    });
-
-    // 回车快捷查询
-    el.ipInput.addEventListener('keydown', e => {
-        if (e.key === 'Enter') el.searchBtn.click();
-    });
-
-    // IP地址一键复制
-    el.queryIp.addEventListener('click', () => {
-        const ip = el.queryIp.textContent.trim();
-        if (!ip || ip === '查询中...' || ip === '查询失败') return;
-        
-        navigator.clipboard.writeText(ip).then(() => {
-            const originalText = el.proxyCheck.textContent;
-            el.proxyCheck.textContent = "✅ IP已复制到剪贴板";
-            setTimeout(() => el.proxyCheck.textContent = originalText, 1500);
-        }).catch(() => {
-            alert("复制失败，请手动复制");
+        // 输入框自动聚焦
+        if (el.ipInput) {
+            el.ipInput.focus();
+            // 回车快捷查询
+            el.ipInput.addEventListener('keydown', e => {
+                if (e.key === 'Enter' && el.searchBtn) el.searchBtn.click();
+            });
+        }
+        // 查询按钮
+        if (el.searchBtn) {
+            el.searchBtn.addEventListener('click', () => {
+                const inputVal = el.ipInput.value.trim();
+                if (!inputVal) return alert(CONFIG.ERROR_MSG.EMPTY_INPUT);
+                if (!isValidIp(inputVal)) return alert(CONFIG.ERROR_MSG.INVALID_IP);
+                runQuery(inputVal);
+            });
+        }
+        // 重置本机
+        if (el.resetBtn) {
+            el.resetBtn.addEventListener('click', () => {
+                el.ipInput.value = "";
+                runQuery(null);
+            });
+        }
+        // IP地址一键复制
+        el.queryIp.addEventListener('click', () => {
+            const ip = el.queryIp.textContent.trim();
+            if (!ip || ip === '查询中...' || ip === '查询失败') return;
+            
+            navigator.clipboard.writeText(ip).then(() => {
+                const originalText = el.proxyCheck.textContent;
+                el.proxyCheck.textContent = "✅ IP已复制到剪贴板";
+                setTimeout(() => el.proxyCheck.textContent = originalText, 1500);
+            }).catch(() => {
+                alert("复制失败，请手动复制");
+            });
         });
-    });
-
-    // 鼠标悬停IP提示可复制
-    el.queryIp.style.cursor = 'pointer';
-    el.queryIp.title = '点击复制IP';
+        el.queryIp.style.cursor = 'pointer';
+        el.queryIp.title = '点击复制IP';
+    }
 });
