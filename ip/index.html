@@ -13,186 +13,153 @@
     <meta property="og:description" content="免费在线IP检测工具，输入IPv4/IPv6即可查询IP归属城市、运营商、AS号，自动识别VPS/机房/代理IP">
     <meta property="og:url" content="https://waiyiyuyan.github.io/ip/">
     <meta property="og:type" content="tool">
-    
     <link rel="stylesheet" href="/retro-theme.css">
-    
     <style>
         /* ==========================================================================
-           🌐 仅限 IP 查询工具页面使用的局部排版与组件微调
+
+           🌐 仅限 IP 查询工具页面使用的局部排版与组件微调（同步纯字符流）
+
            ========================================================================== */
         body {
-            min-height: 100vh;
-            padding: 24px 16px;
-            display: block;
+            max-width: 850px; 
+            margin: 0 auto; 
+            padding: 20px; 
         }
-
-        /* 控制台主卡片：限定宽度与外边距 */
+        /* 降维控制台主区域：干掉实色盒子与多余边框 */
         .card {
             width: 100%;
-            max-width: 580px;
-            padding: 24px;
-            margin: 60px auto 20px auto;
+            max-width: 650px;
+            margin: 20px auto;
+            background: transparent;
         }
-
         .card-header {
-            margin-bottom: 24px;
-        }
-
-        /* 搜索功能区：横向弹性排布 */
-        .search-box {
-            display: flex;
-            gap: 8px;
             margin-bottom: 20px;
         }
-        
+        /* 搜索功能区 */
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
         #ipInput {
             flex: 1;
-            padding: 6px 8px;
+            padding: 6px 10px;
             font-family: inherit;
             font-size: 14px;
-            color: #000;
+            color: #111111;
+            background: #ffffff;
+            border: 1px solid #111111;
             outline: none;
         }
         #ipInput:focus {
-            background: #ffffcc; /* 聚焦时变成经典怀旧淡黄纸质感 */
+            background: #fcfcfc; /* 保持极简干净的微调 */
         }
-        
-        /* 怀旧立体物理按钮局部样式 */
+        /* 按钮改回符合 retro-theme.css 定义的 < 按钮 > 终端硬核风格 */
         .search-box button {
             padding: 6px 16px;
-            background: #d4d0c8;
-            border-top: 2px solid #fff;
-            border-left: 2px solid #fff;
-            border-right: 2px solid #808080;
-            border-bottom: 2px solid #808080;
-            color: #000;
+            background: #ffffff;
+            border: 1px solid #111111;
+            color: #111111;
             font-family: inherit;
             font-size: 13px;
             cursor: pointer;
             font-weight: bold;
         }
+        .search-box button::before { content: "< "; }
+        .search-box button::after { content: " >"; }
         .search-box button:active {
-            border-top: 2px solid #808080;
-            border-left: 2px solid #808080;
-            border-right: 2px solid #fff;
-            border-bottom: 2px solid #fff;
-            padding: 7px 15px 5px 17px;
-        }
+            background: #111111;
+            color: #ffffff;
 
-        /* 数据清单：紧凑的表格连线风格 */
+        }
+        /* 数据清单：完美的纯字符报表清爽风格 */
+
         .info-list {
             display: flex;
             flex-direction: column;
-            gap: 0; 
-            background: #fafafa;
+            background: transparent;
         }
         .info-item {
             display: grid;
-            grid-template-columns: 120px 1fr;
+            grid-template-columns: 140px 1fr;
             align-items: center;
-            padding: 10px 12px;
-            border-bottom: 1px solid #d4d0c8;
+            padding: 10px 6px;
+            border-bottom: 1px dotted #cccccc; /* 极轻的点状分隔线 */
             gap: 10px;
         }
         .info-item:last-child {
             border-bottom: none;
         }
         .info-item:nth-child(even) {
-            background-color: #f1f1f1; /* 经典的交替行深浅底色 */
+            background-color: transparent; /* 取消交替深色底，确保通透 */
         }
-        
         .info-label {
-            color: #555;
+            color: #555555;
             font-size: 13px;
             font-weight: bold;
-            text-transform: uppercase;
         }
+        .info-label::before { content: "├─ "; } /* 树状字符前缀 */
         .info-value {
-            color: #000000;
+            color: #111111;
             font-size: 14px;
             word-break: break-all;
-            font-weight: normal;
         }
+        /* 状态标识：精简样式 */
 
-        /* 标签纯色标识 */
         .badge {
             display: inline-block;
             padding: 2px 6px;
-            border: 1px inset #fff;
             font-size: 12px;
             font-weight: bold;
+            font-family: monospace;
         }
-        .badge-ok { background: #c0ffc0; color: #006600; }
-        .badge-warn { background: #ffc0c0; color: #cc0000; }
-        .badge-gray { background: #e0e0e0; color: #444; }
-
-        /* 复古方块刻度等待效果 */
+        .badge-ok { background: #ffffff; color: #006600; border: 1px dashed #006600; }
+        .badge-warn { background: #111111; color: #ffffff; }
+        .badge-gray { background: #ffffff; color: #555555; border: 1px dashed #555555; }
+        /* 复古闪烁等待方块 */
         .loading {
             display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: #000080;
+            width: 10px;
+            height: 10px;
+            background-color: #111111;
             margin-right: 6px;
             animation: blink 0.8s steps(2, start) infinite;
             vertical-align: middle;
         }
         @keyframes blink {
             to { visibility: hidden; }
-        }
-      .biaoti {
-        color: #ffffff !important;         /* 强制设置为白色 */
-                font-size: 16px !important;        /* 统一标题大小 */
-                margin: 0 !important;              /* 清除默认间距 */
-                
-                /* 强制换行配置 */
-                white-space: normal !important;    
-                word-break: break-all !important;  /* 确保长字符强制换行 */
-                max-width: 100%;
-      }
-
         /* 📱 移动端自适应微调 */
+
         @media (max-width: 480px) {
             body { padding: 10px; }
-            .card { padding: 16px; margin-top: 65px; }
-            .info-item { grid-template-columns: 1fr; gap: 2px; padding: 8px; }
-            .search-box { flex-direction: column; gap: 6px; }
+            .card { margin-top: 15px; }
+            .info-item { grid-template-columns: 1fr; gap: 4px; padding: 10px 4px; }
+            .info-label::before { content: "• "; }
+            .search-box { flex-direction: column; gap: 8px; }
             .search-box button { width: 100%; padding: 8px; }
-            .retro-title-bar h2 {
-                color: #ffffff !important;         /* 强制设置为白色 */
-                font-size: 16px !important;        /* 统一标题大小 */
-                margin: 0 !important;              /* 清除默认间距 */
-                
-                /* 强制换行配置 */
-                white-space: normal !important;    
-                word-break: break-all !important;  /* 确保长字符强制换行 */
-                max-width: 100%;
-            }
         }
     </style>
 </head>
 <body>
-
-    <div id="common-nav" class="seo-nav-links">
-        <a href="/">🏠 首页节点</a>
-        <a href="/ip/">🌐 IP环境检测</a>
-        <a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">📝 留言板</a>
-        <a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">🖼️ 图床</a>
-        <a href="/videoDownloader/">🎬 视频下载</a>
-        <a href="/blogs/">✍️ 优质博文</a>
+    <div id="common-nav" class="tui-menu">
+        <div class="tui-menu-item"><a href="/">首页节点</a></div>
+        <div class="tui-menu-item"><a href="/ip/" class="active">IP环境检测</a></div>
+        <div class="tui-menu-item"><a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">留言板</a></div>
+        <div class="tui-menu-item"><a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">图床</a></div>
+        <div class="tui-menu-item"><a href="/videoDownloader/">视频下载</a></div>
+        <div class="tui-menu-item"><a href="/blogs/">优质博文</a></div>
     </div>
+    <div class="card">
+        <div class="card-header tui-header-bar">
+            [ NETWORK_ENVIRONMENT_DETECTOR.EXE ]
 
-    <div class="card retro-card">
-        <div class="card-header retro-title-bar">
-            <h2 class="biaoti">⚙️ NETWORK_ENVIRONMENT_DETECTOR.EXE</h2>
         </div>
-
         <div class="search-box">
             <input type="text" id="ipInput" placeholder="输入IPv4/IPv6地址查询...">
             <button id="searchBtn">查询(S)</button>
             <button id="resetBtn">本机(R)</button>
         </div>
-
-        <div class="info-list retro-list-container">
+        <div class="info-list">
             <div class="info-item">
                 <span class="info-label">QUERY_IP</span>
                 <span class="info-value" id="queryIp"><span class="loading"></span>查询中...</span>
@@ -227,8 +194,7 @@
             </div>
         </div>
     </div>
-
     <script src="/nav.js"></script>
     <script src="./ip-detect.js"></script>
 </body>
-</html>
+</html> 
