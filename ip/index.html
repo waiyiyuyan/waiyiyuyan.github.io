@@ -16,9 +16,7 @@
     <link rel="stylesheet" href="/retro-theme.css">
     <style>
         /* ==========================================================================
-
            🌐 仅限 IP 查询工具页面使用的局部排版与组件微调（同步纯字符流）
-
            ========================================================================== */
         body {
             max-width: 850px; 
@@ -70,10 +68,8 @@
         .search-box button:active {
             background: #111111;
             color: #ffffff;
-
         }
         /* 数据清单：完美的纯字符报表清爽风格 */
-
         .info-list {
             display: flex;
             flex-direction: column;
@@ -105,7 +101,6 @@
             word-break: break-all;
         }
         /* 状态标识：精简样式 */
-
         .badge {
             display: inline-block;
             padding: 2px 6px;
@@ -128,12 +123,13 @@
         }
         @keyframes blink {
             to { visibility: hidden; }
-        /* 📱 移动端自适应微调 */
+        } /* 🛠️ 补上了原代码这里缺失的闭合括号，修复移动端自适应 Bug */
 
+        /* 📱 移动端自适应微调 */
         @media (max-width: 480px) {
             body { padding: 10px; }
             .card { margin-top: 15px; }
-            .info-item { grid-template-columns: 1fr; gap: 4px; padding: 10px 4px; }
+            .info-item { grid-template-columns: 1fr; gap: 2px; padding: 10px 4px; }
             .info-label::before { content: "• "; }
             .search-box { flex-direction: column; gap: 8px; }
             .search-box button { width: 100%; padding: 8px; }
@@ -151,8 +147,7 @@
     </div>
     <div class="card">
         <div class="card-header tui-header-bar">
-            [ NETWORK_ENVIRONMENT_DETECTOR.EXE ]
-
+            [ NETWORK_ENVIRONMENT_DETECTOR ]
         </div>
         <div class="search-box">
             <input type="text" id="ipInput" placeholder="输入IPv4/IPv6地址查询...">
@@ -161,35 +156,35 @@
         </div>
         <div class="info-list">
             <div class="info-item">
-                <span class="info-label">QUERY_IP</span>
+                <span class="info-label">查询中心 IP</span>
                 <span class="info-value" id="queryIp"><span class="loading"></span>查询中...</span>
             </div>
             <div class="info-item">
-                <span class="info-label">LOCATION</span>
+                <span class="info-label">地理归属地</span>
                 <span class="info-value" id="area"><span class="loading"></span>查询中...</span>
             </div>
             <div class="info-item">
-                <span class="info-label">COORDINATE</span>
+                <span class="info-label">经纬度坐标</span>
                 <span class="info-value" id="locationCoord"><span class="loading"></span>查询中...</span>
             </div>
             <div class="info-item">
-                <span class="info-label">TIME_ZONE</span>
+                <span class="info-label">所处时区</span>
                 <span class="info-value" id="timezone"><span class="loading"></span>查询中...</span>
             </div>
             <div class="info-item">
-                <span class="info-label">ISP_PROVIDER</span>
+                <span class="info-label">运营商 (ISP)</span>
                 <span class="info-value" id="isp"><span class="loading"></span>查询中...</span>
             </div>
             <div class="info-item">
-                <span class="info-label">ORGANIZATION</span>
+                <span class="info-label">组织机构</span>
                 <span class="info-value" id="org"><span class="loading"></span>查询中...</span>
             </div>
             <div class="info-item">
-                <span class="info-label">AS_NUMBER</span>
+                <span class="info-label">自治系统号</span>
                 <span class="info-value" id="asInfo"><span class="loading"></span>查询中...</span>
             </div>
             <div class="info-item">
-                <span class="info-label">PROXY_SECURITY</span>
+                <span class="info-label">代理安全检测</span>
                 <span class="info-value" id="proxyCheck"><span class="loading"></span>检测中...</span>
             </div>
         </div>
@@ -197,4 +192,4 @@
     <script src="/nav.js"></script>
     <script src="./ip-detect.js"></script>
 </body>
-</html> 
+</html>
