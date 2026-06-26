@@ -104,8 +104,8 @@
         .seo-content ul { padding-left: 20px; margin: 8px 0; }
         .seo-content li { margin-bottom: 4px; }
       
-        /* 下载按钮改回符合核心 CSS 风格的硬核方块字符按钮 */
-        button {
+        /* 加上 :not 排除掉手机端菜单按钮，这样它就不会变长了 */
+        button:not(.mobile-menu-trigger) {
             width: 100%;
             margin: 10px 0 0 0;
             padding: 8px 16px;
@@ -117,9 +117,9 @@
             cursor: pointer;
             font-weight: bold;
         }
-        button::before { content: "< "; }
-        button::after { content: " >"; }
-        button:active {
+        button:not(.mobile-menu-trigger)::before { content: "< "; }
+        button:not(.mobile-menu-trigger)::after { content: " >"; }
+        button:not(.mobile-menu-trigger)::active {
             background: #111111;
             color: #ffffff;
         }
