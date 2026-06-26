@@ -9,7 +9,7 @@
         { name: "优质博文", url: "/blogs/" }
     ];
 
-    // 2. 注入侧边栏/手机菜单 CSS 样式（带 !important 绝对防御级别）
+    // 2. 注入纯白极简自适应 CSS（彻底删掉复古灰）
     const css = `
         /* ==================== 🖥️ PC 端默认样式 ==================== */
         #common-nav {
@@ -20,17 +20,15 @@
             display: flex; 
             flex-direction: column; 
             gap: 8px; 
-            z-index: 999998 !important;
+            z-index: 1000001 !important;
             background: transparent;
         }
-        
         #common-nav a {
             color: #111111; text-decoration: none; padding: 6px 10px;
             font-size: 14px; font-family: monospace; border: 1px solid transparent; display: block;
         }
         #common-nav a::before { content: "[ "; color: #777777; }
         #common-nav a::after { content: " ]"; color: #777777; }
-        
         #common-nav a:hover { border: 1px dashed #111111; }
         #common-nav a.active { background: #111111 !important; color: #ffffff !important; font-weight: bold; }
         #common-nav a.active::before, #common-nav a.active::after { color: #ffffff !important; }
@@ -38,44 +36,44 @@
         body { padding-left: 0px !important; }
         .mobile-menu-trigger { display: none !important; }
 
-        /* ==================== 📱 移动端自适应切换（全面强固） ==================== */
+        /* ==================== 📱 移动端自适应（纯白极简风格） ==================== */
         @media (max-width: 1160px) {
-            body { 
-                padding-top: 50px !important; 
-            }
             #common-nav {
+                display: none !important; 
                 position: fixed !important; 
                 top: 0 !important; 
                 left: 0 !important; 
                 width: 100% !important; 
                 height: 100% !important;
                 box-sizing: border-box !important; 
-                background: #ffffff !important; 
+                background: #ffffff !important; /* 彻底改为纯白 */
                 padding: 100px 30px !important; 
                 gap: 20px !important; 
-                display: none;
                 flex-direction: column !important;
                 justify-content: flex-start !important;
                 align-items: center !important;
-                z-index: 999998 !important; /* 确保盖住手机端一切动态内容 */
+                z-index: 1000001 !important; /* 确保盖在最上层 */
             }
+            
             #common-nav.show { 
                 display: flex !important; 
             }
-            #common-nav a { 
-                font-size: 16px !important; 
-                text-align: center !important; 
-                padding: 10px !important; 
-                width: 200px !important; 
-            }
             
-            /* 钉在手机左上角的复古按钮，加满级别属性防御 */
+            #common-nav a {
+                width: 200px !important;
+                text-align: center !important;
+                box-sizing: border-box !important;
+                font-size: 16px !important;
+                padding: 10px !important;
+            }
+
+            /* 钉在左上角的纯白黑边自适应按钮 */
             .mobile-menu-trigger {
                 display: block !important; 
                 position: fixed !important; 
                 top: 10px !important; 
                 left: 10px !important; 
-                z-index: 999999 !important; /* 全局最顶层，防踩防盖 */
+                z-index: 1000002 !important; /* 最高主宰层级，防盖 */
                 background: #ffffff !important; 
                 color: #111111 !important; 
                 border: 1px solid #111111 !important;
@@ -97,9 +95,8 @@
     styleEl.innerHTML = css;
     document.head.appendChild(styleEl);
 
-    // 3. 构建/重构组件节点的函数（可被重复安全调用）
+    // 3. 核心构建与维护逻辑
     function renderNavElements() {
-        // A. 检测并维护导航本体
         let seoNav = document.getElementById('common-nav');
         if (!seoNav) {
             seoNav = document.createElement('div');
@@ -120,44 +117,44 @@
             linksHtml += `<a href="${item.url}" class="${isActive ? 'active' : ''}"${targetAttr}${relAttr}>${item.name}</a>`;
         });
         
-        // 只有在内容对不上时才重写，防止影响点击
         if (seoNav.innerHTML !== linksHtml) {
             seoNav.innerHTML = linksHtml;
         }
 
-        // B. 检测并维护触发按钮
         let mobileBtn = document.getElementById('menuTriggerBtn');
         if (!mobileBtn) {
             mobileBtn = document.createElement('button');
-            mobileBtn.className = 'mobile-menu-trigger';
             mobileBtn.id = 'menuTriggerBtn';
-            mobileBtn.innerText = '[ MENU ]';
-            document.body.appendChild(mobileBtn);
+            mobileBtn.className = 'mobile-menu-trigger';
+            mobileBtn.innerText = seoNav.classList.contains('show') ? '[ CLOSE ]' : '[ MENU ]';
 
-            // 重新绑定弹窗交互
+            // 核心防吞逻辑：优先塞进大外壳前端，没有就放 body 前端
+            const tuiScreen = document.querySelector('.tui-screen');
+            if (tuiScreen) {
+                tuiScreen.insertBefore(mobileBtn, tuiScreen.firstChild);
+            } else {
+                document.body.insertBefore(mobileBtn, document.body.firstChild);
+            }
+
             mobileBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                const menu = document.getElementById('common-nav');
-                if (menu) {
-                    menu.classList.toggle('show');
-                    mobileBtn.innerText = menu.classList.contains('show') ? '[ CLOSE ]' : '[ MENU ]';
-                }
+                seoNav.classList.toggle('show');
+                mobileBtn.innerText = seoNav.classList.contains('show') ? '[ CLOSE ]' : '[ MENU ]';
             });
 
-            seoNav.addEventListener('click', function() {
+            seoNav.addEventListener('click', () => {
                 seoNav.classList.remove('show');
                 mobileBtn.innerText = '[ MENU ]';
             });
         }
     }
 
-    // 4. 初始化和强大的自愈看门狗
+    // 4. 初始化和自愈看门狗
     function initGuard() {
         document.body.style.paddingLeft = "0px";
         renderNavElements();
 
-        // 🚀 核心看门狗逻辑：监听整个 body 的子节点变化
-        // 如果别的脚本在“卡一下”时强行抹去了菜单组件，这里会瞬间察觉并秒级重新长出来！
+        // 监听节点，防止组件被其他动态脚本意外抹杀
         const watchdog = new MutationObserver(function() {
             const hasNav = document.getElementById('common-nav');
             const hasBtn = document.getElementById('menuTriggerBtn');
@@ -166,10 +163,9 @@
             }
         });
         
-        watchdog.observe(document.body, { childList: true });
+        watchdog.observe(document.body, { childList: true, subtree: true });
     }
 
-    // 适配各种加载时机
     if (document.readyState === 'loading') {
         document.addEventListener("DOMContentLoaded", initGuard);
     } else {
