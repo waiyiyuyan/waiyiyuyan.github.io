@@ -61,22 +61,7 @@ a:hover::before, a:hover::after, a.active::before, a.active::after {
     font-size: 14px;
     font-family: monospace;
 }
-.tui-header-bar::before {
-    content: "------------------------------------------------------------------------------------------------------------------------";
-    flex: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    margin-right: 15px;
-    color: #888888;
-}
-.tui-header-bar::after {
-    content: "------------------------------------------------------------------------------------------------------------------------";
-    flex: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    margin-left: 15px;
-    color: #888888;
-}
+
 
 /* 菜单导航条：双横线「===」字符装饰带 */
 .tui-menu {
