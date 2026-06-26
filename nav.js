@@ -12,7 +12,7 @@
     // 2. 注入侧边栏/手机菜单 CSS 样式
     const css = `
         #common-nav {
-            position: fixed; top: 20px; left: 20px; width: 180px;
+            position: fixed; top: 20px; left: calc(50% - 325px - 200px); width: 180px;
             display: flex; flex-direction: column; gap: 8px; z-index: 10000;
             background: transparent;
         }
