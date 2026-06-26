@@ -2,20 +2,25 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-    <title>优质博文 | 我爱白嫖</title>
+    <title>优质博文 | 网络资源与技术分享</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <link rel="stylesheet" href="/retro-theme.css">
     
     <style>
         /* ==========================================================================
-           ✍️ 仅限博文列表及内页排版复古微调（精简自原 style.css）
+           ✍️ 仅限博文列表及内页排版复古微调（保持页面内嵌结构统一）
            ========================================================================== */
         body { 
-            max-width: 800px; 
+            max-width: 800px; /* 与其他大容器保持一致，给导航条留出充足空间 */
             margin: 0 auto; 
             padding: 20px; 
+        }
+
+        /* 统一导航栏防换行补丁 */
+        .tui-menu {
+            white-space: nowrap;
+            overflow-x: auto;
         }
 
         /* 顶部系统标题栏 */
@@ -24,96 +29,109 @@
             margin-top: 0; 
         }
 
-        /* 核心卡片容器：统一复古主面板 */
+        /* 核心卡片容器：剥离实色大框，改用透明纯文本承载 */
         .blog-list, .article-container { 
-            padding: 24px; 
+            padding: 10px 0; 
             margin-top: 20px; 
+            background: transparent;
         }
 
-        /* 📄 文章列表项网格布局，微调以完美嵌入复古凹陷底框 */
+        /* 📄 文章列表项网格布局：磨平旧颜色，融入字符装饰 */
         .post-item { 
-            padding: 16px 12px; 
-            border-bottom: 1px solid #d4d0c8; 
+            padding: 14px 8px; 
+            border-bottom: 1px dotted #cccccc; /* 换成极轻的点状字符分隔线 */
             display: grid;
             grid-template-columns: 1fr auto; 
-            gap: 8px 0;                    
+            gap: 8px 0;                     
+            background-color: transparent !important; /* 彻底移除旧版交替行灰白色块 */
         }
         .post-item:last-child { border-bottom: none; }
-        .post-item:nth-child(even) { background-color: #f1f1f1; } /* 交替行深浅底色便于阅读 */
         
         .post-info { display: contents; }
         .post-info h2 { 
             grid-column: span 2; 
-            margin: 0; 
-            font-size: 1.15rem; 
+            margin: 0 0 6px 0; 
+            font-size: 1.1rem; 
             font-weight: bold;
+            font-family: inherit;
         }
-        .post-info h2 a { color: #000000; text-decoration: none; }
-        .post-info h2 a:hover { color: #000080; text-decoration: underline; }
         
-        .post-meta { color: #555; font-size: 0.85rem; align-self: center; font-weight: normal; }
-        .read-more { color: #000080; font-weight: bold; font-size: 0.85rem; align-self: center; text-align: right; }
-        .read-more:hover { text-decoration: underline; }
+        /* 这里的文章链接不用单独写中括号，全局 CSS 已经自动帮 a 标签打好了中括号补丁 */
+        .post-info h2 a { color: #111111; text-decoration: none; }
+        
+        .post-meta { color: #555555; font-size: 0.85rem; align-self: center; font-family: monospace; }
+        .post-meta::before { content: "├─ "; } /* 统一的控制台层级字符 */
+        
+        .read-more { font-weight: bold; font-size: 0.85rem; align-self: center; text-align: right; }
 
         /* ==========================================================================
-           📜 兼容后续可能动态加载的文章内页排版（Readme文本风格）
+           📜 兼容后续可能动态加载的文章内页排版（Readme 纯字符文本风格补丁）
            ========================================================================== */
-        .article-container h1 { margin: 10px 0; color: #000; font-size: 1.6rem; }
+        .article-container h1 { margin: 10px 0 20px 0; color: #111111; font-size: 1.5rem; font-weight: bold; }
         .meta { 
-            color: #555; 
+            color: #555555; 
             font-size: 0.85rem; 
-            border-bottom: 1px solid #d4d0c8; 
+            border-bottom: 1px dotted #cccccc; 
             padding-bottom: 12px; 
             margin-bottom: 20px; 
             display: flex; 
             gap: 15px; 
             flex-wrap: wrap; 
+            font-family: monospace;
         }
-        .tag-badge, .cat-badge { background: #e0e0e0; color: #333; padding: 2px 6px; border: 1px inset #fff; font-size: 12px; font-weight: bold; }
+        /* 标签小徽章去掉凹凸感，改成扁平字符虚线框 */
+        .tag-badge, .cat-badge { 
+            background: #ffffff; 
+            color: #111111; 
+            padding: 1px 6px; 
+            border: 1px dashed #111111; 
+            font-size: 12px; 
+            font-weight: bold; 
+        }
 
-        .content h2 { color: #000; border-left: 4px solid #000080; padding-left: 10px; margin-top: 30px; margin-bottom: 12px; font-size: 1.3rem; }
-        .content p, .content li { color: #000; line-height: 1.7; margin-bottom: 12px; }
+        .content h2 { color: #111111; border-left: 4px solid #111111; padding-left: 10px; margin-top: 30px; margin-bottom: 12px; font-size: 1.25rem; }
+        .content p, .content li { color: #111111; line-height: 1.7; margin-bottom: 12px; }
         
-        /* 复古代码块 */
-        .content code { background: #fff; color: #db2828; padding: 2px 6px; border: 1px solid #808080; font-family: Consolas, monospace; font-size: 0.9rem; }
-        .content pre { background: #000000; padding: 15px; border: 2px inset #fff; overflow-x: auto; margin: 15px 0; }
-        .content pre code { background: none; color: #00ff00; border: none; padding: 0; font-size: 0.85rem; } /* 黑底绿字高仿老式终端 */
+        /* 极简字符行内代码 */
+        .content code { background: #ffffff; color: #cc0000; padding: 2px 4px; border: 1px dashed #cccccc; font-family: Consolas, monospace; font-size: 0.9rem; }
+        /* 极客风老式代码块 */
+        .content pre { background: #ffffff; padding: 15px; border: 1px dashed #111111; overflow-x: auto; margin: 15px 0; }
+        .content pre code { background: none; color: #111111; border: none; padding: 0; font-size: 0.85rem; color: #006600; } /* 绿字高仿纯文本终端 */
 
-        /* 表格与引用 */
-        .content table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #fff; }
-        .content th, .content td { border: 1px solid #808080; padding: 8px; text-align: left; }
-        .content th { background-color: #d4d0c8; font-weight: bold; }
-        blockquote { background: #fff; border-left: 4px solid #808080; border-top: 1px solid #d4d0c8; border-right: 1px solid #d4d0c8; border-bottom: 1px solid #d4d0c8; margin: 1.5em 0; padding: 12px 20px; color: #444; }
+        /* 表格与引用字符化 */
+        .content table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #ffffff; }
+        .content th, .content td { border: 1px solid #111111; padding: 8px; text-align: left; font-size: 13px; }
+        .content th { background-color: #ffffff; font-weight: bold; border-bottom: 2px solid #111111; }
+        blockquote { background: #ffffff; border-left: 4px solid #111111; border-top: 1px dotted #cccccc; border-right: 1px dotted #cccccc; border-bottom: 1px dotted #cccccc; margin: 1.5em 0; padding: 12px 20px; color: #444444; }
 
         /* 📱 移动端适配 */
-        @media (max-width: 768px) {
-            body { padding: 10px; padding-top: 60px; }
-            .blog-list, .article-container { padding: 16px; }
-            .post-item { grid-template-columns: 1fr; gap: 4px; }
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            .blog-list, .article-container { padding: 4px; }
+            .post-item { grid-template-columns: 1fr; gap: 6px; }
             .read-more { text-align: left; margin-top: 2px; }
         }
     </style>
 </head>
 <body>
 
-    <div id="common-nav" class="seo-nav-links">
-        <a href="/">🏠 首页节点</a>
-        <a href="/ip/">🌐 IP环境检测</a>
-        <a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">📝 留言板</a>
-        <a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">🖼️ 图床</a>
-        <a href="/videoDownloader/">🎬 视频下载</a>
-        <a href="/blogs/">✍️ 优质博文</a>
+    <div id="common-nav" class="tui-menu">
+        <div class="tui-menu-item"><a href="/">首页节点</a></div>
+        <div class="tui-menu-item"><a href="/ip/">IP环境检测</a></div>
+        <div class="tui-menu-item"><a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">留言板</a></div>
+        <div class="tui-menu-item"><a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">图床</a></div>
+        <div class="tui-menu-item"><a href="/videoDownloader/">视频下载</a></div>
+        <div class="tui-menu-item"><a href="/blogs/" class="active">优质博文</a></div>
     </div>
 
-    
-
-    <div class="blog-list retro-card">
-        <header class="retro-title-bar">
-            <h1>✍️ ARTICLE_MANAGER.EXE</h1>
+    <div class="blog-list">
+        <header class="tui-header-bar">
+            [ ARTICLE_MANAGER ]
         </header>
-        <div id="blogList" class="retro-list-container">
-            <div style="text-align: center; color: #555; padding: 20px; font-weight: bold;">
-                🔄 正在检索系统文章数据库，请稍候...
+        
+        <div id="blogList">
+            <div style="text-align: center; color: #555555; padding: 30px; font-weight: bold; font-family: monospace;">
+                🔄 [LOADING]: 正在检索系统文章数据库，请稍候...
             </div>
         </div>
     </div>
@@ -127,7 +145,7 @@
             .then(data => {
                 const listDiv = document.getElementById('blogList');
                 if(!data || data.length === 0) {
-                    listDiv.innerHTML = '<div style="text-align:center;color:#555;padding:20px;font-weight:bold;">📭 暂无博文发布。</div>';
+                    listDiv.innerHTML = '<div style="text-align:center;color:#555555;padding:30px;font-weight:bold;font-family:monospace;">📭 [EMPTY]: 暂无博文发布。</div>';
                     return;
                 }
                 
@@ -137,7 +155,7 @@
                         <div class="post-item">
                             <div class="post-info">
                                 <h2><a href="./articles/${post.file}">📂 ${post.title}</a></h2>
-                                <div class="post-meta">📅 DATE: ${post.date} · 🏷️ TYPE: ${post.category}</div>
+                                <div class="post-meta">DATE: ${post.date} · TYPE: ${post.category}</div>
                             </div>
                             <a href="./articles/${post.file}" class="read-more">阅读原文</a>
                         </div>
@@ -146,7 +164,7 @@
                 listDiv.innerHTML = html;
             })
             .catch(() => {
-                document.getElementById('blogList').innerHTML = '<div style="text-align:center;color:#cc0000;padding:20px;font-weight:bold;">❌ 数据库检索失败，请检查系统状态。</div>';
+                document.getElementById('blogList').innerHTML = '<div style="text-align:center;color:#cc0000;padding:30px;font-weight:bold;font-family:monospace;">❌ [CRITICAL]: 数据库检索失败，请检查系统状态。</div>';
             });
     </script>
 </body>
