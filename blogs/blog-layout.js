@@ -19,11 +19,7 @@
     // 2. 自动清理旧的冲突样式（如果有blog-style.css自动删掉，避免覆盖）
     document.querySelectorAll('link[href*="blog-style.css"]').forEach(el => el.remove());
 
-    // 3. 注入导航JS（任务栏/开始菜单）
-    const script = document.createElement('script');
-    script.src = '/nav.js';
-    script.async = true;
-    document.body.appendChild(script);
+    // ❌ 删除了自动注入 /nav.js 的逻辑，确保详情页完全纯净，不展示侧边栏/菜单按钮
 })();
 
 // 页面渲染主逻辑：自动提取博文内容，生成Win95窗口
@@ -69,24 +65,27 @@ function initArticleRender() {
     });
 
     // ========== 生成标准Win95 TEXT_VIEWER窗口 ==========
+    // 依然保留 .tui-screen 容器，确保整体完美居中、样式完美对齐全局 CSS
     const finalLayout = `
-        <div class="back-btn-wrap">
-            <a href="/blogs/" class="btn back-btn">返回文章列表(B)</a>
-        </div>
-        
-        <div class="article-container retro-card">
-            <div class="retro-title-bar">
-                <h1>📄 TEXT_VIEWER.EXE - ${title}</h1>
+        <div class="tui-screen">
+            <div class="back-btn-wrap" style="margin-top: 10px;">
+                <a href="/blogs/" class="btn back-btn">返回文章列表(B)</a>
             </div>
             
-            <div class="meta">
-                <span>📅 属性时间: ${date}</span>
-                <span>🏷️ 标记: <span class="tag-badge">${tag}</span></span>
-                <span>📂 路径: <span class="cat-badge">${cat}</span></span>
-            </div>
-            
-            <div class="content retro-list-container">
-                ${bodyContent}
+            <div class="article-container retro-card" style="margin-top: 20px;">
+                <div class="retro-title-bar">
+                    <h1>📄 TEXT_VIEWER.EXE - ${title}</h1>
+                </div>
+                
+                <div class="meta">
+                    <span>📅 属性时间: ${date}</span>
+                    <span>🏷️ 标记: <span class="tag-badge">${tag}</span></span>
+                    <span>📂 路径: <span class="cat-badge">${cat}</span></span>
+                </div>
+                
+                <div class="content retro-list-container">
+                    ${bodyContent}
+                </div>
             </div>
         </div>
     `;
