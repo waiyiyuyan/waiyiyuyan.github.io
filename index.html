@@ -19,225 +19,113 @@
     
     <style>
         /* ==========================================================================
-           🏠 仅限首页使用的局部排版微调（方案 A：主窗体打包版）
+           🏠 仅限首页使用的纯净字符流排版微调
            ========================================================================== */
         body { 
             max-width: 850px; 
-            margin: 30px auto 30px auto; 
+            margin: 0 auto; 
             padding: 20px; 
         }
 
-        /* 📦 方案 A 核心：将页面主体统一封装为独立的软件大窗口 */
-        .main-application-window {
-            background: #d4d0c8;
-            border: 2px outset #fff;
-            box-shadow: 1px 1px 0px #000;
-            padding: 12px;
-            margin-bottom: 25px;
-        }
-
-        /* 主窗体蓝条标题栏 */
-        .app-title-bar {
-            background: linear-gradient(90deg, #000080, #1084d0);
-            padding: 4px 8px;
-            margin: -12px -12px 12px -12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .app-title-bar h1 {
-            color: #fff !important;
-            font-size: 14px !important;
-            margin: 0;
-            font-weight: bold;
-        }
-        .app-title-bar .window-controls button {
-            width: 16px; height: 14px; font-size: 9px; font-weight: bold;
-            background: #d4d0c8; border: 1px outset #fff; padding: 0; line-height: 10px;
-            cursor: pointer;
-        }
-
-        /* 软件说明信息栏 */
-        .app-description {
-            margin: 0 0 12px 2px;
-            color: #000;
-            font-size: 13px;
-            font-weight: bold;
-            border-bottom: 2px dashed #808080;
-            padding-bottom: 8px;
-        }
-       /* 🖥️ 经典灰内凹广告容器（修正版：确保广告100%加载） */
+        /* 🖥️ 广告容器：仅用简单的单行字符前后隔离 */
         .ads-container { 
-            margin: 12px 0; 
-            padding: 8px; 
-            background: #c0c0c0; 
-            border: 2px inset #fff; 
-            min-height: 100px; 
+            margin: 20px 0; 
+            padding: 10px 0; 
             text-align: center;
-            overflow: hidden; /* 防止广告超出容器导致变形 */
-            display: block !important; /* 强制可见，防止被误判为隐藏 */
+            overflow: hidden;
+            display: block !important;
         }
         .ads-tag {
-            font-size: 9px;
-            color: #5a5a5a;
-            text-align: left;
-            margin-bottom: 4px;
-            font-family: "Consolas", monospace;
-            font-weight: bold;
+            font-size: 12px;
+            color: #777777;
+            text-align: center;
+            margin-bottom: 8px;
+            font-family: monospace;
         }
 
         /* 列表总容器 */
         .article-list { 
-            padding: 12px;
-            margin-top: 12px; 
-            background: #c0c0c0;
-            border: 2px inset #fff;
+            padding: 10px 0;
         }
 
-        /* 🎛️ 动态生成的节点卡片：子应用窗口 */
+        /* 🎛️ 动态生成的节点卡片：完全去掉实线盒子，改为字符行上下分割 */
         .node-card {
-            margin-bottom: 20px;
-            padding: 12px;
-            background: #d4d0c8;
-            border: 2px outset #fff;
-            box-shadow: 1px 1px 0px #000;
-        }
-        .node-card:last-child { margin-bottom: 0; }
-        
-        /* 卡片内部的伪标题栏（分流灰条） */
-        .node-card-title-bar {
-            background: linear-gradient(90deg, #808080, #c0c0c0);
-            padding: 3px 6px;
-            margin: -12px -12px 10px -12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .node-card h2 { 
-            font-size: 13px !important; 
-            color: #fff !important; 
-            margin: 0;
-            font-weight: bold;
-            border: none;
-            padding: 0;
+            margin-bottom: 35px;
+            padding: 10px 0;
         }
         
-        .mini-controls button {
-            width: 14px; height: 12px; font-size: 8px; font-weight: bold;
-            background: #d4d0c8; border: 1px outset #fff; padding: 0; line-height: 8px;
-        }
-        
-        /* 节点状态栏（时间） */
-        .node-status-bar {
-            display: inline-block;
-            background: #d4d0c8;
-            
-            padding: 2px 0;
-            font-size: 13px;
-            color: #000;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        
+        /* 节点内文字介绍排版 */
         .node-card p {
-            color: #000;
-            font-size: 13px;
-            margin-bottom: 10px;
-            line-height: 1.5;
-            font-family: "SimSun", sans-serif;
+            color: #111111;
+            font-size: 14px;
+            margin: 10px 0;
+            line-height: 1.6;
         }
         
-        .node-card ul { padding-left: 0; list-style: none; margin-top: 10px; }
+        .node-card ul { padding-left: 0; list-style: none; margin-top: 12px; }
         
-        /* 记事本内凹白底文本框 */
+        /* 节点数据复制文本框：干净无边框，改用浅色字符框住，防粘连 */
         .node-card li { 
             font-family: "Consolas", "Courier New", monospace; 
             word-break: break-all; 
             background: #ffffff !important; 
-            margin-bottom: 6px; 
-            padding: 8px 10px; 
-            border: 2px inset #fff !important;
-            color: #000000;
-            font-size: 12px;
+            margin-bottom: 8px; 
+            padding: 10px; 
+            border: 1px dashed #cccccc !important; /* 极轻的虚线，确保多节点时不粘连 */
+            color: #111111;
+            font-size: 13px;
         }
+        .node-card li::before { content: "$ "; color: #888888; }
         .node-card li:last-child { margin-bottom: 0; }
-        
-        /* 加载状态动画 */
-        .loading-text { 
-            text-align: center; 
-            color: #000000; 
-            padding: 30px 0; 
-            font-size: 13px; 
-            font-weight: bold;
-        }
-        .loading-text::before {
-            content: '';
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: #000080;
-            margin-right: 8px;
-            animation: blink 0.8s steps(2, start) infinite;
-            vertical-align: middle;
-        }
-        @keyframes blink {
-            to { visibility: hidden; }
-        }
-
-        /* 移动端适配 */
-        @media (max-width: 768px) {
-            body { padding: 10px; margin-top: 15px; }
-            .main-application-window { padding: 8px; }
-            .article-list { padding: 6px; }
-            .node-card { padding: 8px; }
-        }
     </style>
 </head>
 <body>
 
-    <div id="common-nav" class="seo-nav-links">
-        <a href="/">🏠 首页节点</a>
-        <a href="/ip/">🌐 IP环境检测</a>
-        <a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">📝 留言板</a>
-        <a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">🖼️ 图床</a>
-        <a href="/videoDownloader/">🎬 视频下载</a>
-        <a href="/blogs/">✍️ 优质博文</a>
+    <div id="common-nav" class="tui-menu">
+        <div class="tui-menu-item"><a href="/" class="active">首页节点</a></div>
+        <div class="tui-menu-item"><a href="/ip/">IP环境检测</a></div>
+        <div class="tui-menu-item"><a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">留言板</a></div>
+        <div class="tui-menu-item"><a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">图床</a></div>
+        <div class="tui-menu-item"><a href="/videoDownloader/">视频下载</a></div>
+        <div class="tui-menu-item"><a href="/blogs/">优质博文</a></div>
     </div>
 
-    <div class="main-application-window">
+    <div class="tui-screen">
         
-        <div class="app-title-bar">
-            <h1>⚙️ RESOURCE_FREE_MANAGER.EXE</h1>
-            <div class="window-controls">
-                <button onclick="javascript:void(0)">_</button>
-                <button onclick="javascript:void(0)">🗖</button>
-                <button onclick="javascript:void(0)">X</button>
-            </div>
+        <div class="tui-header-bar">
+            [ 每日免费机场节点 - 科学上网资源导航 ]
         </div>
 
-        <div class="app-description">
-            我爱白嫖 - 每日免费机场节点 · 高速VPN测试 · 科学上网资源导航
-        </div>
+
 
         <div class="ads-container">
-            <div class="ads-tag">[ SPONSOR_ADS_SECTION_A ]</div>
+            <div class="ads-tag">--- SPONSOR ADS SECTION A ---</div>
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5400876400049616" data-ad-slot="4680496511" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <div class="ads-tag">-----------------------------</div>
         </div>
 
         <div id="content" class="article-list">
-            <div class="loading-text">正在同步全网最新白嫖节点，请稍候...</div>
+            <div class="loading">正在同步全网最新白嫖节点，请稍候...</div>
         </div>
 
         <div class="ads-container">
-            <div class="ads-tag">[ SPONSOR_ADS_SECTION_B ]</div>
+            <div class="ads-tag">--- SPONSOR ADS SECTION B ---</div>
             <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-5400876400049616" data-ad-slot="9222376757"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <div class="ads-tag">-----------------------------</div>
         </div>
 
     </div>
 
-    <script src="/nav.js"></script>
+    <script>
+        (function() {
+            const script = document.createElement('script');
+            script.src = '/nav.js';
+            script.async = true;
+            document.body.appendChild(script);
+        })();
+    </script>
 
     <script>
         fetch('./data.json')
@@ -248,7 +136,7 @@
             .then(data => {
                 const contentDiv = document.getElementById('content');
                 if (!data || data.length === 0) {
-                    contentDiv.innerHTML = '<div class="loading-text">⚠️ 今日暂无节点推荐，请稍后再试。</div>';
+                    contentDiv.innerHTML = '<div style="text-align:center; padding:30px; font-family:monospace;">! [NOTICE]: 今日暂无节点推荐，请稍后再试。</div>';
                     return;
                 }
 
@@ -259,7 +147,8 @@
                         listItems = `<ul>${item.list.map(li => `<li>${li}</li>`).join('')}</ul>`;
                     }
 
-                    let dateHtml = item.publishDate ? `<div class="node-status-bar">📅 发布更新于: ${item.publishDate}</div>` : '';
+                    // 日期改用极简前缀区分
+                    let dateHtml = item.publishDate ? `<div class="info-label" style="font-size:12px; color:#777777;">UPDATED: ${item.publishDate}</div>` : '';
 
                     let descHtml = '';
                     if (item.desc) {
@@ -267,13 +156,11 @@
                         descHtml = `<p>${htmlDesc}</p>`;
                     }
 
+                    // 动态生成的节点卡片：利用顶部的字符贯穿线充当天然分割
                     htmlContent += `
                         <div class="node-card">
-                            <div class="node-card-title-bar">
-                                <h2>📄 NODE_DATA - ${item.title}</h2>
-                                <div class="mini-controls">
-                                    <button onclick="javascript:void(0)">X</button>
-                                </div>
+                            <div class="tui-header-bar" style="margin-bottom: 10px; font-size: 13px;">
+                                DATA // ${item.title}
                             </div>
                             ${dateHtml}
                             ${descHtml}
@@ -286,8 +173,10 @@
             })
             .catch(error => {
                 document.getElementById('content').innerHTML = `
-                    <div class="loading-text" style="color: #cc0000; border: 2px inset #fff; background: #fff; padding: 20px;">
-                        ❌ 错误：节点数据加载失败。请检查本地网络配置并刷新页面重试。
+                    <div style="color: #111111; text-align: center; padding: 20px; font-family: monospace;">
+                        ------------------------------------------------------------<br>
+                        ERROR: 节点数据加载失败。请检查本地网络配置并刷新页面重试。<br>
+                        ------------------------------------------------------------
                     </div>
                 `;
                 console.error(error);
