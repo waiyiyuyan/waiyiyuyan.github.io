@@ -54,18 +54,52 @@
                 padding-top: 50px !important; 
             }
             #common-nav {
-                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                box-sizing: border-box; background: #ffffff; padding: 60px 30px; gap: 16px; display: none;
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%;
+                box-sizing: border-box; 
+                background: #ffffff; 
+                padding: 100px 30px; 
+                gap: 20px; 
+                display: none;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                z-index: 99999; /* 🎯 确保图层在最前，盖住博文等任何正文元素 */
             }
-            #common-nav.show { display: flex; flex-direction: column; }
-            #common-nav a { font-size: 16px; text-align: center; padding: 10px; }
+            #common-nav.show { 
+                display: flex !important; 
+            }
+            #common-nav a { 
+                font-size: 16px; 
+                text-align: center; 
+                padding: 10px; 
+                width: 200px; /* 让高亮反色块长短一致，更整齐 */
+            }
             
+            /* 🎯 固定在手机端左上角的硬核复古菜单按钮 */
             .mobile-menu-trigger {
-                display: block; position: fixed; top: 10px; left: 10px; z-index: 10001;
-                background: #ffffff; color: #111111; border: 1px solid #111111;
-                padding: 4px 10px; font-size: 13px; font-family: monospace; font-weight: bold; cursor: pointer;
+                display: block !important; 
+                position: fixed; 
+                top: 10px; 
+                left: 10px; 
+                z-index: 100000; /* 🎯 比全屏菜单还要高一层，确保随时能点关闭 */
+                background: #ffffff; 
+                color: #111111; 
+                border: 1px solid #111111;
+                padding: 5px 12px; 
+                font-size: 13px; 
+                font-family: monospace; 
+                font-weight: bold; 
+                cursor: pointer;
+                box-shadow: 2px 2px 0px #111111; /* 稍微加点复古阴影，质感更好 */
             }
-            .mobile-menu-trigger:active { background: #111111; color: #ffffff; }
+            .mobile-menu-trigger:active { 
+                background: #111111; 
+                color: #ffffff; 
+            }
         }
     `;
 
@@ -114,6 +148,7 @@
             mobileBtn.innerText = seoNav.classList.contains('show') ? '[ CLOSE ]' : '[ MENU ]';
         });
 
+        // 点击菜单任何空白处或链接，自动关闭收回
         seoNav.addEventListener('click', function() {
             seoNav.classList.remove('show');
             mobileBtn.innerText = '[ MENU ]';
