@@ -34,11 +34,10 @@ a:hover::before, a:hover::after, a.active::before, a.active::after {
 }
 
 /* 手机端主容器居中修补 */
-.tui-screen { 
-    margin: 10px auto !important; /* 上下留10px，左右自动居中 */
-    width: 92% !important;        /* 宽度别占满，留点呼吸空间 */
-    max-width: 600px !important;  /* 限制手机端最大宽度，防止横向拉得太长变形 */
-    float: none !important;
+.tui-screen {
+    width: 100%;        /* 默认宽度 100% 撑满全屏 */
+    margin: 10px;          /* 没有外边距，默认靠左 */
+    /* 甚至可能还残留着 PC 端带来的 float: left 等影响 */
 }
 
 /* 砍掉了原本大框框的 .tui-window 样式，降维成普通间距容器 */
