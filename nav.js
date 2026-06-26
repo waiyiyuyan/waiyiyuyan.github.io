@@ -9,7 +9,7 @@
         { name: "优质博文", url: "/blogs/" }
     ];
 
-    // 2. 注入纯白极简自适应 CSS（彻底删掉复古灰）
+    // 2. 注入纯白极简自适应 CSS（包含全站手机端绝对对称、强制居中补丁）
     const css = `
         /* ==================== 🖥️ PC 端默认样式 ==================== */
         #common-nav {
@@ -36,8 +36,31 @@
         body { padding-left: 0px !important; }
         .mobile-menu-trigger { display: none !important; }
 
-        /* ==================== 📱 移动端自适应（纯白极简风格） ==================== */
+        /* ==================== 📱 移动端自适应（强行绝对对称、精准居中） ==================== */
         @media (max-width: 1160px) {
+            /* 1. 强制重置全站 body 的内外边距：左右必须绝对对称留白 16px */
+            body { 
+                padding-top: 60px !important; 
+                padding-left: 16px !important;  
+                padding-right: 16px !important; 
+                margin: 0 !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                width: 100% !important;
+                overflow-x: hidden !important; /* 彻底切断内容超宽导致的右侧大留白 */
+            }
+            
+            /* 2. 强制抓取主容器，清除任何不对称的 padding、margin 或浮动，强行对称居中 */
+            .tui-screen, #main, .container, main, #wrapper {
+                margin: 0 auto !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                float: none !important;
+                padding: 0 !important; /* 清除子页面可能自带的畸形内边距 */
+            }
+
+            /* 3. 彻底改为纯白的手机端全屏折叠菜单 */
             #common-nav {
                 display: none !important; 
                 position: fixed !important; 
@@ -46,13 +69,13 @@
                 width: 100% !important; 
                 height: 100% !important;
                 box-sizing: border-box !important; 
-                background: #ffffff !important; /* 彻底改为纯白 */
+                background: #ffffff !important; 
                 padding: 100px 30px !important; 
                 gap: 20px !important; 
                 flex-direction: column !important;
                 justify-content: flex-start !important;
                 align-items: center !important;
-                z-index: 1000001 !important; /* 确保盖在最上层 */
+                z-index: 1000001 !important; 
             }
             
             #common-nav.show { 
@@ -67,13 +90,13 @@
                 padding: 10px !important;
             }
 
-            /* 钉在左上角的纯白黑边自适应按钮 */
+            /* 4. 钉在左上角的纯白黑边 WebTUI 触发按钮 */
             .mobile-menu-trigger {
                 display: block !important; 
                 position: fixed !important; 
                 top: 10px !important; 
                 left: 10px !important; 
-                z-index: 1000002 !important; /* 最高主宰层级，防盖 */
+                z-index: 1000002 !important; 
                 background: #ffffff !important; 
                 color: #111111 !important; 
                 border: 1px solid #111111 !important;
@@ -128,7 +151,6 @@
             mobileBtn.className = 'mobile-menu-trigger';
             mobileBtn.innerText = seoNav.classList.contains('show') ? '[ CLOSE ]' : '[ MENU ]';
 
-            // 核心防吞逻辑：优先塞进大外壳前端，没有就放 body 前端
             const tuiScreen = document.querySelector('.tui-screen');
             if (tuiScreen) {
                 tuiScreen.insertBefore(mobileBtn, tuiScreen.firstChild);
@@ -151,10 +173,12 @@
 
     // 4. 初始化和自愈看门狗
     function initGuard() {
-        document.body.style.paddingLeft = "0px";
+        // 这一句做动态机型判断：如果是手机端，绝不乱加 padding-left: 0，完全交给 CSS 控制
+        if (window.innerWidth > 1160) {
+            document.body.style.paddingLeft = "0px";
+        }
         renderNavElements();
 
-        // 监听节点，防止组件被其他动态脚本意外抹杀
         const watchdog = new MutationObserver(function() {
             const hasNav = document.getElementById('common-nav');
             const hasBtn = document.getElementById('menuTriggerBtn');
