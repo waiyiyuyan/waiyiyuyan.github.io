@@ -198,3 +198,91 @@ a:hover::before, a:hover::after, a.active::before, a.active::after {
     .search-box, .video-form { flex-direction: column; gap: 8px; }
     .info-item { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* ==========================================================================
+   ✍️ 专为博文详情页设计的纯文本美化增强
+   ========================================================================== */
+.article-container h1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #111111;
+    margin: 20px 0 10px 0;
+    line-height: 1.4;
+}
+
+/* 博文元数据行 */
+.article-container .meta {
+    font-size: 12px;
+    color: #666666;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #111111;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.tag-badge, .cat-badge {
+    background: #111111;
+    color: #ffffff;
+    padding: 1px 5px;
+    font-size: 11px;
+}
+
+/* 正文标题风格：经典的纯文本区块符号 */
+.article-body h2 {
+    color: #111111;
+    margin: 30px 0 15px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px dotted #111111;
+    padding-bottom: 3px;
+}
+.article-body h2::before { content: "■-- "; }
+
+.article-body h3 {
+    color: #111111;
+    margin: 20px 0 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+.article-body h3::before { content: "├─ "; }
+
+.article-body h4 {
+    color: #444444;
+    margin: 15px 0 5px 0;
+    font-size: 13px;
+    font-weight: bold;
+}
+.article-body h4::before { content: "  └> "; }
+
+/* 列表样式回归：带缩进的硬核排版 */
+.article-body ul, .article-body ol {
+    margin: 10px 0 20px 25px;
+}
+.article-body li {
+    margin-bottom: 8px;
+    color: #222222;
+}
+
+/* 强调字：反色块突显 */
+.article-body strong {
+    background-color: #f1f1f1;
+    padding: 0 4px;
+    font-weight: bold;
+}
+
+/* 行内代码块样式 */
+.article-body code {
+    font-family: monospace;
+    background: #f5f5f5;
+    border: 1px solid #cccccc;
+    padding: 1px 4px;
+    margin: 0 2px;
+    font-size: 13px;
+}
+
+/* 统一博文中的返回按钮风格，伪装成命令行里的返回操作 */
+.back-btn {
+    font-weight: bold;
+    font-size: 13px;
+}
