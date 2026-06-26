@@ -18,125 +18,117 @@
     
     <style>
         /* ==========================================================================
-           🎬 仅限视频下载器页面使用的局部排版与组件微调
+           🎬 仅限视频下载器页面使用的局部排版与组件微调（保持页面内嵌结构统一）
            ========================================================================== */
         body { 
-            max-width: 600px; 
-            margin: 60px auto 30px auto; 
+            max-width: 800px; 
+            margin: 0 auto; 
             padding: 20px; 
         }
 
-        /* 视频控制台主卡片面板 */
+        /* 视频控制台主区域：干掉实色盒子、阴影与多余物理边框 */
         .card {
             width: 100%;
-            padding: 24px;
-            margin-bottom: 25px;
+            margin: 20px auto;
+            background: transparent;
         }
         .card-header {
             margin-bottom: 20px;
         }
         .card p {
-            margin: 8px 0;
+            margin: 8px 0 20px 0;
             font-size: 13px;
-            font-weight: bold;
-            color: #333;
+            font-family: monospace;
+            color: #555555;
+            text-align: center;
         }
 
-        /* 交互表单区组件微调 */
-        input, select { 
-            width: 90%; 
-            margin: 10px 0; 
-            font-size: 14px; 
-        }
-      input[type="text"] {
-    width: 90%; 
-    padding: 10px; 
-    margin: 10px auto;
-    font-size: 15px;
-    background: #ffffff;
-    box-sizing: border-box;
-
-    /* 经典复古内凹边框设置 */
-    border-top: 2px solid #808080;    /* 顶部深灰 */
-    border-left: 2px solid #808080;   /* 左侧深灰 */
-    border-right: 2px solid #dfdfdf;  /* 右侧浅灰 */
-    border-bottom: 2px solid #dfdfdf; /* 底部浅灰 */
-}
-
-        /* 针对下拉选择框定制的微调：保留系统原生下拉箭头或在复古基础上适配 */
-        select { 
-            padding: 6px 8px;
-            background: #ffffff;
-            border-top: 2px solid #808080;
-            border-left: 2px solid #808080;
-            border-right: 2px solid #dfdfdf;
-            border-bottom: 2px solid #dfdfdf;
+        /* 交互表单区组件微调：剔除 Win95 厚重凹凸线条，统一极简干净 1px 线 */
+        input[type="text"], select { 
+            width: 100%; 
+            padding: 8px 10px; 
+            margin: 8px 0;
+            font-size: 14px;
             font-family: inherit;
-            cursor: pointer;
+            color: #111111;
+            background: #ffffff;
+            border: 1px solid #111111;
+            outline: none;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus {
+            background: #fcfcfc;
         }
 
-        /* 结果展示区：应用内凹文本框质感 */
+        /* 结果展示区：剥离原先的灰白/彩色底色，完美融入纯文本布局 */
         #result { 
-            width: 90%;
+            width: 100%;
             margin: 20px auto 0 auto; 
             padding: 15px; 
             display: none; 
             word-break: break-all; 
             text-align: left;
+            border: 1px dashed #111111; /* 换成极轻的字符虚线框包裹 */
+            background: #ffffff;
         }
-        /* 继承公共样式的凹槽，再微调三种状态的配色质感 */
-        .success { background: #ffffff; border-left: 4px solid #008000 !important; color: #000; }
-        .error { background: #ffffff; border-left: 4px solid #cc0000 !important; color: #cc0000; font-weight: bold; }
-        .loading { color: #000; font-weight: bold; }
+        .success { color: #111111; }
+        .error { color: #cc0000; font-weight: bold; }
         
-        /* 方块动画加载效果补充 */
+        /* 字符闪烁等待指示器（与 IP 页面 loading 统一） */
+        .loading { color: #111111; font-weight: bold; }
         .loading::before {
             content: '';
             display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: #000080;
+            width: 10px;
+            height: 10px;
+            background-color: #111111;
             margin-right: 8px;
             animation: blink 0.8s steps(2, start) infinite;
             vertical-align: middle;
         }
         @keyframes blink { to { visibility: hidden; } }
 
-        /* SEO 落地文本块转换为说明小贴士 */
+        /* 说明贴士排版：剥离实体容器，回归纯文本排版 */
         .seo-content { 
             text-align: left; 
             margin-top: 40px; 
-            padding: 16px; 
+            border-top: 1px dotted #cccccc; /* 极轻的点状分隔线 */
+            padding-top: 25px;
             font-size: 13px; 
-            color: #222; 
+            color: #222222; 
             line-height: 1.8; 
         }
-        .seo-content h3 { font-size: 14px; color: #000080; margin: 12px 0 6px 0; font-weight: bold; }
+        .seo-content h3 { font-size: 14px; color: #111111; margin: 16px 0 6px 0; font-weight: bold; }
+        .seo-content h3::before { content: "■ "; } /* 统一的列表前缀字符 */
         .seo-content h3:first-child { margin-top: 0; }
-        .seo-content ul { padding-left: 20px; margin: 5px 0; }
+        .seo-content ul { padding-left: 20px; margin: 8px 0; }
+        .seo-content li { margin-bottom: 4px; }
       
-      /* 3. 给下载按钮添加复古“点击感” */
-    button {
-            
-            margin: 0;
-            padding: 10px;
-            background: #d4d0c8;
-            border: 2px outset #fff; /* 使用 outset 自动产生立体感 */
-            font-weight: bold;
+        /* 下载按钮改回符合核心 CSS 风格的硬核方块字符按钮 */
+        button {
+            width: 100%;
+            margin: 10px 0 0 0;
+            padding: 8px 16px;
+            background: #ffffff;
+            border: 1px solid #111111;
+            color: #111111;
+            font-family: inherit;
+            font-size: 14px;
             cursor: pointer;
-            font-size: 15px;
+            font-weight: bold;
         }
-
+        button::before { content: "< "; }
+        button::after { content: " >"; }
         button:active {
-            border-style: inset;    /* 点击时按下 */
-            background: #c0c0c0;
+            background: #111111;
+            color: #ffffff;
         }
 
-        /* 移动端自适应 */
-        @media (max-width: 768px) {
-            body { padding: 10px; margin-top: 65px; }
-            .card { padding: 16px; }
-            input, select, #result { width: 100%; }
+        /* 📱 移动端自适应微调 */
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            .card { margin-top: 15px; }
+            button { padding: 10px; }
         }
     </style>
 
@@ -155,21 +147,23 @@
 </head>
 <body>
 
-    <div id="common-nav" class="seo-nav-links">
-        <a href="/">🏠 首页节点</a>
-        <a href="/ip/">🌐 IP环境检测</a>
-        <a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">📝 留言板</a>
-        <a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">🖼️ 图床</a>
-        <a href="/videoDownloader/">🎬 视频下载</a>
-        <a href="/blogs/">✍️ 优质博文</a>
+    <!-- 📦 全站统一字符导航栏（结构与 IP 页保持完全相同） -->
+    <div id="common-nav" class="tui-menu">
+        <div class="tui-menu-item"><a href="/">首页节点</a></div>
+        <div class="tui-menu-item"><a href="/ip/">IP环境检测</a></div>
+        <div class="tui-menu-item"><a href="https://mb.lovefree.de5.net" target="_blank" rel="noopener noreferrer">留言板</a></div>
+        <div class="tui-menu-item"><a href="https://imgur-frontend.lovefree.de5.net/" target="_blank" rel="noopener noreferrer">图床</a></div>
+        <div class="tui-menu-item"><a href="/videoDownloader/" class="active">视频下载</a></div>
+        <div class="tui-menu-item"><a href="/blogs/">优质博文</a></div>
     </div>
 
-    <div class="card retro-card">
-        <div class="card-header retro-title-bar">
-            <h1>🚀 VIDEO_STREAM_EXTRACTOR.EXE</h1>
+    <!-- 主卡片容器（独立内嵌样式控场） -->
+    <div class="card">
+        <!-- 自动应用全局 CSS 的贯穿字符延长线 -->
+        <div class="card-header tui-header-bar">
+            [ 当前支持解析：Twitter (X), TikTok, Snapchat ]
         </div>
-        <p>核心引擎已就绪。当前支持解析：Twitter (X), TikTok, Snapchat</p>
-        
+
         <input type="text" id="videoUrl" placeholder="请粘贴视频长链接...">
         <br>
 
@@ -184,14 +178,16 @@
 
         <button onclick="startDownload()">开始解析(E)</button>
 
+        <!-- 结果回显区 -->
         <div id="result"></div>
     </div>
 
-    <div class="seo-content retro-list-container">
-        <h3>💡 为什么选择本站进行视频去水印下载？</h3>
+    <!-- 文档说明贴士区 -->
+    <div class="seo-content">
+        <h3>为什么选择本站进行视频去水印下载？</h3>
         <p>本站采用专门的流媒体嗅探技术，专为 Twitter、TikTok、Snapchat 三大社交平台提供便捷的媒体素材保存方案。网页端一键操作即可剥离水印，完美保存原视频画质。</p>
         
-        <h3>🛠️ 当前支持解析平台及规范：</h3>
+        <h3>当前支持解析平台及规范：</h3>
         <ul>
             <li><strong>Twitter (X) 视频下载</strong>：支持推特原生态视频长链接，支持高清画质及流媒体音频直接保存。</li>
             <li><strong>TikTok (海外抖音) 去水印</strong>：完美剥离官方浮动水印，秒出干净、原始的 Mp4 视频流。</li>
@@ -217,8 +213,8 @@
                 return;
             }
 
-            // 激活内凹列表框的基础样式
-            resultDiv.className = 'retro-list-container loading';
+            // 激活字符闪烁等待基础样式
+            resultDiv.className = 'loading';
             resultDiv.style.display = 'block';
             resultDiv.innerHTML = '正在疯狂解析中，请稍候...';
 
@@ -246,24 +242,24 @@
                 const data = await response.json();
 
                 if (data.status === 'redirect' || data.status === 'tunnel') {
-                    resultDiv.className = 'retro-list-container success';
+                    resultDiv.className = 'success';
                     resultDiv.innerHTML = `
-                        <strong>🎉 解析成功！</strong><br><br>
-                        <a href="${data.url}" target="_blank" download="${data.filename || 'download.mp4'}" class="btn" style="display:inline-block; text-decoration:none;">
+                        <span style="color: #006600; font-weight: bold;">🎉 [SUCCESS]: 解析成功！</span><br><br>
+                        <a href="${data.url}" target="_blank" download="${data.filename || 'download.mp4'}" style="display:inline-block; font-weight: bold;">
                             💾 点击保存文件：${data.filename || '点击保存到本地'}
                         </a>
                     `;
                 } else if (data.status === 'error') {
-                    resultDiv.className = 'retro-list-container error';
-                    resultDiv.innerHTML = `❌ 解析失败，后端返回错误码：${data.error.code}`;
+                    resultDiv.className = 'error';
+                    resultDiv.innerHTML = `❌ [ERROR]: 解析失败，后端返回错误码：${data.error.code}`;
                 } else {
-                    resultDiv.className = 'retro-list-container error';
-                    resultDiv.innerHTML = `⚠️ 未知状态: ${data.status}`;
+                    resultDiv.className = 'error';
+                    resultDiv.innerHTML = `⚠️ [NOTICE]: 未知状态: ${data.status}`;
                 }
 
             } catch (error) {
-                resultDiv.className = 'retro-list-container error';
-                resultDiv.innerHTML = `💥 无法连接到 API，请检查后端状态。错误: ${error.message}`;
+                resultDiv.className = 'error';
+                resultDiv.innerHTML = `💥 [CRITICAL]: 无法连接到 API，请检查后端状态。错误: ${error.message}`;
             }
         }
     </script>
