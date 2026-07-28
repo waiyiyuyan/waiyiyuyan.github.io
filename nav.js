@@ -5,6 +5,7 @@
         { name: "IP环境检测", url: "/ip/" },
         { name: "留言板", url: "https://mb.lovefree.de5.net", target: "_blank" },
         { name: "图床", url: "https://imgur-frontend.lovefree.de5.net/", target: "_blank" },
+        { name: "聊天室", url: " https://mqtt.lovefree.de5.net/", target: "_blank" },
         { name: "视频下载", url: "/videoDownloader/" },
         { name: "优质博文", url: "/blogs/" }
     ];
