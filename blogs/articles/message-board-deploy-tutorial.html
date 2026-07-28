@@ -188,36 +188,18 @@ function add8h(utcStr) {
   return `${year}-${month}-${day} ${h}:${m}:${s}`;
 }
 
-async function queryFullPosts(env) {
-  try {
-    const { results: posts } = await env.MSG_DB.prepare(
-      "SELECT * FROM message ORDER BY create_time DESC"
-    ).all();
-    const { results: allReply } = await env.MSG_DB.prepare(
-      "SELECT * FROM reply ORDER BY create_time ASC"
-    ).all();
-    const out = [];
-    for (let p of posts) {
-      let replys = allReply.filter(item => item.msg_id === p.id);
-      p.create_time = add8h(p.create_time);
-      replys.forEach(item => item.create_time = add8h(item.create_time));
-      out.push({ ...p, replys });
-    }
-    return out;
-  } catch (e) {
-    return [];
-  }
-}
-
 async function queryUserNotify(env, uid) {
   if (!uid) return [];
-  const { results: notifyList } = await env.MSG_DB.prepare(
-    "SELECT * FROM notify WHERE receive_uid=? ORDER BY create_time DESC"
-  ).bind(uid).all();
-  notifyList.forEach(item => {
-    item.create_time = add8h(item.create_time);
-  });
-  return notifyList;
+  try {
+    const { results } = await env.MSG_DB.prepare(
+      "SELECT * FROM notify WHERE receive_uid=? ORDER BY create_time DESC"
+    ).bind(uid).all();
+    results.forEach(item => { item.create_time = add8h(item.create_time); });
+    return results;
+  } catch (e) {
+    console.error("[DO] queryUserNotify 异常:", e);
+    return [];
+  }
 }
 
 export class ChatRoom extends DurableObject {
@@ -225,20 +207,14 @@ export class ChatRoom extends DurableObject {
     super(state, env);
     this.state = state;
     this.env = env;
-    this.sessions = new Set();
+    // sessions: Map&lt;WebSocket, { uid: string | null }&gt;
+    this.sessions = new Map();
   }
 
-  sendToOne(ws, data) {
-    try {
-      ws.send(JSON.stringify(data));
-    } catch (err) {
-      this.sessions.delete(ws);
-    }
-  }
-
-  broadcast(data) {
+  // ========== 内部方法：广播给所有在线用户 ==========
+  _broadcast(data) {
     const msg = JSON.stringify(data);
-    for (const conn of this.sessions) {
+    for (const [conn] of this.sessions) {
       try {
         conn.send(msg);
       } catch (err) {
@@ -247,59 +223,97 @@ export class ChatRoom extends DurableObject {
     }
   }
 
-  async sendNotifyToUser(uid, notifyList) {
-    for (const conn of this.sessions) {
-      if (conn.userUid === uid) {
-        try {
-          await conn.send(JSON.stringify({
-            type: "NOTIFY_DATA",
-            notify: notifyList
-          }));
-          return;
-        } catch (err) {
-          this.sessions.delete(conn);
-        }
+  // ========== 内部方法：给指定 uid 的所有连接发送通知 ==========
+  _sendNotifyToUser(uid, notifyList) {
+    if (!uid) return;
+    const msg = JSON.stringify({ type: "NOTIFY_DATA", notify: notifyList });
+    for (const [conn, meta] of this.sessions) {
+      if (meta.uid !== uid) continue;
+      try {
+        conn.send(msg);
+      } catch (err) {
+        this.sessions.delete(conn);
       }
     }
   }
 
-  broadcastLog(level, content) {
-    try {
-      const msg = JSON.stringify({ type: "SYS_LOG", level, content });
-      for (const conn of this.sessions) conn.send(msg);
-    } catch (err) {}
+  // ========== DO fetch 入口：处理 WS 握手 + Worker 内部指令 ==========
+  async fetch(request) {
+    const url = new URL(request.url);
+
+    // ---- 路径 1：WebSocket 握手 ----
+    if (request.headers.get("Upgrade") === "websocket") {
+      return this._handleWebSocket(request);
+    }
+
+    // ---- 路径 2：Worker 发来的内部广播指令 ----
+    if (url.pathname === "/internal/broadcast" && request.method === "POST") {
+      try {
+        const data = await request.json();
+        this._broadcast(data);
+        return new Response("ok", { status: 200 });
+      } catch (e) {
+        console.error("[DO] 广播指令处理失败:", e);
+        return new Response("error", { status: 500 });
+      }
+    }
+
+    // ---- 路径 3：Worker 发来的内部通知指令 ----
+    if (url.pathname === "/internal/notify" && request.method === "POST") {
+      try {
+        const { uid, notifyList } = await request.json();
+        this._sendNotifyToUser(uid, notifyList);
+        return new Response("ok", { status: 200 });
+      } catch (e) {
+        console.error("[DO] 通知指令处理失败:", e);
+        return new Response("error", { status: 500 });
+      }
+    }
+
+    return new Response("Not Found", { status: 404 });
   }
 
-  async fetch(request) {
+  // ========== WebSocket 握手处理 ==========
+  _handleWebSocket(request) {
     const [clientWs, serverWs] = new WebSocketPair();
     serverWs.accept();
-    this.sessions.add(serverWs);
+
+    this.sessions.set(serverWs, { uid: null });
 
     serverWs.addEventListener("close", () => {
       this.sessions.delete(serverWs);
     });
 
-    serverWs.addEventListener("open", async () => {
-      try {
-        const initPosts = await queryFullPosts(this.env);
-        this.sendToOne(serverWs, { type: "INIT_DATA", posts: initPosts, notify: [] });
-      } catch (e) {}
-    });
-
     serverWs.addEventListener("message", async (event) => {
       try {
         const msg = JSON.parse(event.data);
+
         if (msg.type === "HEARTBEAT") return;
+
         if (msg.type === "USER_UID" && msg.uid) {
-          const uid = msg.uid;
-          serverWs.userUid = uid;
-          const userNotify = await queryUserNotify(this.env, uid);
-          await this.sendToOne(serverWs, { type: "NOTIFY_DATA", notify: userNotify });
+          const uid = String(msg.uid).trim();
+          const meta = this.sessions.get(serverWs);
+          if (meta) meta.uid = uid;
+
+          try {
+            const userNotify = await queryUserNotify(this.env, uid);
+            serverWs.send(JSON.stringify({
+              type: "NOTIFY_DATA",
+              notify: userNotify
+            }));
+          } catch (err) {
+            console.error("[DO] 推送用户通知失败:", err);
+          }
         }
-      } catch (e) {}
+      } catch (e) {
+        console.error("[DO] 消息解析异常:", e);
+      }
     });
 
-    return new Response(null, { status: 101, webSocket: clientWs });
+    return new Response(null, {
+      status: 101,
+      webSocket: clientWs
+    });
   }
 }</code></pre>
 
@@ -325,21 +339,24 @@ function getChatRoom(env) {
   return env.CHAT_ROOM.get(roomId);
 }
 
-async function queryFullPosts(env) {
-  const { results: posts } = await env.MSG_DB.prepare(
-    "SELECT * FROM message ORDER BY create_time DESC"
-  ).all();
-  const { results: allReply } = await env.MSG_DB.prepare(
-    "SELECT * FROM reply ORDER BY create_time ASC"
-  ).all();
-  const out = [];
-  for (let p of posts) {
-    let replys = allReply.filter(item => item.msg_id === p.id);
-    p.create_time = add8h(p.create_time);
-    replys.forEach(item => item.create_time = add8h(item.create_time));
-    out.push({ ...p, replys });
-  }
-  return out;
+// Worker 通知 DO 执行广播
+async function doBroadcast(env, data) {
+  const room = getChatRoom(env);
+  await room.fetch("https://do-internal/internal/broadcast", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" },
+  });
+}
+
+// Worker 通知 DO 给指定用户发通知
+async function doNotifyUser(env, uid, notifyList) {
+  const room = getChatRoom(env);
+  await room.fetch("https://do-internal/internal/notify", {
+    method: "POST",
+    body: JSON.stringify({ uid, notifyList }),
+    headers: { "Content-Type": "application/json" },
+  });
 }
 
 async function queryUserNotify(env, uid) {
@@ -360,7 +377,7 @@ async function queryPostsByCursor(env, cursor = "") {
     posts = results;
   } else {
     const { results } = await env.MSG_DB.prepare(
-      "SELECT * FROM message WHERE id < ? ORDER BY id DESC LIMIT 10"
+      "SELECT * FROM message WHERE id &lt; ? ORDER BY id DESC LIMIT 10"
     ).bind(cursor).all();
     posts = results;
   }
@@ -370,16 +387,21 @@ async function queryPostsByCursor(env, cursor = "") {
   const { results: allReply } = await env.MSG_DB.prepare(
     `SELECT * FROM reply WHERE msg_id IN (${placeholders}) ORDER BY create_time ASC`
   ).bind(...postIds).all();
-  const out = [];
-  for (let p of posts) {
-    let replys = allReply.filter(item => item.msg_id === p.id);
-    p.create_time = add8h(p.create_time);
-    replys.forEach(item => item.create_time = add8h(item.create_time));
-    out.push({ ...p, replys });
+  const replyMap = new Map();
+  for (const r of allReply) {
+    r.create_time = add8h(r.create_time);
+    if (!replyMap.has(r.msg_id)) replyMap.set(r.msg_id, []);
+    replyMap.get(r.msg_id).push(r);
   }
-  const lastCursor = out[out.length - 1].id;
-  const hasMore = out.length === 10;
-  return { list: out, lastCursor, hasMore };
+  const out = posts.map(p => {
+    p.create_time = add8h(p.create_time);
+    return { ...p, replys: replyMap.get(p.id) || [] };
+  });
+  return {
+    list: out,
+    lastCursor: out[out.length - 1].id,
+    hasMore: out.length === 10
+  };
 }
 
 async function getPostDetailById(env, postId) {
@@ -421,6 +443,7 @@ async function getLatestSingleReply(env, pid) {
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
+
     if (url.pathname === "/ws") {
       const room = getChatRoom(env);
       return room.fetch(req);
@@ -453,13 +476,15 @@ export default {
         const name = form.get("name") || "";
         const content = form.get("content") || "";
         const media = form.get("media") || "";
-        await env.MSG_DB.prepare("INSERT INTO message(name,content,media_urls) VALUES(?,?,?)").bind(name, content, media).run();
+        await env.MSG_DB.prepare(
+          "INSERT INTO message(name,content,media_urls) VALUES(?,?,?)"
+        ).bind(name, content, media).run();
         const singleNewPost = await getLatestSinglePost(env);
-        const room = getChatRoom(env);
-        room.broadcast({ type: "NEW_POST", item: singleNewPost });
-        return new Response("ok", { headers: corsHeaders });
+        await doBroadcast(env, { type: "NEW_POST", item: singleNewPost });
+        return Response.json({ code: 0 }, { headers: corsHeaders });
       } catch (e) {
-        return new Response("error", { status: 500, headers: corsHeaders });
+        console.error("[/add 错误]", e);
+        return Response.json({ code: -1, msg: "发帖失败" }, { status: 500, headers: corsHeaders });
       }
     }
 
@@ -472,25 +497,31 @@ export default {
         const rcontent = fd.get("content") || "";
         const media = fd.get("media") || "";
         const atTargetUser = fd.get("targetUser") || "";
-        await env.MSG_DB.prepare("INSERT INTO reply(msg_id,r_name,r_content,media_urls,to_user) VALUES(?,?,?,?,?)").bind(pid, rname, rcontent, media, atTargetUser).run();
-        const { results: ridRes } = await env.MSG_DB.prepare("SELECT id FROM reply WHERE msg_id = ? AND r_name = ? ORDER BY id DESC LIMIT 1").bind(pid, rname).all();
+        await env.MSG_DB.prepare(
+          "INSERT INTO reply(msg_id,r_name,r_content,media_urls,to_user) VALUES(?,?,?,?,?)"
+        ).bind(pid, rname, rcontent, media, atTargetUser).run();
+        const { results: ridRes } = await env.MSG_DB.prepare(
+          "SELECT id FROM reply WHERE msg_id = ? AND r_name = ? ORDER BY id DESC LIMIT 1"
+        ).bind(pid, rname).all();
         const replyId = ridRes[0]?.id || 0;
         let preview = rcontent.length > 20 ? rcontent.slice(0, 20) + "..." : rcontent;
         if (!preview.trim() && media) preview = "[图片回复]";
         if (!preview.trim()) preview = "[无文字回复]";
         if (atTargetUser && atTargetUser !== rname) {
-          await env.MSG_DB.prepare("INSERT INTO notify(target_msg_id,receive_uid,reply_id,reply_name,reply_preview,is_read) VALUES(?,?,?,?,?,?)").bind(pid, atTargetUser, replyId, rname, preview, 0).run();
+          await env.MSG_DB.prepare(
+            "INSERT INTO notify(target_msg_id,receive_uid,reply_id,reply_name,reply_preview,is_read) VALUES(?,?,?,?,?,?)"
+          ).bind(pid, atTargetUser, replyId, rname, preview, 0).run();
         }
         const singleNewReply = await getLatestSingleReply(env, pid);
-        const room = getChatRoom(env);
-        room.broadcast({ type: "NEW_REPLY", targetPid: pid, item: singleNewReply });
+        await doBroadcast(env, { type: "NEW_REPLY", targetPid: pid, item: singleNewReply });
         if (atTargetUser && atTargetUser !== rname) {
           const targetNotify = await queryUserNotify(env, atTargetUser);
-          await room.sendNotifyToUser(atTargetUser, targetNotify);
+          await doNotifyUser(env, atTargetUser, targetNotify);
         }
-        return new Response("ok", { headers: corsHeaders });
+        return Response.json({ code: 0 }, { headers: corsHeaders });
       } catch (e) {
-        return new Response("error", { status: 500, headers: corsHeaders });
+        console.error("[/addReply 错误]", e);
+        return Response.json({ code: -1, msg: "回复失败" }, { status: 500, headers: corsHeaders });
       }
     }
 
@@ -498,18 +529,17 @@ export default {
     if (url.pathname === "/del") {
       try {
         const id = url.searchParams.get("id") || "";
-        if (!id) return new Response("ok", { headers: corsHeaders });
-        const deleteStmts = [
+        if (!id) return Response.json({ code: 0 }, { headers: corsHeaders });
+        await env.MSG_DB.batch([
           env.MSG_DB.prepare("DELETE FROM message WHERE id = ?").bind(id),
           env.MSG_DB.prepare("DELETE FROM reply WHERE msg_id = ?").bind(id),
           env.MSG_DB.prepare("DELETE FROM notify WHERE target_msg_id = ?").bind(id)
-        ];
-        await env.MSG_DB.batch(deleteStmts);
-        const room = getChatRoom(env);
-        room.broadcast({ type: "DELETE_POST", targetPid: id });
-        return new Response("ok", { headers: corsHeaders });
+        ]);
+        await doBroadcast(env, { type: "DELETE_POST", targetPid: id });
+        return Response.json({ code: 0 }, { headers: corsHeaders });
       } catch (e) {
-        return new Response("error", { status: 500, headers: corsHeaders });
+        console.error("[/del 错误]", e);
+        return Response.json({ code: -1, msg: "删除失败" }, { status: 500, headers: corsHeaders });
       }
     }
 
@@ -519,15 +549,16 @@ export default {
         const form = await req.formData();
         const nid = form.get("nid");
         const uid = url.searchParams.get("uid") || "";
-        if (!nid) return new Response("ok", { headers: corsHeaders });
+        if (!nid) return Response.json({ code: 0 }, { headers: corsHeaders });
         await env.MSG_DB.prepare("UPDATE notify SET is_read=1 WHERE id=?").bind(nid).run();
-        const room = getChatRoom(env);
-        if (!uid) return new Response("ok", { headers: corsHeaders });
-        const targetNotify = await queryUserNotify(env, uid);
-        await room.sendNotifyToUser(uid, targetNotify);
-        return new Response("ok", { headers: corsHeaders });
+        if (uid) {
+          const targetNotify = await queryUserNotify(env, uid);
+          await doNotifyUser(env, uid, targetNotify);
+        }
+        return Response.json({ code: 0 }, { headers: corsHeaders });
       } catch (e) {
-        return new Response("ok", { headers: corsHeaders });
+        console.error("[/setRead 错误]", e);
+        return Response.json({ code: 0 }, { headers: corsHeaders });
       }
     }
 
@@ -562,11 +593,21 @@ export default {
         else if (fileType.startsWith("video/")) imgurForm.append("video", file);
         else imgurForm.append("image", file);
         imgurForm.append("type", "file");
-        const res = await fetch(`https://api.imgur.com/3/upload?client_id=${IMGUR_CLIENT_ID}`, { method: "POST", body: imgurForm });
+        const res = await fetch(
+          `https://api.imgur.com/3/upload?client_id=${IMGUR_CLIENT_ID}`,
+          { method: "POST", body: imgurForm }
+        );
         const json = await res.json();
-        if (!json.success) return Response.json({ success: false, msg: json.data?.error || "上传失败" }, { status: 500, headers: corsHeaders });
-        return Response.json({ success: true, url: json.data.link, isProcessing: json.data.processing?.status === "pending" }, { headers: corsHeaders });
+        if (!json.success) return Response.json(
+          { success: false, msg: json.data?.error || "上传失败" },
+          { status: 500, headers: corsHeaders }
+        );
+        return Response.json(
+          { success: true, url: json.data.link, isProcessing: json.data.processing?.status === "pending" },
+          { headers: corsHeaders }
+        );
       } catch (e) {
+        console.error("[/proxyUpload 错误]", e);
         return Response.json({ success: false, msg: "图床服务异常" }, { status: 502, headers: corsHeaders });
       }
     }
@@ -575,13 +616,17 @@ export default {
     if (url.pathname === "/readAllNotify" && req.method === "POST") {
       try {
         const uid = url.searchParams.get("uid") || "";
-        await env.MSG_DB.prepare("UPDATE notify SET is_read = 1 WHERE receive_uid = ? AND is_read != 1").bind(uid).run();
-        const room = getChatRoom(env);
-        const targetNotify = await queryUserNotify(env, uid);
-        await room.sendNotifyToUser(uid, targetNotify);
-        return new Response("ok", { headers: corsHeaders });
+        await env.MSG_DB.prepare(
+          "UPDATE notify SET is_read = 1 WHERE receive_uid = ? AND is_read != 1"
+        ).bind(uid).run();
+        if (uid) {
+          const targetNotify = await queryUserNotify(env, uid);
+          await doNotifyUser(env, uid, targetNotify);
+        }
+        return Response.json({ code: 0 }, { headers: corsHeaders });
       } catch (e) {
-        return new Response("error", { status: 500, headers: corsHeaders });
+        console.error("[/readAllNotify 错误]", e);
+        return Response.json({ code: -1, msg: "操作失败" }, { status: 500, headers: corsHeaders });
       }
     }
 
@@ -590,12 +635,13 @@ export default {
       try {
         const uid = url.searchParams.get("uid") || "";
         await env.MSG_DB.prepare("DELETE FROM notify WHERE receive_uid = ?").bind(uid).run();
-        const room = getChatRoom(env);
-        const targetNotify = await queryUserNotify(env, uid);
-        await room.sendNotifyToUser(uid, targetNotify);
-        return new Response("ok", { headers: corsHeaders });
+        if (uid) {
+          await doNotifyUser(env, uid, []);
+        }
+        return Response.json({ code: 0 }, { headers: corsHeaders });
       } catch (e) {
-        return new Response("error", { status: 500, headers: corsHeaders });
+        console.error("[/clearAllNotify 错误]", e);
+        return Response.json({ code: -1, msg: "操作失败" }, { status: 500, headers: corsHeaders });
       }
     }
 
@@ -603,9 +649,16 @@ export default {
     if (url.pathname === "/initPosts" && req.method === "GET") {
       try {
         const result = await queryPostsByCursor(env);
-        return Response.json({ code: 0, list: result.list, lastCursor: result.lastCursor, hasMore: result.hasMore }, { headers: corsHeaders });
+        return Response.json(
+          { code: 0, list: result.list, lastCursor: result.lastCursor, hasMore: result.hasMore },
+          { headers: corsHeaders }
+        );
       } catch (e) {
-        return Response.json({ code: -1, msg: "查询失败", list: [], lastCursor: "", hasMore: false }, { status: 500, headers: corsHeaders });
+        console.error("[/initPosts 错误]", e);
+        return Response.json(
+          { code: -1, msg: "查询失败", list: [], lastCursor: "", hasMore: false },
+          { status: 500, headers: corsHeaders }
+        );
       }
     }
 
@@ -613,11 +666,21 @@ export default {
     if (url.pathname === "/loadMorePosts" && req.method === "GET") {
       try {
         const cursor = url.searchParams.get("cursor") || "";
-        if (!cursor) return Response.json({ code: -1, msg: "缺少游标参数", list: [], lastCursor: "", hasMore: false }, { headers: corsHeaders });
+        if (!cursor) return Response.json(
+          { code: -1, msg: "缺少游标参数", list: [], lastCursor: "", hasMore: false },
+          { headers: corsHeaders }
+        );
         const result = await queryPostsByCursor(env, cursor);
-        return Response.json({ code: 0, list: result.list, lastCursor: result.lastCursor, hasMore: result.hasMore }, { headers: corsHeaders });
+        return Response.json(
+          { code: 0, list: result.list, lastCursor: result.lastCursor, hasMore: result.hasMore },
+          { headers: corsHeaders }
+        );
       } catch (e) {
-        return Response.json({ code: -1, msg: "查询失败", list: [], lastCursor: "", hasMore: false }, { status: 500, headers: corsHeaders });
+        console.error("[/loadMorePosts 错误]", e);
+        return Response.json(
+          { code: -1, msg: "查询失败", list: [], lastCursor: "", hasMore: false },
+          { status: 500, headers: corsHeaders }
+        );
       }
     }
 
@@ -625,23 +688,39 @@ export default {
     if (url.pathname === "/getPostDetail" && req.method === "GET") {
       try {
         const postId = url.searchParams.get("id") || "";
-        if (!postId) return Response.json({ code: -1, msg: "缺少帖子ID", data: null }, { headers: corsHeaders });
+        if (!postId) return Response.json(
+          { code: -1, msg: "缺少帖子ID", data: null },
+          { headers: corsHeaders }
+        );
         const postDetail = await getPostDetailById(env, postId);
-        return Response.json({ code: 0, msg: "ok", data: postDetail || null }, { headers: corsHeaders });
+        return Response.json(
+          { code: 0, msg: "ok", data: postDetail || null },
+          { headers: corsHeaders }
+        );
       } catch (e) {
-        return Response.json({ code: -1, msg: "查询失败", data: null }, { status: 500, headers: corsHeaders });
+        console.error("[/getPostDetail 错误]", e);
+        return Response.json(
+          { code: -1, msg: "查询失败", data: null },
+          { status: 500, headers: corsHeaders }
+        );
       }
     }
 
     // 兼容旧接口
-    if (url.pathname === "/listAll") return Response.json(await queryFullPosts(env), { headers: corsHeaders });
     if (url.pathname === "/getNotify") {
       const uid = url.searchParams.get("uid") || "";
-      return Response.json(await queryUserNotify(env, uid), { headers: corsHeaders });
+      const data = await queryUserNotify(env, uid);
+      return Response.json(data, { headers: corsHeaders });
     }
 
-    if (url.pathname === "/") return new Response("API Service Running", { headers: { ...corsHeaders, "Content-Type": "text/plain;charset=UTF-8" } });
-    return new Response("404 Not Found", { status: 404, headers: { ...corsHeaders, "Content-Type": "text/plain;charset=UTF-8" } });
+    if (url.pathname === "/") return new Response("API Service Running", {
+      headers: { ...corsHeaders, "Content-Type": "text/plain;charset=UTF-8" }
+    });
+
+    return new Response("404 Not Found", {
+      status: 404,
+      headers: { ...corsHeaders, "Content-Type": "text/plain;charset=UTF-8" }
+    });
   }
 };
 
