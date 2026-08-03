@@ -1,146 +1,26 @@
 [
   {
-    "title": "月下独酌 [维护中]",
-    "desc": "0 元购买 1000GB️/30 天套餐。\n",
+    "title": "doro 云",
+    "desc": "使用优惠劵 dorocloud 0 元购买“小杯”20GB️/30 天套餐。\n",
     "list": [
-      "节点：新加坡、美国、台湾、日本",
-      "协议：VLESS",
-      "网站：shaap.eepzau.org",
+      "节点：台湾、香港、日本、马来西亚",
+      "协议：AnyTLS、Hysteria、TUIC、VLESS",
+      "网站：dorocloud.xyz",
+      "频道：t.me/dorocloud",
+      "群组：t.me/dorocloudchat"
+    ],
+    "publishDate": "发布于：2026/8/03"
+  },
+  {
+    "title": "kko",
+    "desc": "注册即送 100GB️/30 天套餐。\n",
+    "list": [
+      "节点：美国、德国、法国、芬兰、荷兰、俄罗斯、英国、日本、爱沙尼亚、瑞典、阿联酋",
+      "协议：VMess",
+      "网站：qianxing.raince.cc.cd",
       "频道：-",
       "群组：-"
     ],
-    "publishDate": "发布于：2026/7/28"
-  },
-  {
-    "title": "开心机场",
-    "desc": "注册即送 100GB️/7 天套餐。\n",
-    "list": [
-      "节点：美国、荷兰、德国、香港、台湾、韩国、日本",
-      "协议：VLESS",
-      "网站：kx.csnety.com",
-      "频道：-",
-      "群组：t.me/kx_luy"
-    ],
-    "publishDate": "发布于：2026/7/28"
-  },
-  {
-    "title": "柚子酱",
-    "desc": "0 元购买 50GB️/30 天套餐。\n",
-    "list": [
-      "节点：-",
-      "协议：VLESS",
-      "网站：youzi.win",
-      "频道：-",
-      "群组：-"
-    ],
-    "publishDate": "发布于：2026/7/26"
-  },
-  {
-    "title": "飞伐伐",
-    "desc": "注册即送 30GB️/30 天套餐。\n",
-    "list": [
-      "节点：香港、日本、新加坡、台湾、泰国、马来西亚、越南、德国、悉尼、美国、荷兰",
-      "协议：AnyTLS、Hysteria",
-      "网站：fffa.cc",
-      "频道：t.me/fffa_ter",
-      "群组：t.me/+7MuJGZ5cttlmYTA0"
-    ],
-    "publishDate": "发布于：2026/7/24"
-  },
-  {
-    "title": "雷神",
-    "desc": "使用优惠劵 leishen2026 0 元购买“雷神 2026”200GB️/30 天套餐。\n",
-    "list": [
-      "节点：香港、日本、新加坡、美国、英国、德国、澳大利亚",
-      "协议：AnyTLS",
-      "网站：雷神.co",
-      "频道：t.me/leishen2026_notice",
-      "群组：t.me/leishen2026_group"
-    ],
-    "publishDate": "发布于：2026/7/22"
-  },
-  {
-    "title": "小牛加速",
-    "desc": "使用优惠劵 51wwe 0 元购买“普通套餐”500GB️/30 天套餐。\n",
-    "list": [
-      "节点：香港、美国、泰国、马来西亚、新加坡、韩国、日本",
-      "协议：Trojan",
-      "网站：home.xiaoniu8123.com",
-      "频道：-",
-      "群组：-"
-    ],
-    "publishDate": "发布于：2026/7/16"
-  },
-  {
-    "title": "火箭云",
-    "desc": "使用优惠劵 rocketvpn 0 元购买“开业免费”200GB️/30 天套餐。\n",
-    "list": [
-      "节点：香港、日本、新加坡、美国、英国、德国、澳大利亚",
-      "协议：AnyTLS",
-      "网站：buy.veri-tickets.top",
-      "频道：t.me/rocketvpn456",
-      "群组：-"
-    ],
-    "publishDate": "发布于：2026/7/14"
-  },
-  {
-    "title": "MNKCloud",
-    "desc": "注册即送 100GB️/7 天套餐。\n",
-    "list": [
-      "节点：台湾、香港、日本、新加坡、美国、德国、英国、荷兰、印度、瑞典、越南、俄罗斯",
-      "协议：AnyTLS、TUIC、VLESS",
-      "网站：mnkcloud.xyz",
-      "频道：t.me/mnkcloud",
-      "群组：t.me/mnkcloud_chat"
-    ],
-    "publishDate": "发布于：2026/7/11"
-  },
-  {
-    "title": "香草云 [已失效]",
-    "desc": "使用优惠劵 vanilla 0 元购买“雲呢拿开业杯”100GB️/30 天套餐。\n",
-    "list": [
-      "节点：香港、日本、新加坡、美国、英国、德国、澳大利亚",
-      "协议：AnyTLS",
-      "网站：user.vanilla.rest",
-      "频道：t.me/vanillaboard",
-      "群组：-"
-    ],
-    "publishDate": "发布于：2026/7/09"
-  },
-  {
-    "title": "爱大米",
-    "desc": "注册即送“新用户”30 GB/30 天套餐。\n使用优惠劵 bbec.cc 0 元购买“尊享”2000GB️/30 天套餐。\n",
-    "list": [
-      "节点：智利、阿根廷、巴西、加拿大、泰国、日本、哥伦比亚",
-      "协议：Hysteria、VLESS",
-      "网站：bbec.cc",
-      "频道：-",
-      "群组：t.me/adamiqun"
-    ],
-    "publishDate": "发布于：2026/7/09"
-  },
-  {
-    "title": "小云朵",
-    "desc": "使用优惠劵 wUMZ9a9q 0 元购买“免费体验”25GB️/30 天套餐。\n",
-    "list": [
-      "节点：香港、台湾、美国、新加坡、英国、日本",
-      "协议：TUIC",
-      "网站：www.yunduovpn.xyz",
-      "频道：-",
-      "群组：t.me/yun_hangxian"
-    ],
-    "publishDate": "发布于：2026/7/05"
-  },
-  {
-    "title": "轻语机场",
-    "desc": "使用优惠劵 YDyC74mF 0 元购买“一个朋友”30GB️/30 天套餐。\n",
-    "list": [
-      "节点：日本、美国、香港、新加坡、台湾",
-      "协议：AnyTLS、Shadowsocks",
-      "网站：www.lajiaoyun.xyz",
-      "频道：t.me/qingyujichang",
-      "群组：t.me/+B3MTobjC1XkxZmJl"
-    ],
-    "publishDate": "发布于：2026/7/01"
+    "publishDate": "发布于：2026/8/02"
   }
 ]
