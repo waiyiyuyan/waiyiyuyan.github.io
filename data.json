@@ -1,7 +1,19 @@
 [
   {
+    "title": "蛋仔云",
+    "desc": "0 元购买 50GB️/30 天套餐。\n",
+    "list": [
+      "节点：美国",
+      "协议：VLESS",
+      "网站：eggyun.cc",
+      "频道：t.me/danzaiyun",
+      "群组：t.me/danzaicloud"
+    ],
+    "publishDate": "发布于：2026/8/04"
+  },
+  {
     "title": "doro 云",
-    "desc": "使用优惠劵 dorocloud 0 元购买“小杯”20GB️/30 天套餐。\n",
+    "desc": "使用优惠劵 doro 0 元购买“小杯”20GB️/30 天套餐。\n",
     "list": [
       "节点：台湾、香港、日本、马来西亚",
       "协议：AnyTLS、Hysteria、TUIC、VLESS",
